@@ -1,0 +1,22 @@
+{
+  "name": "examples",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "script": "tsx",
+    "start": "npm run script -- ./src/example.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "glean": "file:../"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.4",
+    "tsx": "^4.19.2"
+  }
+}

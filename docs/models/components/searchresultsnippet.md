@@ -1,0 +1,23 @@
+# SearchResultSnippet
+
+## Example Usage
+
+```typescript
+import { SearchResultSnippet } from "@gleanwork/api-client/models/components";
+
+let value: SearchResultSnippet = {
+  snippet: "snippet",
+  mimeType: "mimeType",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                   | Type                                                                                                                                    | Required                                                                                                                                | Description                                                                                                                             |
+| --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `snippet`                                                                                                                               | *string*                                                                                                                                | :heavy_check_mark:                                                                                                                      | A matching snippet from the document. Query term matches are marked by the unicode characters uE006 and uE007.                          |
+| `mimeType`                                                                                                                              | *string*                                                                                                                                | :heavy_minus_sign:                                                                                                                      | The mime type of the snippets, currently either text/plain or text/html.                                                                |
+| `text`                                                                                                                                  | *string*                                                                                                                                | :heavy_minus_sign:                                                                                                                      | A matching snippet from the document with no highlights.                                                                                |
+| `snippetTextOrdering`                                                                                                                   | *number*                                                                                                                                | :heavy_minus_sign:                                                                                                                      | Used for sorting based off the snippet's location within all_snippetable_text                                                           |
+| `ranges`                                                                                                                                | [components.TextRange](../../models/components/textrange.md)[]                                                                          | :heavy_minus_sign:                                                                                                                      | The bolded ranges within text.                                                                                                          |
+| `url`                                                                                                                                   | *string*                                                                                                                                | :heavy_minus_sign:                                                                                                                      | A URL, generated based on availability, that links to the position of the snippet text or to the nearest header above the snippet text. |

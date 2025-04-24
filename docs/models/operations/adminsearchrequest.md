@@ -1,0 +1,50 @@
+# AdminsearchRequest
+
+## Example Usage
+
+```typescript
+import { AdminsearchRequest } from "@gleanwork/api-client/models/operations";
+
+let value: AdminsearchRequest = {
+  searchRequest: {
+    trackingToken: "trackingToken",
+    pageSize: 10,
+    query: "vacation policy",
+    requestOptions: {
+      facetFilters: [
+        {
+          fieldName: "type",
+          values: [
+            {
+              value: "article",
+              relationType: "EQUALS",
+            },
+            {
+              value: "document",
+              relationType: "EQUALS",
+            },
+          ],
+        },
+        {
+          fieldName: "department",
+          values: [
+            {
+              value: "engineering",
+              relationType: "EQUALS",
+            },
+          ],
+        },
+      ],
+      facetBucketSize: 346749,
+    },
+  },
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                                                                                                                                                                                     | Type                                                                                                                                                                                                                                                                                                                                                                      | Required                                                                                                                                                                                                                                                                                                                                                                  | Description                                                                                                                                                                                                                                                                                                                                                               | Example                                                                                                                                                                                                                                                                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `xScioActas`                                                                                                                                                                                                                                                                                                                                                              | *string*                                                                                                                                                                                                                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                        | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                                                                                                                                                                                                                  |                                                                                                                                                                                                                                                                                                                                                                           |
+| `xGleanAuthType`                                                                                                                                                                                                                                                                                                                                                          | *string*                                                                                                                                                                                                                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                        | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                                                                                                                                                                                                                 |                                                                                                                                                                                                                                                                                                                                                                           |
+| `searchRequest`                                                                                                                                                                                                                                                                                                                                                           | [components.SearchRequest](../../models/components/searchrequest.md)                                                                                                                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                        | Admin search request                                                                                                                                                                                                                                                                                                                                                      | {<br/>"trackingToken": "trackingToken",<br/>"query": "vacation policy",<br/>"pageSize": 10,<br/>"requestOptions": {<br/>"facetFilters": [<br/>{<br/>"fieldName": "type",<br/>"values": [<br/>{<br/>"value": "article",<br/>"relationType": "EQUALS"<br/>},<br/>{<br/>"value": "document",<br/>"relationType": "EQUALS"<br/>}<br/>]<br/>},<br/>{<br/>"fieldName": "department",<br/>"values": [<br/>{<br/>"value": "engineering",<br/>"relationType": "EQUALS"<br/>}<br/>]<br/>}<br/>]<br/>}<br/>} |
