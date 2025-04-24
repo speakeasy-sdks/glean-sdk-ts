@@ -1,19 +1,8 @@
-<div align="center">
-    <img width="300px" src="https://github.com/user-attachments/assets/92f4902e-c951-4d8b-ba08-0ad731f408c6">
-    <h1>Glean TypeScript SDK</h1>
-    <p>Developer-friendly & type-safe TypeScript SDK specifically catered to leverage the <strong>Glean</strong> API.</p>
-    <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" /></a>
-</div>
-<!-- Start Summary [summary] -->
-## Summary
+# Glean TypeScript API Client
 
-Glean API: # Introduction
-In addition to the data sources that Glean has built-in support for, Glean also provides a REST API that enables customers to put arbitrary content in the search index. This is useful, for example, for doing permissions-aware search over content in internal tools that reside on-prem as well as for searching over applications that Glean does not currently support first class. In addition these APIs allow the customer to push organization data (people info, organization structure etc) into Glean.
+<!-- no [summary] -->
 
-# Usage guidelines
-This API is evolving fast. Glean will provide advance notice of any planned backwards incompatible changes along
-with a 6-month sunset period for anything that requires developers to adopt the new versions.
-<!-- End Summary [summary] -->
+The Glean TypeScript SDK provides convenient access to the Glean REST API in both browser and Node.js environments. It offers full TypeScript types, modern async/await support, and uses the [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) API under the hood.
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
