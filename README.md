@@ -4,9 +4,21 @@
 
 The Glean TypeScript SDK provides convenient access to the Glean REST API in both browser and Node.js environments. It offers full TypeScript types, modern async/await support, and uses the [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) API under the hood.
 
+<!-- Start Summary [summary] -->
+## Summary
+
+Glean API: # Introduction
+In addition to the data sources that Glean has built-in support for, Glean also provides a REST API that enables customers to put arbitrary content in the search index. This is useful, for example, for doing permissions-aware search over content in internal tools that reside on-prem as well as for searching over applications that Glean does not currently support first class. In addition these APIs allow the customer to push organization data (people info, organization structure etc) into Glean.
+
+# Usage guidelines
+This API is evolving fast. Glean will provide advance notice of any planned backwards incompatible changes along
+with a 6-month sunset period for anything that requires developers to adopt the new versions.
+<!-- End Summary [summary] -->
+
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
+* [Glean TypeScript API Client](#glean-typescript-api-client)
 * [Usage guidelines](#usage-guidelines)
   * [SDK Installation](#sdk-installation)
   * [Requirements](#requirements)
@@ -30,16 +42,12 @@ The Glean TypeScript SDK provides convenient access to the Glean REST API in bot
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
-> [!TIP]
-> To finish publishing your SDK to npm and others you must [run your first generation action](https://www.speakeasy.com/docs/github-setup#step-by-step-guide).
-
-
 The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/en/) package managers.
 
 ### NPM
 
 ```bash
-npm add https://github.com/gleanwork/api-client-typescript
+npm add @gleanwork/api-client
 # Install optional peer dependencies if you plan to use React hooks
 npm add @tanstack/react-query react react-dom
 ```
@@ -47,7 +55,7 @@ npm add @tanstack/react-query react react-dom
 ### PNPM
 
 ```bash
-pnpm add https://github.com/gleanwork/api-client-typescript
+pnpm add @gleanwork/api-client
 # Install optional peer dependencies if you plan to use React hooks
 pnpm add @tanstack/react-query react react-dom
 ```
@@ -55,7 +63,7 @@ pnpm add @tanstack/react-query react react-dom
 ### Bun
 
 ```bash
-bun add https://github.com/gleanwork/api-client-typescript
+bun add @gleanwork/api-client
 # Install optional peer dependencies if you plan to use React hooks
 bun add @tanstack/react-query react react-dom
 ```
@@ -63,7 +71,7 @@ bun add @tanstack/react-query react react-dom
 ### Yarn
 
 ```bash
-yarn add https://github.com/gleanwork/api-client-typescript zod
+yarn add @gleanwork/api-client zod
 # Install optional peer dependencies if you plan to use React hooks
 yarn add @tanstack/react-query react react-dom
 
