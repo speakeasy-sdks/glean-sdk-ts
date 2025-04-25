@@ -9,6 +9,9 @@ targets:
     glean:
         target: typescript
         source: Glean API
+        publish:
+            npm:
+                token: $npm_token
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/glean-el2/sdk/glean-api-specs-typescript-code-samples
