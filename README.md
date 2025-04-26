@@ -8,7 +8,6 @@ The Glean TypeScript SDK provides convenient access to the Glean REST API in bot
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
 * [Glean TypeScript API Client](#glean-typescript-api-client)
-* [Usage guidelines](#usage-guidelines)
   * [SDK Installation](#sdk-installation)
   * [Requirements](#requirements)
   * [SDK Example Usage](#sdk-example-usage)
