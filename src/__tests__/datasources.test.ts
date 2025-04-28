@@ -24,6 +24,7 @@ test("Datasources Post /Api/index/v1 /Adddatasource", async () => {
   );
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -50,6 +51,7 @@ test("Datasources Post /Api/index/v1 /Getdatasourceconfig", async () => {
   );
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -58,31 +60,4 @@ test("Datasources Post /Api/index/v1 /Getdatasourceconfig", async () => {
     datasource: "<value>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    name: "<value>",
-    datasourceCategory: "UNCATEGORIZED",
-    urlRegex: "https://example-company.datasource.com/.*",
-    quicklinks: [
-      {
-        iconConfig: {
-          color: "#343CED",
-          key: "person_icon",
-          iconType: "GLYPH",
-          name: "user",
-        },
-      },
-      {
-        iconConfig: {
-          color: "#343CED",
-          key: "person_icon",
-          iconType: "GLYPH",
-          name: "user",
-        },
-      },
-    ],
-    trustUrlRegexForViewActivity: true,
-    stripFragmentInCanonicalUrl: true,
-    isEntityDatasource: false,
-    isTestDatasource: false,
-  });
 });

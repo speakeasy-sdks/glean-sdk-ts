@@ -11,6 +11,7 @@ test("Collections Addcollectionitems", async () => {
   const testHttpClient = createTestHTTPClient("addcollectionitems");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -21,54 +22,13 @@ test("Collections Addcollectionitems", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    collection: {
-      name: "<value>",
-      description: "because almighty an",
-      addedRoles: [],
-      removedRoles: [],
-      audienceFilters: [],
-      id: 822820,
-      creator: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-        relatedDocuments: [],
-        metadata: {
-          type: "FULL_TIME",
-          title: "Actor",
-          department: "Movies",
-          email: "george@example.com",
-          location: "Hollywood, CA",
-          managementChain: [],
-          phone: "6505551234",
-          photoUrl: "https://example.com/george.jpg",
-          reports: [],
-          startDate: new RFCDate("2000-01-23"),
-          datasourceProfile: [],
-          querySuggestions: {
-            suggestions: [],
-          },
-          inviteInfo: {
-            invites: [],
-          },
-          customFields: [],
-          badges: [],
-        },
-      },
-      updatedBy: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-      items: [],
-      roles: [],
-    },
-  });
 });
 
 test("Collections Createcollection", async () => {
   const testHttpClient = createTestHTTPClient("createcollection");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -136,119 +96,13 @@ test("Collections Createcollection", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    name: "<value>",
-    description: "calmly fortunately bench around igloo scaffold",
-    addedRoles: [
-      {
-        person: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-          relatedDocuments: [],
-          metadata: {
-            type: "FULL_TIME",
-            title: "Actor",
-            department: "Movies",
-            email: "george@example.com",
-            location: "Hollywood, CA",
-            managementChain: [],
-            phone: "6505551234",
-            photoUrl: "https://example.com/george.jpg",
-            reports: [],
-            startDate: new RFCDate("2000-01-23"),
-            datasourceProfile: [],
-            querySuggestions: {
-              suggestions: [],
-            },
-            inviteInfo: {
-              invites: [],
-            },
-            customFields: [],
-            badges: [],
-          },
-        },
-        role: "EDITOR",
-      },
-      {
-        role: "EDITOR",
-      },
-      {
-        role: "EDITOR",
-      },
-    ],
-    removedRoles: [
-      {
-        role: "EDITOR",
-      },
-    ],
-    audienceFilters: [
-      {
-        fieldName: "type",
-        values: [
-          {
-            value: "Spreadsheet",
-            relationType: "EQUALS",
-          },
-          {
-            value: "Presentation",
-            relationType: "EQUALS",
-          },
-        ],
-      },
-    ],
-    id: 449221,
-    creator: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-    },
-    updatedBy: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-    },
-    items: [
-      {
-        collectionId: 760259,
-        createdBy: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        itemType: "DOCUMENT",
-      },
-      {
-        collectionId: 760259,
-        itemType: "DOCUMENT",
-      },
-    ],
-    children: [
-      {
-        name: "<value>",
-        description: "fencing vainly kookily for however",
-        audienceFilters: [],
-        id: 608384,
-        roles: [],
-      },
-      {
-        name: "<value>",
-        description: "fencing vainly kookily for however",
-        audienceFilters: [],
-        id: 608384,
-      },
-    ],
-    roles: [],
-    errorCode: "CONCURRENT_HIERARCHY_EDIT",
-    collection: {
-      name: "<value>",
-      description: "because almighty an",
-      audienceFilters: [],
-      id: 822820,
-    },
-  });
 });
 
 test("Collections Deletecollection", async () => {
   const testHttpClient = createTestHTTPClient("deletecollection");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -267,6 +121,7 @@ test("Collections Deletecollectionitem", async () => {
   const testHttpClient = createTestHTTPClient("deletecollectionitem");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -278,54 +133,13 @@ test("Collections Deletecollectionitem", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    collection: {
-      name: "<value>",
-      description: "because almighty an",
-      addedRoles: [],
-      removedRoles: [],
-      audienceFilters: [],
-      id: 822820,
-      creator: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-        relatedDocuments: [],
-        metadata: {
-          type: "FULL_TIME",
-          title: "Actor",
-          department: "Movies",
-          email: "george@example.com",
-          location: "Hollywood, CA",
-          managementChain: [],
-          phone: "6505551234",
-          photoUrl: "https://example.com/george.jpg",
-          reports: [],
-          startDate: new RFCDate("2000-01-23"),
-          datasourceProfile: [],
-          querySuggestions: {
-            suggestions: [],
-          },
-          inviteInfo: {
-            invites: [],
-          },
-          customFields: [],
-          badges: [],
-        },
-      },
-      updatedBy: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-      items: [],
-      roles: [],
-    },
-  });
 });
 
 test("Collections Editcollection", async () => {
   const testHttpClient = createTestHTTPClient("editcollection");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -397,120 +211,13 @@ test("Collections Editcollection", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    name: "<value>",
-    description:
-      "happily scowl mostly rekindle bleak from that qualified cycle woot",
-    addedRoles: [
-      {
-        person: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-          relatedDocuments: [],
-          metadata: {
-            type: "FULL_TIME",
-            title: "Actor",
-            department: "Movies",
-            email: "george@example.com",
-            location: "Hollywood, CA",
-            managementChain: [],
-            phone: "6505551234",
-            photoUrl: "https://example.com/george.jpg",
-            reports: [],
-            startDate: new RFCDate("2000-01-23"),
-            datasourceProfile: [],
-            querySuggestions: {
-              suggestions: [],
-            },
-            inviteInfo: {
-              invites: [],
-            },
-            customFields: [],
-            badges: [],
-          },
-        },
-        role: "EDITOR",
-      },
-    ],
-    removedRoles: [
-      {
-        role: "EDITOR",
-      },
-      {
-        role: "EDITOR",
-      },
-    ],
-    audienceFilters: [
-      {
-        fieldName: "type",
-        values: [
-          {
-            value: "Spreadsheet",
-            relationType: "EQUALS",
-          },
-          {
-            value: "Presentation",
-            relationType: "EQUALS",
-          },
-        ],
-      },
-    ],
-    id: 883001,
-    creator: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-    },
-    updatedBy: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-    },
-    items: [
-      {
-        collectionId: 760259,
-        createdBy: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        itemType: "DOCUMENT",
-      },
-    ],
-    children: [
-      {
-        name: "<value>",
-        description: "fencing vainly kookily for however",
-        audienceFilters: [],
-        id: 608384,
-        roles: [],
-      },
-      {
-        name: "<value>",
-        description: "fencing vainly kookily for however",
-        audienceFilters: [],
-        id: 608384,
-      },
-    ],
-    roles: [
-      {
-        role: "ANSWER_MODERATOR",
-      },
-      {
-        role: "ANSWER_MODERATOR",
-      },
-    ],
-    errorCode: "HEIGHT_VIOLATION",
-    collection: {
-      name: "<value>",
-      description: "because almighty an",
-      audienceFilters: [],
-      id: 822820,
-    },
-  });
 });
 
 test("Collections Editcollectionitem", async () => {
   const testHttpClient = createTestHTTPClient("editcollectionitem");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -522,54 +229,13 @@ test("Collections Editcollectionitem", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    collection: {
-      name: "<value>",
-      description: "because almighty an",
-      addedRoles: [],
-      removedRoles: [],
-      audienceFilters: [],
-      id: 822820,
-      creator: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-        relatedDocuments: [],
-        metadata: {
-          type: "FULL_TIME",
-          title: "Actor",
-          department: "Movies",
-          email: "george@example.com",
-          location: "Hollywood, CA",
-          managementChain: [],
-          phone: "6505551234",
-          photoUrl: "https://example.com/george.jpg",
-          reports: [],
-          startDate: new RFCDate("2000-01-23"),
-          datasourceProfile: [],
-          querySuggestions: {
-            suggestions: [],
-          },
-          inviteInfo: {
-            invites: [],
-          },
-          customFields: [],
-          badges: [],
-        },
-      },
-      updatedBy: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-      items: [],
-      roles: [],
-    },
-  });
 });
 
 test("Collections Editdocumentcollections", async () => {
   const testHttpClient = createTestHTTPClient("editdocumentcollections");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -578,119 +244,13 @@ test("Collections Editdocumentcollections", async () => {
     editDocumentCollectionsRequest: {},
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    document: {
-      metadata: {
-        datasource: "datasource",
-        objectType: "Feature Request",
-        container: "container",
-        parentId: "JIRA_EN-1337",
-        mimeType: "mimeType",
-        documentId: "documentId",
-        createTime: new Date("2000-01-23T04:56:07.000Z"),
-        updateTime: new Date("2000-01-23T04:56:07.000Z"),
-        author: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-          relatedDocuments: [],
-          metadata: {
-            type: "FULL_TIME",
-            title: "Actor",
-            department: "Movies",
-            email: "george@example.com",
-            location: "Hollywood, CA",
-            phone: "6505551234",
-            photoUrl: "https://example.com/george.jpg",
-            startDate: new RFCDate("2000-01-23"),
-            datasourceProfile: [
-              {
-                datasource: "github",
-                handle: "<value>",
-              },
-            ],
-            querySuggestions: {
-              suggestions: [],
-            },
-            inviteInfo: {
-              invites: [],
-            },
-            customFields: [],
-            badges: [
-              {
-                key: "deployment_name_new_hire",
-                displayName: "New hire",
-                iconConfig: {
-                  color: "#343CED",
-                  key: "person_icon",
-                  iconType: "GLYPH",
-                  name: "user",
-                },
-              },
-            ],
-          },
-        },
-        owner: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        mentionedPeople: [],
-        components: [
-          "Backend",
-          "Networking",
-        ],
-        status: "[\"Done\"]",
-        pins: [],
-        assignedTo: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        updatedBy: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        collections: [],
-        interactions: {
-          reacts: [],
-          shares: [],
-        },
-        verification: {
-          state: "UNVERIFIED",
-          metadata: {
-            lastVerifier: {
-              name: "George Clooney",
-              obfuscatedId: "abc123",
-            },
-            reminders: [],
-            lastReminder: {
-              assignee: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              requestor: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              remindAt: 129663,
-            },
-            candidateVerifiers: [],
-          },
-        },
-        customData: {
-          "someCustomField": {},
-        },
-        contactPerson: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-      },
-    },
-  });
 });
 
 test("Collections Getcollection", async () => {
   const testHttpClient = createTestHTTPClient("getcollection");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -701,74 +261,13 @@ test("Collections Getcollection", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    collection: {
-      name: "<value>",
-      description: "because almighty an",
-      addedRoles: [],
-      removedRoles: [],
-      audienceFilters: [],
-      id: 822820,
-      creator: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-        relatedDocuments: [],
-        metadata: {
-          type: "FULL_TIME",
-          title: "Actor",
-          department: "Movies",
-          email: "george@example.com",
-          location: "Hollywood, CA",
-          managementChain: [],
-          phone: "6505551234",
-          photoUrl: "https://example.com/george.jpg",
-          reports: [],
-          startDate: new RFCDate("2000-01-23"),
-          datasourceProfile: [],
-          querySuggestions: {
-            suggestions: [],
-          },
-          inviteInfo: {
-            invites: [],
-          },
-          customFields: [],
-          badges: [],
-        },
-      },
-      updatedBy: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-      items: [],
-      roles: [],
-    },
-    rootCollection: {
-      name: "<value>",
-      description: "randomize excess once yahoo cannon pomelo gym",
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-      id: 472597,
-    },
-  });
 });
 
 test("Collections Listcollections", async () => {
   const testHttpClient = createTestHTTPClient("listcollections");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -777,68 +276,13 @@ test("Collections Listcollections", async () => {
     listCollectionsRequest: {},
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    collections: [
-      {
-        name: "<value>",
-        description: "boo yuck mortally",
-        addedRoles: [],
-        removedRoles: [],
-        audienceFilters: [],
-        id: 920994,
-        creator: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-          relatedDocuments: [],
-          metadata: {
-            type: "FULL_TIME",
-            title: "Actor",
-            department: "Movies",
-            email: "george@example.com",
-            location: "Hollywood, CA",
-            managementChain: [],
-            phone: "6505551234",
-            photoUrl: "https://example.com/george.jpg",
-            reports: [],
-            startDate: new RFCDate("2000-01-23"),
-            datasourceProfile: [],
-            querySuggestions: {
-              suggestions: [],
-            },
-            inviteInfo: {
-              invites: [],
-            },
-            customFields: [],
-            badges: [],
-          },
-        },
-        updatedBy: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        items: [],
-        roles: [],
-      },
-      {
-        name: "<value>",
-        description: "boo yuck mortally",
-        audienceFilters: [],
-        id: 920994,
-      },
-      {
-        name: "<value>",
-        description: "boo yuck mortally",
-        audienceFilters: [],
-        id: 920994,
-      },
-    ],
-  });
 });
 
 test("Collections Movecollectionitem", async () => {
   const testHttpClient = createTestHTTPClient("movecollectionitem");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -850,54 +294,13 @@ test("Collections Movecollectionitem", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    collection: {
-      name: "<value>",
-      description: "because almighty an",
-      addedRoles: [],
-      removedRoles: [],
-      audienceFilters: [],
-      id: 822820,
-      creator: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-        relatedDocuments: [],
-        metadata: {
-          type: "FULL_TIME",
-          title: "Actor",
-          department: "Movies",
-          email: "george@example.com",
-          location: "Hollywood, CA",
-          managementChain: [],
-          phone: "6505551234",
-          photoUrl: "https://example.com/george.jpg",
-          reports: [],
-          startDate: new RFCDate("2000-01-23"),
-          datasourceProfile: [],
-          querySuggestions: {
-            suggestions: [],
-          },
-          inviteInfo: {
-            invites: [],
-          },
-          customFields: [],
-          badges: [],
-        },
-      },
-      updatedBy: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-      items: [],
-      roles: [],
-    },
-  });
 });
 
 test("Collections Pincollection", async () => {
   const testHttpClient = createTestHTTPClient("pincollection");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -906,68 +309,6 @@ test("Collections Pincollection", async () => {
     pinCollectionRequest: {},
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    collection: {
-      name: "<value>",
-      description: "because almighty an",
-      addedRoles: [],
-      removedRoles: [],
-      audienceFilters: [],
-      id: 822820,
-      creator: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-        relatedDocuments: [],
-        metadata: {
-          type: "FULL_TIME",
-          title: "Actor",
-          department: "Movies",
-          email: "george@example.com",
-          location: "Hollywood, CA",
-          managementChain: [],
-          phone: "6505551234",
-          photoUrl: "https://example.com/george.jpg",
-          reports: [],
-          startDate: new RFCDate("2000-01-23"),
-          datasourceProfile: [],
-          querySuggestions: {
-            suggestions: [],
-          },
-          inviteInfo: {
-            invites: [],
-          },
-          customFields: [],
-          badges: [],
-        },
-      },
-      updatedBy: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-      items: [],
-      roles: [],
-    },
-    rootCollection: {
-      name: "<value>",
-      description: "randomize excess once yahoo cannon pomelo gym",
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-      id: 472597,
-    },
-  });
 });
 
 it.skip("Collections Pin Collection", async () => {

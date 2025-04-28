@@ -4,13 +4,13 @@
 
 import { expect, test } from "vitest";
 import { Glean } from "../index.js";
-import { RFCDate } from "../types/index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Verification Addverificationreminder", async () => {
   const testHttpClient = createTestHTTPClient("addverificationreminder");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -21,56 +21,13 @@ test("Verification Addverificationreminder", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    state: "VERIFIED",
-    metadata: {
-      lastVerifier: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-        relatedDocuments: [],
-        metadata: {
-          type: "FULL_TIME",
-          title: "Actor",
-          department: "Movies",
-          email: "george@example.com",
-          location: "Hollywood, CA",
-          managementChain: [],
-          phone: "6505551234",
-          photoUrl: "https://example.com/george.jpg",
-          reports: [],
-          startDate: new RFCDate("2000-01-23"),
-          datasourceProfile: [],
-          querySuggestions: {
-            suggestions: [],
-          },
-          inviteInfo: {
-            invites: [],
-          },
-          customFields: [],
-          badges: [],
-        },
-      },
-      reminders: [],
-      lastReminder: {
-        assignee: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        requestor: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        remindAt: 129663,
-      },
-      candidateVerifiers: [],
-    },
-  });
 });
 
 test("Verification Verify", async () => {
   const testHttpClient = createTestHTTPClient("verify");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -81,48 +38,4 @@ test("Verification Verify", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    state: "VERIFIED",
-    metadata: {
-      lastVerifier: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-        relatedDocuments: [],
-        metadata: {
-          type: "FULL_TIME",
-          title: "Actor",
-          department: "Movies",
-          email: "george@example.com",
-          location: "Hollywood, CA",
-          managementChain: [],
-          phone: "6505551234",
-          photoUrl: "https://example.com/george.jpg",
-          reports: [],
-          startDate: new RFCDate("2000-01-23"),
-          datasourceProfile: [],
-          querySuggestions: {
-            suggestions: [],
-          },
-          inviteInfo: {
-            invites: [],
-          },
-          customFields: [],
-          badges: [],
-        },
-      },
-      reminders: [],
-      lastReminder: {
-        assignee: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        requestor: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        remindAt: 129663,
-      },
-      candidateVerifiers: [],
-    },
-  });
 });

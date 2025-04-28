@@ -14,11 +14,11 @@ import {
   Collection$outboundSchema,
 } from "./collection.js";
 import {
-  CollectionError2,
-  CollectionError2$inboundSchema,
-  CollectionError2$Outbound,
-  CollectionError2$outboundSchema,
-} from "./collectionerror2.js";
+  CollectionError,
+  CollectionError$inboundSchema,
+  CollectionError$Outbound,
+  CollectionError$outboundSchema,
+} from "./collectionerror.js";
 import {
   CollectionItem,
   CollectionItem$inboundSchema,
@@ -149,7 +149,7 @@ export type EditCollectionResponse = {
   roles?: Array<UserRoleSpecification> | undefined;
   errorCode: EditCollectionResponseErrorCode;
   collection?: Collection | undefined;
-  error?: CollectionError2 | undefined;
+  error?: CollectionError | undefined;
 };
 
 /** @internal */
@@ -206,7 +206,7 @@ export const EditCollectionResponse$inboundSchema: z.ZodType<
   roles: z.array(UserRoleSpecification$inboundSchema).optional(),
   errorCode: EditCollectionResponseErrorCode$inboundSchema,
   collection: Collection$inboundSchema.optional(),
-  error: CollectionError2$inboundSchema.optional(),
+  error: CollectionError$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -236,7 +236,7 @@ export type EditCollectionResponse$Outbound = {
   roles?: Array<UserRoleSpecification$Outbound> | undefined;
   errorCode: string;
   collection?: Collection$Outbound | undefined;
-  error?: CollectionError2$Outbound | undefined;
+  error?: CollectionError$Outbound | undefined;
 };
 
 /** @internal */
@@ -270,7 +270,7 @@ export const EditCollectionResponse$outboundSchema: z.ZodType<
   roles: z.array(UserRoleSpecification$outboundSchema).optional(),
   errorCode: EditCollectionResponseErrorCode$outboundSchema,
   collection: Collection$outboundSchema.optional(),
-  error: CollectionError2$outboundSchema.optional(),
+  error: CollectionError$outboundSchema.optional(),
 });
 
 /**

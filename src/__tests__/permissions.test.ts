@@ -76,6 +76,7 @@ test("Permissions Post /Api/index/v1 /Indexuser", async () => {
   const testHttpClient = createTestHTTPClient("post_/api/index/v1/indexuser");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -95,6 +96,7 @@ test("Permissions Post /Api/index/v1 /Bulkindexusers", async () => {
   );
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -110,6 +112,7 @@ test("Permissions Post /Api/index/v1 /Indexgroup", async () => {
   const testHttpClient = createTestHTTPClient("post_/api/index/v1/indexgroup");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -128,6 +131,7 @@ test("Permissions Post /Api/index/v1 /Bulkindexgroups", async () => {
   );
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -145,6 +149,7 @@ test("Permissions Post /Api/index/v1 /Indexmembership", async () => {
   );
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -163,6 +168,7 @@ test("Permissions Post /Api/index/v1 /Bulkindexmemberships", async () => {
   );
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -182,6 +188,7 @@ test("Permissions Post /Api/index/v1 /Processallmemberships", async () => {
   );
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -193,6 +200,7 @@ test("Permissions Post /Api/index/v1 /Deleteuser", async () => {
   const testHttpClient = createTestHTTPClient("post_/api/index/v1/deleteuser");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -207,6 +215,7 @@ test("Permissions Post /Api/index/v1 /Deletegroup", async () => {
   const testHttpClient = createTestHTTPClient("post_/api/index/v1/deletegroup");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -223,6 +232,7 @@ test("Permissions Post /Api/index/v1 /Deletemembership", async () => {
   );
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -239,6 +249,7 @@ test("Permissions Post /Api/index/v1 /Betausers", async () => {
   const testHttpClient = createTestHTTPClient("post_/api/index/v1/betausers");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });

@@ -927,17 +927,14 @@ async function run() {
               person: {
                 name: "George Clooney",
                 obfuscatedId: "abc123",
-                relatedDocuments: [],
                 metadata: {
                   type: "FULL_TIME",
                   title: "Actor",
                   department: "Movies",
                   email: "george@example.com",
                   location: "Hollywood, CA",
-                  managementChain: [],
                   phone: "6505551234",
                   photoUrl: "https://example.com/george.jpg",
-                  reports: [],
                   startDate: new RFCDate("2000-01-23"),
                   datasourceProfile: [
                     {
@@ -945,13 +942,8 @@ async function run() {
                       handle: "<value>",
                     },
                   ],
-                  querySuggestions: {
-                    suggestions: [],
-                  },
-                  inviteInfo: {
-                    invites: [],
-                  },
-                  customFields: [],
+                  querySuggestions: {},
+                  inviteInfo: {},
                   badges: [
                     {
                       key: "deployment_name_new_hire",
@@ -1066,17 +1058,14 @@ async function run() {
               person: {
                 name: "George Clooney",
                 obfuscatedId: "abc123",
-                relatedDocuments: [],
                 metadata: {
                   type: "FULL_TIME",
                   title: "Actor",
                   department: "Movies",
                   email: "george@example.com",
                   location: "Hollywood, CA",
-                  managementChain: [],
                   phone: "6505551234",
                   photoUrl: "https://example.com/george.jpg",
-                  reports: [],
                   startDate: new RFCDate("2000-01-23"),
                   datasourceProfile: [
                     {
@@ -1084,13 +1073,8 @@ async function run() {
                       handle: "<value>",
                     },
                   ],
-                  querySuggestions: {
-                    suggestions: [],
-                  },
-                  inviteInfo: {
-                    invites: [],
-                  },
-                  customFields: [],
+                  querySuggestions: {},
+                  inviteInfo: {},
                   badges: [
                     {
                       key: "deployment_name_new_hire",

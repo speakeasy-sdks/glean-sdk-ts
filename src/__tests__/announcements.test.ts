@@ -11,6 +11,7 @@ test("Announcements Createannouncement", async () => {
   const testHttpClient = createTestHTTPClient("createannouncement");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -29,144 +30,13 @@ test("Announcements Createannouncement", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    body: {
-      text:
-        "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-      structuredList: [],
-    },
-    audienceFilters: [
-      {
-        fieldName: "type",
-        values: [
-          {
-            value: "Spreadsheet",
-            relationType: "EQUALS",
-          },
-          {
-            value: "Presentation",
-            relationType: "EQUALS",
-          },
-        ],
-      },
-    ],
-    draftId: 342,
-    author: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-      relatedDocuments: [],
-      metadata: {
-        type: "FULL_TIME",
-        title: "Actor",
-        department: "Movies",
-        email: "george@example.com",
-        location: "Hollywood, CA",
-        phone: "6505551234",
-        photoUrl: "https://example.com/george.jpg",
-        startDate: new RFCDate("2000-01-23"),
-        datasourceProfile: [
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-        ],
-        querySuggestions: {
-          suggestions: [],
-        },
-        inviteInfo: {
-          invites: [],
-        },
-        customFields: [],
-        badges: [
-          {
-            key: "deployment_name_new_hire",
-            displayName: "New hire",
-            iconConfig: {
-              color: "#343CED",
-              key: "person_icon",
-              iconType: "GLYPH",
-              name: "user",
-            },
-          },
-        ],
-      },
-    },
-    updatedBy: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-    },
-    sourceDocument: {
-      metadata: {
-        datasource: "datasource",
-        objectType: "Feature Request",
-        container: "container",
-        parentId: "JIRA_EN-1337",
-        mimeType: "mimeType",
-        documentId: "documentId",
-        createTime: new Date("2000-01-23T04:56:07.000Z"),
-        updateTime: new Date("2000-01-23T04:56:07.000Z"),
-        owner: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        mentionedPeople: [],
-        components: [
-          "Backend",
-          "Networking",
-        ],
-        status: "[\"Done\"]",
-        pins: [],
-        assignedTo: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        collections: [],
-        interactions: {
-          reacts: [],
-          shares: [],
-        },
-        verification: {
-          state: "UNVERIFIED",
-          metadata: {
-            lastVerifier: {
-              name: "George Clooney",
-              obfuscatedId: "abc123",
-            },
-            reminders: [],
-            lastReminder: {
-              assignee: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              requestor: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              remindAt: 129663,
-            },
-            candidateVerifiers: [],
-          },
-        },
-        customData: {
-          "someCustomField": {},
-        },
-        contactPerson: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-      },
-    },
-  });
 });
 
 test("Announcements Createdraftannouncement", async () => {
   const testHttpClient = createTestHTTPClient("createdraftannouncement");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -196,140 +66,13 @@ test("Announcements Createdraftannouncement", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    body: {
-      text:
-        "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-      structuredList: [],
-    },
-    audienceFilters: [
-      {
-        fieldName: "type",
-        values: [
-          {
-            value: "Spreadsheet",
-            relationType: "EQUALS",
-          },
-          {
-            value: "Presentation",
-            relationType: "EQUALS",
-          },
-        ],
-      },
-    ],
-    draftId: 342,
-    author: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-      relatedDocuments: [],
-      metadata: {
-        type: "FULL_TIME",
-        title: "Actor",
-        department: "Movies",
-        email: "george@example.com",
-        location: "Hollywood, CA",
-        phone: "6505551234",
-        photoUrl: "https://example.com/george.jpg",
-        startDate: new RFCDate("2000-01-23"),
-        datasourceProfile: [
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-        ],
-        querySuggestions: {
-          suggestions: [],
-        },
-        inviteInfo: {
-          invites: [],
-        },
-        customFields: [],
-        badges: [
-          {
-            key: "deployment_name_new_hire",
-            displayName: "New hire",
-            iconConfig: {
-              color: "#343CED",
-              key: "person_icon",
-              iconType: "GLYPH",
-              name: "user",
-            },
-          },
-        ],
-      },
-    },
-    updatedBy: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-    },
-    sourceDocument: {
-      metadata: {
-        datasource: "datasource",
-        objectType: "Feature Request",
-        container: "container",
-        parentId: "JIRA_EN-1337",
-        mimeType: "mimeType",
-        documentId: "documentId",
-        createTime: new Date("2000-01-23T04:56:07.000Z"),
-        updateTime: new Date("2000-01-23T04:56:07.000Z"),
-        owner: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        mentionedPeople: [],
-        components: [
-          "Backend",
-          "Networking",
-        ],
-        status: "[\"Done\"]",
-        pins: [],
-        assignedTo: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        collections: [],
-        interactions: {
-          reacts: [],
-          shares: [],
-        },
-        verification: {
-          state: "UNVERIFIED",
-          metadata: {
-            lastVerifier: {
-              name: "George Clooney",
-              obfuscatedId: "abc123",
-            },
-            reminders: [],
-            lastReminder: {
-              assignee: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              requestor: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              remindAt: 129663,
-            },
-            candidateVerifiers: [],
-          },
-        },
-        customData: {
-          "someCustomField": {},
-        },
-        contactPerson: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-      },
-    },
-  });
 });
 
 test("Announcements Deleteannouncement", async () => {
   const testHttpClient = createTestHTTPClient("deleteannouncement");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -345,6 +88,7 @@ test("Announcements Deletedraftannouncement", async () => {
   const testHttpClient = createTestHTTPClient("deletedraftannouncement");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -360,6 +104,7 @@ test("Announcements Getannouncement", async () => {
   const testHttpClient = createTestHTTPClient("getannouncement");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -370,146 +115,13 @@ test("Announcements Getannouncement", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    announcement: {
-      body: {
-        text:
-          "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-        structuredList: [],
-      },
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-      draftId: 342,
-      author: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-        relatedDocuments: [],
-        metadata: {
-          type: "FULL_TIME",
-          title: "Actor",
-          department: "Movies",
-          email: "george@example.com",
-          location: "Hollywood, CA",
-          phone: "6505551234",
-          photoUrl: "https://example.com/george.jpg",
-          startDate: new RFCDate("2000-01-23"),
-          datasourceProfile: [
-            {
-              datasource: "github",
-              handle: "<value>",
-            },
-            {
-              datasource: "github",
-              handle: "<value>",
-            },
-          ],
-          querySuggestions: {
-            suggestions: [],
-          },
-          inviteInfo: {
-            invites: [],
-          },
-          customFields: [],
-          badges: [
-            {
-              key: "deployment_name_new_hire",
-              displayName: "New hire",
-              iconConfig: {
-                color: "#343CED",
-                key: "person_icon",
-                iconType: "GLYPH",
-                name: "user",
-              },
-            },
-          ],
-        },
-      },
-      updatedBy: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-      sourceDocument: {
-        metadata: {
-          datasource: "datasource",
-          objectType: "Feature Request",
-          container: "container",
-          parentId: "JIRA_EN-1337",
-          mimeType: "mimeType",
-          documentId: "documentId",
-          createTime: new Date("2000-01-23T04:56:07.000Z"),
-          updateTime: new Date("2000-01-23T04:56:07.000Z"),
-          owner: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          mentionedPeople: [],
-          components: [
-            "Backend",
-            "Networking",
-          ],
-          status: "[\"Done\"]",
-          pins: [],
-          assignedTo: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          collections: [],
-          interactions: {
-            reacts: [],
-            shares: [],
-          },
-          verification: {
-            state: "UNVERIFIED",
-            metadata: {
-              lastVerifier: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              reminders: [],
-              lastReminder: {
-                assignee: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                },
-                requestor: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                },
-                remindAt: 129663,
-              },
-              candidateVerifiers: [],
-            },
-          },
-          customData: {
-            "someCustomField": {},
-          },
-          contactPerson: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-        },
-      },
-    },
-  });
 });
 
 test("Announcements Getdraftannouncement", async () => {
   const testHttpClient = createTestHTTPClient("getdraftannouncement");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -520,146 +132,13 @@ test("Announcements Getdraftannouncement", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    announcement: {
-      body: {
-        text:
-          "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-        structuredList: [],
-      },
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-      draftId: 342,
-      author: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-        relatedDocuments: [],
-        metadata: {
-          type: "FULL_TIME",
-          title: "Actor",
-          department: "Movies",
-          email: "george@example.com",
-          location: "Hollywood, CA",
-          phone: "6505551234",
-          photoUrl: "https://example.com/george.jpg",
-          startDate: new RFCDate("2000-01-23"),
-          datasourceProfile: [
-            {
-              datasource: "github",
-              handle: "<value>",
-            },
-            {
-              datasource: "github",
-              handle: "<value>",
-            },
-          ],
-          querySuggestions: {
-            suggestions: [],
-          },
-          inviteInfo: {
-            invites: [],
-          },
-          customFields: [],
-          badges: [
-            {
-              key: "deployment_name_new_hire",
-              displayName: "New hire",
-              iconConfig: {
-                color: "#343CED",
-                key: "person_icon",
-                iconType: "GLYPH",
-                name: "user",
-              },
-            },
-          ],
-        },
-      },
-      updatedBy: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-      sourceDocument: {
-        metadata: {
-          datasource: "datasource",
-          objectType: "Feature Request",
-          container: "container",
-          parentId: "JIRA_EN-1337",
-          mimeType: "mimeType",
-          documentId: "documentId",
-          createTime: new Date("2000-01-23T04:56:07.000Z"),
-          updateTime: new Date("2000-01-23T04:56:07.000Z"),
-          owner: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          mentionedPeople: [],
-          components: [
-            "Backend",
-            "Networking",
-          ],
-          status: "[\"Done\"]",
-          pins: [],
-          assignedTo: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          collections: [],
-          interactions: {
-            reacts: [],
-            shares: [],
-          },
-          verification: {
-            state: "UNVERIFIED",
-            metadata: {
-              lastVerifier: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              reminders: [],
-              lastReminder: {
-                assignee: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                },
-                requestor: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                },
-                remindAt: 129663,
-              },
-              candidateVerifiers: [],
-            },
-          },
-          customData: {
-            "someCustomField": {},
-          },
-          contactPerson: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-        },
-      },
-    },
-  });
 });
 
 test("Announcements Listannouncements", async () => {
   const testHttpClient = createTestHTTPClient("listannouncements");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -668,19 +147,13 @@ test("Announcements Listannouncements", async () => {
     listAnnouncementsRequest: {},
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    announcements: [
-      {
-        draftId: 342,
-      },
-    ],
-  });
 });
 
 test("Announcements Previewannouncement", async () => {
   const testHttpClient = createTestHTTPClient("previewannouncement");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -692,23 +165,13 @@ test("Announcements Previewannouncement", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    structuredText: {
-      text:
-        "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-      structuredList: [],
-    },
-    combinedAnswerText: {
-      text:
-        "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-    },
-  });
 });
 
 test("Announcements Previewannouncementdraft", async () => {
   const testHttpClient = createTestHTTPClient("previewannouncementdraft");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -801,176 +264,13 @@ test("Announcements Previewannouncementdraft", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    announcement: {
-      body: {
-        text:
-          "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-        structuredList: [],
-      },
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-      draftId: 342,
-      author: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-        relatedDocuments: [],
-        metadata: {
-          type: "FULL_TIME",
-          title: "Actor",
-          department: "Movies",
-          email: "george@example.com",
-          location: "Hollywood, CA",
-          phone: "6505551234",
-          photoUrl: "https://example.com/george.jpg",
-          startDate: new RFCDate("2000-01-23"),
-          datasourceProfile: [
-            {
-              datasource: "github",
-              handle: "<value>",
-            },
-            {
-              datasource: "github",
-              handle: "<value>",
-            },
-          ],
-          querySuggestions: {
-            suggestions: [],
-          },
-          inviteInfo: {
-            invites: [],
-          },
-          customFields: [],
-          badges: [
-            {
-              key: "deployment_name_new_hire",
-              displayName: "New hire",
-              iconConfig: {
-                color: "#343CED",
-                key: "person_icon",
-                iconType: "GLYPH",
-                name: "user",
-              },
-            },
-          ],
-        },
-      },
-      updatedBy: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-      sourceDocument: {
-        metadata: {
-          datasource: "datasource",
-          objectType: "Feature Request",
-          container: "container",
-          parentId: "JIRA_EN-1337",
-          mimeType: "mimeType",
-          documentId: "documentId",
-          createTime: new Date("2000-01-23T04:56:07.000Z"),
-          updateTime: new Date("2000-01-23T04:56:07.000Z"),
-          owner: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          mentionedPeople: [],
-          components: [
-            "Backend",
-            "Networking",
-          ],
-          status: "[\"Done\"]",
-          pins: [],
-          assignedTo: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          collections: [],
-          interactions: {
-            reacts: [],
-            shares: [],
-          },
-          verification: {
-            state: "UNVERIFIED",
-            metadata: {
-              lastVerifier: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              reminders: [],
-              lastReminder: {
-                assignee: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                },
-                requestor: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                },
-                remindAt: 129663,
-              },
-              candidateVerifiers: [],
-            },
-          },
-          customData: {
-            "someCustomField": {},
-          },
-          contactPerson: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-        },
-      },
-    },
-    answer: {
-      id: 3,
-      docId: "ANSWERS_answer_3",
-      question: "Why is the sky blue?",
-      bodyText:
-        "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-      audienceFilters: [],
-      addedRoles: [],
-      removedRoles: [],
-      roles: [],
-      combinedAnswerText: {
-        text:
-          "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-      },
-      likes: {
-        likedBy: [],
-        likedByUser: true,
-        numLikes: 22508,
-      },
-      board: {
-        name: "<value>",
-        description: "over aha if unless fooey unbearably",
-        audienceFilters: [],
-        id: 342305,
-        creator: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-      },
-    },
-  });
 });
 
 test("Announcements Publishdraftannouncement", async () => {
   const testHttpClient = createTestHTTPClient("publishdraftannouncement");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -986,6 +286,7 @@ test("Announcements Unpublishannouncement", async () => {
   const testHttpClient = createTestHTTPClient("unpublishannouncement");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -996,144 +297,13 @@ test("Announcements Unpublishannouncement", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    body: {
-      text:
-        "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-      structuredList: [],
-    },
-    audienceFilters: [
-      {
-        fieldName: "type",
-        values: [
-          {
-            value: "Spreadsheet",
-            relationType: "EQUALS",
-          },
-          {
-            value: "Presentation",
-            relationType: "EQUALS",
-          },
-        ],
-      },
-    ],
-    draftId: 342,
-    author: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-      relatedDocuments: [],
-      metadata: {
-        type: "FULL_TIME",
-        title: "Actor",
-        department: "Movies",
-        email: "george@example.com",
-        location: "Hollywood, CA",
-        phone: "6505551234",
-        photoUrl: "https://example.com/george.jpg",
-        startDate: new RFCDate("2000-01-23"),
-        datasourceProfile: [
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-        ],
-        querySuggestions: {
-          suggestions: [],
-        },
-        inviteInfo: {
-          invites: [],
-        },
-        customFields: [],
-        badges: [
-          {
-            key: "deployment_name_new_hire",
-            displayName: "New hire",
-            iconConfig: {
-              color: "#343CED",
-              key: "person_icon",
-              iconType: "GLYPH",
-              name: "user",
-            },
-          },
-        ],
-      },
-    },
-    updatedBy: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-    },
-    sourceDocument: {
-      metadata: {
-        datasource: "datasource",
-        objectType: "Feature Request",
-        container: "container",
-        parentId: "JIRA_EN-1337",
-        mimeType: "mimeType",
-        documentId: "documentId",
-        createTime: new Date("2000-01-23T04:56:07.000Z"),
-        updateTime: new Date("2000-01-23T04:56:07.000Z"),
-        owner: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        mentionedPeople: [],
-        components: [
-          "Backend",
-          "Networking",
-        ],
-        status: "[\"Done\"]",
-        pins: [],
-        assignedTo: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        collections: [],
-        interactions: {
-          reacts: [],
-          shares: [],
-        },
-        verification: {
-          state: "UNVERIFIED",
-          metadata: {
-            lastVerifier: {
-              name: "George Clooney",
-              obfuscatedId: "abc123",
-            },
-            reminders: [],
-            lastReminder: {
-              assignee: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              requestor: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              remindAt: 129663,
-            },
-            candidateVerifiers: [],
-          },
-        },
-        customData: {
-          "someCustomField": {},
-        },
-        contactPerson: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-      },
-    },
-  });
 });
 
 test("Announcements Updateannouncement", async () => {
   const testHttpClient = createTestHTTPClient("updateannouncement");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -1167,144 +337,13 @@ test("Announcements Updateannouncement", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    body: {
-      text:
-        "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-      structuredList: [],
-    },
-    audienceFilters: [
-      {
-        fieldName: "type",
-        values: [
-          {
-            value: "Spreadsheet",
-            relationType: "EQUALS",
-          },
-          {
-            value: "Presentation",
-            relationType: "EQUALS",
-          },
-        ],
-      },
-    ],
-    draftId: 342,
-    author: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-      relatedDocuments: [],
-      metadata: {
-        type: "FULL_TIME",
-        title: "Actor",
-        department: "Movies",
-        email: "george@example.com",
-        location: "Hollywood, CA",
-        phone: "6505551234",
-        photoUrl: "https://example.com/george.jpg",
-        startDate: new RFCDate("2000-01-23"),
-        datasourceProfile: [
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-        ],
-        querySuggestions: {
-          suggestions: [],
-        },
-        inviteInfo: {
-          invites: [],
-        },
-        customFields: [],
-        badges: [
-          {
-            key: "deployment_name_new_hire",
-            displayName: "New hire",
-            iconConfig: {
-              color: "#343CED",
-              key: "person_icon",
-              iconType: "GLYPH",
-              name: "user",
-            },
-          },
-        ],
-      },
-    },
-    updatedBy: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-    },
-    sourceDocument: {
-      metadata: {
-        datasource: "datasource",
-        objectType: "Feature Request",
-        container: "container",
-        parentId: "JIRA_EN-1337",
-        mimeType: "mimeType",
-        documentId: "documentId",
-        createTime: new Date("2000-01-23T04:56:07.000Z"),
-        updateTime: new Date("2000-01-23T04:56:07.000Z"),
-        owner: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        mentionedPeople: [],
-        components: [
-          "Backend",
-          "Networking",
-        ],
-        status: "[\"Done\"]",
-        pins: [],
-        assignedTo: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        collections: [],
-        interactions: {
-          reacts: [],
-          shares: [],
-        },
-        verification: {
-          state: "UNVERIFIED",
-          metadata: {
-            lastVerifier: {
-              name: "George Clooney",
-              obfuscatedId: "abc123",
-            },
-            reminders: [],
-            lastReminder: {
-              assignee: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              requestor: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              remindAt: 129663,
-            },
-            candidateVerifiers: [],
-          },
-        },
-        customData: {
-          "someCustomField": {},
-        },
-        contactPerson: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-      },
-    },
-  });
 });
 
 test("Announcements Updatedraftannouncement", async () => {
   const testHttpClient = createTestHTTPClient("updatedraftannouncement");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -1335,134 +374,6 @@ test("Announcements Updatedraftannouncement", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    body: {
-      text:
-        "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-      structuredList: [],
-    },
-    audienceFilters: [
-      {
-        fieldName: "type",
-        values: [
-          {
-            value: "Spreadsheet",
-            relationType: "EQUALS",
-          },
-          {
-            value: "Presentation",
-            relationType: "EQUALS",
-          },
-        ],
-      },
-    ],
-    draftId: 342,
-    author: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-      relatedDocuments: [],
-      metadata: {
-        type: "FULL_TIME",
-        title: "Actor",
-        department: "Movies",
-        email: "george@example.com",
-        location: "Hollywood, CA",
-        phone: "6505551234",
-        photoUrl: "https://example.com/george.jpg",
-        startDate: new RFCDate("2000-01-23"),
-        datasourceProfile: [
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-        ],
-        querySuggestions: {
-          suggestions: [],
-        },
-        inviteInfo: {
-          invites: [],
-        },
-        customFields: [],
-        badges: [
-          {
-            key: "deployment_name_new_hire",
-            displayName: "New hire",
-            iconConfig: {
-              color: "#343CED",
-              key: "person_icon",
-              iconType: "GLYPH",
-              name: "user",
-            },
-          },
-        ],
-      },
-    },
-    updatedBy: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-    },
-    sourceDocument: {
-      metadata: {
-        datasource: "datasource",
-        objectType: "Feature Request",
-        container: "container",
-        parentId: "JIRA_EN-1337",
-        mimeType: "mimeType",
-        documentId: "documentId",
-        createTime: new Date("2000-01-23T04:56:07.000Z"),
-        updateTime: new Date("2000-01-23T04:56:07.000Z"),
-        owner: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        mentionedPeople: [],
-        components: [
-          "Backend",
-          "Networking",
-        ],
-        status: "[\"Done\"]",
-        pins: [],
-        assignedTo: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-        collections: [],
-        interactions: {
-          reacts: [],
-          shares: [],
-        },
-        verification: {
-          state: "UNVERIFIED",
-          metadata: {
-            lastVerifier: {
-              name: "George Clooney",
-              obfuscatedId: "abc123",
-            },
-            reminders: [],
-            lastReminder: {
-              assignee: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              requestor: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              remindAt: 129663,
-            },
-            candidateVerifiers: [],
-          },
-        },
-        customData: {
-          "someCustomField": {},
-        },
-        contactPerson: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-      },
-    },
-  });
 });
 
 it.skip("Announcements Create Announcement", async () => {

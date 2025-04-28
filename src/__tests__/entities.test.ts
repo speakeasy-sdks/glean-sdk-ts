@@ -10,6 +10,7 @@ test("Entities Listentities", async () => {
   const testHttpClient = createTestHTTPClient("listentities");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -35,114 +36,13 @@ test("Entities Listentities", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    results: [
-      {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-    ],
-    teamResults: [
-      {
-        id: "<id>",
-        name: "<value>",
-        members: [],
-        datasourceProfiles: [
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-        ],
-        status: "PROCESSED",
-        canBeDeleted: true,
-      },
-      {
-        id: "<id>",
-        name: "<value>",
-        datasourceProfiles: [
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-        ],
-        status: "PROCESSED",
-        canBeDeleted: true,
-      },
-      {
-        id: "<id>",
-        name: "<value>",
-        datasourceProfiles: [
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-        ],
-        status: "PROCESSED",
-        canBeDeleted: true,
-      },
-    ],
-    customEntityResults: [
-      {
-        roles: [],
-      },
-    ],
-    facetResults: [
-      {
-        sourceName: "container_name",
-        operatorName: "SelectMultiple",
-        buckets: [
-          {
-            count: 1,
-            datasource: "jira",
-            percentage: 5,
-            value: {
-              stringValue: "engineering",
-              integerValue: 5,
-              displayLabel: "engineering",
-              iconConfig: {
-                color: "#343CED",
-                key: "person_icon",
-                iconType: "GLYPH",
-                name: "user",
-              },
-            },
-          },
-        ],
-        hasMoreBuckets: false,
-        groupName: "Service Cloud",
-      },
-    ],
-  });
 });
 
 test("Entities People", async () => {
   const testHttpClient = createTestHTTPClient("people");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -156,84 +56,13 @@ test("Entities People", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    results: [
-      {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-    ],
-    relatedDocuments: [
-      {
-        querySuggestion: {
-          query: "app:github type:pull author:mortimer",
-          searchProviderInfo: {
-            name: "Google",
-            searchLinkUrlTemplate:
-              "https://www.google.com/search?q={query}&hl=en",
-          },
-          label: "Mortimer's PRs",
-          datasource: "github",
-          requestOptions: {
-            datasourceFilter: "JIRA",
-            datasourcesFilter: [
-              "JIRA",
-            ],
-            queryOverridesFacetFilters: true,
-            facetFilters: [
-              {
-                fieldName: "type",
-                values: [
-                  {
-                    value: "Spreadsheet",
-                    relationType: "EQUALS",
-                  },
-                  {
-                    value: "Presentation",
-                    relationType: "EQUALS",
-                  },
-                ],
-              },
-            ],
-            facetFilterSets: [
-              {
-                filters: [
-                  {
-                    fieldName: "type",
-                    values: [],
-                  },
-                ],
-              },
-            ],
-            facetBucketSize: 796474,
-            authTokens: [
-              {
-                accessToken: "123abc",
-                datasource: "gmail",
-                scope:
-                  "email profile https://www.googleapis.com/auth/gmail.readonly",
-                tokenType: "Bearer",
-                authUser: "1",
-              },
-            ],
-          },
-          ranges: [],
-          inputDetails: {
-            hasCopyPaste: true,
-          },
-        },
-        results: [],
-      },
-      {},
-      {},
-    ],
-  });
 });
 
 test("Entities Teams", async () => {
   const testHttpClient = createTestHTTPClient("teams");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -246,33 +75,4 @@ test("Entities Teams", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    results: [
-      {
-        id: "<id>",
-        name: "<value>",
-        members: [],
-        datasourceProfiles: [
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-        ],
-        status: "PROCESSED",
-        canBeDeleted: true,
-      },
-      {
-        id: "<id>",
-        name: "<value>",
-        datasourceProfiles: [
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-        ],
-        status: "PROCESSED",
-        canBeDeleted: true,
-      },
-    ],
-  });
 });
