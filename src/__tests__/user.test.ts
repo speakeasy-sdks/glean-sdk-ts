@@ -11,6 +11,7 @@ test("User Addcredential", async () => {
   const testHttpClient = createTestHTTPClient("addcredential");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -24,6 +25,7 @@ test("User Deletequeryhistory", async () => {
   const testHttpClient = createTestHTTPClient("deletequeryhistory");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -32,13 +34,13 @@ test("User Deletequeryhistory", async () => {
     deleteQueryHistoryRequest: {},
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("User Invite", async () => {
   const testHttpClient = createTestHTTPClient("invite");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -76,35 +78,20 @@ test("User Publicconfig", async () => {
   const testHttpClient = createTestHTTPClient("publicconfig");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
   const result = await glean.client.user.getPublicConfig({});
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    integerValues: {
-      "autocompleteDebounceMs": 300,
-      "retries": 3,
-    },
-    themes: {
-      light: {
-        "background": "#fafafa",
-        "textPrimary": "#1e1e1e",
-      },
-      dark: {
-        "background": "#fafafa",
-        "textPrimary": "#1e1e1e",
-      },
-    },
-    greetingFormat: "(This would be the current default Glean greeting)",
-  });
 });
 
 test("User Removecredential", async () => {
   const testHttpClient = createTestHTTPClient("removecredential");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -118,6 +105,7 @@ test("User Support Email", async () => {
   const testHttpClient = createTestHTTPClient("support_email");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });

@@ -13,11 +13,11 @@ import {
   Collection$outboundSchema,
 } from "./collection.js";
 import {
-  CollectionError3,
-  CollectionError3$inboundSchema,
-  CollectionError3$Outbound,
-  CollectionError3$outboundSchema,
-} from "./collectionerror3.js";
+  CollectionError,
+  CollectionError$inboundSchema,
+  CollectionError$Outbound,
+  CollectionError$outboundSchema,
+} from "./collectionerror.js";
 
 export type GetCollectionResponse = {
   collection?: Collection | undefined;
@@ -26,7 +26,7 @@ export type GetCollectionResponse = {
    * An opaque token that represents this particular Collection. To be used for `/feedback` reporting.
    */
   trackingToken?: string | undefined;
-  error?: CollectionError3 | undefined;
+  error?: CollectionError | undefined;
 };
 
 /** @internal */
@@ -38,7 +38,7 @@ export const GetCollectionResponse$inboundSchema: z.ZodType<
   collection: Collection$inboundSchema.optional(),
   rootCollection: Collection$inboundSchema.optional(),
   trackingToken: z.string().optional(),
-  error: CollectionError3$inboundSchema.optional(),
+  error: CollectionError$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -46,7 +46,7 @@ export type GetCollectionResponse$Outbound = {
   collection?: Collection$Outbound | undefined;
   rootCollection?: Collection$Outbound | undefined;
   trackingToken?: string | undefined;
-  error?: CollectionError3$Outbound | undefined;
+  error?: CollectionError$Outbound | undefined;
 };
 
 /** @internal */
@@ -58,7 +58,7 @@ export const GetCollectionResponse$outboundSchema: z.ZodType<
   collection: Collection$outboundSchema.optional(),
   rootCollection: Collection$outboundSchema.optional(),
   trackingToken: z.string().optional(),
-  error: CollectionError3$outboundSchema.optional(),
+  error: CollectionError$outboundSchema.optional(),
 });
 
 /**

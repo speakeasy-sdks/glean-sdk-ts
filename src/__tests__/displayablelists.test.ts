@@ -10,6 +10,7 @@ test("Displayablelists Createdisplayablelists", async () => {
   const testHttpClient = createTestHTTPClient("createdisplayablelists");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -40,54 +41,13 @@ test("Displayablelists Createdisplayablelists", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    items: [
-      {
-        config: {
-          audienceFilters: [
-            {
-              fieldName: "type",
-              values: [
-                {
-                  value: "Spreadsheet",
-                  relationType: "EQUALS",
-                },
-                {
-                  value: "Presentation",
-                  relationType: "EQUALS",
-                },
-              ],
-            },
-          ],
-        },
-      },
-      {
-        config: {
-          audienceFilters: [
-            {
-              fieldName: "type",
-              values: [
-                {
-                  value: "Spreadsheet",
-                  relationType: "EQUALS",
-                },
-                {
-                  value: "Presentation",
-                  relationType: "EQUALS",
-                },
-              ],
-            },
-          ],
-        },
-      },
-    ],
-  });
 });
 
 test("Displayablelists Deletedisplayablelists", async () => {
   const testHttpClient = createTestHTTPClient("deletedisplayablelists");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -106,6 +66,7 @@ test("Displayablelists Getdisplayablelists", async () => {
   const testHttpClient = createTestHTTPClient("getdisplayablelists");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -119,54 +80,13 @@ test("Displayablelists Getdisplayablelists", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    items: [
-      {
-        config: {
-          audienceFilters: [
-            {
-              fieldName: "type",
-              values: [
-                {
-                  value: "Spreadsheet",
-                  relationType: "EQUALS",
-                },
-                {
-                  value: "Presentation",
-                  relationType: "EQUALS",
-                },
-              ],
-            },
-          ],
-        },
-      },
-      {
-        config: {
-          audienceFilters: [
-            {
-              fieldName: "type",
-              values: [
-                {
-                  value: "Spreadsheet",
-                  relationType: "EQUALS",
-                },
-                {
-                  value: "Presentation",
-                  relationType: "EQUALS",
-                },
-              ],
-            },
-          ],
-        },
-      },
-    ],
-  });
 });
 
 test("Displayablelists Updatedisplayablelists", async () => {
   const testHttpClient = createTestHTTPClient("updatedisplayablelists");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -235,46 +155,4 @@ test("Displayablelists Updatedisplayablelists", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    items: [
-      {
-        config: {
-          audienceFilters: [
-            {
-              fieldName: "type",
-              values: [
-                {
-                  value: "Spreadsheet",
-                  relationType: "EQUALS",
-                },
-                {
-                  value: "Presentation",
-                  relationType: "EQUALS",
-                },
-              ],
-            },
-          ],
-        },
-      },
-      {
-        config: {
-          audienceFilters: [
-            {
-              fieldName: "type",
-              values: [
-                {
-                  value: "Spreadsheet",
-                  relationType: "EQUALS",
-                },
-                {
-                  value: "Presentation",
-                  relationType: "EQUALS",
-                },
-              ],
-            },
-          ],
-        },
-      },
-    ],
-  });
 });

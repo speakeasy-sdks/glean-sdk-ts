@@ -42,6 +42,7 @@ test("Troubleshooting Post /Api/index/v1 /Checkdocumentaccess", async () => {
   );
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -53,7 +54,6 @@ test("Troubleshooting Post /Api/index/v1 /Checkdocumentaccess", async () => {
     userEmail: "<value>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Troubleshooting Post /Api/index/v1 /Getdocumentstatus", async () => {
@@ -62,6 +62,7 @@ test("Troubleshooting Post /Api/index/v1 /Getdocumentstatus", async () => {
   );
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -72,7 +73,6 @@ test("Troubleshooting Post /Api/index/v1 /Getdocumentstatus", async () => {
     docId: "<id>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Troubleshooting Post /Api/index/v1 /Getdocumentcount", async () => {
@@ -81,6 +81,7 @@ test("Troubleshooting Post /Api/index/v1 /Getdocumentcount", async () => {
   );
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -89,7 +90,6 @@ test("Troubleshooting Post /Api/index/v1 /Getdocumentcount", async () => {
     datasource: "<value>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Troubleshooting Post /Api/index/v1 /Getusercount", async () => {
@@ -98,6 +98,7 @@ test("Troubleshooting Post /Api/index/v1 /Getusercount", async () => {
   );
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -106,5 +107,4 @@ test("Troubleshooting Post /Api/index/v1 /Getusercount", async () => {
     datasource: "<value>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });

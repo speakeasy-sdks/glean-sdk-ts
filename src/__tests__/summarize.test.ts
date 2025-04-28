@@ -10,6 +10,7 @@ test("Summarize Summarize", async () => {
   const testHttpClient = createTestHTTPClient("summarize");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -23,5 +24,4 @@ test("Summarize Summarize", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });

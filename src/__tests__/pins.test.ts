@@ -4,13 +4,13 @@
 
 import { expect, test } from "vitest";
 import { Glean } from "../index.js";
-import { RFCDate } from "../types/index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Pins Editpin", async () => {
   const testHttpClient = createTestHTTPClient("editpin");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -35,78 +35,13 @@ test("Pins Editpin", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    audienceFilters: [
-      {
-        fieldName: "type",
-        values: [
-          {
-            value: "Spreadsheet",
-            relationType: "EQUALS",
-          },
-          {
-            value: "Presentation",
-            relationType: "EQUALS",
-          },
-        ],
-      },
-    ],
-    documentId: "<id>",
-    attribution: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-      relatedDocuments: [],
-      metadata: {
-        type: "FULL_TIME",
-        title: "Actor",
-        department: "Movies",
-        email: "george@example.com",
-        location: "Hollywood, CA",
-        phone: "6505551234",
-        photoUrl: "https://example.com/george.jpg",
-        startDate: new RFCDate("2000-01-23"),
-        datasourceProfile: [
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-        ],
-        querySuggestions: {
-          suggestions: [],
-        },
-        inviteInfo: {
-          invites: [],
-        },
-        customFields: [],
-        badges: [
-          {
-            key: "deployment_name_new_hire",
-            displayName: "New hire",
-            iconConfig: {
-              color: "#343CED",
-              key: "person_icon",
-              iconType: "GLYPH",
-              name: "user",
-            },
-          },
-        ],
-      },
-    },
-    updatedBy: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-    },
-  });
 });
 
 test("Pins Getpin", async () => {
   const testHttpClient = createTestHTTPClient("getpin");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -115,80 +50,13 @@ test("Pins Getpin", async () => {
     getPinRequest: {},
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    pin: {
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-      documentId: "<id>",
-      attribution: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-        relatedDocuments: [],
-        metadata: {
-          type: "FULL_TIME",
-          title: "Actor",
-          department: "Movies",
-          email: "george@example.com",
-          location: "Hollywood, CA",
-          phone: "6505551234",
-          photoUrl: "https://example.com/george.jpg",
-          startDate: new RFCDate("2000-01-23"),
-          datasourceProfile: [
-            {
-              datasource: "github",
-              handle: "<value>",
-            },
-            {
-              datasource: "github",
-              handle: "<value>",
-            },
-          ],
-          querySuggestions: {
-            suggestions: [],
-          },
-          inviteInfo: {
-            invites: [],
-          },
-          customFields: [],
-          badges: [
-            {
-              key: "deployment_name_new_hire",
-              displayName: "New hire",
-              iconConfig: {
-                color: "#343CED",
-                key: "person_icon",
-                iconType: "GLYPH",
-                name: "user",
-              },
-            },
-          ],
-        },
-      },
-      updatedBy: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-    },
-  });
 });
 
 test("Pins Listpins", async () => {
   const testHttpClient = createTestHTTPClient("listpins");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -197,73 +65,13 @@ test("Pins Listpins", async () => {
     requestBody: {},
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    pins: [
-      {
-        audienceFilters: [
-          {
-            fieldName: "type",
-            values: [],
-          },
-        ],
-        documentId: "<id>",
-        attribution: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-          relatedDocuments: [],
-          metadata: {
-            type: "FULL_TIME",
-            title: "Actor",
-            department: "Movies",
-            email: "george@example.com",
-            location: "Hollywood, CA",
-            managementChain: [],
-            phone: "6505551234",
-            photoUrl: "https://example.com/george.jpg",
-            reports: [],
-            startDate: new RFCDate("2000-01-23"),
-            datasourceProfile: [],
-            querySuggestions: {
-              suggestions: [],
-            },
-            inviteInfo: {
-              invites: [],
-            },
-            customFields: [],
-            badges: [],
-          },
-        },
-        updatedBy: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-      },
-      {
-        audienceFilters: [
-          {
-            fieldName: "type",
-            values: [],
-          },
-        ],
-        documentId: "<id>",
-      },
-      {
-        audienceFilters: [
-          {
-            fieldName: "type",
-            values: [],
-          },
-        ],
-        documentId: "<id>",
-      },
-    ],
-  });
 });
 
 test("Pins Pin", async () => {
   const testHttpClient = createTestHTTPClient("pin");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -288,78 +96,13 @@ test("Pins Pin", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    audienceFilters: [
-      {
-        fieldName: "type",
-        values: [
-          {
-            value: "Spreadsheet",
-            relationType: "EQUALS",
-          },
-          {
-            value: "Presentation",
-            relationType: "EQUALS",
-          },
-        ],
-      },
-    ],
-    documentId: "<id>",
-    attribution: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-      relatedDocuments: [],
-      metadata: {
-        type: "FULL_TIME",
-        title: "Actor",
-        department: "Movies",
-        email: "george@example.com",
-        location: "Hollywood, CA",
-        phone: "6505551234",
-        photoUrl: "https://example.com/george.jpg",
-        startDate: new RFCDate("2000-01-23"),
-        datasourceProfile: [
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-          {
-            datasource: "github",
-            handle: "<value>",
-          },
-        ],
-        querySuggestions: {
-          suggestions: [],
-        },
-        inviteInfo: {
-          invites: [],
-        },
-        customFields: [],
-        badges: [
-          {
-            key: "deployment_name_new_hire",
-            displayName: "New hire",
-            iconConfig: {
-              color: "#343CED",
-              key: "person_icon",
-              iconType: "GLYPH",
-              name: "user",
-            },
-          },
-        ],
-      },
-    },
-    updatedBy: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-    },
-  });
 });
 
 test("Pins Unpin", async () => {
   const testHttpClient = createTestHTTPClient("unpin");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });

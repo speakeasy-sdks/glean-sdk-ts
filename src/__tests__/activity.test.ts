@@ -10,6 +10,7 @@ test("Activity Feedback", async () => {
   const testHttpClient = createTestHTTPClient("feedback");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });

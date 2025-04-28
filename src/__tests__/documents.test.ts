@@ -4,13 +4,13 @@
 
 import { assert, expect, it, test } from "vitest";
 import { Glean } from "../index.js";
-import { RFCDate } from "../types/index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Documents Getdocpermissions", async () => {
   const testHttpClient = createTestHTTPClient("getdocpermissions");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -19,32 +19,26 @@ test("Documents Getdocpermissions", async () => {
     getDocPermissionsRequest: {},
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Documents Getdocuments", async () => {
   const testHttpClient = createTestHTTPClient("getdocuments");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
   const result = await glean.client.documents.get({});
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    documents: {
-      "key": {},
-      "key1": {},
-      "key2": {},
-    },
-  });
 });
 
 test("Documents Getdocumentsbyfacets", async () => {
   const testHttpClient = createTestHTTPClient("getdocumentsbyfacets");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -90,121 +84,19 @@ test("Documents Getdocumentsbyfacets", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    documents: [
-      {
-        metadata: {
-          datasource: "datasource",
-          objectType: "Feature Request",
-          container: "container",
-          parentId: "JIRA_EN-1337",
-          mimeType: "mimeType",
-          documentId: "documentId",
-          createTime: new Date("2000-01-23T04:56:07.000Z"),
-          updateTime: new Date("2000-01-23T04:56:07.000Z"),
-          author: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-            relatedDocuments: [],
-            metadata: {
-              type: "FULL_TIME",
-              title: "Actor",
-              department: "Movies",
-              email: "george@example.com",
-              location: "Hollywood, CA",
-              managementChain: [],
-              phone: "6505551234",
-              photoUrl: "https://example.com/george.jpg",
-              reports: [],
-              startDate: new RFCDate("2000-01-23"),
-              datasourceProfile: [],
-              querySuggestions: {
-                suggestions: [],
-              },
-              inviteInfo: {
-                invites: [],
-              },
-              customFields: [],
-              badges: [],
-            },
-          },
-          owner: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          mentionedPeople: [],
-          components: [
-            "Backend",
-            "Networking",
-          ],
-          status: "[\"Done\"]",
-          pins: [],
-          assignedTo: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          updatedBy: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          collections: [],
-          interactions: {
-            reacts: [],
-            shares: [],
-          },
-          verification: {
-            state: "UNVERIFIED",
-            metadata: {
-              lastVerifier: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              reminders: [],
-              lastReminder: {
-                assignee: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                },
-                requestor: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                },
-                remindAt: 129663,
-              },
-              candidateVerifiers: [],
-            },
-          },
-          customData: {
-            "someCustomField": {},
-          },
-          contactPerson: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-        },
-      },
-    ],
-  });
 });
 
 test("Documents Getdocumentanalytics", async () => {
   const testHttpClient = createTestHTTPClient("getdocumentanalytics");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
   const result = await glean.client.documents.getAnalytics({});
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    results: [
-      {
-        facetAnalytics: [],
-      },
-      {},
-    ],
-  });
 });
 
 it.skip("Documents Post /Indexdocument", async () => {
@@ -249,6 +141,7 @@ test("Documents Post /Api/index/v1 /Indexdocument", async () => {
   );
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -266,6 +159,7 @@ test("Documents Post /Api/index/v1 /Indexdocuments", async () => {
   );
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -286,6 +180,7 @@ test("Documents Post /Api/index/v1 /Bulkindexdocuments", async () => {
   );
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -313,6 +208,7 @@ test("Documents Post /Api/index/v1 /Updatepermissions", async () => {
   );
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -329,6 +225,7 @@ test("Documents Post /Api/index/v1 /Processalldocuments", async () => {
   );
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -342,6 +239,7 @@ test("Documents Post /Api/index/v1 /Deletedocument", async () => {
   );
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });

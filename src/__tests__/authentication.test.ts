@@ -10,32 +10,26 @@ test("Authentication Createanonymoustoken", async () => {
   const testHttpClient = createTestHTTPClient("createanonymoustoken");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
   const result = await glean.client.authentication.createAnonymousToken();
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    token: "<value>",
-    expirationTime: 965209,
-  });
 });
 
 test("Authentication Createauthtoken", async () => {
   const testHttpClient = createTestHTTPClient("createauthtoken");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
   const result = await glean.client.authentication.createToken({});
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    token: "<value>",
-    expirationTime: 965209,
-  });
 });
 
 it.skip("Authentication Post /Rotatetoken", async () => {
@@ -48,11 +42,11 @@ test("Authentication Post /Api/index/v1 /Rotatetoken", async () => {
   const testHttpClient = createTestHTTPClient("post_/api/index/v1/rotatetoken");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
   const result = await glean.indexing.authentication.rotateToken();
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });

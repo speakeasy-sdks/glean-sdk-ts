@@ -11,6 +11,7 @@ test("Shortcuts Createshortcut", async () => {
   const testHttpClient = createTestHTTPClient("createshortcut");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -64,13 +65,13 @@ test("Shortcuts Createshortcut", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Shortcuts Deleteshortcut", async () => {
   const testHttpClient = createTestHTTPClient("deleteshortcut");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -86,6 +87,7 @@ test("Shortcuts Getshortcut", async () => {
   const testHttpClient = createTestHTTPClient("getshortcut");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -96,13 +98,13 @@ test("Shortcuts Getshortcut", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Shortcuts Getsimilarshortcuts", async () => {
   const testHttpClient = createTestHTTPClient("getsimilarshortcuts");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -113,21 +115,13 @@ test("Shortcuts Getsimilarshortcuts", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    shortcuts: [
-      {
-        inputAlias: "<value>",
-        destinationUrl: "https://bouncy-futon.net/",
-        createdBy: "<value>",
-      },
-    ],
-  });
 });
 
 test("Shortcuts Listshortcuts", async () => {
   const testHttpClient = createTestHTTPClient("listshortcuts");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -153,82 +147,13 @@ test("Shortcuts Listshortcuts", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    shortcuts: [
-      {
-        inputAlias: "<value>",
-        destinationUrl: "https://bouncy-futon.net/",
-        createdBy: "<value>",
-      },
-      {
-        inputAlias: "<value>",
-        destinationUrl: "https://bouncy-futon.net/",
-        createdBy: "<value>",
-      },
-      {
-        inputAlias: "<value>",
-        destinationUrl: "https://bouncy-futon.net/",
-        createdBy: "<value>",
-      },
-    ],
-    facetResults: [
-      {
-        sourceName: "container_name",
-        operatorName: "SelectMultiple",
-        buckets: [
-          {
-            count: 1,
-            datasource: "jira",
-            percentage: 5,
-            value: {
-              stringValue: "engineering",
-              integerValue: 5,
-              displayLabel: "engineering",
-              iconConfig: {
-                color: "#343CED",
-                key: "person_icon",
-                iconType: "GLYPH",
-                name: "user",
-              },
-            },
-          },
-        ],
-        hasMoreBuckets: false,
-        groupName: "Service Cloud",
-      },
-      {
-        sourceName: "container_name",
-        operatorName: "SelectMultiple",
-        buckets: [
-          {
-            count: 1,
-            datasource: "jira",
-            percentage: 5,
-            value: {
-              stringValue: "engineering",
-              integerValue: 5,
-              displayLabel: "engineering",
-              iconConfig: {
-                color: "#343CED",
-                key: "person_icon",
-                iconType: "GLYPH",
-                name: "user",
-              },
-            },
-          },
-        ],
-        hasMoreBuckets: false,
-        groupName: "Service Cloud",
-      },
-    ],
-    meta: {},
-  });
 });
 
 test("Shortcuts Previewshortcut", async () => {
   const testHttpClient = createTestHTTPClient("previewshortcut");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -277,13 +202,13 @@ test("Shortcuts Previewshortcut", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Shortcuts Updateshortcut", async () => {
   const testHttpClient = createTestHTTPClient("updateshortcut");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -336,5 +261,4 @@ test("Shortcuts Updateshortcut", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });

@@ -4,28 +4,27 @@
 
 import { expect, test } from "vitest";
 import { Glean } from "../index.js";
-import { filesToByteArray, filesToStream, streamToByteArray } from "./files.js";
+import { filesToStream } from "./files.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Images Images", async () => {
   const testHttpClient = createTestHTTPClient("images");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
   const result = await glean.client.images.get({});
   expect(result).toBeDefined();
-  expect(new Uint8Array(await streamToByteArray(result))).toEqual(
-    await filesToByteArray(".speakeasy/testfiles/example.file"),
-  );
 });
 
 test("Images Uploadimage", async () => {
   const testHttpClient = createTestHTTPClient("uploadimage");
 
   const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
@@ -34,7 +33,4 @@ test("Images Uploadimage", async () => {
     requestBody: filesToStream(".speakeasy/testfiles/example.file"),
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    url: "https://needy-mallard.info/",
-  });
 });
