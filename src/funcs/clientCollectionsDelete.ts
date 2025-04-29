@@ -11,6 +11,7 @@ import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
+import * as components from "../models/components/index.js";
 import { GleanError } from "../models/errors/gleanerror.js";
 import {
   ConnectionError,
@@ -33,7 +34,9 @@ import { Result } from "../types/fp.js";
  */
 export function clientCollectionsDelete(
   client: GleanCore,
-  request: operations.DeletecollectionRequest,
+  deleteCollectionRequest: components.DeleteCollectionRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -50,14 +53,18 @@ export function clientCollectionsDelete(
 > {
   return new APIPromise($do(
     client,
-    request,
+    deleteCollectionRequest,
+    xGleanActAs,
+    xGleanAuthType,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: operations.DeletecollectionRequest,
+  deleteCollectionRequest: components.DeleteCollectionRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -75,8 +82,14 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.DeletecollectionRequest = {
+    deleteCollectionRequest: deleteCollectionRequest,
+    xGleanActAs: xGleanActAs,
+    xGleanAuthType: xGleanAuthType,
+  };
+
   const parsed = safeParse(
-    request,
+    input,
     (value) => operations.DeletecollectionRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

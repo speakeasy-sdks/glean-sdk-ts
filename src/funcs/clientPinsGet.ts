@@ -32,7 +32,9 @@ import { Result } from "../types/fp.js";
  */
 export function clientPinsGet(
   client: GleanCore,
-  request: operations.GetpinRequest,
+  getPinRequest: components.GetPinRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -48,14 +50,18 @@ export function clientPinsGet(
 > {
   return new APIPromise($do(
     client,
-    request,
+    getPinRequest,
+    xGleanActAs,
+    xGleanAuthType,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: operations.GetpinRequest,
+  getPinRequest: components.GetPinRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -72,8 +78,14 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.GetpinRequest = {
+    getPinRequest: getPinRequest,
+    xGleanActAs: xGleanActAs,
+    xGleanAuthType: xGleanAuthType,
+  };
+
   const parsed = safeParse(
-    request,
+    input,
     (value) => operations.GetpinRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

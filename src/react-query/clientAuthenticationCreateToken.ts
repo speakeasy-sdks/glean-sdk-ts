@@ -12,13 +12,13 @@ import { clientAuthenticationCreateToken } from "../funcs/clientAuthenticationCr
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientAuthenticationCreateTokenMutationVariables = {
-  request: operations.CreateauthtokenRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -65,7 +65,8 @@ export function buildClientAuthenticationCreateTokenMutation(
   return {
     mutationKey: mutationKeyClientAuthenticationCreateToken(),
     mutationFn: function clientAuthenticationCreateTokenMutationFn({
-      request,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientAuthenticationCreateTokenMutationData> {
       const mergedOptions = {
@@ -82,7 +83,8 @@ export function buildClientAuthenticationCreateTokenMutation(
       };
       return unwrapAsync(clientAuthenticationCreateToken(
         client$,
-        request,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },

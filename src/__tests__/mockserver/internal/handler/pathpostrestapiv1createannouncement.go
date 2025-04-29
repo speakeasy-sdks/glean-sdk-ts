@@ -73,9 +73,8 @@ func testCreateannouncementCreateannouncement0(w http.ResponseWriter, req *http.
 		},
 		DraftID: types.Int64(342),
 		Author: &components.Person{
-			Name:             "George Clooney",
-			ObfuscatedID:     "abc123",
-			RelatedDocuments: []components.RelatedDocuments{},
+			Name:         "George Clooney",
+			ObfuscatedID: "abc123",
 			Metadata: &components.PersonMetadata{
 				Type:       components.PersonMetadataTypeFullTime.ToPointer(),
 				Title:      types.String("Actor"),
@@ -94,14 +93,13 @@ func testCreateannouncementCreateannouncement0(w http.ResponseWriter, req *http.
 						Datasource: "github",
 						Handle:     "<value>",
 					},
+					components.DatasourceProfile{
+						Datasource: "github",
+						Handle:     "<value>",
+					},
 				},
-				QuerySuggestions: &components.QuerySuggestionList{
-					Suggestions: []components.QuerySuggestion{},
-				},
-				InviteInfo: &components.InviteInfo{
-					Invites: []components.ChannelInviteInfo{},
-				},
-				CustomFields: []components.CustomFieldData{},
+				QuerySuggestions: &components.QuerySuggestionList{},
+				InviteInfo:       &components.InviteInfo{},
 				Badges: []components.Badge{
 					components.Badge{
 						Key:         types.String("deployment_name_new_hire"),
@@ -134,30 +132,23 @@ func testCreateannouncementCreateannouncement0(w http.ResponseWriter, req *http.
 					Name:         "George Clooney",
 					ObfuscatedID: "abc123",
 				},
-				MentionedPeople: []components.Person{},
 				Components: []string{
 					"Backend",
 					"Networking",
 				},
 				Status: types.String("[\"Done\"]"),
-				Pins:   []components.PinDocument{},
 				AssignedTo: &components.Person{
 					Name:         "George Clooney",
 					ObfuscatedID: "abc123",
 				},
-				Collections: []components.Collection{},
-				Interactions: &components.DocumentInteractions{
-					Reacts: []components.Reaction{},
-					Shares: []components.Share{},
-				},
+				Interactions: &components.DocumentInteractions{},
 				Verification: &components.Verification{
-					State: components.StateUnverified,
+					State: components.StateVerified,
 					Metadata: &components.VerificationMetadata{
 						LastVerifier: &components.Person{
 							Name:         "George Clooney",
 							ObfuscatedID: "abc123",
 						},
-						Reminders: []components.Reminder{},
 						LastReminder: &components.Reminder{
 							Assignee: components.Person{
 								Name:         "George Clooney",
@@ -167,9 +158,8 @@ func testCreateannouncementCreateannouncement0(w http.ResponseWriter, req *http.
 								Name:         "George Clooney",
 								ObfuscatedID: "abc123",
 							},
-							RemindAt: 129663,
+							RemindAt: 605172,
 						},
-						CandidateVerifiers: []components.Person{},
 					},
 				},
 				CustomData: map[string]components.CustomDataValue{

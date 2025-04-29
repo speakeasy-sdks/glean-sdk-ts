@@ -12,13 +12,14 @@ import { clientVerificationAddReminder } from "../funcs/clientVerificationAddRem
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientVerificationAddReminderMutationVariables = {
-  request: operations.AddverificationreminderRequest;
+  reminderRequest: components.ReminderRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +65,9 @@ export function buildClientVerificationAddReminderMutation(
   return {
     mutationKey: mutationKeyClientVerificationAddReminder(),
     mutationFn: function clientVerificationAddReminderMutationFn({
-      request,
+      reminderRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientVerificationAddReminderMutationData> {
       const mergedOptions = {
@@ -81,7 +84,9 @@ export function buildClientVerificationAddReminderMutation(
       };
       return unwrapAsync(clientVerificationAddReminder(
         client$,
-        request,
+        reminderRequest,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },

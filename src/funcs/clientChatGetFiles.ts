@@ -32,7 +32,10 @@ import { Result } from "../types/fp.js";
  */
 export function clientChatGetFiles(
   client: GleanCore,
-  request: operations.GetchatfilesRequest,
+  getChatFilesRequest: components.GetChatFilesRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
+  timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -48,14 +51,20 @@ export function clientChatGetFiles(
 > {
   return new APIPromise($do(
     client,
-    request,
+    getChatFilesRequest,
+    xGleanActAs,
+    xGleanAuthType,
+    timezoneOffset,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: operations.GetchatfilesRequest,
+  getChatFilesRequest: components.GetChatFilesRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
+  timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -72,8 +81,15 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.GetchatfilesRequest = {
+    getChatFilesRequest: getChatFilesRequest,
+    xGleanActAs: xGleanActAs,
+    xGleanAuthType: xGleanAuthType,
+    timezoneOffset: timezoneOffset,
+  };
+
   const parsed = safeParse(
-    request,
+    input,
     (value) => operations.GetchatfilesRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

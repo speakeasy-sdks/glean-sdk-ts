@@ -11,13 +11,15 @@ import { GleanCore } from "../core.js";
 import { clientPinsRemove } from "../funcs/clientPinsRemove.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientPinsRemoveMutationVariables = {
-  request: operations.UnpinRequest;
+  unpin: components.Unpin;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -63,7 +65,9 @@ export function buildClientPinsRemoveMutation(
   return {
     mutationKey: mutationKeyClientPinsRemove(),
     mutationFn: function clientPinsRemoveMutationFn({
-      request,
+      unpin,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientPinsRemoveMutationData> {
       const mergedOptions = {
@@ -80,7 +84,9 @@ export function buildClientPinsRemoveMutation(
       };
       return unwrapAsync(clientPinsRemove(
         client$,
-        request,
+        unpin,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },

@@ -12,13 +12,15 @@ import { agentsListagents } from "../funcs/agentsListagents.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type AgentsListagentsMutationVariables = {
-  request: operations.ListagentsRequest;
+  requestBody?: any | undefined;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
+  timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +66,10 @@ export function buildAgentsListagentsMutation(
   return {
     mutationKey: mutationKeyAgentsListagents(),
     mutationFn: function agentsListagentsMutationFn({
-      request,
+      requestBody,
+      xGleanActAs,
+      xGleanAuthType,
+      timezoneOffset,
       options,
     }): Promise<AgentsListagentsMutationData> {
       const mergedOptions = {
@@ -81,7 +86,10 @@ export function buildAgentsListagentsMutation(
       };
       return unwrapAsync(agentsListagents(
         client$,
-        request,
+        requestBody,
+        xGleanActAs,
+        xGleanAuthType,
+        timezoneOffset,
         mergedOptions,
       ));
     },

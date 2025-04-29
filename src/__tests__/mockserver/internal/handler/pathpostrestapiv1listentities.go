@@ -68,14 +68,6 @@ func testListentitiesListentities0(w http.ResponseWriter, req *http.Request) {
 						Datasource: "github",
 						Handle:     "<value>",
 					},
-					components.DatasourceProfile{
-						Datasource: "github",
-						Handle:     "<value>",
-					},
-					components.DatasourceProfile{
-						Datasource: "github",
-						Handle:     "<value>",
-					},
 				},
 				Status:       components.TeamStatusProcessed.ToPointer(),
 				CanBeDeleted: types.Bool(true),
@@ -104,14 +96,6 @@ func testListentitiesListentities0(w http.ResponseWriter, req *http.Request) {
 				ID:   "<id>",
 				Name: "<value>",
 				DatasourceProfiles: []components.DatasourceProfile{
-					components.DatasourceProfile{
-						Datasource: "github",
-						Handle:     "<value>",
-					},
-					components.DatasourceProfile{
-						Datasource: "github",
-						Handle:     "<value>",
-					},
 					components.DatasourceProfile{
 						Datasource: "github",
 						Handle:     "<value>",
@@ -122,11 +106,34 @@ func testListentitiesListentities0(w http.ResponseWriter, req *http.Request) {
 			},
 		},
 		CustomEntityResults: []components.CustomEntity{
-			components.CustomEntity{
-				Roles: []components.UserRoleSpecification{},
-			},
+			components.CustomEntity{},
+			components.CustomEntity{},
 		},
 		FacetResults: []components.FacetResult{
+			components.FacetResult{
+				SourceName:   types.String("container_name"),
+				OperatorName: types.String("SelectMultiple"),
+				Buckets: []components.FacetBucket{
+					components.FacetBucket{
+						Count:      types.Int64(1),
+						Datasource: types.String("jira"),
+						Percentage: types.Int64(5),
+						Value: &components.FacetValue{
+							StringValue:  types.String("engineering"),
+							IntegerValue: types.Int64(5),
+							DisplayLabel: types.String("engineering"),
+							IconConfig: &components.IconConfig{
+								Color:    types.String("#343CED"),
+								Key:      types.String("person_icon"),
+								IconType: components.IconTypeGlyph.ToPointer(),
+								Name:     types.String("user"),
+							},
+						},
+					},
+				},
+				HasMoreBuckets: types.Bool(false),
+				GroupName:      types.String("Service Cloud"),
+			},
 			components.FacetResult{
 				SourceName:   types.String("container_name"),
 				OperatorName: types.String("SelectMultiple"),

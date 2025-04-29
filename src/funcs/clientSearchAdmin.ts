@@ -33,12 +33,14 @@ import { Result } from "../types/fp.js";
  */
 export function clientSearchAdmin(
   client: GleanCore,
-  request: operations.AdminsearchRequest,
+  searchRequest?: components.SearchRequest | undefined,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
     components.SearchResponse,
-    | errors.ErrorInfo
+    | errors.GleanDataError
     | GleanError
     | SDKValidationError
     | UnexpectedClientError
@@ -50,20 +52,24 @@ export function clientSearchAdmin(
 > {
   return new APIPromise($do(
     client,
-    request,
+    searchRequest,
+    xGleanActAs,
+    xGleanAuthType,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: operations.AdminsearchRequest,
+  searchRequest?: components.SearchRequest | undefined,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
       components.SearchResponse,
-      | errors.ErrorInfo
+      | errors.GleanDataError
       | GleanError
       | SDKValidationError
       | UnexpectedClientError
@@ -75,8 +81,14 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.AdminsearchRequest = {
+    searchRequest: searchRequest,
+    xGleanActAs: xGleanActAs,
+    xGleanAuthType: xGleanAuthType,
+  };
+
   const parsed = safeParse(
-    request,
+    input,
     (value) => operations.AdminsearchRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
@@ -151,7 +163,7 @@ async function $do(
 
   const [result] = await M.match<
     components.SearchResponse,
-    | errors.ErrorInfo
+    | errors.GleanDataError
     | GleanError
     | SDKValidationError
     | UnexpectedClientError
@@ -161,7 +173,7 @@ async function $do(
     | ConnectionError
   >(
     M.json(200, components.SearchResponse$inboundSchema),
-    M.jsonErr([403, 422], errors.ErrorInfo$inboundSchema),
+    M.jsonErr([403, 422], errors.GleanDataError$inboundSchema),
     M.fail([400, 401, 429, "4XX"]),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

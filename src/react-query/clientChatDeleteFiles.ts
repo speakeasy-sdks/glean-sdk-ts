@@ -11,13 +11,16 @@ import { GleanCore } from "../core.js";
 import { clientChatDeleteFiles } from "../funcs/clientChatDeleteFiles.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatDeleteFilesMutationVariables = {
-  request: operations.DeletechatfilesRequest;
+  deleteChatFilesRequest: components.DeleteChatFilesRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
+  timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
 
@@ -63,7 +66,10 @@ export function buildClientChatDeleteFilesMutation(
   return {
     mutationKey: mutationKeyClientChatDeleteFiles(),
     mutationFn: function clientChatDeleteFilesMutationFn({
-      request,
+      deleteChatFilesRequest,
+      xGleanActAs,
+      xGleanAuthType,
+      timezoneOffset,
       options,
     }): Promise<ClientChatDeleteFilesMutationData> {
       const mergedOptions = {
@@ -80,7 +86,10 @@ export function buildClientChatDeleteFilesMutation(
       };
       return unwrapAsync(clientChatDeleteFiles(
         client$,
-        request,
+        deleteChatFilesRequest,
+        xGleanActAs,
+        xGleanAuthType,
+        timezoneOffset,
         mergedOptions,
       ));
     },

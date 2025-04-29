@@ -8,8 +8,6 @@
 * [admin](#admin) - Search the index (admin)
 * [autocomplete](#autocomplete) - Autocomplete
 * [getFeed](#getfeed) - Feed of documents and events
-* [suggestPeople](#suggestpeople) - Suggest people
-* [suggestPeopleAdmin](#suggestpeopleadmin) - Suggest people (admin)
 * [recommendations](#recommendations) - Recommend documents
 * [execute](#execute) - Search
 
@@ -28,37 +26,35 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.client.search.admin({
-    searchRequest: {
-      trackingToken: "trackingToken",
-      pageSize: 10,
-      query: "vacation policy",
-      requestOptions: {
-        facetFilters: [
-          {
-            fieldName: "type",
-            values: [
-              {
-                value: "article",
-                relationType: "EQUALS",
-              },
-              {
-                value: "document",
-                relationType: "EQUALS",
-              },
-            ],
-          },
-          {
-            fieldName: "department",
-            values: [
-              {
-                value: "engineering",
-                relationType: "EQUALS",
-              },
-            ],
-          },
-        ],
-        facetBucketSize: 254944,
-      },
+    trackingToken: "trackingToken",
+    pageSize: 10,
+    query: "vacation policy",
+    requestOptions: {
+      facetFilters: [
+        {
+          fieldName: "type",
+          values: [
+            {
+              value: "article",
+              relationType: "EQUALS",
+            },
+            {
+              value: "document",
+              relationType: "EQUALS",
+            },
+          ],
+        },
+        {
+          fieldName: "department",
+          values: [
+            {
+              value: "engineering",
+              relationType: "EQUALS",
+            },
+          ],
+        },
+      ],
+      facetBucketSize: 254944,
     },
   });
 
@@ -85,37 +81,35 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientSearchAdmin(glean, {
-    searchRequest: {
-      trackingToken: "trackingToken",
-      pageSize: 10,
-      query: "vacation policy",
-      requestOptions: {
-        facetFilters: [
-          {
-            fieldName: "type",
-            values: [
-              {
-                value: "article",
-                relationType: "EQUALS",
-              },
-              {
-                value: "document",
-                relationType: "EQUALS",
-              },
-            ],
-          },
-          {
-            fieldName: "department",
-            values: [
-              {
-                value: "engineering",
-                relationType: "EQUALS",
-              },
-            ],
-          },
-        ],
-        facetBucketSize: 254944,
-      },
+    trackingToken: "trackingToken",
+    pageSize: 10,
+    query: "vacation policy",
+    requestOptions: {
+      facetFilters: [
+        {
+          fieldName: "type",
+          values: [
+            {
+              value: "article",
+              relationType: "EQUALS",
+            },
+            {
+              value: "document",
+              relationType: "EQUALS",
+            },
+          ],
+        },
+        {
+          fieldName: "department",
+          values: [
+            {
+              value: "engineering",
+              relationType: "EQUALS",
+            },
+          ],
+        },
+      ],
+      facetBucketSize: 254944,
     },
   });
 
@@ -151,12 +145,14 @@ import {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.AdminsearchRequest](../../models/operations/adminsearchrequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |                                                                                                                                                                                |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |                                                                                                                                                                                |
+| `searchRequest`                                                                                                                                                                | [components.SearchRequest](../../models/components/searchrequest.md)                                                                                                           | :heavy_minus_sign:                                                                                                                                                             | Admin search request                                                                                                                                                           | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
 ### Response
 
@@ -164,10 +160,10 @@ import {
 
 ### Errors
 
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.ErrorInfo  | 403, 422          | application/json  |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
+| Error Type            | Status Code           | Content Type          |
+| --------------------- | --------------------- | --------------------- |
+| errors.GleanDataError | 403, 422              | application/json      |
+| errors.GleanError     | 4XX, 5XX              | \*/\*                 |
 
 ## autocomplete
 
@@ -184,21 +180,19 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.client.search.autocomplete({
-    autocompleteRequest: {
-      trackingToken: "trackingToken",
-      query: "San Fra",
-      datasource: "GDRIVE",
-      resultSize: 10,
-      authTokens: [
-        {
-          accessToken: "123abc",
-          datasource: "gmail",
-          scope: "email profile https://www.googleapis.com/auth/gmail.readonly",
-          tokenType: "Bearer",
-          authUser: "1",
-        },
-      ],
-    },
+    trackingToken: "trackingToken",
+    query: "San Fra",
+    datasource: "GDRIVE",
+    resultSize: 10,
+    authTokens: [
+      {
+        accessToken: "123abc",
+        datasource: "gmail",
+        scope: "email profile https://www.googleapis.com/auth/gmail.readonly",
+        tokenType: "Bearer",
+        authUser: "1",
+      },
+    ],
   });
 
   // Handle the result
@@ -224,21 +218,19 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientSearchAutocomplete(glean, {
-    autocompleteRequest: {
-      trackingToken: "trackingToken",
-      query: "San Fra",
-      datasource: "GDRIVE",
-      resultSize: 10,
-      authTokens: [
-        {
-          accessToken: "123abc",
-          datasource: "gmail",
-          scope: "email profile https://www.googleapis.com/auth/gmail.readonly",
-          tokenType: "Bearer",
-          authUser: "1",
-        },
-      ],
-    },
+    trackingToken: "trackingToken",
+    query: "San Fra",
+    datasource: "GDRIVE",
+    resultSize: 10,
+    authTokens: [
+      {
+        accessToken: "123abc",
+        datasource: "gmail",
+        scope: "email profile https://www.googleapis.com/auth/gmail.readonly",
+        tokenType: "Bearer",
+        authUser: "1",
+      },
+    ],
   });
 
   if (!res.ok) {
@@ -273,12 +265,14 @@ import {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.AutocompleteRequest](../../models/operations/autocompleterequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `autocompleteRequest`                                                                                                                                                          | [components.AutocompleteRequest](../../models/components/autocompleterequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | Autocomplete request                                                                                                                                                           | [object Object]                                                                                                                                                                |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |                                                                                                                                                                                |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
 ### Response
 
@@ -304,9 +298,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.search.getFeed({
-    feedRequest: {},
-  });
+  const result = await glean.client.search.getFeed({});
 
   // Handle the result
   console.log(result);
@@ -330,9 +322,7 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientSearchGetFeed(glean, {
-    feedRequest: {},
-  });
+  const res = await clientSearchGetFeed(glean, {});
 
   if (!res.ok) {
     throw res.error;
@@ -368,7 +358,9 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.FeedRequest](../../models/operations/feedrequest.md)                                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `feedRequest`                                                                                                                                                                  | [components.FeedRequest](../../models/components/feedrequest.md)                                                                                                               | :heavy_check_mark:                                                                                                                                                             | Includes request params, client data and more for making user's feed.                                                                                                          |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -376,210 +368,6 @@ import {
 ### Response
 
 **Promise\<[components.FeedResponse](../../models/components/feedresponse.md)\>**
-
-### Errors
-
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
-
-## suggestPeople
-
-Retrieves a list of suggested people for given type. Includes information about the persons.
-
-### Example Usage
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const result = await glean.client.search.suggestPeople({
-    peopleSuggestRequest: {
-      categories: [
-        "INVITE_NONUSERS",
-        "INVITE_NONUSERS",
-      ],
-    },
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { GleanCore } from "@gleanwork/api-client/core.js";
-import { clientSearchSuggestPeople } from "@gleanwork/api-client/funcs/clientSearchSuggestPeople.js";
-
-// Use `GleanCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const glean = new GleanCore({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const res = await clientSearchSuggestPeople(glean, {
-    peopleSuggestRequest: {
-      categories: [
-        "INVITE_NONUSERS",
-        "INVITE_NONUSERS",
-      ],
-    },
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### React hooks and utilities
-
-This method can be used in React components through the following hooks and
-associated utilities.
-
-> Check out [this guide][hook-guide] for information about each of the utilities
-> below and how to get started using React hooks.
-
-[hook-guide]: ../../../REACT_QUERY.md
-
-```tsx
-import {
-  // Mutation hook for triggering the API call.
-  useClientSearchSuggestPeopleMutation
-} from "@gleanwork/api-client/react-query/clientSearchSuggestPeople.js";
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PeoplesuggestRequest](../../models/operations/peoplesuggestrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.PeopleSuggestResponse](../../models/components/peoplesuggestresponse.md)\>**
-
-### Errors
-
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
-
-## suggestPeopleAdmin
-
-Returns a list of suggested people for given type for admin's view. Includes information about the persons.
-
-### Example Usage
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const result = await glean.client.search.suggestPeopleAdmin({
-    peopleSuggestRequest: {
-      categories: [
-        "INVITE_NONUSERS",
-      ],
-    },
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { GleanCore } from "@gleanwork/api-client/core.js";
-import { clientSearchSuggestPeopleAdmin } from "@gleanwork/api-client/funcs/clientSearchSuggestPeopleAdmin.js";
-
-// Use `GleanCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const glean = new GleanCore({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const res = await clientSearchSuggestPeopleAdmin(glean, {
-    peopleSuggestRequest: {
-      categories: [
-        "INVITE_NONUSERS",
-      ],
-    },
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### React hooks and utilities
-
-This method can be used in React components through the following hooks and
-associated utilities.
-
-> Check out [this guide][hook-guide] for information about each of the utilities
-> below and how to get started using React hooks.
-
-[hook-guide]: ../../../REACT_QUERY.md
-
-```tsx
-import {
-  // Mutation hook for triggering the API call.
-  useClientSearchSuggestPeopleAdminMutation
-} from "@gleanwork/api-client/react-query/clientSearchSuggestPeopleAdmin.js";
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PeoplesuggestadminRequest](../../models/operations/peoplesuggestadminrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.PeopleSuggestResponse](../../models/components/peoplesuggestresponse.md)\>**
 
 ### Errors
 
@@ -603,140 +391,138 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.client.search.recommendations({
-    recommendationsRequest: {
-      sourceDocument: {
-        metadata: {
-          datasource: "datasource",
-          objectType: "Feature Request",
-          container: "container",
-          parentId: "JIRA_EN-1337",
-          mimeType: "mimeType",
-          documentId: "documentId",
-          createTime: new Date("2000-01-23T04:56:07.000Z"),
-          updateTime: new Date("2000-01-23T04:56:07.000Z"),
-          author: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-            relatedDocuments: [],
-            metadata: {
-              type: "FULL_TIME",
-              title: "Actor",
-              department: "Movies",
-              email: "george@example.com",
-              location: "Hollywood, CA",
-              phone: "6505551234",
-              photoUrl: "https://example.com/george.jpg",
-              startDate: new RFCDate("2000-01-23"),
-              datasourceProfile: [
-                {
-                  datasource: "github",
-                  handle: "<value>",
-                },
-                {
-                  datasource: "github",
-                  handle: "<value>",
-                },
-              ],
-              querySuggestions: {
-                suggestions: [],
-              },
-              inviteInfo: {
-                invites: [],
-              },
-              customFields: [],
-              badges: [
-                {
-                  key: "deployment_name_new_hire",
-                  displayName: "New hire",
-                  iconConfig: {
-                    color: "#343CED",
-                    key: "person_icon",
-                    iconType: "GLYPH",
-                    name: "user",
-                  },
-                },
-              ],
-            },
-          },
-          owner: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          mentionedPeople: [],
-          components: [
-            "Backend",
-            "Networking",
-          ],
-          status: "[\"Done\"]",
-          pins: [],
-          assignedTo: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          updatedBy: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          collections: [],
-          interactions: {
-            reacts: [],
-            shares: [],
-          },
-          verification: {
-            state: "VERIFIED",
-            metadata: {
-              lastVerifier: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              reminders: [],
-              lastReminder: {
-                assignee: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                },
-                requestor: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                },
-                remindAt: 986764,
-              },
-              candidateVerifiers: [],
-            },
-          },
-          customData: {
-            "someCustomField": {},
-          },
-          contactPerson: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-        },
-      },
-      pageSize: 100,
-      maxSnippetSize: 400,
-      requestOptions: {
-        facetFilterSets: [
-          {
-            filters: [
+    sourceDocument: {
+      metadata: {
+        datasource: "datasource",
+        objectType: "Feature Request",
+        container: "container",
+        parentId: "JIRA_EN-1337",
+        mimeType: "mimeType",
+        documentId: "documentId",
+        createTime: new Date("2000-01-23T04:56:07.000Z"),
+        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+        author: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+          relatedDocuments: [],
+          metadata: {
+            type: "FULL_TIME",
+            title: "Actor",
+            department: "Movies",
+            email: "george@example.com",
+            location: "Hollywood, CA",
+            phone: "6505551234",
+            photoUrl: "https://example.com/george.jpg",
+            startDate: new RFCDate("2000-01-23"),
+            datasourceProfile: [
               {
-                fieldName: "type",
-                values: [
-                  {
-                    value: "Spreadsheet",
-                    relationType: "EQUALS",
-                  },
-                  {
-                    value: "Presentation",
-                    relationType: "EQUALS",
-                  },
-                ],
+                datasource: "github",
+                handle: "<value>",
+              },
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+            ],
+            querySuggestions: {
+              suggestions: [],
+            },
+            inviteInfo: {
+              invites: [],
+            },
+            customFields: [],
+            badges: [
+              {
+                key: "deployment_name_new_hire",
+                displayName: "New hire",
+                iconConfig: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
               },
             ],
           },
+        },
+        owner: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        mentionedPeople: [],
+        components: [
+          "Backend",
+          "Networking",
         ],
-        context: {},
+        status: "[\"Done\"]",
+        pins: [],
+        assignedTo: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        updatedBy: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        collections: [],
+        interactions: {
+          reacts: [],
+          shares: [],
+        },
+        verification: {
+          state: "VERIFIED",
+          metadata: {
+            lastVerifier: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+            },
+            reminders: [],
+            lastReminder: {
+              assignee: {
+                name: "George Clooney",
+                obfuscatedId: "abc123",
+              },
+              requestor: {
+                name: "George Clooney",
+                obfuscatedId: "abc123",
+              },
+              remindAt: 986764,
+            },
+            candidateVerifiers: [],
+          },
+        },
+        customData: {
+          "someCustomField": {},
+        },
+        contactPerson: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
       },
+    },
+    pageSize: 100,
+    maxSnippetSize: 400,
+    requestOptions: {
+      facetFilterSets: [
+        {
+          filters: [
+            {
+              fieldName: "type",
+              values: [
+                {
+                  value: "Spreadsheet",
+                  relationType: "EQUALS",
+                },
+                {
+                  value: "Presentation",
+                  relationType: "EQUALS",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      context: {},
     },
   });
 
@@ -764,140 +550,138 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientSearchRecommendations(glean, {
-    recommendationsRequest: {
-      sourceDocument: {
-        metadata: {
-          datasource: "datasource",
-          objectType: "Feature Request",
-          container: "container",
-          parentId: "JIRA_EN-1337",
-          mimeType: "mimeType",
-          documentId: "documentId",
-          createTime: new Date("2000-01-23T04:56:07.000Z"),
-          updateTime: new Date("2000-01-23T04:56:07.000Z"),
-          author: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-            relatedDocuments: [],
-            metadata: {
-              type: "FULL_TIME",
-              title: "Actor",
-              department: "Movies",
-              email: "george@example.com",
-              location: "Hollywood, CA",
-              phone: "6505551234",
-              photoUrl: "https://example.com/george.jpg",
-              startDate: new RFCDate("2000-01-23"),
-              datasourceProfile: [
-                {
-                  datasource: "github",
-                  handle: "<value>",
-                },
-                {
-                  datasource: "github",
-                  handle: "<value>",
-                },
-              ],
-              querySuggestions: {
-                suggestions: [],
-              },
-              inviteInfo: {
-                invites: [],
-              },
-              customFields: [],
-              badges: [
-                {
-                  key: "deployment_name_new_hire",
-                  displayName: "New hire",
-                  iconConfig: {
-                    color: "#343CED",
-                    key: "person_icon",
-                    iconType: "GLYPH",
-                    name: "user",
-                  },
-                },
-              ],
-            },
-          },
-          owner: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          mentionedPeople: [],
-          components: [
-            "Backend",
-            "Networking",
-          ],
-          status: "[\"Done\"]",
-          pins: [],
-          assignedTo: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          updatedBy: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          collections: [],
-          interactions: {
-            reacts: [],
-            shares: [],
-          },
-          verification: {
-            state: "VERIFIED",
-            metadata: {
-              lastVerifier: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              reminders: [],
-              lastReminder: {
-                assignee: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                },
-                requestor: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                },
-                remindAt: 986764,
-              },
-              candidateVerifiers: [],
-            },
-          },
-          customData: {
-            "someCustomField": {},
-          },
-          contactPerson: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-        },
-      },
-      pageSize: 100,
-      maxSnippetSize: 400,
-      requestOptions: {
-        facetFilterSets: [
-          {
-            filters: [
+    sourceDocument: {
+      metadata: {
+        datasource: "datasource",
+        objectType: "Feature Request",
+        container: "container",
+        parentId: "JIRA_EN-1337",
+        mimeType: "mimeType",
+        documentId: "documentId",
+        createTime: new Date("2000-01-23T04:56:07.000Z"),
+        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+        author: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+          relatedDocuments: [],
+          metadata: {
+            type: "FULL_TIME",
+            title: "Actor",
+            department: "Movies",
+            email: "george@example.com",
+            location: "Hollywood, CA",
+            phone: "6505551234",
+            photoUrl: "https://example.com/george.jpg",
+            startDate: new RFCDate("2000-01-23"),
+            datasourceProfile: [
               {
-                fieldName: "type",
-                values: [
-                  {
-                    value: "Spreadsheet",
-                    relationType: "EQUALS",
-                  },
-                  {
-                    value: "Presentation",
-                    relationType: "EQUALS",
-                  },
-                ],
+                datasource: "github",
+                handle: "<value>",
+              },
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+            ],
+            querySuggestions: {
+              suggestions: [],
+            },
+            inviteInfo: {
+              invites: [],
+            },
+            customFields: [],
+            badges: [
+              {
+                key: "deployment_name_new_hire",
+                displayName: "New hire",
+                iconConfig: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
               },
             ],
           },
+        },
+        owner: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        mentionedPeople: [],
+        components: [
+          "Backend",
+          "Networking",
         ],
-        context: {},
+        status: "[\"Done\"]",
+        pins: [],
+        assignedTo: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        updatedBy: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        collections: [],
+        interactions: {
+          reacts: [],
+          shares: [],
+        },
+        verification: {
+          state: "VERIFIED",
+          metadata: {
+            lastVerifier: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+            },
+            reminders: [],
+            lastReminder: {
+              assignee: {
+                name: "George Clooney",
+                obfuscatedId: "abc123",
+              },
+              requestor: {
+                name: "George Clooney",
+                obfuscatedId: "abc123",
+              },
+              remindAt: 986764,
+            },
+            candidateVerifiers: [],
+          },
+        },
+        customData: {
+          "someCustomField": {},
+        },
+        contactPerson: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
       },
+    },
+    pageSize: 100,
+    maxSnippetSize: 400,
+    requestOptions: {
+      facetFilterSets: [
+        {
+          filters: [
+            {
+              fieldName: "type",
+              values: [
+                {
+                  value: "Spreadsheet",
+                  relationType: "EQUALS",
+                },
+                {
+                  value: "Presentation",
+                  relationType: "EQUALS",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      context: {},
     },
   });
 
@@ -935,7 +719,9 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.RecommendationsRequest](../../models/operations/recommendationsrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
+| `recommendationsRequest`                                                                                                                                                       | [components.RecommendationsRequest](../../models/components/recommendationsrequest.md)                                                                                         | :heavy_minus_sign:                                                                                                                                                             | Recommendations request                                                                                                                                                        |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -965,37 +751,35 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.client.search.execute({
-    searchRequest: {
-      trackingToken: "trackingToken",
-      pageSize: 10,
-      query: "vacation policy",
-      requestOptions: {
-        facetFilters: [
-          {
-            fieldName: "type",
-            values: [
-              {
-                value: "article",
-                relationType: "EQUALS",
-              },
-              {
-                value: "document",
-                relationType: "EQUALS",
-              },
-            ],
-          },
-          {
-            fieldName: "department",
-            values: [
-              {
-                value: "engineering",
-                relationType: "EQUALS",
-              },
-            ],
-          },
-        ],
-        facetBucketSize: 246815,
-      },
+    trackingToken: "trackingToken",
+    pageSize: 10,
+    query: "vacation policy",
+    requestOptions: {
+      facetFilters: [
+        {
+          fieldName: "type",
+          values: [
+            {
+              value: "article",
+              relationType: "EQUALS",
+            },
+            {
+              value: "document",
+              relationType: "EQUALS",
+            },
+          ],
+        },
+        {
+          fieldName: "department",
+          values: [
+            {
+              value: "engineering",
+              relationType: "EQUALS",
+            },
+          ],
+        },
+      ],
+      facetBucketSize: 246815,
     },
   });
 
@@ -1022,37 +806,35 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientSearchExecute(glean, {
-    searchRequest: {
-      trackingToken: "trackingToken",
-      pageSize: 10,
-      query: "vacation policy",
-      requestOptions: {
-        facetFilters: [
-          {
-            fieldName: "type",
-            values: [
-              {
-                value: "article",
-                relationType: "EQUALS",
-              },
-              {
-                value: "document",
-                relationType: "EQUALS",
-              },
-            ],
-          },
-          {
-            fieldName: "department",
-            values: [
-              {
-                value: "engineering",
-                relationType: "EQUALS",
-              },
-            ],
-          },
-        ],
-        facetBucketSize: 246815,
-      },
+    trackingToken: "trackingToken",
+    pageSize: 10,
+    query: "vacation policy",
+    requestOptions: {
+      facetFilters: [
+        {
+          fieldName: "type",
+          values: [
+            {
+              value: "article",
+              relationType: "EQUALS",
+            },
+            {
+              value: "document",
+              relationType: "EQUALS",
+            },
+          ],
+        },
+        {
+          fieldName: "department",
+          values: [
+            {
+              value: "engineering",
+              relationType: "EQUALS",
+            },
+          ],
+        },
+      ],
+      facetBucketSize: 246815,
     },
   });
 
@@ -1088,12 +870,14 @@ import {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.SearchRequest](../../models/operations/searchrequest.md)                                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |                                                                                                                                                                                |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |                                                                                                                                                                                |
+| `searchRequest`                                                                                                                                                                | [components.SearchRequest](../../models/components/searchrequest.md)                                                                                                           | :heavy_minus_sign:                                                                                                                                                             | Search request                                                                                                                                                                 | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
 ### Response
 
@@ -1101,7 +885,7 @@ import {
 
 ### Errors
 
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.ErrorInfo  | 403, 422          | application/json  |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
+| Error Type            | Status Code           | Content Type          |
+| --------------------- | --------------------- | --------------------- |
+| errors.GleanDataError | 403, 422              | application/json      |
+| errors.GleanError     | 4XX, 5XX              | \*/\*                 |

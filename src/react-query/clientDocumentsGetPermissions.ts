@@ -12,13 +12,14 @@ import { clientDocumentsGetPermissions } from "../funcs/clientDocumentsGetPermis
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientDocumentsGetPermissionsMutationVariables = {
-  request: operations.GetdocpermissionsRequest;
+  getDocPermissionsRequest: components.GetDocPermissionsRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -65,7 +66,9 @@ export function buildClientDocumentsGetPermissionsMutation(
   return {
     mutationKey: mutationKeyClientDocumentsGetPermissions(),
     mutationFn: function clientDocumentsGetPermissionsMutationFn({
-      request,
+      getDocPermissionsRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientDocumentsGetPermissionsMutationData> {
       const mergedOptions = {
@@ -82,7 +85,9 @@ export function buildClientDocumentsGetPermissionsMutation(
       };
       return unwrapAsync(clientDocumentsGetPermissions(
         client$,
-        request,
+        getDocPermissionsRequest,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },

@@ -11,11 +11,8 @@
 * [deleteItem](#deleteitem) - Delete Collection item
 * [update](#update) - Update Collection
 * [editItem](#edititem) - Update Collection item
-* [edit](#edit) - Update document Collections
 * [get](#get) - Read Collection
 * [list](#list) - List Collections
-* [moveItem](#moveitem) - Move Collection item
-* [pin](#pin) - Pin Collection
 
 ## addItems
 
@@ -32,9 +29,7 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.client.collections.addItems({
-    addCollectionItemsRequest: {
-      collectionId: 6460.15,
-    },
+    collectionId: 6460.15,
   });
 
   // Handle the result
@@ -60,9 +55,7 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientCollectionsAddItems(glean, {
-    addCollectionItemsRequest: {
-      collectionId: 6460.15,
-    },
+    collectionId: 6460.15,
   });
 
   if (!res.ok) {
@@ -99,7 +92,9 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.AddcollectionitemsRequest](../../models/operations/addcollectionitemsrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `addCollectionItemsRequest`                                                                                                                                                    | [components.AddCollectionItemsRequest](../../models/components/addcollectionitemsrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | Data describing the add operation.                                                                                                                                             |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -130,83 +125,81 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.client.collections.create({
-    createCollectionRequest: {
-      name: "<value>",
-      addedRoles: [
-        {
-          person: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-            relatedDocuments: [],
-            metadata: {
-              type: "FULL_TIME",
-              title: "Actor",
-              department: "Movies",
-              email: "george@example.com",
-              location: "Hollywood, CA",
-              phone: "6505551234",
-              photoUrl: "https://example.com/george.jpg",
-              startDate: new RFCDate("2000-01-23"),
-              datasourceProfile: [
-                {
-                  datasource: "github",
-                  handle: "<value>",
-                },
-              ],
-              querySuggestions: {
-                suggestions: [],
+    name: "<value>",
+    addedRoles: [
+      {
+        person: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+          relatedDocuments: [],
+          metadata: {
+            type: "FULL_TIME",
+            title: "Actor",
+            department: "Movies",
+            email: "george@example.com",
+            location: "Hollywood, CA",
+            phone: "6505551234",
+            photoUrl: "https://example.com/george.jpg",
+            startDate: new RFCDate("2000-01-23"),
+            datasourceProfile: [
+              {
+                datasource: "github",
+                handle: "<value>",
               },
-              inviteInfo: {
-                invites: [],
-              },
-              customFields: [],
-              badges: [
-                {
-                  key: "deployment_name_new_hire",
-                  displayName: "New hire",
-                  iconConfig: {
-                    color: "#343CED",
-                    key: "person_icon",
-                    iconType: "GLYPH",
-                    name: "user",
-                  },
-                },
-              ],
+            ],
+            querySuggestions: {
+              suggestions: [],
             },
+            inviteInfo: {
+              invites: [],
+            },
+            customFields: [],
+            badges: [
+              {
+                key: "deployment_name_new_hire",
+                displayName: "New hire",
+                iconConfig: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
+              },
+            ],
           },
-          role: "OWNER",
         },
-        {
-          role: "VERIFIER",
-        },
-      ],
-      removedRoles: [
-        {
-          role: "VERIFIER",
-        },
-        {
-          role: "ANSWER_MODERATOR",
-        },
-        {
-          role: "OWNER",
-        },
-      ],
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-    },
+        role: "OWNER",
+      },
+      {
+        role: "VERIFIER",
+      },
+    ],
+    removedRoles: [
+      {
+        role: "VERIFIER",
+      },
+      {
+        role: "ANSWER_MODERATOR",
+      },
+      {
+        role: "OWNER",
+      },
+    ],
+    audienceFilters: [
+      {
+        fieldName: "type",
+        values: [
+          {
+            value: "Spreadsheet",
+            relationType: "EQUALS",
+          },
+          {
+            value: "Presentation",
+            relationType: "EQUALS",
+          },
+        ],
+      },
+    ],
   });
 
   // Handle the result
@@ -233,83 +226,81 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientCollectionsCreate(glean, {
-    createCollectionRequest: {
-      name: "<value>",
-      addedRoles: [
-        {
-          person: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-            relatedDocuments: [],
-            metadata: {
-              type: "FULL_TIME",
-              title: "Actor",
-              department: "Movies",
-              email: "george@example.com",
-              location: "Hollywood, CA",
-              phone: "6505551234",
-              photoUrl: "https://example.com/george.jpg",
-              startDate: new RFCDate("2000-01-23"),
-              datasourceProfile: [
-                {
-                  datasource: "github",
-                  handle: "<value>",
-                },
-              ],
-              querySuggestions: {
-                suggestions: [],
+    name: "<value>",
+    addedRoles: [
+      {
+        person: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+          relatedDocuments: [],
+          metadata: {
+            type: "FULL_TIME",
+            title: "Actor",
+            department: "Movies",
+            email: "george@example.com",
+            location: "Hollywood, CA",
+            phone: "6505551234",
+            photoUrl: "https://example.com/george.jpg",
+            startDate: new RFCDate("2000-01-23"),
+            datasourceProfile: [
+              {
+                datasource: "github",
+                handle: "<value>",
               },
-              inviteInfo: {
-                invites: [],
-              },
-              customFields: [],
-              badges: [
-                {
-                  key: "deployment_name_new_hire",
-                  displayName: "New hire",
-                  iconConfig: {
-                    color: "#343CED",
-                    key: "person_icon",
-                    iconType: "GLYPH",
-                    name: "user",
-                  },
-                },
-              ],
+            ],
+            querySuggestions: {
+              suggestions: [],
             },
+            inviteInfo: {
+              invites: [],
+            },
+            customFields: [],
+            badges: [
+              {
+                key: "deployment_name_new_hire",
+                displayName: "New hire",
+                iconConfig: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
+              },
+            ],
           },
-          role: "OWNER",
         },
-        {
-          role: "VERIFIER",
-        },
-      ],
-      removedRoles: [
-        {
-          role: "VERIFIER",
-        },
-        {
-          role: "ANSWER_MODERATOR",
-        },
-        {
-          role: "OWNER",
-        },
-      ],
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-    },
+        role: "OWNER",
+      },
+      {
+        role: "VERIFIER",
+      },
+    ],
+    removedRoles: [
+      {
+        role: "VERIFIER",
+      },
+      {
+        role: "ANSWER_MODERATOR",
+      },
+      {
+        role: "OWNER",
+      },
+    ],
+    audienceFilters: [
+      {
+        fieldName: "type",
+        values: [
+          {
+            value: "Spreadsheet",
+            relationType: "EQUALS",
+          },
+          {
+            value: "Presentation",
+            relationType: "EQUALS",
+          },
+        ],
+      },
+    ],
   });
 
   if (!res.ok) {
@@ -346,7 +337,9 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.CreatecollectionRequest](../../models/operations/createcollectionrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `createCollectionRequest`                                                                                                                                                      | [components.CreateCollectionRequest](../../models/components/createcollectionrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | Collection content plus any additional metadata for the request.                                                                                                               |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -377,12 +370,10 @@ const glean = new Glean({
 
 async function run() {
   await glean.client.collections.delete({
-    deleteCollectionRequest: {
-      ids: [
-        698486,
-        386564,
-      ],
-    },
+    ids: [
+      698486,
+      386564,
+    ],
   });
 
 
@@ -407,12 +398,10 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientCollectionsDelete(glean, {
-    deleteCollectionRequest: {
-      ids: [
-        698486,
-        386564,
-      ],
-    },
+    ids: [
+      698486,
+      386564,
+    ],
   });
 
   if (!res.ok) {
@@ -448,7 +437,9 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DeletecollectionRequest](../../models/operations/deletecollectionrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `deleteCollectionRequest`                                                                                                                                                      | [components.DeleteCollectionRequest](../../models/components/deletecollectionrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | DeleteCollection request                                                                                                                                                       |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -479,10 +470,8 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.client.collections.deleteItem({
-    deleteCollectionItemRequest: {
-      collectionId: 1357.59,
-      itemId: "<id>",
-    },
+    collectionId: 1357.59,
+    itemId: "<id>",
   });
 
   // Handle the result
@@ -508,10 +497,8 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientCollectionsDeleteItem(glean, {
-    deleteCollectionItemRequest: {
-      collectionId: 1357.59,
-      itemId: "<id>",
-    },
+    collectionId: 1357.59,
+    itemId: "<id>",
   });
 
   if (!res.ok) {
@@ -548,7 +535,9 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DeletecollectionitemRequest](../../models/operations/deletecollectionitemrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `deleteCollectionItemRequest`                                                                                                                                                  | [components.DeleteCollectionItemRequest](../../models/components/deletecollectionitemrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | Data describing the delete operation.                                                                                                                                          |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -579,81 +568,79 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.client.collections.update({
-    editCollectionRequest: {
-      name: "<value>",
-      addedRoles: [
-        {
-          person: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-            relatedDocuments: [],
-            metadata: {
-              type: "FULL_TIME",
-              title: "Actor",
-              department: "Movies",
-              email: "george@example.com",
-              location: "Hollywood, CA",
-              phone: "6505551234",
-              photoUrl: "https://example.com/george.jpg",
-              startDate: new RFCDate("2000-01-23"),
-              datasourceProfile: [
-                {
-                  datasource: "github",
-                  handle: "<value>",
-                },
-              ],
-              querySuggestions: {
-                suggestions: [],
+    name: "<value>",
+    addedRoles: [
+      {
+        person: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+          relatedDocuments: [],
+          metadata: {
+            type: "FULL_TIME",
+            title: "Actor",
+            department: "Movies",
+            email: "george@example.com",
+            location: "Hollywood, CA",
+            phone: "6505551234",
+            photoUrl: "https://example.com/george.jpg",
+            startDate: new RFCDate("2000-01-23"),
+            datasourceProfile: [
+              {
+                datasource: "github",
+                handle: "<value>",
               },
-              inviteInfo: {
-                invites: [],
-              },
-              customFields: [],
-              badges: [
-                {
-                  key: "deployment_name_new_hire",
-                  displayName: "New hire",
-                  iconConfig: {
-                    color: "#343CED",
-                    key: "person_icon",
-                    iconType: "GLYPH",
-                    name: "user",
-                  },
-                },
-              ],
+            ],
+            querySuggestions: {
+              suggestions: [],
             },
+            inviteInfo: {
+              invites: [],
+            },
+            customFields: [],
+            badges: [
+              {
+                key: "deployment_name_new_hire",
+                displayName: "New hire",
+                iconConfig: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
+              },
+            ],
           },
-          role: "ANSWER_MODERATOR",
         },
-        {
-          role: "EDITOR",
-        },
-        {
-          role: "ANSWER_MODERATOR",
-        },
-      ],
-      removedRoles: [
-        {
-          role: "ANSWER_MODERATOR",
-        },
-      ],
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-      id: 720396,
-    },
+        role: "ANSWER_MODERATOR",
+      },
+      {
+        role: "EDITOR",
+      },
+      {
+        role: "ANSWER_MODERATOR",
+      },
+    ],
+    removedRoles: [
+      {
+        role: "ANSWER_MODERATOR",
+      },
+    ],
+    audienceFilters: [
+      {
+        fieldName: "type",
+        values: [
+          {
+            value: "Spreadsheet",
+            relationType: "EQUALS",
+          },
+          {
+            value: "Presentation",
+            relationType: "EQUALS",
+          },
+        ],
+      },
+    ],
+    id: 720396,
   });
 
   // Handle the result
@@ -680,81 +667,79 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientCollectionsUpdate(glean, {
-    editCollectionRequest: {
-      name: "<value>",
-      addedRoles: [
-        {
-          person: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-            relatedDocuments: [],
-            metadata: {
-              type: "FULL_TIME",
-              title: "Actor",
-              department: "Movies",
-              email: "george@example.com",
-              location: "Hollywood, CA",
-              phone: "6505551234",
-              photoUrl: "https://example.com/george.jpg",
-              startDate: new RFCDate("2000-01-23"),
-              datasourceProfile: [
-                {
-                  datasource: "github",
-                  handle: "<value>",
-                },
-              ],
-              querySuggestions: {
-                suggestions: [],
+    name: "<value>",
+    addedRoles: [
+      {
+        person: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+          relatedDocuments: [],
+          metadata: {
+            type: "FULL_TIME",
+            title: "Actor",
+            department: "Movies",
+            email: "george@example.com",
+            location: "Hollywood, CA",
+            phone: "6505551234",
+            photoUrl: "https://example.com/george.jpg",
+            startDate: new RFCDate("2000-01-23"),
+            datasourceProfile: [
+              {
+                datasource: "github",
+                handle: "<value>",
               },
-              inviteInfo: {
-                invites: [],
-              },
-              customFields: [],
-              badges: [
-                {
-                  key: "deployment_name_new_hire",
-                  displayName: "New hire",
-                  iconConfig: {
-                    color: "#343CED",
-                    key: "person_icon",
-                    iconType: "GLYPH",
-                    name: "user",
-                  },
-                },
-              ],
+            ],
+            querySuggestions: {
+              suggestions: [],
             },
+            inviteInfo: {
+              invites: [],
+            },
+            customFields: [],
+            badges: [
+              {
+                key: "deployment_name_new_hire",
+                displayName: "New hire",
+                iconConfig: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
+              },
+            ],
           },
-          role: "ANSWER_MODERATOR",
         },
-        {
-          role: "EDITOR",
-        },
-        {
-          role: "ANSWER_MODERATOR",
-        },
-      ],
-      removedRoles: [
-        {
-          role: "ANSWER_MODERATOR",
-        },
-      ],
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-      id: 720396,
-    },
+        role: "ANSWER_MODERATOR",
+      },
+      {
+        role: "EDITOR",
+      },
+      {
+        role: "ANSWER_MODERATOR",
+      },
+    ],
+    removedRoles: [
+      {
+        role: "ANSWER_MODERATOR",
+      },
+    ],
+    audienceFilters: [
+      {
+        fieldName: "type",
+        values: [
+          {
+            value: "Spreadsheet",
+            relationType: "EQUALS",
+          },
+          {
+            value: "Presentation",
+            relationType: "EQUALS",
+          },
+        ],
+      },
+    ],
+    id: 720396,
   });
 
   if (!res.ok) {
@@ -791,7 +776,9 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.EditcollectionRequest](../../models/operations/editcollectionrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `editCollectionRequest`                                                                                                                                                        | [components.EditCollectionRequest](../../models/components/editcollectionrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | Collection content plus any additional metadata for the request.                                                                                                               |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -822,10 +809,8 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.client.collections.editItem({
-    editCollectionItemRequest: {
-      collectionId: 795203,
-      itemId: "<id>",
-    },
+    collectionId: 795203,
+    itemId: "<id>",
   });
 
   // Handle the result
@@ -851,10 +836,8 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientCollectionsEditItem(glean, {
-    editCollectionItemRequest: {
-      collectionId: 795203,
-      itemId: "<id>",
-    },
+    collectionId: 795203,
+    itemId: "<id>",
   });
 
   if (!res.ok) {
@@ -891,7 +874,9 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.EditcollectionitemRequest](../../models/operations/editcollectionitemrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `editCollectionItemRequest`                                                                                                                                                    | [components.EditCollectionItemRequest](../../models/components/editcollectionitemrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | Edit Collection Items request                                                                                                                                                  |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -899,99 +884,6 @@ import {
 ### Response
 
 **Promise\<[components.EditCollectionItemResponse](../../models/components/editcollectionitemresponse.md)\>**
-
-### Errors
-
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
-
-## edit
-
-Update the Collections that a document belongs to.
-
-### Example Usage
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const result = await glean.client.collections.edit({
-    editDocumentCollectionsRequest: {},
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { GleanCore } from "@gleanwork/api-client/core.js";
-import { clientCollectionsEdit } from "@gleanwork/api-client/funcs/clientCollectionsEdit.js";
-
-// Use `GleanCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const glean = new GleanCore({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const res = await clientCollectionsEdit(glean, {
-    editDocumentCollectionsRequest: {},
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### React hooks and utilities
-
-This method can be used in React components through the following hooks and
-associated utilities.
-
-> Check out [this guide][hook-guide] for information about each of the utilities
-> below and how to get started using React hooks.
-
-[hook-guide]: ../../../REACT_QUERY.md
-
-```tsx
-import {
-  // Mutation hook for triggering the API call.
-  useClientCollectionsEditMutation
-} from "@gleanwork/api-client/react-query/clientCollectionsEdit.js";
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.EditdocumentcollectionsRequest](../../models/operations/editdocumentcollectionsrequest.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.EditDocumentCollectionsResponse](../../models/components/editdocumentcollectionsresponse.md)\>**
 
 ### Errors
 
@@ -1014,9 +906,7 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.client.collections.get({
-    getCollectionRequest: {
-      id: 700347,
-    },
+    id: 700347,
   });
 
   // Handle the result
@@ -1042,9 +932,7 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientCollectionsGet(glean, {
-    getCollectionRequest: {
-      id: 700347,
-    },
+    id: 700347,
   });
 
   if (!res.ok) {
@@ -1081,7 +969,9 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetcollectionRequest](../../models/operations/getcollectionrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `getCollectionRequest`                                                                                                                                                         | [components.GetCollectionRequest](../../models/components/getcollectionrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | GetCollection request                                                                                                                                                          |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -1110,9 +1000,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.collections.list({
-    listCollectionsRequest: {},
-  });
+  const result = await glean.client.collections.list({});
 
   // Handle the result
   console.log(result);
@@ -1136,9 +1024,7 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientCollectionsList(glean, {
-    listCollectionsRequest: {},
-  });
+  const res = await clientCollectionsList(glean, {});
 
   if (!res.ok) {
     throw res.error;
@@ -1174,7 +1060,9 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListcollectionsRequest](../../models/operations/listcollectionsrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `listCollectionsRequest`                                                                                                                                                       | [components.ListCollectionsRequest](../../models/components/listcollectionsrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | ListCollections request                                                                                                                                                        |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -1182,198 +1070,6 @@ import {
 ### Response
 
 **Promise\<[components.ListCollectionsResponse](../../models/components/listcollectionsresponse.md)\>**
-
-### Errors
-
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
-
-## moveItem
-
-Reorder a Collection by moving a CollectionItem below another CollectionItem.
-
-### Example Usage
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const result = await glean.client.collections.moveItem({
-    moveCollectionItemRequest: {
-      collectionId: 451684,
-      itemId: "<id>",
-    },
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { GleanCore } from "@gleanwork/api-client/core.js";
-import { clientCollectionsMoveItem } from "@gleanwork/api-client/funcs/clientCollectionsMoveItem.js";
-
-// Use `GleanCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const glean = new GleanCore({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const res = await clientCollectionsMoveItem(glean, {
-    moveCollectionItemRequest: {
-      collectionId: 451684,
-      itemId: "<id>",
-    },
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### React hooks and utilities
-
-This method can be used in React components through the following hooks and
-associated utilities.
-
-> Check out [this guide][hook-guide] for information about each of the utilities
-> below and how to get started using React hooks.
-
-[hook-guide]: ../../../REACT_QUERY.md
-
-```tsx
-import {
-  // Mutation hook for triggering the API call.
-  useClientCollectionsMoveItemMutation
-} from "@gleanwork/api-client/react-query/clientCollectionsMoveItem.js";
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.MovecollectionitemRequest](../../models/operations/movecollectionitemrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.MoveCollectionItemResponse](../../models/components/movecollectionitemresponse.md)\>**
-
-### Errors
-
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
-
-## pin
-
-Given the Collection id and category, pins the Collection to the home page for all company users.
-
-### Example Usage
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const result = await glean.client.collections.pin({
-    pinCollectionRequest: {},
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { GleanCore } from "@gleanwork/api-client/core.js";
-import { clientCollectionsPin } from "@gleanwork/api-client/funcs/clientCollectionsPin.js";
-
-// Use `GleanCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const glean = new GleanCore({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const res = await clientCollectionsPin(glean, {
-    pinCollectionRequest: {},
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### React hooks and utilities
-
-This method can be used in React components through the following hooks and
-associated utilities.
-
-> Check out [this guide][hook-guide] for information about each of the utilities
-> below and how to get started using React hooks.
-
-[hook-guide]: ../../../REACT_QUERY.md
-
-```tsx
-import {
-  // Mutation hook for triggering the API call.
-  useClientCollectionsPinMutation
-} from "@gleanwork/api-client/react-query/clientCollectionsPin.js";
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PincollectionRequest](../../models/operations/pincollectionrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.GetCollectionResponse](../../models/components/getcollectionresponse.md)\>**
 
 ### Errors
 

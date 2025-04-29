@@ -12,13 +12,14 @@ import { clientPinsCreate } from "../funcs/clientPinsCreate.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientPinsCreateMutationVariables = {
-  request: operations.PinRequest;
+  pinRequest: components.PinRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +65,9 @@ export function buildClientPinsCreateMutation(
   return {
     mutationKey: mutationKeyClientPinsCreate(),
     mutationFn: function clientPinsCreateMutationFn({
-      request,
+      pinRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientPinsCreateMutationData> {
       const mergedOptions = {
@@ -81,7 +84,9 @@ export function buildClientPinsCreateMutation(
       };
       return unwrapAsync(clientPinsCreate(
         client$,
-        request,
+        pinRequest,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },

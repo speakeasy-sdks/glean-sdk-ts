@@ -12,13 +12,14 @@ import { clientAnswersEdit } from "../funcs/clientAnswersEdit.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientAnswersEditMutationVariables = {
-  request: operations.EditanswerRequest;
+  editAnswerRequest: components.EditAnswerRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +65,9 @@ export function buildClientAnswersEditMutation(
   return {
     mutationKey: mutationKeyClientAnswersEdit(),
     mutationFn: function clientAnswersEditMutationFn({
-      request,
+      editAnswerRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientAnswersEditMutationData> {
       const mergedOptions = {
@@ -81,7 +84,9 @@ export function buildClientAnswersEditMutation(
       };
       return unwrapAsync(clientAnswersEdit(
         client$,
-        request,
+        editAnswerRequest,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },

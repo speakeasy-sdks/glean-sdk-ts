@@ -12,13 +12,14 @@ import { clientAnswersList } from "../funcs/clientAnswersList.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientAnswersListMutationVariables = {
-  request: operations.ListanswersRequest;
+  listAnswersRequest: components.ListAnswersRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +65,9 @@ export function buildClientAnswersListMutation(
   return {
     mutationKey: mutationKeyClientAnswersList(),
     mutationFn: function clientAnswersListMutationFn({
-      request,
+      listAnswersRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientAnswersListMutationData> {
       const mergedOptions = {
@@ -81,7 +84,9 @@ export function buildClientAnswersListMutation(
       };
       return unwrapAsync(clientAnswersList(
         client$,
-        request,
+        listAnswersRequest,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },

@@ -11,13 +11,16 @@ import { GleanCore } from "../core.js";
 import { clientActivitiesReportActivity } from "../funcs/clientActivitiesReportActivity.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientActivitiesReportActivityMutationVariables = {
-  request: operations.FeedbackRequest;
+  feedback1?: components.Feedback | undefined;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
+  feedbackQueryParameter?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -63,7 +66,10 @@ export function buildClientActivitiesReportActivityMutation(
   return {
     mutationKey: mutationKeyClientActivitiesReportActivity(),
     mutationFn: function clientActivitiesReportActivityMutationFn({
-      request,
+      feedback1,
+      xGleanActAs,
+      xGleanAuthType,
+      feedbackQueryParameter,
       options,
     }): Promise<ClientActivitiesReportActivityMutationData> {
       const mergedOptions = {
@@ -80,7 +86,10 @@ export function buildClientActivitiesReportActivityMutation(
       };
       return unwrapAsync(clientActivitiesReportActivity(
         client$,
-        request,
+        feedback1,
+        xGleanActAs,
+        xGleanAuthType,
+        feedbackQueryParameter,
         mergedOptions,
       ));
     },

@@ -56,17 +56,28 @@ func testListverificationsListverifications0(w http.ResponseWriter, req *http.Re
 						ObfuscatedID:     "abc123",
 						RelatedDocuments: []components.RelatedDocuments{},
 						Metadata: &components.PersonMetadata{
-							Type:              components.PersonMetadataTypeFullTime.ToPointer(),
-							Title:             types.String("Actor"),
-							Department:        types.String("Movies"),
-							Email:             types.String("george@example.com"),
-							Location:          types.String("Hollywood, CA"),
-							ManagementChain:   []components.Person{},
-							Phone:             types.String("6505551234"),
-							PhotoURL:          types.String("https://example.com/george.jpg"),
-							Reports:           []components.Person{},
-							StartDate:         types.MustNewDateFromString("2000-01-23"),
-							DatasourceProfile: []components.DatasourceProfile{},
+							Type:       components.PersonMetadataTypeFullTime.ToPointer(),
+							Title:      types.String("Actor"),
+							Department: types.String("Movies"),
+							Email:      types.String("george@example.com"),
+							Location:   types.String("Hollywood, CA"),
+							Phone:      types.String("6505551234"),
+							PhotoURL:   types.String("https://example.com/george.jpg"),
+							StartDate:  types.MustNewDateFromString("2000-01-23"),
+							DatasourceProfile: []components.DatasourceProfile{
+								components.DatasourceProfile{
+									Datasource: "github",
+									Handle:     "<value>",
+								},
+								components.DatasourceProfile{
+									Datasource: "github",
+									Handle:     "<value>",
+								},
+								components.DatasourceProfile{
+									Datasource: "github",
+									Handle:     "<value>",
+								},
+							},
 							QuerySuggestions: &components.QuerySuggestionList{
 								Suggestions: []components.QuerySuggestion{},
 							},
@@ -74,7 +85,59 @@ func testListverificationsListverifications0(w http.ResponseWriter, req *http.Re
 								Invites: []components.ChannelInviteInfo{},
 							},
 							CustomFields: []components.CustomFieldData{},
-							Badges:       []components.Badge{},
+							Badges: []components.Badge{
+								components.Badge{
+									Key:         types.String("deployment_name_new_hire"),
+									DisplayName: types.String("New hire"),
+									IconConfig: &components.IconConfig{
+										Color:    types.String("#343CED"),
+										Key:      types.String("person_icon"),
+										IconType: components.IconTypeGlyph.ToPointer(),
+										Name:     types.String("user"),
+									},
+								},
+							},
+						},
+					},
+					Document: &components.Document{
+						Metadata: &components.DocumentMetadata{
+							Datasource: types.String("datasource"),
+							ObjectType: types.String("Feature Request"),
+							Container:  types.String("container"),
+							ParentID:   types.String("JIRA_EN-1337"),
+							MimeType:   types.String("mimeType"),
+							DocumentID: types.String("documentId"),
+							CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+							UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+							Author: &components.Person{
+								Name:         "George Clooney",
+								ObfuscatedID: "abc123",
+							},
+							Owner: &components.Person{
+								Name:         "George Clooney",
+								ObfuscatedID: "abc123",
+							},
+							Components: []string{
+								"Backend",
+								"Networking",
+							},
+							Status: types.String("[\"Done\"]"),
+							AssignedTo: &components.Person{
+								Name:         "George Clooney",
+								ObfuscatedID: "abc123",
+							},
+							UpdatedBy: &components.Person{
+								Name:         "George Clooney",
+								ObfuscatedID: "abc123",
+							},
+							Interactions: &components.DocumentInteractions{},
+							CustomData: map[string]components.CustomDataValue{
+								"someCustomField": components.CustomDataValue{},
+							},
+							ContactPerson: &components.Person{
+								Name:         "George Clooney",
+								ObfuscatedID: "abc123",
+							},
 						},
 					},
 					Reminders: []components.Reminder{},
@@ -87,13 +150,13 @@ func testListverificationsListverifications0(w http.ResponseWriter, req *http.Re
 							Name:         "George Clooney",
 							ObfuscatedID: "abc123",
 						},
-						RemindAt: 129663,
+						RemindAt: 221489,
 					},
 					CandidateVerifiers: []components.Person{},
 				},
 			},
 			components.Verification{
-				State: components.StateVerified,
+				State: components.StateUnverified,
 			},
 			components.Verification{
 				State: components.StateVerified,

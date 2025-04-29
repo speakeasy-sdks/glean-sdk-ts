@@ -16,23 +16,21 @@ test("Pins Editpin", async () => {
   });
 
   const result = await glean.client.pins.edit({
-    editPinRequest: {
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-    },
+    audienceFilters: [
+      {
+        fieldName: "type",
+        values: [
+          {
+            value: "Spreadsheet",
+            relationType: "EQUALS",
+          },
+          {
+            value: "Presentation",
+            relationType: "EQUALS",
+          },
+        ],
+      },
+    ],
   });
   expect(result).toBeDefined();
 });
@@ -46,9 +44,7 @@ test("Pins Getpin", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.pins.get({
-    getPinRequest: {},
-  });
+  const result = await glean.client.pins.get({});
   expect(result).toBeDefined();
 });
 
@@ -61,9 +57,7 @@ test("Pins Listpins", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.pins.list({
-    requestBody: {},
-  });
+  const result = await glean.client.pins.list({});
   expect(result).toBeDefined();
 });
 
@@ -77,23 +71,21 @@ test("Pins Pin", async () => {
   });
 
   const result = await glean.client.pins.create({
-    pinRequest: {
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-    },
+    audienceFilters: [
+      {
+        fieldName: "type",
+        values: [
+          {
+            value: "Spreadsheet",
+            relationType: "EQUALS",
+          },
+          {
+            value: "Presentation",
+            relationType: "EQUALS",
+          },
+        ],
+      },
+    ],
   });
   expect(result).toBeDefined();
 });
@@ -107,7 +99,5 @@ test("Pins Unpin", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  await glean.client.pins.remove({
-    unpin: {},
-  });
+  await glean.client.pins.remove({});
 });

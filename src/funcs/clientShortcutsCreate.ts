@@ -32,7 +32,9 @@ import { Result } from "../types/fp.js";
  */
 export function clientShortcutsCreate(
   client: GleanCore,
-  request: operations.CreateshortcutRequest,
+  createShortcutRequest: components.CreateShortcutRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -48,14 +50,18 @@ export function clientShortcutsCreate(
 > {
   return new APIPromise($do(
     client,
-    request,
+    createShortcutRequest,
+    xGleanActAs,
+    xGleanAuthType,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: operations.CreateshortcutRequest,
+  createShortcutRequest: components.CreateShortcutRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -72,8 +78,14 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.CreateshortcutRequest = {
+    createShortcutRequest: createShortcutRequest,
+    xGleanActAs: xGleanActAs,
+    xGleanAuthType: xGleanAuthType,
+  };
+
   const parsed = safeParse(
-    request,
+    input,
     (value) => operations.CreateshortcutRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

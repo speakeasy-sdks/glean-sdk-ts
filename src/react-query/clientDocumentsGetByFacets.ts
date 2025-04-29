@@ -12,13 +12,16 @@ import { clientDocumentsGetByFacets } from "../funcs/clientDocumentsGetByFacets.
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientDocumentsGetByFacetsMutationVariables = {
-  request: operations.GetdocumentsbyfacetsRequest;
+  getDocumentsByFacetsRequest?:
+    | components.GetDocumentsByFacetsRequest
+    | undefined;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -65,7 +68,9 @@ export function buildClientDocumentsGetByFacetsMutation(
   return {
     mutationKey: mutationKeyClientDocumentsGetByFacets(),
     mutationFn: function clientDocumentsGetByFacetsMutationFn({
-      request,
+      getDocumentsByFacetsRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientDocumentsGetByFacetsMutationData> {
       const mergedOptions = {
@@ -82,7 +87,9 @@ export function buildClientDocumentsGetByFacetsMutation(
       };
       return unwrapAsync(clientDocumentsGetByFacets(
         client$,
-        request,
+        getDocumentsByFacetsRequest,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },

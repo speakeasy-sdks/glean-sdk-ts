@@ -4,7 +4,7 @@
 
 import { clientActivitiesReportActivity } from "../funcs/clientActivitiesReportActivity.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Activities extends ClientSDK {
@@ -15,12 +15,18 @@ export class Activities extends ClientSDK {
    * Report events that happen to results within a Glean client UI, such as search result views and clicks.  This signal improves search quality.
    */
   async reportActivity(
-    request: operations.FeedbackRequest,
+    feedback1?: components.Feedback | undefined,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
+    feedbackQueryParameter?: string | undefined,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(clientActivitiesReportActivity(
       this,
-      request,
+      feedback1,
+      xGleanActAs,
+      xGleanAuthType,
+      feedbackQueryParameter,
       options,
     ));
   }

@@ -11,6 +11,7 @@ import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
+import * as components from "../models/components/index.js";
 import { GleanError } from "../models/errors/gleanerror.js";
 import {
   ConnectionError,
@@ -32,7 +33,10 @@ import { Result } from "../types/fp.js";
  */
 export function clientChatDelete(
   client: GleanCore,
-  request: operations.DeletechatsRequest,
+  deleteChatsRequest: components.DeleteChatsRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
+  timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -48,14 +52,20 @@ export function clientChatDelete(
 > {
   return new APIPromise($do(
     client,
-    request,
+    deleteChatsRequest,
+    xGleanActAs,
+    xGleanAuthType,
+    timezoneOffset,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: operations.DeletechatsRequest,
+  deleteChatsRequest: components.DeleteChatsRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
+  timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -72,8 +82,15 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.DeletechatsRequest = {
+    deleteChatsRequest: deleteChatsRequest,
+    xGleanActAs: xGleanActAs,
+    xGleanAuthType: xGleanAuthType,
+    timezoneOffset: timezoneOffset,
+  };
+
   const parsed = safeParse(
-    request,
+    input,
     (value) => operations.DeletechatsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

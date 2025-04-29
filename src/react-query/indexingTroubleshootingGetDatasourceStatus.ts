@@ -12,13 +12,12 @@ import { indexingTroubleshootingGetDatasourceStatus } from "../funcs/indexingTro
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type IndexingTroubleshootingGetDatasourceStatusMutationVariables = {
-  request: operations.PostApiIndexV1DebugDatasourceStatusRequest;
+  datasource: string;
   options?: RequestOptions;
 };
 
@@ -67,7 +66,7 @@ export function buildIndexingTroubleshootingGetDatasourceStatusMutation(
   return {
     mutationKey: mutationKeyIndexingTroubleshootingGetDatasourceStatus(),
     mutationFn: function indexingTroubleshootingGetDatasourceStatusMutationFn({
-      request,
+      datasource,
       options,
     }): Promise<IndexingTroubleshootingGetDatasourceStatusMutationData> {
       const mergedOptions = {
@@ -84,7 +83,7 @@ export function buildIndexingTroubleshootingGetDatasourceStatusMutation(
       };
       return unwrapAsync(indexingTroubleshootingGetDatasourceStatus(
         client$,
-        request,
+        datasource,
         mergedOptions,
       ));
     },

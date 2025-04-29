@@ -47,7 +47,7 @@ func testCreateauthtokenCreateauthtoken0(w http.ResponseWriter, req *http.Reques
 	}
 	respBody := &components.CreateAuthTokenResponse{
 		Token:          "<value>",
-		ExpirationTime: 965209,
+		ExpirationTime: 207213,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

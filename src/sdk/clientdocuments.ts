@@ -3,12 +3,10 @@
  */
 
 import { clientDocumentsGet } from "../funcs/clientDocumentsGet.js";
-import { clientDocumentsGetAnalytics } from "../funcs/clientDocumentsGetAnalytics.js";
 import { clientDocumentsGetByFacets } from "../funcs/clientDocumentsGetByFacets.js";
 import { clientDocumentsGetPermissions } from "../funcs/clientDocumentsGetPermissions.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class ClientDocuments extends ClientSDK {
@@ -19,12 +17,16 @@ export class ClientDocuments extends ClientSDK {
    * Read the emails of all users who have access to the given document.
    */
   async getPermissions(
-    request: operations.GetdocpermissionsRequest,
+    getDocPermissionsRequest: components.GetDocPermissionsRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.GetDocPermissionsResponse> {
     return unwrapAsync(clientDocumentsGetPermissions(
       this,
-      request,
+      getDocPermissionsRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }
@@ -36,12 +38,16 @@ export class ClientDocuments extends ClientSDK {
    * Read the documents including metadata (does not include enhanced metadata via `/documentmetadata`) for the given list of Glean Document IDs or URLs specified in the request.
    */
   async get(
-    request: operations.GetdocumentsRequest,
+    getDocumentsRequest?: components.GetDocumentsRequest | undefined,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.GetDocumentsResponse> {
     return unwrapAsync(clientDocumentsGet(
       this,
-      request,
+      getDocumentsRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }
@@ -53,29 +59,18 @@ export class ClientDocuments extends ClientSDK {
    * Read the documents including metadata (does not include enhanced metadata via `/documentmetadata`) macthing the given facet conditions.
    */
   async getByFacets(
-    request: operations.GetdocumentsbyfacetsRequest,
+    getDocumentsByFacetsRequest?:
+      | components.GetDocumentsByFacetsRequest
+      | undefined,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.GetDocumentsByFacetsResponse> {
     return unwrapAsync(clientDocumentsGetByFacets(
       this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Read document analytics
-   *
-   * @remarks
-   * Read the document analytics information for the given list of Glean Document IDs or URLs specified in the request
-   */
-  async getAnalytics(
-    request: operations.GetdocumentanalyticsRequest,
-    options?: RequestOptions,
-  ): Promise<components.GetDocumentAnalyticsResponse> {
-    return unwrapAsync(clientDocumentsGetAnalytics(
-      this,
-      request,
+      getDocumentsByFacetsRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }

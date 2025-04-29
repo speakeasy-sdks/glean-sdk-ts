@@ -12,13 +12,15 @@ import { agentsRunagent } from "../funcs/agentsRunagent.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type AgentsRunagentMutationVariables = {
-  request: operations.RunagentRequest;
+  runAgentRequest: components.RunAgentRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
+  timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +66,10 @@ export function buildAgentsRunagentMutation(
   return {
     mutationKey: mutationKeyAgentsRunagent(),
     mutationFn: function agentsRunagentMutationFn({
-      request,
+      runAgentRequest,
+      xGleanActAs,
+      xGleanAuthType,
+      timezoneOffset,
       options,
     }): Promise<AgentsRunagentMutationData> {
       const mergedOptions = {
@@ -81,7 +86,10 @@ export function buildAgentsRunagentMutation(
       };
       return unwrapAsync(agentsRunagent(
         client$,
-        request,
+        runAgentRequest,
+        xGleanActAs,
+        xGleanAuthType,
+        timezoneOffset,
         mergedOptions,
       ));
     },

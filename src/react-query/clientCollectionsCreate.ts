@@ -12,13 +12,14 @@ import { clientCollectionsCreate } from "../funcs/clientCollectionsCreate.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientCollectionsCreateMutationVariables = {
-  request: operations.CreatecollectionRequest;
+  createCollectionRequest: components.CreateCollectionRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -65,7 +66,9 @@ export function buildClientCollectionsCreateMutation(
   return {
     mutationKey: mutationKeyClientCollectionsCreate(),
     mutationFn: function clientCollectionsCreateMutationFn({
-      request,
+      createCollectionRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientCollectionsCreateMutationData> {
       const mergedOptions = {
@@ -82,7 +85,9 @@ export function buildClientCollectionsCreateMutation(
       };
       return unwrapAsync(clientCollectionsCreate(
         client$,
-        request,
+        createCollectionRequest,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },

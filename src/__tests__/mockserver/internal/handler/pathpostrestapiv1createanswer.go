@@ -71,9 +71,7 @@ func testCreateanswerCreateanswer0(w http.ResponseWriter, req *http.Request) {
 				},
 			},
 		},
-		AddedRoles:   []components.UserRoleSpecification{},
-		RemovedRoles: []components.UserRoleSpecification{},
-		Roles:        []components.UserRoleSpecification{},
+		AddedRoles: []components.UserRoleSpecification{},
 		CombinedAnswerText: &components.StructuredText{
 			Text:           "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
 			StructuredList: []components.StructuredTextItem{},
@@ -81,12 +79,11 @@ func testCreateanswerCreateanswer0(w http.ResponseWriter, req *http.Request) {
 		Likes: &components.AnswerLikes{
 			LikedBy:     []components.AnswerLike{},
 			LikedByUser: true,
-			NumLikes:    22508,
+			NumLikes:    453975,
 		},
 		Author: &components.Person{
-			Name:             "George Clooney",
-			ObfuscatedID:     "abc123",
-			RelatedDocuments: []components.RelatedDocuments{},
+			Name:         "George Clooney",
+			ObfuscatedID: "abc123",
 			Metadata: &components.PersonMetadata{
 				Type:       components.PersonMetadataTypeFullTime.ToPointer(),
 				Title:      types.String("Actor"),
@@ -102,13 +99,8 @@ func testCreateanswerCreateanswer0(w http.ResponseWriter, req *http.Request) {
 						Handle:     "<value>",
 					},
 				},
-				QuerySuggestions: &components.QuerySuggestionList{
-					Suggestions: []components.QuerySuggestion{},
-				},
-				InviteInfo: &components.InviteInfo{
-					Invites: []components.ChannelInviteInfo{},
-				},
-				CustomFields: []components.CustomFieldData{},
+				QuerySuggestions: &components.QuerySuggestionList{},
+				InviteInfo:       &components.InviteInfo{},
 				Badges: []components.Badge{
 					components.Badge{
 						Key:         types.String("deployment_name_new_hire"),
@@ -128,13 +120,45 @@ func testCreateanswerCreateanswer0(w http.ResponseWriter, req *http.Request) {
 			ObfuscatedID: "abc123",
 		},
 		Verification: &components.Verification{
-			State: components.StateUnverified,
+			State: components.StateVerified,
 			Metadata: &components.VerificationMetadata{
 				LastVerifier: &components.Person{
 					Name:         "George Clooney",
 					ObfuscatedID: "abc123",
 				},
-				Reminders: []components.Reminder{},
+				Document: &components.Document{
+					Metadata: &components.DocumentMetadata{
+						Datasource: types.String("datasource"),
+						ObjectType: types.String("Feature Request"),
+						Container:  types.String("container"),
+						ParentID:   types.String("JIRA_EN-1337"),
+						MimeType:   types.String("mimeType"),
+						DocumentID: types.String("documentId"),
+						CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+						UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+						Owner: &components.Person{
+							Name:         "George Clooney",
+							ObfuscatedID: "abc123",
+						},
+						Components: []string{
+							"Backend",
+							"Networking",
+						},
+						Status: types.String("[\"Done\"]"),
+						AssignedTo: &components.Person{
+							Name:         "George Clooney",
+							ObfuscatedID: "abc123",
+						},
+						Interactions: &components.DocumentInteractions{},
+						CustomData: map[string]components.CustomDataValue{
+							"someCustomField": components.CustomDataValue{},
+						},
+						ContactPerson: &components.Person{
+							Name:         "George Clooney",
+							ObfuscatedID: "abc123",
+						},
+					},
+				},
 				LastReminder: &components.Reminder{
 					Assignee: components.Person{
 						Name:         "George Clooney",
@@ -144,60 +168,35 @@ func testCreateanswerCreateanswer0(w http.ResponseWriter, req *http.Request) {
 						Name:         "George Clooney",
 						ObfuscatedID: "abc123",
 					},
-					RemindAt: 129663,
+					RemindAt: 557925,
 				},
-				CandidateVerifiers: []components.Person{},
 			},
 		},
 		Board: &components.AnswerBoard{
-			Name:            "<value>",
-			Description:     "over aha if unless fooey unbearably",
-			AudienceFilters: []components.FacetFilter{},
-			ID:              342305,
+			Name:        "<value>",
+			Description: "massive under meh severe ditch bungalow when sauerkraut",
+			AudienceFilters: []components.FacetFilter{
+				components.FacetFilter{
+					FieldName: types.String("type"),
+					Values: []components.FacetFilterValue{
+						components.FacetFilterValue{
+							Value:        types.String("Spreadsheet"),
+							RelationType: components.RelationTypeEquals.ToPointer(),
+						},
+						components.FacetFilterValue{
+							Value:        types.String("Presentation"),
+							RelationType: components.RelationTypeEquals.ToPointer(),
+						},
+					},
+				},
+			},
+			ID: 404062,
 			Creator: &components.Person{
 				Name:         "George Clooney",
 				ObfuscatedID: "abc123",
 			},
 		},
-		Collections: []components.Collection{},
-		SourceDocument: &components.Document{
-			Metadata: &components.DocumentMetadata{
-				Datasource: types.String("datasource"),
-				ObjectType: types.String("Feature Request"),
-				Container:  types.String("container"),
-				ParentID:   types.String("JIRA_EN-1337"),
-				MimeType:   types.String("mimeType"),
-				DocumentID: types.String("documentId"),
-				CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
-				UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
-				Owner: &components.Person{
-					Name:         "George Clooney",
-					ObfuscatedID: "abc123",
-				},
-				MentionedPeople: []components.Person{},
-				Components: []string{
-					"Backend",
-					"Networking",
-				},
-				Status: types.String("[\"Done\"]"),
-				Pins:   []components.PinDocument{},
-				AssignedTo: &components.Person{
-					Name:         "George Clooney",
-					ObfuscatedID: "abc123",
-				},
-				Interactions: &components.DocumentInteractions{
-					Reacts: []components.Reaction{},
-					Shares: []components.Share{},
-				},
-				CustomData: map[string]components.CustomDataValue{
-					"someCustomField": components.CustomDataValue{},
-				},
-				ContactPerson: &components.Person{
-					Name:         "George Clooney",
-					ObfuscatedID: "abc123",
-				},
-			},
-		},
+		SourceDocument: &components.Document{},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

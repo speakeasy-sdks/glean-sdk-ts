@@ -12,13 +12,14 @@ import { clientMessagesGet } from "../funcs/clientMessagesGet.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientMessagesGetMutationVariables = {
-  request: operations.MessagesRequest;
+  messagesRequest: components.MessagesRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +65,9 @@ export function buildClientMessagesGetMutation(
   return {
     mutationKey: mutationKeyClientMessagesGet(),
     mutationFn: function clientMessagesGetMutationFn({
-      request,
+      messagesRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientMessagesGetMutationData> {
       const mergedOptions = {
@@ -81,7 +84,9 @@ export function buildClientMessagesGetMutation(
       };
       return unwrapAsync(clientMessagesGet(
         client$,
-        request,
+        messagesRequest,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },

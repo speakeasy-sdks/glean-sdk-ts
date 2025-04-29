@@ -32,7 +32,9 @@ import { Result } from "../types/fp.js";
  */
 export function clientMessagesGet(
   client: GleanCore,
-  request: operations.MessagesRequest,
+  messagesRequest: components.MessagesRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -48,14 +50,18 @@ export function clientMessagesGet(
 > {
   return new APIPromise($do(
     client,
-    request,
+    messagesRequest,
+    xGleanActAs,
+    xGleanAuthType,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: operations.MessagesRequest,
+  messagesRequest: components.MessagesRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -72,8 +78,14 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.MessagesRequest = {
+    messagesRequest: messagesRequest,
+    xGleanActAs: xGleanActAs,
+    xGleanAuthType: xGleanAuthType,
+  };
+
   const parsed = safeParse(
-    request,
+    input,
     (value) => operations.MessagesRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

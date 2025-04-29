@@ -94,12 +94,55 @@ func testPeoplePeople0(w http.ResponseWriter, req *http.Request) {
 								Filters: []components.FacetFilter{
 									components.FacetFilter{
 										FieldName: types.String("type"),
-										Values:    []components.FacetFilterValue{},
+										Values: []components.FacetFilterValue{
+											components.FacetFilterValue{
+												Value:        types.String("Spreadsheet"),
+												RelationType: components.RelationTypeEquals.ToPointer(),
+											},
+											components.FacetFilterValue{
+												Value:        types.String("Presentation"),
+												RelationType: components.RelationTypeEquals.ToPointer(),
+											},
+										},
+									},
+								},
+							},
+							components.FacetFilterSet{
+								Filters: []components.FacetFilter{
+									components.FacetFilter{
+										FieldName: types.String("type"),
+										Values: []components.FacetFilterValue{
+											components.FacetFilterValue{
+												Value:        types.String("Spreadsheet"),
+												RelationType: components.RelationTypeEquals.ToPointer(),
+											},
+											components.FacetFilterValue{
+												Value:        types.String("Presentation"),
+												RelationType: components.RelationTypeEquals.ToPointer(),
+											},
+										},
+									},
+								},
+							},
+							components.FacetFilterSet{
+								Filters: []components.FacetFilter{
+									components.FacetFilter{
+										FieldName: types.String("type"),
+										Values: []components.FacetFilterValue{
+											components.FacetFilterValue{
+												Value:        types.String("Spreadsheet"),
+												RelationType: components.RelationTypeEquals.ToPointer(),
+											},
+											components.FacetFilterValue{
+												Value:        types.String("Presentation"),
+												RelationType: components.RelationTypeEquals.ToPointer(),
+											},
+										},
 									},
 								},
 							},
 						},
-						FacetBucketSize: 796474,
+						FacetBucketSize: 325985,
 						AuthTokens: []components.AuthToken{
 							components.AuthToken{
 								AccessToken: "123abc",
@@ -117,8 +160,6 @@ func testPeoplePeople0(w http.ResponseWriter, req *http.Request) {
 				},
 				Results: []components.SearchResult{},
 			},
-			components.RelatedDocuments{},
-			components.RelatedDocuments{},
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

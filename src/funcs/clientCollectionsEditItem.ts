@@ -32,7 +32,9 @@ import { Result } from "../types/fp.js";
  */
 export function clientCollectionsEditItem(
   client: GleanCore,
-  request: operations.EditcollectionitemRequest,
+  editCollectionItemRequest: components.EditCollectionItemRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -48,14 +50,18 @@ export function clientCollectionsEditItem(
 > {
   return new APIPromise($do(
     client,
-    request,
+    editCollectionItemRequest,
+    xGleanActAs,
+    xGleanAuthType,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: operations.EditcollectionitemRequest,
+  editCollectionItemRequest: components.EditCollectionItemRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -72,8 +78,14 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.EditcollectionitemRequest = {
+    editCollectionItemRequest: editCollectionItemRequest,
+    xGleanActAs: xGleanActAs,
+    xGleanAuthType: xGleanAuthType,
+  };
+
   const parsed = safeParse(
-    request,
+    input,
     (value) => operations.EditcollectionitemRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

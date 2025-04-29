@@ -55,17 +55,17 @@ func testListshortcutsListshortcuts0(w http.ResponseWriter, req *http.Request) {
 		Shortcuts: []components.Shortcut{
 			components.Shortcut{
 				InputAlias:     "<value>",
-				DestinationURL: "https://bouncy-futon.net/",
+				DestinationURL: "https://remorseful-concentration.biz",
 				CreatedBy:      "<value>",
 			},
 			components.Shortcut{
 				InputAlias:     "<value>",
-				DestinationURL: "https://bouncy-futon.net/",
+				DestinationURL: "https://primary-paintwork.com/",
 				CreatedBy:      "<value>",
 			},
 			components.Shortcut{
 				InputAlias:     "<value>",
-				DestinationURL: "https://bouncy-futon.net/",
+				DestinationURL: "https://breakable-bathrobe.net",
 				CreatedBy:      "<value>",
 			},
 		},
@@ -74,6 +74,22 @@ func testListshortcutsListshortcuts0(w http.ResponseWriter, req *http.Request) {
 				SourceName:   types.String("container_name"),
 				OperatorName: types.String("SelectMultiple"),
 				Buckets: []components.FacetBucket{
+					components.FacetBucket{
+						Count:      types.Int64(1),
+						Datasource: types.String("jira"),
+						Percentage: types.Int64(5),
+						Value: &components.FacetValue{
+							StringValue:  types.String("engineering"),
+							IntegerValue: types.Int64(5),
+							DisplayLabel: types.String("engineering"),
+							IconConfig: &components.IconConfig{
+								Color:    types.String("#343CED"),
+								Key:      types.String("person_icon"),
+								IconType: components.IconTypeGlyph.ToPointer(),
+								Name:     types.String("user"),
+							},
+						},
+					},
 					components.FacetBucket{
 						Count:      types.Int64(1),
 						Datasource: types.String("jira"),

@@ -11,6 +11,7 @@ import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
+import * as components from "../models/components/index.js";
 import { GleanError } from "../models/errors/gleanerror.js";
 import {
   ConnectionError,
@@ -32,7 +33,9 @@ import { Result } from "../types/fp.js";
  */
 export function clientPinsRemove(
   client: GleanCore,
-  request: operations.UnpinRequest,
+  unpin: components.Unpin,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -48,14 +51,18 @@ export function clientPinsRemove(
 > {
   return new APIPromise($do(
     client,
-    request,
+    unpin,
+    xGleanActAs,
+    xGleanAuthType,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: operations.UnpinRequest,
+  unpin: components.Unpin,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -72,8 +79,14 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.UnpinRequest = {
+    unpin: unpin,
+    xGleanActAs: xGleanActAs,
+    xGleanAuthType: xGleanAuthType,
+  };
+
   const parsed = safeParse(
-    request,
+    input,
     (value) => operations.UnpinRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

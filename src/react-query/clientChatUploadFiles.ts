@@ -12,13 +12,15 @@ import { clientChatUploadFiles } from "../funcs/clientChatUploadFiles.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatUploadFilesMutationVariables = {
-  request: operations.UploadchatfilesRequest;
+  uploadChatFilesRequest: components.UploadChatFilesRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
+  timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
 
@@ -65,7 +67,10 @@ export function buildClientChatUploadFilesMutation(
   return {
     mutationKey: mutationKeyClientChatUploadFiles(),
     mutationFn: function clientChatUploadFilesMutationFn({
-      request,
+      uploadChatFilesRequest,
+      xGleanActAs,
+      xGleanAuthType,
+      timezoneOffset,
       options,
     }): Promise<ClientChatUploadFilesMutationData> {
       const mergedOptions = {
@@ -82,7 +87,10 @@ export function buildClientChatUploadFilesMutation(
       };
       return unwrapAsync(clientChatUploadFiles(
         client$,
-        request,
+        uploadChatFilesRequest,
+        xGleanActAs,
+        xGleanAuthType,
+        timezoneOffset,
         mergedOptions,
       ));
     },

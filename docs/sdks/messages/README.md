@@ -22,11 +22,9 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.client.messages.get({
-    messagesRequest: {
-      idType: "CONVERSATION_ID",
-      id: "<id>",
-      timestampMillis: 558834,
-    },
+    idType: "CONVERSATION_ID",
+    id: "<id>",
+    timestampMillis: 558834,
   });
 
   // Handle the result
@@ -52,11 +50,9 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientMessagesGet(glean, {
-    messagesRequest: {
-      idType: "CONVERSATION_ID",
-      id: "<id>",
-      timestampMillis: 558834,
-    },
+    idType: "CONVERSATION_ID",
+    id: "<id>",
+    timestampMillis: 558834,
   });
 
   if (!res.ok) {
@@ -93,7 +89,9 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.MessagesRequest](../../models/operations/messagesrequest.md)                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `messagesRequest`                                                                                                                                                              | [components.MessagesRequest](../../models/components/messagesrequest.md)                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Includes request params such as the id for channel/message and direction.                                                                                                      |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |

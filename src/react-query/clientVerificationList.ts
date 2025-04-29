@@ -12,13 +12,14 @@ import { clientVerificationList } from "../funcs/clientVerificationList.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientVerificationListMutationVariables = {
-  request: operations.ListverificationsRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
+  count?: number | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +65,9 @@ export function buildClientVerificationListMutation(
   return {
     mutationKey: mutationKeyClientVerificationList(),
     mutationFn: function clientVerificationListMutationFn({
-      request,
+      xGleanActAs,
+      xGleanAuthType,
+      count,
       options,
     }): Promise<ClientVerificationListMutationData> {
       const mergedOptions = {
@@ -81,7 +84,9 @@ export function buildClientVerificationListMutation(
       };
       return unwrapAsync(clientVerificationList(
         client$,
-        request,
+        xGleanActAs,
+        xGleanAuthType,
+        count,
         mergedOptions,
       ));
     },

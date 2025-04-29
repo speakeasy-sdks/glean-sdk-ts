@@ -6,30 +6,6 @@ import { assert, expect, it, test } from "vitest";
 import { Glean } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
-it.skip("Troubleshooting Post /Checkdocumentaccess", async () => {
-  assert.fail(
-    "incomplete test found please make sure to address the following errors: [`workflow step post_/checkdocumentaccess.test referencing operation post_/checkdocumentaccess not found in document`]",
-  );
-});
-
-it.skip("Troubleshooting Post /Getdocumentstatus", async () => {
-  assert.fail(
-    "incomplete test found please make sure to address the following errors: [`workflow step post_/getdocumentstatus.test referencing operation post_/getdocumentstatus not found in document`]",
-  );
-});
-
-it.skip("Troubleshooting Post /Getdocumentcount", async () => {
-  assert.fail(
-    "incomplete test found please make sure to address the following errors: [`workflow step post_/getdocumentcount.test referencing operation post_/getdocumentcount not found in document`]",
-  );
-});
-
-it.skip("Troubleshooting Post /Getusercount", async () => {
-  assert.fail(
-    "incomplete test found please make sure to address the following errors: [`workflow step post_/getusercount.test referencing operation post_/getusercount not found in document`]",
-  );
-});
-
 it.skip("Troubleshooting Post /Api/index/v1 /Debug/{datasource}/status", async () => {
   assert.fail(
     "incomplete test found please make sure to address the following errors: [`workflow step post_/api/index/v1/debug/{datasource}/status.test contains criterion simple with invalid condition`, `workflow step post_/api/index/v1/debug/{datasource}/status.test does not contain $contentType successCriteria and required for response body assertion`]",

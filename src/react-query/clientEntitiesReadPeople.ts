@@ -12,13 +12,14 @@ import { clientEntitiesReadPeople } from "../funcs/clientEntitiesReadPeople.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientEntitiesReadPeopleMutationVariables = {
-  request: operations.PeopleRequest;
+  peopleRequest: components.PeopleRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +65,9 @@ export function buildClientEntitiesReadPeopleMutation(
   return {
     mutationKey: mutationKeyClientEntitiesReadPeople(),
     mutationFn: function clientEntitiesReadPeopleMutationFn({
-      request,
+      peopleRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientEntitiesReadPeopleMutationData> {
       const mergedOptions = {
@@ -81,7 +84,9 @@ export function buildClientEntitiesReadPeopleMutation(
       };
       return unwrapAsync(clientEntitiesReadPeople(
         client$,
-        request,
+        peopleRequest,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },

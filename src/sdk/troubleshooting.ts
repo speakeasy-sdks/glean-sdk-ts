@@ -12,7 +12,6 @@ import { indexingTroubleshootingPostDocumentDebug } from "../funcs/indexingTroub
 import { indexingTroubleshootingPostDocumentsDebug } from "../funcs/indexingTroubleshootingPostDocumentsDebug.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Troubleshooting extends ClientSDK {
@@ -25,12 +24,12 @@ export class Troubleshooting extends ClientSDK {
    * Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/) for more information.
    */
   async getDatasourceStatus(
-    request: operations.PostApiIndexV1DebugDatasourceStatusRequest,
+    datasource: string,
     options?: RequestOptions,
   ): Promise<components.DebugDatasourceStatusResponse> {
     return unwrapAsync(indexingTroubleshootingGetDatasourceStatus(
       this,
-      request,
+      datasource,
       options,
     ));
   }
@@ -44,12 +43,14 @@ export class Troubleshooting extends ClientSDK {
    * Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/) for more information.
    */
   async postDocumentDebug(
-    request: operations.PostApiIndexV1DebugDatasourceDocumentRequest,
+    debugDocumentRequest: components.DebugDocumentRequest,
+    datasource: string,
     options?: RequestOptions,
   ): Promise<components.DebugDocumentResponse> {
     return unwrapAsync(indexingTroubleshootingPostDocumentDebug(
       this,
-      request,
+      debugDocumentRequest,
+      datasource,
       options,
     ));
   }
@@ -63,12 +64,14 @@ export class Troubleshooting extends ClientSDK {
    * Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/) for more information.
    */
   async postDocumentsDebug(
-    request: operations.PostApiIndexV1DebugDatasourceDocumentsRequest,
+    debugDocumentsRequest: components.DebugDocumentsRequest,
+    datasource: string,
     options?: RequestOptions,
   ): Promise<components.DebugDocumentsResponse> {
     return unwrapAsync(indexingTroubleshootingPostDocumentsDebug(
       this,
-      request,
+      debugDocumentsRequest,
+      datasource,
       options,
     ));
   }
@@ -82,12 +85,14 @@ export class Troubleshooting extends ClientSDK {
    * Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/) for more information.
    */
   async debugUser(
-    request: operations.PostApiIndexV1DebugDatasourceUserRequest,
+    debugUserRequest: components.DebugUserRequest,
+    datasource: string,
     options?: RequestOptions,
   ): Promise<components.DebugUserResponse> {
     return unwrapAsync(indexingTroubleshootingDebugUser(
       this,
-      request,
+      debugUserRequest,
+      datasource,
       options,
     ));
   }

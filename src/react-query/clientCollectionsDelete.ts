@@ -11,13 +11,15 @@ import { GleanCore } from "../core.js";
 import { clientCollectionsDelete } from "../funcs/clientCollectionsDelete.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientCollectionsDeleteMutationVariables = {
-  request: operations.DeletecollectionRequest;
+  deleteCollectionRequest: components.DeleteCollectionRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -63,7 +65,9 @@ export function buildClientCollectionsDeleteMutation(
   return {
     mutationKey: mutationKeyClientCollectionsDelete(),
     mutationFn: function clientCollectionsDeleteMutationFn({
-      request,
+      deleteCollectionRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientCollectionsDeleteMutationData> {
       const mergedOptions = {
@@ -80,7 +84,9 @@ export function buildClientCollectionsDeleteMutation(
       };
       return unwrapAsync(clientCollectionsDelete(
         client$,
-        request,
+        deleteCollectionRequest,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },
