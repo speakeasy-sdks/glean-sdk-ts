@@ -732,7 +732,7 @@ The following errors may be thrown by the SDK:
 ### Example
 
 ```typescript
-import { Glean } from "glean";
+import { Glean } from "@gleanwork/api-client";
 import { GleanDataError, GleanError } from "glean/models/errors";
 
 const glean = new Glean({
@@ -740,7 +740,9 @@ const glean = new Glean({
 });
 
 try {
-  const data = await glean.chat.ask({});
+  const data = await glean.client.search.execute({
+    query: "What are the company holidays this year?",
+  });
   console.log(data);
 } catch (error) {
   if (error instanceof GleanError) {
@@ -755,8 +757,9 @@ try {
     console.error(error.errorMessages);
     console.error(error.invalidOperators);
   }
-}
 
+  throw error;
+}
 ```
 
 ### Advanced Error Handling

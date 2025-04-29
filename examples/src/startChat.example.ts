@@ -1,7 +1,7 @@
 import { config } from "dotenv";
 config();
-import { Glean } from "glean";
-import { GleanError, GleanDataError } from "glean/models/errors";
+import { Glean } from "@gleanwork/api-client";
+import { GleanError } from "@gleanwork/api-client/models/errors";
 
 if (!process.env["SERVER_URL"]) {
   throw new Error("SERVER_URL is not set");
@@ -15,12 +15,12 @@ const glean = new Glean({
 });
 
 try {
-  const data = await glean.chat.ask({
-    askRequest: {
-      searchRequest: {
-        query: "What is the capital of France?",
+  const data = await glean.client.chat.start({
+    messages: [
+      {
+        fragments: [{ text: "What are the company holidays this year?" }],
       },
-    },
+    ],
   });
   console.log(data);
 } catch (error) {
@@ -31,10 +31,5 @@ try {
     console.error(error.body);
   }
 
-  // GleanDataError contains structured data
-  if (error instanceof GleanDataError) {
-    console.error(error.errorMessages);
-    console.error(error.invalidOperators);
-  }
   throw error;
 }
