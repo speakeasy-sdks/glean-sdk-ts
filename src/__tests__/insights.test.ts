@@ -16,12 +16,10 @@ test("Insights Insights", async () => {
   });
 
   const result = await glean.client.insights.get({
-    insightsRequest: {
-      categories: [
-        "CONTENT",
-        "CONTENT",
-      ],
-    },
+    categories: [
+      "CONTENT",
+      "CONTENT",
+    ],
   });
   expect(result).toBeDefined();
 });

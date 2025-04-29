@@ -11,13 +11,16 @@ import { GleanCore } from "../core.js";
 import { clientChatStart } from "../funcs/clientChatStart.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatStartMutationVariables = {
-  request: operations.ChatRequest;
+  chatRequest: components.ChatRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
+  timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
 
@@ -63,7 +66,10 @@ export function buildClientChatStartMutation(
   return {
     mutationKey: mutationKeyClientChatStart(),
     mutationFn: function clientChatStartMutationFn({
-      request,
+      chatRequest,
+      xGleanActAs,
+      xGleanAuthType,
+      timezoneOffset,
       options,
     }): Promise<ClientChatStartMutationData> {
       const mergedOptions = {
@@ -80,7 +86,10 @@ export function buildClientChatStartMutation(
       };
       return unwrapAsync(clientChatStart(
         client$,
-        request,
+        chatRequest,
+        xGleanActAs,
+        xGleanAuthType,
+        timezoneOffset,
         mergedOptions,
       ));
     },

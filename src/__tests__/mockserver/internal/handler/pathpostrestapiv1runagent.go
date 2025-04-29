@@ -269,9 +269,7 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 									Status:       components.TeamStatusProcessed.ToPointer(),
 									CanBeDeleted: types.Bool(true),
 								},
-								CustomEntity: &components.CustomEntity{
-									Roles: []components.UserRoleSpecification{},
-								},
+								CustomEntity: &components.CustomEntity{},
 								Answer: &components.Answer{
 									ID:       3,
 									DocID:    types.String("ANSWERS_answer_3"),
@@ -292,8 +290,6 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 											},
 										},
 									},
-									AddedRoles:   []components.UserRoleSpecification{},
-									RemovedRoles: []components.UserRoleSpecification{},
 									CombinedAnswerText: &components.StructuredText{
 										Text:           "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
 										StructuredList: []components.StructuredTextItem{},
@@ -412,7 +408,6 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 													},
 												},
 											},
-											Ranges: []components.TextRange{},
 											InputDetails: &components.SearchRequestInputDetails{
 												HasCopyPaste: types.Bool(true),
 											},
@@ -442,9 +437,7 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 											},
 										},
 									},
-									ID:       511700,
-									Items:    []components.CollectionItem{},
-									Children: []components.Collection{},
+									ID: 511700,
 								},
 								AnswerBoard: &components.AnswerBoard{
 									Name:        "<value>",

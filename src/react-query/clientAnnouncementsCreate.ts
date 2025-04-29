@@ -12,13 +12,14 @@ import { clientAnnouncementsCreate } from "../funcs/clientAnnouncementsCreate.js
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientAnnouncementsCreateMutationVariables = {
-  request: operations.CreateannouncementRequest;
+  createAnnouncementRequest: components.CreateAnnouncementRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +65,9 @@ export function buildClientAnnouncementsCreateMutation(
   return {
     mutationKey: mutationKeyClientAnnouncementsCreate(),
     mutationFn: function clientAnnouncementsCreateMutationFn({
-      request,
+      createAnnouncementRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientAnnouncementsCreateMutationData> {
       const mergedOptions = {
@@ -81,7 +84,9 @@ export function buildClientAnnouncementsCreateMutation(
       };
       return unwrapAsync(clientAnnouncementsCreate(
         client$,
-        request,
+        createAnnouncementRequest,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },

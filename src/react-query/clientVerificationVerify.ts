@@ -12,13 +12,14 @@ import { clientVerificationVerify } from "../funcs/clientVerificationVerify.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientVerificationVerifyMutationVariables = {
-  request: operations.VerifyRequest;
+  verifyRequest: components.VerifyRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +65,9 @@ export function buildClientVerificationVerifyMutation(
   return {
     mutationKey: mutationKeyClientVerificationVerify(),
     mutationFn: function clientVerificationVerifyMutationFn({
-      request,
+      verifyRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientVerificationVerifyMutationData> {
       const mergedOptions = {
@@ -81,7 +84,9 @@ export function buildClientVerificationVerifyMutation(
       };
       return unwrapAsync(clientVerificationVerify(
         client$,
-        request,
+        verifyRequest,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },

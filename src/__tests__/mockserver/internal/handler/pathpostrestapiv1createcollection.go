@@ -53,7 +53,7 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 	}
 	respBody := &components.CreateCollectionResponse{
 		Name:        "<value>",
-		Description: "calmly fortunately bench around igloo scaffold",
+		Description: "mentor early miserly stealthily without trick yahoo until planula",
 		AddedRoles: []components.UserRoleSpecification{
 			components.UserRoleSpecification{
 				Person: &components.Person{
@@ -61,17 +61,20 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 					ObfuscatedID:     "abc123",
 					RelatedDocuments: []components.RelatedDocuments{},
 					Metadata: &components.PersonMetadata{
-						Type:              components.PersonMetadataTypeFullTime.ToPointer(),
-						Title:             types.String("Actor"),
-						Department:        types.String("Movies"),
-						Email:             types.String("george@example.com"),
-						Location:          types.String("Hollywood, CA"),
-						ManagementChain:   []components.Person{},
-						Phone:             types.String("6505551234"),
-						PhotoURL:          types.String("https://example.com/george.jpg"),
-						Reports:           []components.Person{},
-						StartDate:         types.MustNewDateFromString("2000-01-23"),
-						DatasourceProfile: []components.DatasourceProfile{},
+						Type:       components.PersonMetadataTypeFullTime.ToPointer(),
+						Title:      types.String("Actor"),
+						Department: types.String("Movies"),
+						Email:      types.String("george@example.com"),
+						Location:   types.String("Hollywood, CA"),
+						Phone:      types.String("6505551234"),
+						PhotoURL:   types.String("https://example.com/george.jpg"),
+						StartDate:  types.MustNewDateFromString("2000-01-23"),
+						DatasourceProfile: []components.DatasourceProfile{
+							components.DatasourceProfile{
+								Datasource: "github",
+								Handle:     "<value>",
+							},
+						},
 						QuerySuggestions: &components.QuerySuggestionList{
 							Suggestions: []components.QuerySuggestion{},
 						},
@@ -79,21 +82,32 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 							Invites: []components.ChannelInviteInfo{},
 						},
 						CustomFields: []components.CustomFieldData{},
-						Badges:       []components.Badge{},
+						Badges: []components.Badge{
+							components.Badge{
+								Key:         types.String("deployment_name_new_hire"),
+								DisplayName: types.String("New hire"),
+								IconConfig: &components.IconConfig{
+									Color:    types.String("#343CED"),
+									Key:      types.String("person_icon"),
+									IconType: components.IconTypeGlyph.ToPointer(),
+									Name:     types.String("user"),
+								},
+							},
+						},
 					},
 				},
-				Role: components.UserRoleEditor,
-			},
-			components.UserRoleSpecification{
-				Role: components.UserRoleEditor,
-			},
-			components.UserRoleSpecification{
 				Role: components.UserRoleEditor,
 			},
 		},
 		RemovedRoles: []components.UserRoleSpecification{
 			components.UserRoleSpecification{
 				Role: components.UserRoleEditor,
+			},
+			components.UserRoleSpecification{
+				Role: components.UserRoleAnswerModerator,
+			},
+			components.UserRoleSpecification{
+				Role: components.UserRoleViewer,
 			},
 		},
 		AudienceFilters: []components.FacetFilter{
@@ -111,7 +125,7 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 				},
 			},
 		},
-		ID: 449221,
+		ID: 48554,
 		Creator: &components.Person{
 			Name:         "George Clooney",
 			ObfuscatedID: "abc123",
@@ -122,41 +136,143 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 		},
 		Items: []components.CollectionItem{
 			components.CollectionItem{
-				CollectionID: 760259,
+				CollectionID: 913385,
 				CreatedBy: &components.Person{
 					Name:         "George Clooney",
 					ObfuscatedID: "abc123",
 				},
-				ItemType: components.CollectionItemItemTypeDocument,
+				Document: &components.Document{
+					Metadata: &components.DocumentMetadata{
+						Datasource: types.String("datasource"),
+						ObjectType: types.String("Feature Request"),
+						Container:  types.String("container"),
+						ParentID:   types.String("JIRA_EN-1337"),
+						MimeType:   types.String("mimeType"),
+						DocumentID: types.String("documentId"),
+						CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+						UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+						Author: &components.Person{
+							Name:         "George Clooney",
+							ObfuscatedID: "abc123",
+						},
+						Owner: &components.Person{
+							Name:         "George Clooney",
+							ObfuscatedID: "abc123",
+						},
+						Components: []string{
+							"Backend",
+							"Networking",
+						},
+						Status: types.String("[\"Done\"]"),
+						AssignedTo: &components.Person{
+							Name:         "George Clooney",
+							ObfuscatedID: "abc123",
+						},
+						Interactions: &components.DocumentInteractions{},
+						Verification: &components.Verification{
+							State: components.StateVerified,
+							Metadata: &components.VerificationMetadata{
+								LastVerifier: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								LastReminder: &components.Reminder{
+									Assignee: components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Requestor: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									RemindAt: 816391,
+								},
+							},
+						},
+						CustomData: map[string]components.CustomDataValue{
+							"someCustomField": components.CustomDataValue{},
+						},
+						ContactPerson: &components.Person{
+							Name:         "George Clooney",
+							ObfuscatedID: "abc123",
+						},
+					},
+				},
+				Collection: &components.Collection{
+					Name:        "<value>",
+					Description: "grade underachieve secret",
+					AudienceFilters: []components.FacetFilter{
+						components.FacetFilter{
+							FieldName: types.String("type"),
+							Values: []components.FacetFilterValue{
+								components.FacetFilterValue{
+									Value:        types.String("Spreadsheet"),
+									RelationType: components.RelationTypeEquals.ToPointer(),
+								},
+								components.FacetFilterValue{
+									Value:        types.String("Presentation"),
+									RelationType: components.RelationTypeEquals.ToPointer(),
+								},
+							},
+						},
+					},
+					ID: 772467,
+				},
+				ItemType: components.CollectionItemItemTypeCollection,
 			},
 			components.CollectionItem{
-				CollectionID: 760259,
-				ItemType:     components.CollectionItemItemTypeDocument,
+				CollectionID: 611865,
+				ItemType:     components.CollectionItemItemTypeURL,
 			},
 		},
 		Children: []components.Collection{
 			components.Collection{
-				Name:            "<value>",
-				Description:     "fencing vainly kookily for however",
-				AudienceFilters: []components.FacetFilter{},
-				ID:              608384,
-				Roles:           []components.UserRoleSpecification{},
+				Name:        "<value>",
+				Description: "sweetly however whoever zowie wherever vivaciously",
+				AudienceFilters: []components.FacetFilter{
+					components.FacetFilter{
+						FieldName: types.String("type"),
+						Values: []components.FacetFilterValue{
+							components.FacetFilterValue{
+								Value:        types.String("Spreadsheet"),
+								RelationType: components.RelationTypeEquals.ToPointer(),
+							},
+							components.FacetFilterValue{
+								Value:        types.String("Presentation"),
+								RelationType: components.RelationTypeEquals.ToPointer(),
+							},
+						},
+					},
+				},
+				ID: 118148,
 			},
 			components.Collection{
-				Name:            "<value>",
-				Description:     "fencing vainly kookily for however",
-				AudienceFilters: []components.FacetFilter{},
-				ID:              608384,
+				Name:        "<value>",
+				Description: "shinny ugh sheepishly mmm queasily factorize arrogantly",
+				AudienceFilters: []components.FacetFilter{
+					components.FacetFilter{
+						FieldName: types.String("type"),
+						Values: []components.FacetFilterValue{
+							components.FacetFilterValue{
+								Value:        types.String("Spreadsheet"),
+								RelationType: components.RelationTypeEquals.ToPointer(),
+							},
+							components.FacetFilterValue{
+								Value:        types.String("Presentation"),
+								RelationType: components.RelationTypeEquals.ToPointer(),
+							},
+						},
+					},
+				},
+				ID: 754554,
 			},
 		},
-		Roles:     []components.UserRoleSpecification{},
-		ErrorCode: components.CreateCollectionResponseErrorCodeConcurrentHierarchyEdit,
-		Collection: &components.Collection{
-			Name:            "<value>",
-			Description:     "because almighty an",
-			AudienceFilters: []components.FacetFilter{},
-			ID:              822820,
+		Roles: []components.UserRoleSpecification{
+			components.UserRoleSpecification{
+				Role: components.UserRoleVerifier,
+			},
 		},
+		ErrorCode: components.CreateCollectionResponseErrorCodeConcurrentHierarchyEdit,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

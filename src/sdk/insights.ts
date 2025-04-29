@@ -5,7 +5,6 @@
 import { clientInsightsGet } from "../funcs/clientInsightsGet.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Insights extends ClientSDK {
@@ -16,12 +15,16 @@ export class Insights extends ClientSDK {
    * Reads the aggregate information for each user, query, and content.
    */
   async get(
-    request: operations.InsightsRequest,
+    insightsRequest: components.InsightsRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.InsightsResponse> {
     return unwrapAsync(clientInsightsGet(
       this,
-      request,
+      insightsRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }

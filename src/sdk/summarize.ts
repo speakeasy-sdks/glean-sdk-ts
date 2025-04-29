@@ -5,7 +5,6 @@
 import { clientSummarizeGenerate } from "../funcs/clientSummarizeGenerate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Summarize extends ClientSDK {
@@ -16,12 +15,16 @@ export class Summarize extends ClientSDK {
    * Generate an AI summary of the requested documents.
    */
   async generate(
-    request: operations.SummarizeRequest,
+    summarizeRequest: components.SummarizeRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.SummarizeResponse> {
     return unwrapAsync(clientSummarizeGenerate(
       this,
-      request,
+      summarizeRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }

@@ -12,13 +12,14 @@ import { clientSearchAutocomplete } from "../funcs/clientSearchAutocomplete.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientSearchAutocompleteMutationVariables = {
-  request: operations.AutocompleteRequest;
+  autocompleteRequest: components.AutocompleteRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -65,7 +66,9 @@ export function buildClientSearchAutocompleteMutation(
   return {
     mutationKey: mutationKeyClientSearchAutocomplete(),
     mutationFn: function clientSearchAutocompleteMutationFn({
-      request,
+      autocompleteRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientSearchAutocompleteMutationData> {
       const mergedOptions = {
@@ -82,7 +85,9 @@ export function buildClientSearchAutocompleteMutation(
       };
       return unwrapAsync(clientSearchAutocomplete(
         client$,
-        request,
+        autocompleteRequest,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },

@@ -35,9 +35,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.indexing.troubleshooting.getDatasourceStatus({
-    datasource: "<value>",
-  });
+  const result = await glean.indexing.troubleshooting.getDatasourceStatus("<value>");
 
   // Handle the result
   console.log(result);
@@ -61,9 +59,7 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await indexingTroubleshootingGetDatasourceStatus(glean, {
-    datasource: "<value>",
-  });
+  const res = await indexingTroubleshootingGetDatasourceStatus(glean, "<value>");
 
   if (!res.ok) {
     throw res.error;
@@ -99,7 +95,7 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostApiIndexV1DebugDatasourceStatusRequest](../../models/operations/postapiindexv1debugdatasourcestatusrequest.md)                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `datasource`                                                                                                                                                                   | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The datasource to get debug status for.                                                                                                                                        |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -132,12 +128,9 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.indexing.troubleshooting.postDocumentDebug({
-    datasource: "<value>",
-    debugDocumentRequest: {
-      objectType: "Article",
-      docId: "art123",
-    },
-  });
+    objectType: "Article",
+    docId: "art123",
+  }, "<value>");
 
   // Handle the result
   console.log(result);
@@ -162,12 +155,9 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await indexingTroubleshootingPostDocumentDebug(glean, {
-    datasource: "<value>",
-    debugDocumentRequest: {
-      objectType: "Article",
-      docId: "art123",
-    },
-  });
+    objectType: "Article",
+    docId: "art123",
+  }, "<value>");
 
   if (!res.ok) {
     throw res.error;
@@ -203,7 +193,8 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostApiIndexV1DebugDatasourceDocumentRequest](../../models/operations/postapiindexv1debugdatasourcedocumentrequest.md)                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `datasource`                                                                                                                                                                   | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The datasource to which the document belongs                                                                                                                                   |
+| `debugDocumentRequest`                                                                                                                                                         | [components.DebugDocumentRequest](../../models/components/debugdocumentrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -236,20 +227,17 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.indexing.troubleshooting.postDocumentsDebug({
-    datasource: "<value>",
-    debugDocumentsRequest: {
-      debugDocuments: [
-        {
-          objectType: "Article",
-          docId: "art123",
-        },
-        {
-          objectType: "Article",
-          docId: "art123",
-        },
-      ],
-    },
-  });
+    debugDocuments: [
+      {
+        objectType: "Article",
+        docId: "art123",
+      },
+      {
+        objectType: "Article",
+        docId: "art123",
+      },
+    ],
+  }, "<value>");
 
   // Handle the result
   console.log(result);
@@ -274,20 +262,17 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await indexingTroubleshootingPostDocumentsDebug(glean, {
-    datasource: "<value>",
-    debugDocumentsRequest: {
-      debugDocuments: [
-        {
-          objectType: "Article",
-          docId: "art123",
-        },
-        {
-          objectType: "Article",
-          docId: "art123",
-        },
-      ],
-    },
-  });
+    debugDocuments: [
+      {
+        objectType: "Article",
+        docId: "art123",
+      },
+      {
+        objectType: "Article",
+        docId: "art123",
+      },
+    ],
+  }, "<value>");
 
   if (!res.ok) {
     throw res.error;
@@ -323,7 +308,8 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostApiIndexV1DebugDatasourceDocumentsRequest](../../models/operations/postapiindexv1debugdatasourcedocumentsrequest.md)                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `datasource`                                                                                                                                                                   | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The datasource to which the document belongs                                                                                                                                   |
+| `debugDocumentsRequest`                                                                                                                                                        | [components.DebugDocumentsRequest](../../models/components/debugdocumentsrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -356,11 +342,8 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.indexing.troubleshooting.debugUser({
-    datasource: "<value>",
-    debugUserRequest: {
-      email: "u1@foo.com",
-    },
-  });
+    email: "u1@foo.com",
+  }, "<value>");
 
   // Handle the result
   console.log(result);
@@ -385,11 +368,8 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await indexingTroubleshootingDebugUser(glean, {
-    datasource: "<value>",
-    debugUserRequest: {
-      email: "u1@foo.com",
-    },
-  });
+    email: "u1@foo.com",
+  }, "<value>");
 
   if (!res.ok) {
     throw res.error;
@@ -425,7 +405,8 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostApiIndexV1DebugDatasourceUserRequest](../../models/operations/postapiindexv1debugdatasourceuserrequest.md)                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `datasource`                                                                                                                                                                   | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The datasource to which the user belongs                                                                                                                                       |
+| `debugUserRequest`                                                                                                                                                             | [components.DebugUserRequest](../../models/components/debuguserrequest.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |

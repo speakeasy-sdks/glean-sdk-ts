@@ -11,6 +11,7 @@ import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
+import * as components from "../models/components/index.js";
 import { GleanError } from "../models/errors/gleanerror.js";
 import {
   ConnectionError,
@@ -32,7 +33,10 @@ import { Result } from "../types/fp.js";
  */
 export function clientActivitiesReportActivity(
   client: GleanCore,
-  request: operations.FeedbackRequest,
+  feedback1?: components.Feedback | undefined,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
+  feedbackQueryParameter?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -48,14 +52,20 @@ export function clientActivitiesReportActivity(
 > {
   return new APIPromise($do(
     client,
-    request,
+    feedback1,
+    xGleanActAs,
+    xGleanAuthType,
+    feedbackQueryParameter,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: operations.FeedbackRequest,
+  feedback1?: components.Feedback | undefined,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
+  feedbackQueryParameter?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -72,8 +82,15 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.FeedbackRequest = {
+    feedback1: feedback1,
+    xGleanActAs: xGleanActAs,
+    xGleanAuthType: xGleanAuthType,
+    feedbackQueryParameter: feedbackQueryParameter,
+  };
+
   const parsed = safeParse(
-    request,
+    input,
     (value) => operations.FeedbackRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

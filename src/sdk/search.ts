@@ -7,11 +7,8 @@ import { clientSearchAutocomplete } from "../funcs/clientSearchAutocomplete.js";
 import { clientSearchExecute } from "../funcs/clientSearchExecute.js";
 import { clientSearchGetFeed } from "../funcs/clientSearchGetFeed.js";
 import { clientSearchRecommendations } from "../funcs/clientSearchRecommendations.js";
-import { clientSearchSuggestPeople } from "../funcs/clientSearchSuggestPeople.js";
-import { clientSearchSuggestPeopleAdmin } from "../funcs/clientSearchSuggestPeopleAdmin.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Search extends ClientSDK {
@@ -22,12 +19,16 @@ export class Search extends ClientSDK {
    * Retrieves results for search query without respect for permissions. This is available only to privileged users.
    */
   async admin(
-    request: operations.AdminsearchRequest,
+    searchRequest?: components.SearchRequest | undefined,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.SearchResponse> {
     return unwrapAsync(clientSearchAdmin(
       this,
-      request,
+      searchRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }
@@ -39,12 +40,16 @@ export class Search extends ClientSDK {
    * Retrieve query suggestions, operators and documents for the given partially typed query.
    */
   async autocomplete(
-    request: operations.AutocompleteRequest,
+    autocompleteRequest: components.AutocompleteRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.AutocompleteResponse> {
     return unwrapAsync(clientSearchAutocomplete(
       this,
-      request,
+      autocompleteRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }
@@ -56,46 +61,16 @@ export class Search extends ClientSDK {
    * The personalized feed/home includes different types of contents including suggestions, recents, calendar events and many more.
    */
   async getFeed(
-    request: operations.FeedRequest,
+    feedRequest: components.FeedRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.FeedResponse> {
     return unwrapAsync(clientSearchGetFeed(
       this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Suggest people
-   *
-   * @remarks
-   * Retrieves a list of suggested people for given type. Includes information about the persons.
-   */
-  async suggestPeople(
-    request: operations.PeoplesuggestRequest,
-    options?: RequestOptions,
-  ): Promise<components.PeopleSuggestResponse> {
-    return unwrapAsync(clientSearchSuggestPeople(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Suggest people (admin)
-   *
-   * @remarks
-   * Returns a list of suggested people for given type for admin's view. Includes information about the persons.
-   */
-  async suggestPeopleAdmin(
-    request: operations.PeoplesuggestadminRequest,
-    options?: RequestOptions,
-  ): Promise<components.PeopleSuggestResponse> {
-    return unwrapAsync(clientSearchSuggestPeopleAdmin(
-      this,
-      request,
+      feedRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }
@@ -107,12 +82,16 @@ export class Search extends ClientSDK {
    * Retrieve recommended documents for the given URL or Glean Document ID.
    */
   async recommendations(
-    request: operations.RecommendationsRequest,
+    recommendationsRequest?: components.RecommendationsRequest | undefined,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.ResultsResponse | undefined> {
     return unwrapAsync(clientSearchRecommendations(
       this,
-      request,
+      recommendationsRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }
@@ -124,12 +103,16 @@ export class Search extends ClientSDK {
    * Retrieve results from the index for the given query and filters.
    */
   async execute(
-    request: operations.SearchRequest,
+    searchRequest?: components.SearchRequest | undefined,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.SearchResponse> {
     return unwrapAsync(clientSearchExecute(
       this,
-      request,
+      searchRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }

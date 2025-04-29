@@ -6,16 +6,12 @@ import { clientCollectionsAddItems } from "../funcs/clientCollectionsAddItems.js
 import { clientCollectionsCreate } from "../funcs/clientCollectionsCreate.js";
 import { clientCollectionsDelete } from "../funcs/clientCollectionsDelete.js";
 import { clientCollectionsDeleteItem } from "../funcs/clientCollectionsDeleteItem.js";
-import { clientCollectionsEdit } from "../funcs/clientCollectionsEdit.js";
 import { clientCollectionsEditItem } from "../funcs/clientCollectionsEditItem.js";
 import { clientCollectionsGet } from "../funcs/clientCollectionsGet.js";
 import { clientCollectionsList } from "../funcs/clientCollectionsList.js";
-import { clientCollectionsMoveItem } from "../funcs/clientCollectionsMoveItem.js";
-import { clientCollectionsPin } from "../funcs/clientCollectionsPin.js";
 import { clientCollectionsUpdate } from "../funcs/clientCollectionsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Collections extends ClientSDK {
@@ -26,12 +22,16 @@ export class Collections extends ClientSDK {
    * Add items to a Collection.
    */
   async addItems(
-    request: operations.AddcollectionitemsRequest,
+    addCollectionItemsRequest: components.AddCollectionItemsRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.AddCollectionItemsResponse> {
     return unwrapAsync(clientCollectionsAddItems(
       this,
-      request,
+      addCollectionItemsRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }
@@ -43,12 +43,16 @@ export class Collections extends ClientSDK {
    * Create a publicly visible (empty) Collection of documents.
    */
   async create(
-    request: operations.CreatecollectionRequest,
+    createCollectionRequest: components.CreateCollectionRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.CreateCollectionResponse> {
     return unwrapAsync(clientCollectionsCreate(
       this,
-      request,
+      createCollectionRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }
@@ -60,12 +64,16 @@ export class Collections extends ClientSDK {
    * Delete a Collection given the Collection's ID.
    */
   async delete(
-    request: operations.DeletecollectionRequest,
+    deleteCollectionRequest: components.DeleteCollectionRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(clientCollectionsDelete(
       this,
-      request,
+      deleteCollectionRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }
@@ -77,12 +85,16 @@ export class Collections extends ClientSDK {
    * Delete a single item from a Collection.
    */
   async deleteItem(
-    request: operations.DeletecollectionitemRequest,
+    deleteCollectionItemRequest: components.DeleteCollectionItemRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.DeleteCollectionItemResponse> {
     return unwrapAsync(clientCollectionsDeleteItem(
       this,
-      request,
+      deleteCollectionItemRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }
@@ -94,12 +106,16 @@ export class Collections extends ClientSDK {
    * Update the properties of an existing Collection.
    */
   async update(
-    request: operations.EditcollectionRequest,
+    editCollectionRequest: components.EditCollectionRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.EditCollectionResponse> {
     return unwrapAsync(clientCollectionsUpdate(
       this,
-      request,
+      editCollectionRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }
@@ -111,29 +127,16 @@ export class Collections extends ClientSDK {
    * Update the URL, Glean Document ID, description of an item within a Collection given its ID.
    */
   async editItem(
-    request: operations.EditcollectionitemRequest,
+    editCollectionItemRequest: components.EditCollectionItemRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.EditCollectionItemResponse> {
     return unwrapAsync(clientCollectionsEditItem(
       this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Update document Collections
-   *
-   * @remarks
-   * Update the Collections that a document belongs to.
-   */
-  async edit(
-    request: operations.EditdocumentcollectionsRequest,
-    options?: RequestOptions,
-  ): Promise<components.EditDocumentCollectionsResponse> {
-    return unwrapAsync(clientCollectionsEdit(
-      this,
-      request,
+      editCollectionItemRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }
@@ -145,12 +148,16 @@ export class Collections extends ClientSDK {
    * Read the details of a Collection given its ID. Does not fetch items in this Collection.
    */
   async get(
-    request: operations.GetcollectionRequest,
+    getCollectionRequest: components.GetCollectionRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.GetCollectionResponse> {
     return unwrapAsync(clientCollectionsGet(
       this,
-      request,
+      getCollectionRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }
@@ -162,46 +169,16 @@ export class Collections extends ClientSDK {
    * List all existing Collections.
    */
   async list(
-    request: operations.ListcollectionsRequest,
+    listCollectionsRequest: components.ListCollectionsRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.ListCollectionsResponse> {
     return unwrapAsync(clientCollectionsList(
       this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Move Collection item
-   *
-   * @remarks
-   * Reorder a Collection by moving a CollectionItem below another CollectionItem.
-   */
-  async moveItem(
-    request: operations.MovecollectionitemRequest,
-    options?: RequestOptions,
-  ): Promise<components.MoveCollectionItemResponse> {
-    return unwrapAsync(clientCollectionsMoveItem(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Pin Collection
-   *
-   * @remarks
-   * Given the Collection id and category, pins the Collection to the home page for all company users.
-   */
-  async pin(
-    request: operations.PincollectionRequest,
-    options?: RequestOptions,
-  ): Promise<components.GetCollectionResponse> {
-    return unwrapAsync(clientCollectionsPin(
-      this,
-      request,
+      listCollectionsRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }

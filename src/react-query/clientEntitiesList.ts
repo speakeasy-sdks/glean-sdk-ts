@@ -12,13 +12,14 @@ import { clientEntitiesList } from "../funcs/clientEntitiesList.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientEntitiesListMutationVariables = {
-  request: operations.ListentitiesRequest;
+  listEntitiesRequest: components.ListEntitiesRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +65,9 @@ export function buildClientEntitiesListMutation(
   return {
     mutationKey: mutationKeyClientEntitiesList(),
     mutationFn: function clientEntitiesListMutationFn({
-      request,
+      listEntitiesRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientEntitiesListMutationData> {
       const mergedOptions = {
@@ -81,7 +84,9 @@ export function buildClientEntitiesListMutation(
       };
       return unwrapAsync(clientEntitiesList(
         client$,
-        request,
+        listEntitiesRequest,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },

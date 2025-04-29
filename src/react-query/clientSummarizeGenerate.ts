@@ -12,13 +12,14 @@ import { clientSummarizeGenerate } from "../funcs/clientSummarizeGenerate.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientSummarizeGenerateMutationVariables = {
-  request: operations.SummarizeRequest;
+  summarizeRequest: components.SummarizeRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +65,9 @@ export function buildClientSummarizeGenerateMutation(
   return {
     mutationKey: mutationKeyClientSummarizeGenerate(),
     mutationFn: function clientSummarizeGenerateMutationFn({
-      request,
+      summarizeRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientSummarizeGenerateMutationData> {
       const mergedOptions = {
@@ -81,7 +84,9 @@ export function buildClientSummarizeGenerateMutation(
       };
       return unwrapAsync(clientSummarizeGenerate(
         client$,
-        request,
+        summarizeRequest,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },

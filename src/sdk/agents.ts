@@ -7,7 +7,6 @@ import { agentsListagents } from "../funcs/agentsListagents.js";
 import { agentsRunagent } from "../funcs/agentsRunagent.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Agents extends ClientSDK {
@@ -18,12 +17,18 @@ export class Agents extends ClientSDK {
    * Trigger an Agent with a given id.
    */
   async runagent(
-    request: operations.RunagentRequest,
+    runAgentRequest: components.RunAgentRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
+    timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.ChatResponse> {
     return unwrapAsync(agentsRunagent(
       this,
-      request,
+      runAgentRequest,
+      xGleanActAs,
+      xGleanAuthType,
+      timezoneOffset,
       options,
     ));
   }
@@ -35,12 +40,18 @@ export class Agents extends ClientSDK {
    * Lists all agents that are available.
    */
   async listagents(
-    request: operations.ListagentsRequest,
+    requestBody?: any | undefined,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
+    timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.ListAgentsResponse> {
     return unwrapAsync(agentsListagents(
       this,
-      request,
+      requestBody,
+      xGleanActAs,
+      xGleanAuthType,
+      timezoneOffset,
       options,
     ));
   }
@@ -52,12 +63,18 @@ export class Agents extends ClientSDK {
    * Get the inputs to an agent with a given id.
    */
   async getagentinputs(
-    request: operations.GetagentinputsRequest,
+    getAgentInputsRequest: components.GetAgentInputsRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
+    timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.GetAgentInputsResponse> {
     return unwrapAsync(agentsGetagentinputs(
       this,
-      request,
+      getAgentInputsRequest,
+      xGleanActAs,
+      xGleanAuthType,
+      timezoneOffset,
       options,
     ));
   }

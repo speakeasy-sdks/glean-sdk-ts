@@ -39,7 +39,7 @@ typescript:
   enumFormat: union
   envVarPrefix: GLEAN
   flattenGlobalSecurity: true
-  flatteningOrder: parameters-first
+  flatteningOrder: body-first
   imports:
     option: openapi
     paths:
@@ -50,7 +50,7 @@ typescript:
       webhooks: models/webhooks
   inputModelSuffix: input
   jsonpath: rfc9535
-  maxMethodParams: 0
+  maxMethodParams: 5
   methodArguments: require-security-and-request
   moduleFormat: dual
   outputModelSuffix: output

@@ -16,24 +16,22 @@ test("Entities Listentities", async () => {
   });
 
   const result = await glean.client.entities.list({
-    listEntitiesRequest: {
-      filter: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-      pageSize: 100,
-    },
+    filter: [
+      {
+        fieldName: "type",
+        values: [
+          {
+            value: "Spreadsheet",
+            relationType: "EQUALS",
+          },
+          {
+            value: "Presentation",
+            relationType: "EQUALS",
+          },
+        ],
+      },
+    ],
+    pageSize: 100,
   });
   expect(result).toBeDefined();
 });
@@ -48,31 +46,10 @@ test("Entities People", async () => {
   });
 
   const result = await glean.client.entities.readPeople({
-    peopleRequest: {
-      obfuscatedIds: [
-        "abc123",
-        "abc456",
-      ],
-    },
-  });
-  expect(result).toBeDefined();
-});
-
-test("Entities Teams", async () => {
-  const testHttpClient = createTestHTTPClient("teams");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.entities.getTeams({
-    teamsRequest: {
-      ids: [
-        "abc123",
-      ],
-    },
+    obfuscatedIds: [
+      "abc123",
+      "abc456",
+    ],
   });
   expect(result).toBeDefined();
 });

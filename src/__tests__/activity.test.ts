@@ -6,8 +6,8 @@ import { test } from "vitest";
 import { Glean } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
-test("Activity Feedback", async () => {
-  const testHttpClient = createTestHTTPClient("feedback");
+test("Activity Activity", async () => {
+  const testHttpClient = createTestHTTPClient("activity");
 
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
@@ -15,12 +15,30 @@ test("Activity Feedback", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  await glean.client.activities.reportActivity({
-    feedback1: {
-      trackingTokens: [
-        "trackingTokens",
-      ],
-      event: "VIEW",
-    },
+  await glean.client.activity.report({
+    events: [
+      {
+        action: "HISTORICAL_VIEW",
+        timestamp: new Date("2000-01-23T04:56:07.000Z"),
+        url: "https://example.com/",
+      },
+      {
+        action: "SEARCH",
+        params: {
+          query: "query",
+        },
+        timestamp: new Date("2000-01-23T04:56:07.000Z"),
+        url: "https://example.com/search?q=query",
+      },
+      {
+        action: "VIEW",
+        params: {
+          duration: 20,
+          referrer: "https://example.com/document",
+        },
+        timestamp: new Date("2000-01-23T04:56:07.000Z"),
+        url: "https://example.com/",
+      },
+    ],
   });
 });

@@ -7,7 +7,6 @@ import { clientVerificationList } from "../funcs/clientVerificationList.js";
 import { clientVerificationVerify } from "../funcs/clientVerificationVerify.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Verification extends ClientSDK {
@@ -18,12 +17,16 @@ export class Verification extends ClientSDK {
    * Creates a verification reminder for the document. Users can create verification reminders from different product surfaces.
    */
   async addReminder(
-    request: operations.AddverificationreminderRequest,
+    reminderRequest: components.ReminderRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.Verification> {
     return unwrapAsync(clientVerificationAddReminder(
       this,
-      request,
+      reminderRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }
@@ -35,12 +38,16 @@ export class Verification extends ClientSDK {
    * Returns the information to be rendered in verification dashboard. Includes information for each document owned by user regarding their verifications.
    */
   async list(
-    request: operations.ListverificationsRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
+    count?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.VerificationFeed> {
     return unwrapAsync(clientVerificationList(
       this,
-      request,
+      xGleanActAs,
+      xGleanAuthType,
+      count,
       options,
     ));
   }
@@ -52,12 +59,16 @@ export class Verification extends ClientSDK {
    * Verify documents to keep the knowledge up to date within customer corpus.
    */
   async verify(
-    request: operations.VerifyRequest,
+    verifyRequest: components.VerifyRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.Verification> {
     return unwrapAsync(clientVerificationVerify(
       this,
-      request,
+      verifyRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }

@@ -34,7 +34,8 @@ import { Result } from "../types/fp.js";
  */
 export function indexingTroubleshootingPostDocumentsDebug(
   client: GleanCore,
-  request: operations.PostApiIndexV1DebugDatasourceDocumentsRequest,
+  debugDocumentsRequest: components.DebugDocumentsRequest,
+  datasource: string,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -50,14 +51,16 @@ export function indexingTroubleshootingPostDocumentsDebug(
 > {
   return new APIPromise($do(
     client,
-    request,
+    debugDocumentsRequest,
+    datasource,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: operations.PostApiIndexV1DebugDatasourceDocumentsRequest,
+  debugDocumentsRequest: components.DebugDocumentsRequest,
+  datasource: string,
   options?: RequestOptions,
 ): Promise<
   [
@@ -74,8 +77,13 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.PostApiIndexV1DebugDatasourceDocumentsRequest = {
+    debugDocumentsRequest: debugDocumentsRequest,
+    datasource: datasource,
+  };
+
   const parsed = safeParse(
-    request,
+    input,
     (value) =>
       operations.PostApiIndexV1DebugDatasourceDocumentsRequest$outboundSchema
         .parse(value),

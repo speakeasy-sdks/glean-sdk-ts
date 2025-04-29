@@ -5,7 +5,6 @@
 
 ### Available Operations
 
-* [ask](#ask) - Detect and answer questions
 * [start](#start) - Chat
 * [deleteAll](#deleteall) - Deletes all saved Chats owned by a user
 * [delete](#delete) - Deletes saved Chats
@@ -15,254 +14,6 @@
 * [uploadFiles](#uploadfiles) - Upload files for Chat.
 * [getFiles](#getfiles) - Get files uploaded by a user for Chat.
 * [deleteFiles](#deletefiles) - Delete files uploaded by a user for chat.
-
-## ask
-
-Classify a query as information seeking or not. If so, generate an AI answer and/or provide relevant documents. Useful for integrating into existing chat interfaces.
-
-### Example Usage
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const result = await glean.client.chat.ask({
-    askRequest: {
-      detectOnly: true,
-      askExperimentalMetadata: {
-        queryHasMentions: true,
-        queryIsLengthAppropriate: true,
-        queryIsAnswerable: true,
-      },
-      searchRequest: {
-        trackingToken: "trackingToken",
-        pageSize: 10,
-        query: "vacation policy",
-        requestOptions: {
-          facetFilters: [
-            {
-              fieldName: "type",
-              values: [
-                {
-                  value: "article",
-                  relationType: "EQUALS",
-                },
-                {
-                  value: "document",
-                  relationType: "EQUALS",
-                },
-              ],
-            },
-            {
-              fieldName: "department",
-              values: [
-                {
-                  value: "engineering",
-                  relationType: "EQUALS",
-                },
-              ],
-            },
-          ],
-          facetBucketSize: 250170,
-        },
-      },
-      excludedDocumentSpecs: [
-        {
-          url: "string",
-        },
-      ],
-      operators: "string",
-      backend: "SEARCH",
-      chatApplicationId: "string",
-      inclusions: {
-        containerSpecs: [
-          {
-            url: "string",
-          },
-        ],
-        documentSpecs: [
-          {
-            url: "string",
-          },
-        ],
-        datasourceInstances: [
-          "string",
-        ],
-      },
-      exclusions: {
-        containerSpecs: [
-          {
-            url: "string",
-          },
-        ],
-        documentSpecs: [
-          {
-            url: "string",
-          },
-        ],
-        datasourceInstances: [
-          "string",
-        ],
-      },
-    },
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { GleanCore } from "@gleanwork/api-client/core.js";
-import { clientChatAsk } from "@gleanwork/api-client/funcs/clientChatAsk.js";
-
-// Use `GleanCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const glean = new GleanCore({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const res = await clientChatAsk(glean, {
-    askRequest: {
-      detectOnly: true,
-      askExperimentalMetadata: {
-        queryHasMentions: true,
-        queryIsLengthAppropriate: true,
-        queryIsAnswerable: true,
-      },
-      searchRequest: {
-        trackingToken: "trackingToken",
-        pageSize: 10,
-        query: "vacation policy",
-        requestOptions: {
-          facetFilters: [
-            {
-              fieldName: "type",
-              values: [
-                {
-                  value: "article",
-                  relationType: "EQUALS",
-                },
-                {
-                  value: "document",
-                  relationType: "EQUALS",
-                },
-              ],
-            },
-            {
-              fieldName: "department",
-              values: [
-                {
-                  value: "engineering",
-                  relationType: "EQUALS",
-                },
-              ],
-            },
-          ],
-          facetBucketSize: 250170,
-        },
-      },
-      excludedDocumentSpecs: [
-        {
-          url: "string",
-        },
-      ],
-      operators: "string",
-      backend: "SEARCH",
-      chatApplicationId: "string",
-      inclusions: {
-        containerSpecs: [
-          {
-            url: "string",
-          },
-        ],
-        documentSpecs: [
-          {
-            url: "string",
-          },
-        ],
-        datasourceInstances: [
-          "string",
-        ],
-      },
-      exclusions: {
-        containerSpecs: [
-          {
-            url: "string",
-          },
-        ],
-        documentSpecs: [
-          {
-            url: "string",
-          },
-        ],
-        datasourceInstances: [
-          "string",
-        ],
-      },
-    },
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### React hooks and utilities
-
-This method can be used in React components through the following hooks and
-associated utilities.
-
-> Check out [this guide][hook-guide] for information about each of the utilities
-> below and how to get started using React hooks.
-
-[hook-guide]: ../../../REACT_QUERY.md
-
-```tsx
-import {
-  // Mutation hook for triggering the API call.
-  useClientChatAskMutation
-} from "@gleanwork/api-client/react-query/clientChatAsk.js";
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.AskRequest](../../models/operations/askrequest.md)                                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.AskResponse](../../models/components/askresponse.md)\>**
-
-### Errors
-
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.ErrorInfo  | 403, 422          | application/json  |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
 
 ## start
 
@@ -279,17 +30,15 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.client.chat.start({
-    chatRequest: {
-      messages: [
-        {
-          fragments: [
-            {
-              text: "What are the company holidays this year?",
-            },
-          ],
-        },
-      ],
-    },
+    messages: [
+      {
+        fragments: [
+          {
+            text: "What are the company holidays this year?",
+          },
+        ],
+      },
+    ],
   });
 
   // Handle the result
@@ -315,17 +64,15 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientChatStart(glean, {
-    chatRequest: {
-      messages: [
-        {
-          fragments: [
-            {
-              text: "What are the company holidays this year?",
-            },
-          ],
-        },
-      ],
-    },
+    messages: [
+      {
+        fragments: [
+          {
+            text: "What are the company holidays this year?",
+          },
+        ],
+      },
+    ],
   });
 
   if (!res.ok) {
@@ -362,7 +109,10 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ChatRequest](../../models/operations/chatrequest.md)                                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `chatRequest`                                                                                                                                                                  | [components.ChatRequest](../../models/components/chatrequest.md)                                                                                                               | :heavy_check_mark:                                                                                                                                                             | Includes chat history for Glean AI to respond to.                                                                                                                              |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
+| `timezoneOffset`                                                                                                                                                               | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -391,7 +141,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  await glean.client.chat.deleteAll({});
+  await glean.client.chat.deleteAll();
 
 
 }
@@ -414,7 +164,7 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientChatDeleteAll(glean, {});
+  const res = await clientChatDeleteAll(glean);
 
   if (!res.ok) {
     throw res.error;
@@ -449,7 +199,9 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DeleteallchatsRequest](../../models/operations/deleteallchatsrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
+| `timezoneOffset`                                                                                                                                                               | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -479,12 +231,10 @@ const glean = new Glean({
 
 async function run() {
   await glean.client.chat.delete({
-    deleteChatsRequest: {
-      ids: [
-        "<value>",
-        "<value>",
-      ],
-    },
+    ids: [
+      "<value>",
+      "<value>",
+    ],
   });
 
 
@@ -509,12 +259,10 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientChatDelete(glean, {
-    deleteChatsRequest: {
-      ids: [
-        "<value>",
-        "<value>",
-      ],
-    },
+    ids: [
+      "<value>",
+      "<value>",
+    ],
   });
 
   if (!res.ok) {
@@ -550,7 +298,10 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DeletechatsRequest](../../models/operations/deletechatsrequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `deleteChatsRequest`                                                                                                                                                           | [components.DeleteChatsRequest](../../models/components/deletechatsrequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
+| `timezoneOffset`                                                                                                                                                               | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -580,9 +331,7 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.client.chat.get({
-    getChatRequest: {
-      id: "<id>",
-    },
+    id: "<id>",
   });
 
   // Handle the result
@@ -608,9 +357,7 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientChatGet(glean, {
-    getChatRequest: {
-      id: "<id>",
-    },
+    id: "<id>",
   });
 
   if (!res.ok) {
@@ -647,7 +394,10 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetchatRequest](../../models/operations/getchatrequest.md)                                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `getChatRequest`                                                                                                                                                               | [components.GetChatRequest](../../models/components/getchatrequest.md)                                                                                                         | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
+| `timezoneOffset`                                                                                                                                                               | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -676,7 +426,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.chat.list({});
+  const result = await glean.client.chat.list();
 
   // Handle the result
   console.log(result);
@@ -700,7 +450,7 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientChatList(glean, {});
+  const res = await clientChatList(glean);
 
   if (!res.ok) {
     throw res.error;
@@ -736,7 +486,9 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListchatsRequest](../../models/operations/listchatsrequest.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
+| `timezoneOffset`                                                                                                                                                               | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -766,9 +518,7 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.client.chat.getApplication({
-    getChatApplicationRequest: {
-      id: "<id>",
-    },
+    id: "<id>",
   });
 
   // Handle the result
@@ -794,9 +544,7 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientChatGetApplication(glean, {
-    getChatApplicationRequest: {
-      id: "<id>",
-    },
+    id: "<id>",
   });
 
   if (!res.ok) {
@@ -833,7 +581,10 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetchatapplicationRequest](../../models/operations/getchatapplicationrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `getChatApplicationRequest`                                                                                                                                                    | [components.GetChatApplicationRequest](../../models/components/getchatapplicationrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
+| `timezoneOffset`                                                                                                                                                               | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -863,9 +614,7 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.client.chat.uploadFiles({
-    uploadChatFilesRequest: {
-      files: [],
-    },
+    files: [],
   });
 
   // Handle the result
@@ -891,9 +640,7 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientChatUploadFiles(glean, {
-    uploadChatFilesRequest: {
-      files: [],
-    },
+    files: [],
   });
 
   if (!res.ok) {
@@ -930,7 +677,10 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.UploadchatfilesRequest](../../models/operations/uploadchatfilesrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `uploadChatFilesRequest`                                                                                                                                                       | [components.UploadChatFilesRequest](../../models/components/uploadchatfilesrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
+| `timezoneOffset`                                                                                                                                                               | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -960,12 +710,10 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.client.chat.getFiles({
-    getChatFilesRequest: {
-      fileIds: [
-        "<value>",
-        "<value>",
-      ],
-    },
+    fileIds: [
+      "<value>",
+      "<value>",
+    ],
   });
 
   // Handle the result
@@ -991,12 +739,10 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientChatGetFiles(glean, {
-    getChatFilesRequest: {
-      fileIds: [
-        "<value>",
-        "<value>",
-      ],
-    },
+    fileIds: [
+      "<value>",
+      "<value>",
+    ],
   });
 
   if (!res.ok) {
@@ -1033,7 +779,10 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetchatfilesRequest](../../models/operations/getchatfilesrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `getChatFilesRequest`                                                                                                                                                          | [components.GetChatFilesRequest](../../models/components/getchatfilesrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
+| `timezoneOffset`                                                                                                                                                               | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -1063,11 +812,9 @@ const glean = new Glean({
 
 async function run() {
   await glean.client.chat.deleteFiles({
-    deleteChatFilesRequest: {
-      fileIds: [
-        "<value>",
-      ],
-    },
+    fileIds: [
+      "<value>",
+    ],
   });
 
 
@@ -1092,11 +839,9 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientChatDeleteFiles(glean, {
-    deleteChatFilesRequest: {
-      fileIds: [
-        "<value>",
-      ],
-    },
+    fileIds: [
+      "<value>",
+    ],
   });
 
   if (!res.ok) {
@@ -1132,7 +877,10 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DeletechatfilesRequest](../../models/operations/deletechatfilesrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `deleteChatFilesRequest`                                                                                                                                                       | [components.DeleteChatFilesRequest](../../models/components/deletechatfilesrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `xGleanActAs`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).                                                       |
+| `xGleanAuthType`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Auth type being used to access the endpoint (should be non-empty only for global tokens).                                                                                      |
+| `timezoneOffset`                                                                                                                                                               | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |

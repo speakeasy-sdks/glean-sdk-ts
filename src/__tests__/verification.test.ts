@@ -16,10 +16,21 @@ test("Verification Addverificationreminder", async () => {
   });
 
   const result = await glean.client.verification.addReminder({
-    reminderRequest: {
-      documentId: "<id>",
-    },
+    documentId: "<id>",
   });
+  expect(result).toBeDefined();
+});
+
+test("Verification Listverifications", async () => {
+  const testHttpClient = createTestHTTPClient("listverifications");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+  });
+
+  const result = await glean.client.verification.list();
   expect(result).toBeDefined();
 });
 
@@ -33,9 +44,7 @@ test("Verification Verify", async () => {
   });
 
   const result = await glean.client.verification.verify({
-    verifyRequest: {
-      documentId: "<id>",
-    },
+    documentId: "<id>",
   });
   expect(result).toBeDefined();
 });

@@ -12,13 +12,13 @@ import { indexingTroubleshootingPostDocumentDebug } from "../funcs/indexingTroub
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type IndexingTroubleshootingPostDocumentDebugMutationVariables = {
-  request: operations.PostApiIndexV1DebugDatasourceDocumentRequest;
+  debugDocumentRequest: components.DebugDocumentRequest;
+  datasource: string;
   options?: RequestOptions;
 };
 
@@ -67,7 +67,8 @@ export function buildIndexingTroubleshootingPostDocumentDebugMutation(
   return {
     mutationKey: mutationKeyIndexingTroubleshootingPostDocumentDebug(),
     mutationFn: function indexingTroubleshootingPostDocumentDebugMutationFn({
-      request,
+      debugDocumentRequest,
+      datasource,
       options,
     }): Promise<IndexingTroubleshootingPostDocumentDebugMutationData> {
       const mergedOptions = {
@@ -84,7 +85,8 @@ export function buildIndexingTroubleshootingPostDocumentDebugMutation(
       };
       return unwrapAsync(indexingTroubleshootingPostDocumentDebug(
         client$,
-        request,
+        debugDocumentRequest,
+        datasource,
         mergedOptions,
       ));
     },

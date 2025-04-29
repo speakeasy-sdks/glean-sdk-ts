@@ -32,7 +32,10 @@ import { Result } from "../types/fp.js";
  */
 export function agentsRunagent(
   client: GleanCore,
-  request: operations.RunagentRequest,
+  runAgentRequest: components.RunAgentRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
+  timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -48,14 +51,20 @@ export function agentsRunagent(
 > {
   return new APIPromise($do(
     client,
-    request,
+    runAgentRequest,
+    xGleanActAs,
+    xGleanAuthType,
+    timezoneOffset,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: operations.RunagentRequest,
+  runAgentRequest: components.RunAgentRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
+  timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -72,8 +81,15 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.RunagentRequest = {
+    runAgentRequest: runAgentRequest,
+    xGleanActAs: xGleanActAs,
+    xGleanAuthType: xGleanAuthType,
+    timezoneOffset: timezoneOffset,
+  };
+
   const parsed = safeParse(
-    request,
+    input,
     (value) => operations.RunagentRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

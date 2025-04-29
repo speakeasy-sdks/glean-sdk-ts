@@ -17,32 +17,35 @@ test("Search Adminsearch", async () => {
   });
 
   const result = await glean.client.search.admin({
-    searchRequest: {
-      trackingToken: "trackingToken",
-      pageSize: 10,
-      query: "vacation policy",
-      requestOptions: {
-        facetFilters: [
-          {
-            fieldName: "type",
-            values: [
-              {
-                value: "article",
-                relationType: "EQUALS",
-              },
-              {
-                value: "document",
-                relationType: "EQUALS",
-              },
-            ],
-          },
-          {
-            fieldName: "department",
-            values: [],
-          },
-        ],
-        facetBucketSize: 254944,
-      },
+    trackingToken: "trackingToken",
+    pageSize: 10,
+    query: "vacation policy",
+    requestOptions: {
+      facetFilters: [
+        {
+          fieldName: "type",
+          values: [
+            {
+              value: "article",
+              relationType: "EQUALS",
+            },
+            {
+              value: "document",
+              relationType: "EQUALS",
+            },
+          ],
+        },
+        {
+          fieldName: "department",
+          values: [
+            {
+              value: "engineering",
+              relationType: "EQUALS",
+            },
+          ],
+        },
+      ],
+      facetBucketSize: 254944,
     },
   });
   expect(result).toBeDefined();
@@ -58,21 +61,19 @@ test("Search Autocomplete", async () => {
   });
 
   const result = await glean.client.search.autocomplete({
-    autocompleteRequest: {
-      trackingToken: "trackingToken",
-      query: "San Fra",
-      datasource: "GDRIVE",
-      resultSize: 10,
-      authTokens: [
-        {
-          accessToken: "123abc",
-          datasource: "gmail",
-          scope: "email profile https://www.googleapis.com/auth/gmail.readonly",
-          tokenType: "Bearer",
-          authUser: "1",
-        },
-      ],
-    },
+    trackingToken: "trackingToken",
+    query: "San Fra",
+    datasource: "GDRIVE",
+    resultSize: 10,
+    authTokens: [
+      {
+        accessToken: "123abc",
+        datasource: "gmail",
+        scope: "email profile https://www.googleapis.com/auth/gmail.readonly",
+        tokenType: "Bearer",
+        authUser: "1",
+      },
+    ],
   });
   expect(result).toBeDefined();
 });
@@ -86,49 +87,7 @@ test("Search Feed", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.search.getFeed({
-    feedRequest: {},
-  });
-  expect(result).toBeDefined();
-});
-
-test("Search Peoplesuggest", async () => {
-  const testHttpClient = createTestHTTPClient("peoplesuggest");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.search.suggestPeople({
-    peopleSuggestRequest: {
-      categories: [
-        "INVITE_NONUSERS",
-        "INVITE_NONUSERS",
-      ],
-    },
-  });
-  expect(result).toBeDefined();
-});
-
-test("Search Peoplesuggestadmin", async () => {
-  const testHttpClient = createTestHTTPClient("peoplesuggestadmin");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.search.suggestPeopleAdmin({
-    peopleSuggestRequest: {
-      categories: [
-        "INVITE_NONUSERS",
-        "INVITE_NONUSERS",
-      ],
-    },
-  });
+  const result = await glean.client.search.getFeed({});
   expect(result).toBeDefined();
 });
 
@@ -142,121 +101,138 @@ test("Search Recommendations", async () => {
   });
 
   const result = await glean.client.search.recommendations({
-    recommendationsRequest: {
-      sourceDocument: {
-        metadata: {
-          datasource: "datasource",
-          objectType: "Feature Request",
-          container: "container",
-          parentId: "JIRA_EN-1337",
-          mimeType: "mimeType",
-          documentId: "documentId",
-          createTime: new Date("2000-01-23T04:56:07.000Z"),
-          updateTime: new Date("2000-01-23T04:56:07.000Z"),
-          author: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-            relatedDocuments: [],
-            metadata: {
-              type: "FULL_TIME",
-              title: "Actor",
-              department: "Movies",
-              email: "george@example.com",
-              location: "Hollywood, CA",
-              managementChain: [],
-              phone: "6505551234",
-              photoUrl: "https://example.com/george.jpg",
-              reports: [],
-              startDate: new RFCDate("2000-01-23"),
-              datasourceProfile: [],
-              querySuggestions: {
-                suggestions: [],
+    sourceDocument: {
+      metadata: {
+        datasource: "datasource",
+        objectType: "Feature Request",
+        container: "container",
+        parentId: "JIRA_EN-1337",
+        mimeType: "mimeType",
+        documentId: "documentId",
+        createTime: new Date("2000-01-23T04:56:07.000Z"),
+        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+        author: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+          relatedDocuments: [],
+          metadata: {
+            type: "FULL_TIME",
+            title: "Actor",
+            department: "Movies",
+            email: "george@example.com",
+            location: "Hollywood, CA",
+            phone: "6505551234",
+            photoUrl: "https://example.com/george.jpg",
+            startDate: new RFCDate("2000-01-23"),
+            datasourceProfile: [
+              {
+                datasource: "github",
+                handle: "<value>",
               },
-              inviteInfo: {
-                invites: [],
+              {
+                datasource: "github",
+                handle: "<value>",
               },
-              customFields: [],
-              badges: [],
+            ],
+            querySuggestions: {
+              suggestions: [],
             },
+            inviteInfo: {
+              invites: [],
+            },
+            customFields: [],
+            badges: [
+              {
+                key: "deployment_name_new_hire",
+                displayName: "New hire",
+                iconConfig: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
+              },
+            ],
           },
-          owner: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          mentionedPeople: [],
-          components: [
-            "Backend",
-            "Networking",
-          ],
-          status: "[\"Done\"]",
-          pins: [],
-          assignedTo: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          updatedBy: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          collections: [],
-          interactions: {
-            reacts: [],
-            shares: [],
-          },
-          verification: {
-            state: "UNVERIFIED",
-            metadata: {
-              lastVerifier: {
+        },
+        owner: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        mentionedPeople: [],
+        components: [
+          "Backend",
+          "Networking",
+        ],
+        status: "[\"Done\"]",
+        pins: [],
+        assignedTo: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        updatedBy: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        collections: [],
+        interactions: {
+          reacts: [],
+          shares: [],
+        },
+        verification: {
+          state: "VERIFIED",
+          metadata: {
+            lastVerifier: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+            },
+            reminders: [],
+            lastReminder: {
+              assignee: {
                 name: "George Clooney",
                 obfuscatedId: "abc123",
               },
-              reminders: [],
-              lastReminder: {
-                assignee: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                },
-                requestor: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                },
-                remindAt: 129663,
+              requestor: {
+                name: "George Clooney",
+                obfuscatedId: "abc123",
               },
-              candidateVerifiers: [],
+              remindAt: 986764,
             },
-          },
-          customData: {
-            "someCustomField": {},
-          },
-          contactPerson: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
+            candidateVerifiers: [],
           },
         },
+        customData: {
+          "someCustomField": {},
+        },
+        contactPerson: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
       },
-      pageSize: 100,
-      maxSnippetSize: 400,
-      requestOptions: {
-        facetFilterSets: [
-          {
-            filters: [
-              {
-                fieldName: "type",
-                values: [],
-              },
-            ],
-          },
-          {
-            filters: [
-              {
-                fieldName: "type",
-                values: [],
-              },
-            ],
-          },
-        ],
-        context: {},
-      },
+    },
+    pageSize: 100,
+    maxSnippetSize: 400,
+    requestOptions: {
+      facetFilterSets: [
+        {
+          filters: [
+            {
+              fieldName: "type",
+              values: [
+                {
+                  value: "Spreadsheet",
+                  relationType: "EQUALS",
+                },
+                {
+                  value: "Presentation",
+                  relationType: "EQUALS",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      context: {},
     },
   });
   expect(result).toBeDefined();
@@ -272,32 +248,35 @@ test("Search Search", async () => {
   });
 
   const result = await glean.client.search.execute({
-    searchRequest: {
-      trackingToken: "trackingToken",
-      pageSize: 10,
-      query: "vacation policy",
-      requestOptions: {
-        facetFilters: [
-          {
-            fieldName: "type",
-            values: [
-              {
-                value: "article",
-                relationType: "EQUALS",
-              },
-              {
-                value: "document",
-                relationType: "EQUALS",
-              },
-            ],
-          },
-          {
-            fieldName: "department",
-            values: [],
-          },
-        ],
-        facetBucketSize: 246815,
-      },
+    trackingToken: "trackingToken",
+    pageSize: 10,
+    query: "vacation policy",
+    requestOptions: {
+      facetFilters: [
+        {
+          fieldName: "type",
+          values: [
+            {
+              value: "article",
+              relationType: "EQUALS",
+            },
+            {
+              value: "document",
+              relationType: "EQUALS",
+            },
+          ],
+        },
+        {
+          fieldName: "department",
+          values: [
+            {
+              value: "engineering",
+              relationType: "EQUALS",
+            },
+          ],
+        },
+      ],
+      facetBucketSize: 246815,
     },
   });
   expect(result).toBeDefined();

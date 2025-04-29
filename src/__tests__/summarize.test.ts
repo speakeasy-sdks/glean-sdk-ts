@@ -16,12 +16,10 @@ test("Summarize Summarize", async () => {
   });
 
   const result = await glean.client.summarize.generate({
-    summarizeRequest: {
-      documentSpecs: [
-        {},
-        {},
-      ],
-    },
+    documentSpecs: [
+      {},
+      {},
+    ],
   });
   expect(result).toBeDefined();
 });

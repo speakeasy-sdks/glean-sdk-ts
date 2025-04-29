@@ -64,7 +64,7 @@ func testSearchSearch0(w http.ResponseWriter, req *http.Request) {
 				URL:   "https://www.example.com/",
 			},
 		},
-		ErrorInfo: &components.ErrorInfo{
+		GleanDataError: &components.GleanDataError{
 			ErrorMessages: []components.ErrorMessage{
 				components.ErrorMessage{
 					Source:       types.String("gmail"),
@@ -103,7 +103,24 @@ func testSearchSearch0(w http.ResponseWriter, req *http.Request) {
 			components.FacetResult{
 				SourceName:   types.String("sourceName"),
 				OperatorName: types.String("operatorName"),
-				Buckets:      []components.FacetBucket{},
+				Buckets: []components.FacetBucket{
+					components.FacetBucket{
+						Count:      types.Int64(1),
+						Percentage: types.Int64(5),
+						Value: &components.FacetValue{
+							StringValue:  types.String("stringValue"),
+							IntegerValue: types.Int64(5),
+						},
+					},
+					components.FacetBucket{
+						Count:      types.Int64(1),
+						Percentage: types.Int64(5),
+						Value: &components.FacetValue{
+							StringValue:  types.String("stringValue"),
+							IntegerValue: types.Int64(5),
+						},
+					},
+				},
 			},
 		},
 		RewrittenFacetFilters: []components.FacetFilter{
@@ -116,7 +133,10 @@ func testSearchSearch0(w http.ResponseWriter, req *http.Request) {
 			},
 			components.FacetFilter{
 				FieldName: types.String("fieldName"),
-				Values:    []components.FacetFilterValue{},
+				Values: []components.FacetFilterValue{
+					components.FacetFilterValue{},
+					components.FacetFilterValue{},
+				},
 			},
 		},
 		HasMoreResults: types.Bool(true),

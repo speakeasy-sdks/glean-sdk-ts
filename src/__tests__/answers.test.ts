@@ -17,116 +17,7 @@ test("Answers Createanswer", async () => {
   });
 
   const result = await glean.client.answers.create({
-    createAnswerRequest: {
-      data: {
-        question: "Why is the sky blue?",
-        bodyText:
-          "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-        audienceFilters: [
-          {
-            fieldName: "type",
-            values: [
-              {
-                value: "Spreadsheet",
-                relationType: "EQUALS",
-              },
-              {
-                value: "Presentation",
-                relationType: "EQUALS",
-              },
-            ],
-          },
-        ],
-        addedRoles: [
-          {
-            person: {
-              name: "George Clooney",
-              obfuscatedId: "abc123",
-              relatedDocuments: [],
-              metadata: {
-                type: "FULL_TIME",
-                title: "Actor",
-                department: "Movies",
-                email: "george@example.com",
-                location: "Hollywood, CA",
-                managementChain: [],
-                phone: "6505551234",
-                photoUrl: "https://example.com/george.jpg",
-                reports: [],
-                startDate: new RFCDate("2000-01-23"),
-                datasourceProfile: [],
-                querySuggestions: {
-                  suggestions: [],
-                },
-                inviteInfo: {
-                  invites: [],
-                },
-                customFields: [],
-                badges: [],
-              },
-            },
-            role: "EDITOR",
-          },
-          {
-            role: "EDITOR",
-          },
-        ],
-        removedRoles: [
-          {
-            role: "EDITOR",
-          },
-          {
-            role: "EDITOR",
-          },
-        ],
-        roles: [
-          {
-            role: "ANSWER_MODERATOR",
-          },
-          {
-            role: "ANSWER_MODERATOR",
-          },
-        ],
-        combinedAnswerText: {
-          text:
-            "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-        },
-      },
-    },
-  });
-  expect(result).toBeDefined();
-});
-
-test("Answers Deleteanswer", async () => {
-  const testHttpClient = createTestHTTPClient("deleteanswer");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  await glean.client.answers.delete({
-    deleteAnswerRequest: {
-      id: 3,
-      docId: "ANSWERS_answer_3",
-    },
-  });
-});
-
-test("Answers Editanswer", async () => {
-  const testHttpClient = createTestHTTPClient("editanswer");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.answers.edit({
-    editAnswerRequest: {
-      id: 3,
-      docId: "ANSWERS_answer_3",
+    data: {
       question: "Why is the sky blue?",
       bodyText:
         "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
@@ -157,12 +48,15 @@ test("Answers Editanswer", async () => {
               department: "Movies",
               email: "george@example.com",
               location: "Hollywood, CA",
-              managementChain: [],
               phone: "6505551234",
               photoUrl: "https://example.com/george.jpg",
-              reports: [],
               startDate: new RFCDate("2000-01-23"),
-              datasourceProfile: [],
+              datasourceProfile: [
+                {
+                  datasource: "github",
+                  handle: "<value>",
+                },
+              ],
               querySuggestions: {
                 suggestions: [],
               },
@@ -170,18 +64,35 @@ test("Answers Editanswer", async () => {
                 invites: [],
               },
               customFields: [],
-              badges: [],
+              badges: [
+                {
+                  key: "deployment_name_new_hire",
+                  displayName: "New hire",
+                  iconConfig: {
+                    color: "#343CED",
+                    key: "person_icon",
+                    iconType: "GLYPH",
+                    name: "user",
+                  },
+                },
+              ],
             },
           },
-          role: "EDITOR",
+          role: "OWNER",
+        },
+        {
+          role: "VERIFIER",
         },
       ],
       removedRoles: [
         {
-          role: "EDITOR",
+          role: "VERIFIER",
         },
         {
-          role: "EDITOR",
+          role: "ANSWER_MODERATOR",
+        },
+        {
+          role: "OWNER",
         },
       ],
       roles: [
@@ -189,16 +100,127 @@ test("Answers Editanswer", async () => {
           role: "ANSWER_MODERATOR",
         },
         {
-          role: "ANSWER_MODERATOR",
+          role: "OWNER",
         },
         {
-          role: "ANSWER_MODERATOR",
+          role: "VERIFIER",
         },
       ],
       combinedAnswerText: {
         text:
           "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
       },
+    },
+  });
+  expect(result).toBeDefined();
+});
+
+test("Answers Deleteanswer", async () => {
+  const testHttpClient = createTestHTTPClient("deleteanswer");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+  });
+
+  await glean.client.answers.delete({
+    id: 3,
+    docId: "ANSWERS_answer_3",
+  });
+});
+
+test("Answers Editanswer", async () => {
+  const testHttpClient = createTestHTTPClient("editanswer");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+  });
+
+  const result = await glean.client.answers.edit({
+    id: 3,
+    docId: "ANSWERS_answer_3",
+    question: "Why is the sky blue?",
+    bodyText:
+      "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+    audienceFilters: [
+      {
+        fieldName: "type",
+        values: [
+          {
+            value: "Spreadsheet",
+            relationType: "EQUALS",
+          },
+          {
+            value: "Presentation",
+            relationType: "EQUALS",
+          },
+        ],
+      },
+    ],
+    addedRoles: [
+      {
+        person: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+          relatedDocuments: [],
+          metadata: {
+            type: "FULL_TIME",
+            title: "Actor",
+            department: "Movies",
+            email: "george@example.com",
+            location: "Hollywood, CA",
+            phone: "6505551234",
+            photoUrl: "https://example.com/george.jpg",
+            startDate: new RFCDate("2000-01-23"),
+            datasourceProfile: [
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+            ],
+            querySuggestions: {
+              suggestions: [],
+            },
+            inviteInfo: {
+              invites: [],
+            },
+            customFields: [],
+            badges: [
+              {
+                key: "deployment_name_new_hire",
+                displayName: "New hire",
+                iconConfig: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
+              },
+            ],
+          },
+        },
+        role: "EDITOR",
+      },
+    ],
+    removedRoles: [
+      {
+        role: "EDITOR",
+      },
+    ],
+    roles: [
+      {
+        role: "ANSWER_MODERATOR",
+      },
+      {
+        role: "OWNER",
+      },
+    ],
+    combinedAnswerText: {
+      text:
+        "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
     },
   });
   expect(result).toBeDefined();
@@ -214,10 +236,8 @@ test("Answers Getanswer", async () => {
   });
 
   const result = await glean.client.answers.get({
-    getAnswerRequest: {
-      id: 3,
-      docId: "ANSWERS_answer_3",
-    },
+    id: 3,
+    docId: "ANSWERS_answer_3",
   });
   expect(result).toBeDefined();
 });
@@ -231,347 +251,6 @@ test("Answers Listanswers", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.answers.list({
-    listAnswersRequest: {},
-  });
-  expect(result).toBeDefined();
-});
-
-test("Answers Previewanswer", async () => {
-  const testHttpClient = createTestHTTPClient("previewanswer");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.answers.preview({
-    structuredTextMutableProperties: {
-      text:
-        "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-    },
-  });
-  expect(result).toBeDefined();
-});
-
-test("Answers Previewanswerdraft", async () => {
-  const testHttpClient = createTestHTTPClient("previewanswerdraft");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.answers.previewDraft({
-    previewUgcRequest: {
-      draft: {
-        announcement: {
-          body: {
-            text:
-              "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-            structuredList: [],
-          },
-          audienceFilters: [
-            {
-              fieldName: "type",
-              values: [
-                {
-                  value: "Spreadsheet",
-                  relationType: "EQUALS",
-                },
-                {
-                  value: "Presentation",
-                  relationType: "EQUALS",
-                },
-              ],
-            },
-          ],
-        },
-        answer: {
-          question: "Why is the sky blue?",
-          bodyText:
-            "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-          audienceFilters: [],
-          addedRoles: [
-            {
-              person: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                relatedDocuments: [],
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  managementChain: [],
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  reports: [],
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [],
-                  querySuggestions: {
-                    suggestions: [],
-                  },
-                  inviteInfo: {
-                    invites: [],
-                  },
-                  customFields: [],
-                  badges: [],
-                },
-              },
-              role: "EDITOR",
-            },
-            {
-              role: "EDITOR",
-            },
-            {
-              role: "EDITOR",
-            },
-          ],
-          removedRoles: [
-            {
-              role: "EDITOR",
-            },
-            {
-              role: "EDITOR",
-            },
-          ],
-          roles: [
-            {
-              role: "ANSWER_MODERATOR",
-            },
-            {
-              role: "ANSWER_MODERATOR",
-            },
-          ],
-        },
-      },
-    },
-  });
-  expect(result).toBeDefined();
-});
-
-test("Answers Updateanswerlikes", async () => {
-  const testHttpClient = createTestHTTPClient("updateanswerlikes");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.answers.updateLikes({
-    updateAnswerLikesRequest: {
-      answerId: 3,
-      answerDocId: "ANSWERS_answer_3",
-      action: "LIKE",
-    },
-  });
-  expect(result).toBeDefined();
-});
-
-test("Answers Createanswerboard", async () => {
-  const testHttpClient = createTestHTTPClient("createanswerboard");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.answers.createBoard({
-    collectionBaseMutableProperties: {
-      name: "<value>",
-      addedRoles: [
-        {
-          person: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-            relatedDocuments: [],
-            metadata: {
-              type: "FULL_TIME",
-              title: "Actor",
-              department: "Movies",
-              email: "george@example.com",
-              location: "Hollywood, CA",
-              managementChain: [],
-              phone: "6505551234",
-              photoUrl: "https://example.com/george.jpg",
-              reports: [],
-              startDate: new RFCDate("2000-01-23"),
-              datasourceProfile: [],
-              querySuggestions: {
-                suggestions: [],
-              },
-              inviteInfo: {
-                invites: [],
-              },
-              customFields: [],
-              badges: [],
-            },
-          },
-          role: "EDITOR",
-        },
-        {
-          role: "EDITOR",
-        },
-      ],
-      removedRoles: [
-        {
-          role: "EDITOR",
-        },
-        {
-          role: "EDITOR",
-        },
-        {
-          role: "EDITOR",
-        },
-      ],
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-    },
-  });
-  expect(result).toBeDefined();
-});
-
-test("Answers Deleteanswerboards", async () => {
-  const testHttpClient = createTestHTTPClient("deleteanswerboards");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.answers.deleteBoard({
-    deleteAnswerBoardsRequest: {
-      ids: [
-        983393,
-      ],
-    },
-  });
-  expect(result).toBeDefined();
-});
-
-test("Answers Editanswerboard", async () => {
-  const testHttpClient = createTestHTTPClient("editanswerboard");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.answers.updateBoard({
-    editAnswerBoardRequest: {
-      name: "<value>",
-      addedRoles: [
-        {
-          person: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-            relatedDocuments: [],
-            metadata: {
-              type: "FULL_TIME",
-              title: "Actor",
-              department: "Movies",
-              email: "george@example.com",
-              location: "Hollywood, CA",
-              managementChain: [],
-              phone: "6505551234",
-              photoUrl: "https://example.com/george.jpg",
-              reports: [],
-              startDate: new RFCDate("2000-01-23"),
-              datasourceProfile: [],
-              querySuggestions: {
-                suggestions: [],
-              },
-              inviteInfo: {
-                invites: [],
-              },
-              customFields: [],
-              badges: [],
-            },
-          },
-          role: "EDITOR",
-        },
-      ],
-      removedRoles: [
-        {
-          role: "EDITOR",
-        },
-        {
-          role: "EDITOR",
-        },
-        {
-          role: "EDITOR",
-        },
-      ],
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-      id: 989645,
-    },
-  });
-  expect(result).toBeDefined();
-});
-
-test("Answers Getanswerboard", async () => {
-  const testHttpClient = createTestHTTPClient("getanswerboard");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.answers.getBoard({
-    getAnswerBoardRequest: {
-      id: 643179,
-    },
-  });
-  expect(result).toBeDefined();
-});
-
-test("Answers Listanswerboards", async () => {
-  const testHttpClient = createTestHTTPClient("listanswerboards");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.answers.listBoards({
-    listAnswerBoardsRequest: {},
-  });
+  const result = await glean.client.answers.list({});
   expect(result).toBeDefined();
 });

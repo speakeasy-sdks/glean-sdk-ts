@@ -5,7 +5,6 @@
 import { clientMessagesGet } from "../funcs/clientMessagesGet.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Messages extends ClientSDK {
@@ -16,12 +15,16 @@ export class Messages extends ClientSDK {
    * Retrieves list of messages from messaging/chat datasources (e.g. Slack, Teams).
    */
   async get(
-    request: operations.MessagesRequest,
+    messagesRequest: components.MessagesRequest,
+    xGleanActAs?: string | undefined,
+    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.MessagesResponse> {
     return unwrapAsync(clientMessagesGet(
       this,
-      request,
+      messagesRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     ));
   }

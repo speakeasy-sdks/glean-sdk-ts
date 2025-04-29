@@ -12,13 +12,14 @@ import { clientShortcutsList } from "../funcs/clientShortcutsList.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientShortcutsListMutationVariables = {
-  request: operations.ListshortcutsRequest;
+  listShortcutsPaginatedRequest: components.ListShortcutsPaginatedRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -65,7 +66,9 @@ export function buildClientShortcutsListMutation(
   return {
     mutationKey: mutationKeyClientShortcutsList(),
     mutationFn: function clientShortcutsListMutationFn({
-      request,
+      listShortcutsPaginatedRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientShortcutsListMutationData> {
       const mergedOptions = {
@@ -82,7 +85,9 @@ export function buildClientShortcutsListMutation(
       };
       return unwrapAsync(clientShortcutsList(
         client$,
-        request,
+        listShortcutsPaginatedRequest,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },

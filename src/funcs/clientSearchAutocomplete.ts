@@ -32,7 +32,9 @@ import { Result } from "../types/fp.js";
  */
 export function clientSearchAutocomplete(
   client: GleanCore,
-  request: operations.AutocompleteRequest,
+  autocompleteRequest: components.AutocompleteRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -48,14 +50,18 @@ export function clientSearchAutocomplete(
 > {
   return new APIPromise($do(
     client,
-    request,
+    autocompleteRequest,
+    xGleanActAs,
+    xGleanAuthType,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: operations.AutocompleteRequest,
+  autocompleteRequest: components.AutocompleteRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -72,8 +78,14 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.AutocompleteRequest = {
+    autocompleteRequest: autocompleteRequest,
+    xGleanActAs: xGleanActAs,
+    xGleanAuthType: xGleanAuthType,
+  };
+
   const parsed = safeParse(
-    request,
+    input,
     (value) => operations.AutocompleteRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

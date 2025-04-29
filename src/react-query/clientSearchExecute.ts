@@ -12,13 +12,14 @@ import { clientSearchExecute } from "../funcs/clientSearchExecute.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientSearchExecuteMutationVariables = {
-  request: operations.SearchRequest;
+  searchRequest?: components.SearchRequest | undefined;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +65,9 @@ export function buildClientSearchExecuteMutation(
   return {
     mutationKey: mutationKeyClientSearchExecute(),
     mutationFn: function clientSearchExecuteMutationFn({
-      request,
+      searchRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientSearchExecuteMutationData> {
       const mergedOptions = {
@@ -81,7 +84,9 @@ export function buildClientSearchExecuteMutation(
       };
       return unwrapAsync(clientSearchExecute(
         client$,
-        request,
+        searchRequest,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },

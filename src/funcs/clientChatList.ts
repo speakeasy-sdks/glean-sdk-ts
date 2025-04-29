@@ -32,7 +32,9 @@ import { Result } from "../types/fp.js";
  */
 export function clientChatList(
   client: GleanCore,
-  request: operations.ListchatsRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
+  timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -48,14 +50,18 @@ export function clientChatList(
 > {
   return new APIPromise($do(
     client,
-    request,
+    xGleanActAs,
+    xGleanAuthType,
+    timezoneOffset,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: operations.ListchatsRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
+  timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -72,8 +78,14 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.ListchatsRequest = {
+    xGleanActAs: xGleanActAs,
+    xGleanAuthType: xGleanAuthType,
+    timezoneOffset: timezoneOffset,
+  };
+
   const parsed = safeParse(
-    request,
+    input,
     (value) => operations.ListchatsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

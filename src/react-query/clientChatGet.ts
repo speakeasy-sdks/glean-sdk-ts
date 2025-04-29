@@ -12,13 +12,15 @@ import { clientChatGet } from "../funcs/clientChatGet.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatGetMutationVariables = {
-  request: operations.GetchatRequest;
+  getChatRequest: components.GetChatRequest;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
+  timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +66,10 @@ export function buildClientChatGetMutation(
   return {
     mutationKey: mutationKeyClientChatGet(),
     mutationFn: function clientChatGetMutationFn({
-      request,
+      getChatRequest,
+      xGleanActAs,
+      xGleanAuthType,
+      timezoneOffset,
       options,
     }): Promise<ClientChatGetMutationData> {
       const mergedOptions = {
@@ -81,7 +86,10 @@ export function buildClientChatGetMutation(
       };
       return unwrapAsync(clientChatGet(
         client$,
-        request,
+        getChatRequest,
+        xGleanActAs,
+        xGleanAuthType,
+        timezoneOffset,
         mergedOptions,
       ));
     },

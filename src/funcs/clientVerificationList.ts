@@ -32,7 +32,9 @@ import { Result } from "../types/fp.js";
  */
 export function clientVerificationList(
   client: GleanCore,
-  request: operations.ListverificationsRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
+  count?: number | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -48,14 +50,18 @@ export function clientVerificationList(
 > {
   return new APIPromise($do(
     client,
-    request,
+    xGleanActAs,
+    xGleanAuthType,
+    count,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: operations.ListverificationsRequest,
+  xGleanActAs?: string | undefined,
+  xGleanAuthType?: string | undefined,
+  count?: number | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -72,8 +78,14 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.ListverificationsRequest = {
+    xGleanActAs: xGleanActAs,
+    xGleanAuthType: xGleanAuthType,
+    count: count,
+  };
+
   const parsed = safeParse(
-    request,
+    input,
     (value) => operations.ListverificationsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

@@ -12,13 +12,14 @@ import { clientSearchRecommendations } from "../funcs/clientSearchRecommendation
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientSearchRecommendationsMutationVariables = {
-  request: operations.RecommendationsRequest;
+  recommendationsRequest?: components.RecommendationsRequest | undefined;
+  xGleanActAs?: string | undefined;
+  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -66,7 +67,9 @@ export function buildClientSearchRecommendationsMutation(
   return {
     mutationKey: mutationKeyClientSearchRecommendations(),
     mutationFn: function clientSearchRecommendationsMutationFn({
-      request,
+      recommendationsRequest,
+      xGleanActAs,
+      xGleanAuthType,
       options,
     }): Promise<ClientSearchRecommendationsMutationData> {
       const mergedOptions = {
@@ -83,7 +86,9 @@ export function buildClientSearchRecommendationsMutation(
       };
       return unwrapAsync(clientSearchRecommendations(
         client$,
-        request,
+        recommendationsRequest,
+        xGleanActAs,
+        xGleanAuthType,
         mergedOptions,
       ));
     },
