@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.7",
-    "glean": "file:../"
+    "@gleanwork/api-client": "file:../"
   },
   "devDependencies": {
     "@types/node": "^20.11.4",
