@@ -18,8 +18,6 @@ import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatDeleteFilesMutationVariables = {
   deleteChatFilesRequest: components.DeleteChatFilesRequest;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
@@ -67,8 +65,6 @@ export function buildClientChatDeleteFilesMutation(
     mutationKey: mutationKeyClientChatDeleteFiles(),
     mutationFn: function clientChatDeleteFilesMutationFn({
       deleteChatFilesRequest,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     }): Promise<ClientChatDeleteFilesMutationData> {
@@ -87,8 +83,6 @@ export function buildClientChatDeleteFilesMutation(
       return unwrapAsync(clientChatDeleteFiles(
         client$,
         deleteChatFilesRequest,
-        xGleanActAs,
-        xGleanAuthType,
         timezoneOffset,
         mergedOptions,
       ));

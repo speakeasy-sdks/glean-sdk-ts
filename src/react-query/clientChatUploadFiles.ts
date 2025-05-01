@@ -18,8 +18,6 @@ import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatUploadFilesMutationVariables = {
   uploadChatFilesRequest: components.UploadChatFilesRequest;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
@@ -68,8 +66,6 @@ export function buildClientChatUploadFilesMutation(
     mutationKey: mutationKeyClientChatUploadFiles(),
     mutationFn: function clientChatUploadFilesMutationFn({
       uploadChatFilesRequest,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     }): Promise<ClientChatUploadFilesMutationData> {
@@ -88,8 +84,6 @@ export function buildClientChatUploadFilesMutation(
       return unwrapAsync(clientChatUploadFiles(
         client$,
         uploadChatFilesRequest,
-        xGleanActAs,
-        xGleanAuthType,
         timezoneOffset,
         mergedOptions,
       ));

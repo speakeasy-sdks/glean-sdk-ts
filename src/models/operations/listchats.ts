@@ -3,20 +3,11 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListchatsRequest = {
-  /**
-   * Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).
-   */
-  xGleanActAs?: string | undefined;
-  /**
-   * Auth type being used to access the endpoint (should be non-empty only for global tokens).
-   */
-  xGleanAuthType?: string | undefined;
   /**
    * The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
    */
@@ -29,20 +20,11 @@ export const ListchatsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Glean-ActAs": z.string().optional(),
-  "X-Glean-Auth-Type": z.string().optional(),
   timezoneOffset: z.number().int().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "X-Glean-ActAs": "xGleanActAs",
-    "X-Glean-Auth-Type": "xGleanAuthType",
-  });
 });
 
 /** @internal */
 export type ListchatsRequest$Outbound = {
-  "X-Glean-ActAs"?: string | undefined;
-  "X-Glean-Auth-Type"?: string | undefined;
   timezoneOffset?: number | undefined;
 };
 
@@ -52,14 +34,7 @@ export const ListchatsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListchatsRequest
 > = z.object({
-  xGleanActAs: z.string().optional(),
-  xGleanAuthType: z.string().optional(),
   timezoneOffset: z.number().int().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xGleanActAs: "X-Glean-ActAs",
-    xGleanAuthType: "X-Glean-Auth-Type",
-  });
 });
 
 /**

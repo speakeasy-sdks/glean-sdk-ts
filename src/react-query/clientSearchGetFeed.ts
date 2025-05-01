@@ -17,9 +17,7 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientSearchGetFeedMutationVariables = {
-  feedRequest: components.FeedRequest;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
+  request: components.FeedRequest;
   options?: RequestOptions;
 };
 
@@ -65,9 +63,7 @@ export function buildClientSearchGetFeedMutation(
   return {
     mutationKey: mutationKeyClientSearchGetFeed(),
     mutationFn: function clientSearchGetFeedMutationFn({
-      feedRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     }): Promise<ClientSearchGetFeedMutationData> {
       const mergedOptions = {
@@ -84,9 +80,7 @@ export function buildClientSearchGetFeedMutation(
       };
       return unwrapAsync(clientSearchGetFeed(
         client$,
-        feedRequest,
-        xGleanActAs,
-        xGleanAuthType,
+        request,
         mergedOptions,
       ));
     },

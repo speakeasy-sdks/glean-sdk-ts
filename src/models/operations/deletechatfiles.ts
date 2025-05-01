@@ -11,14 +11,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeletechatfilesRequest = {
   /**
-   * Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).
-   */
-  xGleanActAs?: string | undefined;
-  /**
-   * Auth type being used to access the endpoint (should be non-empty only for global tokens).
-   */
-  xGleanAuthType?: string | undefined;
-  /**
    * The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
    */
   timezoneOffset?: number | undefined;
@@ -31,22 +23,16 @@ export const DeletechatfilesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Glean-ActAs": z.string().optional(),
-  "X-Glean-Auth-Type": z.string().optional(),
   timezoneOffset: z.number().int().optional(),
   DeleteChatFilesRequest: components.DeleteChatFilesRequest$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "X-Glean-ActAs": "xGleanActAs",
-    "X-Glean-Auth-Type": "xGleanAuthType",
     "DeleteChatFilesRequest": "deleteChatFilesRequest",
   });
 });
 
 /** @internal */
 export type DeletechatfilesRequest$Outbound = {
-  "X-Glean-ActAs"?: string | undefined;
-  "X-Glean-Auth-Type"?: string | undefined;
   timezoneOffset?: number | undefined;
   DeleteChatFilesRequest: components.DeleteChatFilesRequest$Outbound;
 };
@@ -57,14 +43,10 @@ export const DeletechatfilesRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DeletechatfilesRequest
 > = z.object({
-  xGleanActAs: z.string().optional(),
-  xGleanAuthType: z.string().optional(),
   timezoneOffset: z.number().int().optional(),
   deleteChatFilesRequest: components.DeleteChatFilesRequest$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xGleanActAs: "X-Glean-ActAs",
-    xGleanAuthType: "X-Glean-Auth-Type",
     deleteChatFilesRequest: "DeleteChatFilesRequest",
   });
 });

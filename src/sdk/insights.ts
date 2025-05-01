@@ -15,16 +15,12 @@ export class Insights extends ClientSDK {
    * Reads the aggregate information for each user, query, and content.
    */
   async get(
-    insightsRequest: components.InsightsRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.InsightsRequest,
     options?: RequestOptions,
   ): Promise<components.InsightsResponse> {
     return unwrapAsync(clientInsightsGet(
       this,
-      insightsRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }

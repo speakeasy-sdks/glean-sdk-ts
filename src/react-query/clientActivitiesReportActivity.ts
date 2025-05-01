@@ -18,8 +18,6 @@ import { MutationHookOptions } from "./_types.js";
 
 export type ClientActivitiesReportActivityMutationVariables = {
   feedback1?: components.Feedback | undefined;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
   feedbackQueryParameter?: string | undefined;
   options?: RequestOptions;
 };
@@ -67,8 +65,6 @@ export function buildClientActivitiesReportActivityMutation(
     mutationKey: mutationKeyClientActivitiesReportActivity(),
     mutationFn: function clientActivitiesReportActivityMutationFn({
       feedback1,
-      xGleanActAs,
-      xGleanAuthType,
       feedbackQueryParameter,
       options,
     }): Promise<ClientActivitiesReportActivityMutationData> {
@@ -87,8 +83,6 @@ export function buildClientActivitiesReportActivityMutation(
       return unwrapAsync(clientActivitiesReportActivity(
         client$,
         feedback1,
-        xGleanActAs,
-        xGleanAuthType,
         feedbackQueryParameter,
         mergedOptions,
       ));

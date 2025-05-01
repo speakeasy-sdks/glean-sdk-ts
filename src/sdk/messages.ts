@@ -15,16 +15,12 @@ export class Messages extends ClientSDK {
    * Retrieves list of messages from messaging/chat datasources (e.g. Slack, Teams).
    */
   async get(
-    messagesRequest: components.MessagesRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.MessagesRequest,
     options?: RequestOptions,
   ): Promise<components.MessagesResponse> {
     return unwrapAsync(clientMessagesGet(
       this,
-      messagesRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }

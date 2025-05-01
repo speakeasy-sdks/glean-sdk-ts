@@ -17,9 +17,7 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientShortcutsUpdateMutationVariables = {
-  updateShortcutRequest: components.UpdateShortcutRequest;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
+  request: components.UpdateShortcutRequest;
   options?: RequestOptions;
 };
 
@@ -66,9 +64,7 @@ export function buildClientShortcutsUpdateMutation(
   return {
     mutationKey: mutationKeyClientShortcutsUpdate(),
     mutationFn: function clientShortcutsUpdateMutationFn({
-      updateShortcutRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     }): Promise<ClientShortcutsUpdateMutationData> {
       const mergedOptions = {
@@ -85,9 +81,7 @@ export function buildClientShortcutsUpdateMutation(
       };
       return unwrapAsync(clientShortcutsUpdate(
         client$,
-        updateShortcutRequest,
-        xGleanActAs,
-        xGleanAuthType,
+        request,
         mergedOptions,
       ));
     },

@@ -15,16 +15,12 @@ export class Summarize extends ClientSDK {
    * Generate an AI summary of the requested documents.
    */
   async generate(
-    summarizeRequest: components.SummarizeRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.SummarizeRequest,
     options?: RequestOptions,
   ): Promise<components.SummarizeResponse> {
     return unwrapAsync(clientSummarizeGenerate(
       this,
-      summarizeRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }

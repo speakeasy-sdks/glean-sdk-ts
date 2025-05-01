@@ -17,9 +17,7 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientSearchAdminMutationVariables = {
-  searchRequest?: components.SearchRequest | undefined;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
+  request?: components.SearchRequest | undefined;
   options?: RequestOptions;
 };
 
@@ -65,9 +63,7 @@ export function buildClientSearchAdminMutation(
   return {
     mutationKey: mutationKeyClientSearchAdmin(),
     mutationFn: function clientSearchAdminMutationFn({
-      searchRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     }): Promise<ClientSearchAdminMutationData> {
       const mergedOptions = {
@@ -84,9 +80,7 @@ export function buildClientSearchAdminMutation(
       };
       return unwrapAsync(clientSearchAdmin(
         client$,
-        searchRequest,
-        xGleanActAs,
-        xGleanAuthType,
+        request,
         mergedOptions,
       ));
     },

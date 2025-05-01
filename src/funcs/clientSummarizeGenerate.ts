@@ -3,7 +3,7 @@
  */
 
 import { GleanCore } from "../core.js";
-import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -20,7 +20,6 @@ import {
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -32,9 +31,7 @@ import { Result } from "../types/fp.js";
  */
 export function clientSummarizeGenerate(
   client: GleanCore,
-  summarizeRequest: components.SummarizeRequest,
-  xGleanActAs?: string | undefined,
-  xGleanAuthType?: string | undefined,
+  request: components.SummarizeRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -50,18 +47,14 @@ export function clientSummarizeGenerate(
 > {
   return new APIPromise($do(
     client,
-    summarizeRequest,
-    xGleanActAs,
-    xGleanAuthType,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  summarizeRequest: components.SummarizeRequest,
-  xGleanActAs?: string | undefined,
-  xGleanAuthType?: string | undefined,
+  request: components.SummarizeRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -78,37 +71,22 @@ async function $do(
     APICall,
   ]
 > {
-  const input: operations.SummarizeRequest = {
-    summarizeRequest: summarizeRequest,
-    xGleanActAs: xGleanActAs,
-    xGleanAuthType: xGleanAuthType,
-  };
-
   const parsed = safeParse(
-    input,
-    (value) => operations.SummarizeRequest$outboundSchema.parse(value),
+    request,
+    (value) => components.SummarizeRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.SummarizeRequest, { explode: true });
+  const body = encodeJSON("body", payload, { explode: true });
 
   const path = pathToFunc("/rest/api/v1/summarize")();
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
-    "X-Glean-ActAs": encodeSimple("X-Glean-ActAs", payload["X-Glean-ActAs"], {
-      explode: false,
-      charEncoding: "none",
-    }),
-    "X-Glean-Auth-Type": encodeSimple(
-      "X-Glean-Auth-Type",
-      payload["X-Glean-Auth-Type"],
-      { explode: false, charEncoding: "none" },
-    ),
   }));
 
   const secConfig = await extractSecurity(client._options.bearerAuth);

@@ -20,16 +20,12 @@ export class ClientShortcuts extends ClientSDK {
    * Create a user-generated shortcut that contains an alias and destination URL.
    */
   async create(
-    createShortcutRequest: components.CreateShortcutRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.CreateShortcutRequest,
     options?: RequestOptions,
   ): Promise<components.CreateShortcutResponse> {
     return unwrapAsync(clientShortcutsCreate(
       this,
-      createShortcutRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }
@@ -41,16 +37,12 @@ export class ClientShortcuts extends ClientSDK {
    * Delete an existing user-generated shortcut.
    */
   async delete(
-    deleteShortcutRequest: components.DeleteShortcutRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.DeleteShortcutRequest,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(clientShortcutsDelete(
       this,
-      deleteShortcutRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }
@@ -62,16 +54,12 @@ export class ClientShortcuts extends ClientSDK {
    * Read a particular shortcut's details given its ID.
    */
   async get(
-    getShortcutRequest: components.GetShortcutRequestUnion,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.GetShortcutRequestUnion,
     options?: RequestOptions,
   ): Promise<components.GetShortcutResponse> {
     return unwrapAsync(clientShortcutsGet(
       this,
-      getShortcutRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }
@@ -83,16 +71,12 @@ export class ClientShortcuts extends ClientSDK {
    * List shortcuts editable/owned by the currently authenticated user.
    */
   async list(
-    listShortcutsPaginatedRequest: components.ListShortcutsPaginatedRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.ListShortcutsPaginatedRequest,
     options?: RequestOptions,
   ): Promise<components.ListShortcutsPaginatedResponse> {
     return unwrapAsync(clientShortcutsList(
       this,
-      listShortcutsPaginatedRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }
@@ -104,16 +88,12 @@ export class ClientShortcuts extends ClientSDK {
    * Updates the shortcut with the given ID.
    */
   async update(
-    updateShortcutRequest: components.UpdateShortcutRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.UpdateShortcutRequest,
     options?: RequestOptions,
   ): Promise<components.UpdateShortcutResponse> {
     return unwrapAsync(clientShortcutsUpdate(
       this,
-      updateShortcutRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }

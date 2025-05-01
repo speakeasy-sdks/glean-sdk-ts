@@ -18,9 +18,7 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientPinsListMutationVariables = {
-  requestBody: operations.ListpinsRequestBody;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
+  request: operations.ListpinsRequest;
   options?: RequestOptions;
 };
 
@@ -66,9 +64,7 @@ export function buildClientPinsListMutation(
   return {
     mutationKey: mutationKeyClientPinsList(),
     mutationFn: function clientPinsListMutationFn({
-      requestBody,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     }): Promise<ClientPinsListMutationData> {
       const mergedOptions = {
@@ -85,9 +81,7 @@ export function buildClientPinsListMutation(
       };
       return unwrapAsync(clientPinsList(
         client$,
-        requestBody,
-        xGleanActAs,
-        xGleanAuthType,
+        request,
         mergedOptions,
       ));
     },

@@ -4,7 +4,7 @@
 
 import * as z from "zod";
 import { GleanCore } from "../core.js";
-import { encodeFormQuery, encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -34,8 +34,6 @@ import { Result } from "../types/fp.js";
 export function clientChatStart(
   client: GleanCore,
   chatRequest: components.ChatRequest,
-  xGleanActAs?: string | undefined,
-  xGleanAuthType?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): APIPromise<
@@ -53,8 +51,6 @@ export function clientChatStart(
   return new APIPromise($do(
     client,
     chatRequest,
-    xGleanActAs,
-    xGleanAuthType,
     timezoneOffset,
     options,
   ));
@@ -63,8 +59,6 @@ export function clientChatStart(
 async function $do(
   client: GleanCore,
   chatRequest: components.ChatRequest,
-  xGleanActAs?: string | undefined,
-  xGleanAuthType?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -84,8 +78,6 @@ async function $do(
 > {
   const input: operations.ChatRequest = {
     chatRequest: chatRequest,
-    xGleanActAs: xGleanActAs,
-    xGleanAuthType: xGleanAuthType,
     timezoneOffset: timezoneOffset,
   };
 
@@ -109,15 +101,6 @@ async function $do(
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "text/plain",
-    "X-Glean-ActAs": encodeSimple("X-Glean-ActAs", payload["X-Glean-ActAs"], {
-      explode: false,
-      charEncoding: "none",
-    }),
-    "X-Glean-Auth-Type": encodeSimple(
-      "X-Glean-Auth-Type",
-      payload["X-Glean-Auth-Type"],
-      { explode: false, charEncoding: "none" },
-    ),
   }));
 
   const secConfig = await extractSecurity(client._options.bearerAuth);

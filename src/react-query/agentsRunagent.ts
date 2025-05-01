@@ -18,8 +18,6 @@ import { MutationHookOptions } from "./_types.js";
 
 export type AgentsRunagentMutationVariables = {
   runAgentRequest: components.RunAgentRequest;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
@@ -67,8 +65,6 @@ export function buildAgentsRunagentMutation(
     mutationKey: mutationKeyAgentsRunagent(),
     mutationFn: function agentsRunagentMutationFn({
       runAgentRequest,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     }): Promise<AgentsRunagentMutationData> {
@@ -87,8 +83,6 @@ export function buildAgentsRunagentMutation(
       return unwrapAsync(agentsRunagent(
         client$,
         runAgentRequest,
-        xGleanActAs,
-        xGleanAuthType,
         timezoneOffset,
         mergedOptions,
       ));

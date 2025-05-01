@@ -17,9 +17,7 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientDocumentsGetPermissionsMutationVariables = {
-  getDocPermissionsRequest: components.GetDocPermissionsRequest;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
+  request: components.GetDocPermissionsRequest;
   options?: RequestOptions;
 };
 
@@ -66,9 +64,7 @@ export function buildClientDocumentsGetPermissionsMutation(
   return {
     mutationKey: mutationKeyClientDocumentsGetPermissions(),
     mutationFn: function clientDocumentsGetPermissionsMutationFn({
-      getDocPermissionsRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     }): Promise<ClientDocumentsGetPermissionsMutationData> {
       const mergedOptions = {
@@ -85,9 +81,7 @@ export function buildClientDocumentsGetPermissionsMutation(
       };
       return unwrapAsync(clientDocumentsGetPermissions(
         client$,
-        getDocPermissionsRequest,
-        xGleanActAs,
-        xGleanAuthType,
+        request,
         mergedOptions,
       ));
     },

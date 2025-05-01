@@ -16,16 +16,12 @@ export class Entities extends ClientSDK {
    * List some set of details for all entities that fit the given criteria and return in the requested order. Does not support negation in filters, assumes relation type EQUALS. There is a limit of 10000 entities that can be retrieved via this endpoint.
    */
   async list(
-    listEntitiesRequest: components.ListEntitiesRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.ListEntitiesRequest,
     options?: RequestOptions,
   ): Promise<components.ListEntitiesResponse> {
     return unwrapAsync(clientEntitiesList(
       this,
-      listEntitiesRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }
@@ -37,16 +33,12 @@ export class Entities extends ClientSDK {
    * Read people details for the given IDs.
    */
   async readPeople(
-    peopleRequest: components.PeopleRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.PeopleRequest,
     options?: RequestOptions,
   ): Promise<components.PeopleResponse> {
     return unwrapAsync(clientEntitiesReadPeople(
       this,
-      peopleRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }

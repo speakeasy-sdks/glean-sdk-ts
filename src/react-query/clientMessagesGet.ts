@@ -17,9 +17,7 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientMessagesGetMutationVariables = {
-  messagesRequest: components.MessagesRequest;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
+  request: components.MessagesRequest;
   options?: RequestOptions;
 };
 
@@ -65,9 +63,7 @@ export function buildClientMessagesGetMutation(
   return {
     mutationKey: mutationKeyClientMessagesGet(),
     mutationFn: function clientMessagesGetMutationFn({
-      messagesRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     }): Promise<ClientMessagesGetMutationData> {
       const mergedOptions = {
@@ -84,9 +80,7 @@ export function buildClientMessagesGetMutation(
       };
       return unwrapAsync(clientMessagesGet(
         client$,
-        messagesRequest,
-        xGleanActAs,
-        xGleanAuthType,
+        request,
         mergedOptions,
       ));
     },

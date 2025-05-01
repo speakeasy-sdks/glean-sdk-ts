@@ -17,16 +17,12 @@ export class ClientDocuments extends ClientSDK {
    * Read the emails of all users who have access to the given document.
    */
   async getPermissions(
-    getDocPermissionsRequest: components.GetDocPermissionsRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.GetDocPermissionsRequest,
     options?: RequestOptions,
   ): Promise<components.GetDocPermissionsResponse> {
     return unwrapAsync(clientDocumentsGetPermissions(
       this,
-      getDocPermissionsRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }
@@ -38,16 +34,12 @@ export class ClientDocuments extends ClientSDK {
    * Read the documents including metadata (does not include enhanced metadata via `/documentmetadata`) for the given list of Glean Document IDs or URLs specified in the request.
    */
   async get(
-    getDocumentsRequest?: components.GetDocumentsRequest | undefined,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request?: components.GetDocumentsRequest | undefined,
     options?: RequestOptions,
   ): Promise<components.GetDocumentsResponse> {
     return unwrapAsync(clientDocumentsGet(
       this,
-      getDocumentsRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }
@@ -59,18 +51,12 @@ export class ClientDocuments extends ClientSDK {
    * Read the documents including metadata (does not include enhanced metadata via `/documentmetadata`) macthing the given facet conditions.
    */
   async getByFacets(
-    getDocumentsByFacetsRequest?:
-      | components.GetDocumentsByFacetsRequest
-      | undefined,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request?: components.GetDocumentsByFacetsRequest | undefined,
     options?: RequestOptions,
   ): Promise<components.GetDocumentsByFacetsResponse> {
     return unwrapAsync(clientDocumentsGetByFacets(
       this,
-      getDocumentsByFacetsRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }

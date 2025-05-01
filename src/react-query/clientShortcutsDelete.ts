@@ -17,9 +17,7 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientShortcutsDeleteMutationVariables = {
-  deleteShortcutRequest: components.DeleteShortcutRequest;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
+  request: components.DeleteShortcutRequest;
   options?: RequestOptions;
 };
 
@@ -65,9 +63,7 @@ export function buildClientShortcutsDeleteMutation(
   return {
     mutationKey: mutationKeyClientShortcutsDelete(),
     mutationFn: function clientShortcutsDeleteMutationFn({
-      deleteShortcutRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     }): Promise<ClientShortcutsDeleteMutationData> {
       const mergedOptions = {
@@ -84,9 +80,7 @@ export function buildClientShortcutsDeleteMutation(
       };
       return unwrapAsync(clientShortcutsDelete(
         client$,
-        deleteShortcutRequest,
-        xGleanActAs,
-        xGleanAuthType,
+        request,
         mergedOptions,
       ));
     },

@@ -17,8 +17,6 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientAuthenticationCreateTokenMutationVariables = {
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -65,8 +63,6 @@ export function buildClientAuthenticationCreateTokenMutation(
   return {
     mutationKey: mutationKeyClientAuthenticationCreateToken(),
     mutationFn: function clientAuthenticationCreateTokenMutationFn({
-      xGleanActAs,
-      xGleanAuthType,
       options,
     }): Promise<ClientAuthenticationCreateTokenMutationData> {
       const mergedOptions = {
@@ -83,8 +79,6 @@ export function buildClientAuthenticationCreateTokenMutation(
       };
       return unwrapAsync(clientAuthenticationCreateToken(
         client$,
-        xGleanActAs,
-        xGleanAuthType,
         mergedOptions,
       ));
     },

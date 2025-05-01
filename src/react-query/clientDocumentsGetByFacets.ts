@@ -17,11 +17,7 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientDocumentsGetByFacetsMutationVariables = {
-  getDocumentsByFacetsRequest?:
-    | components.GetDocumentsByFacetsRequest
-    | undefined;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
+  request?: components.GetDocumentsByFacetsRequest | undefined;
   options?: RequestOptions;
 };
 
@@ -68,9 +64,7 @@ export function buildClientDocumentsGetByFacetsMutation(
   return {
     mutationKey: mutationKeyClientDocumentsGetByFacets(),
     mutationFn: function clientDocumentsGetByFacetsMutationFn({
-      getDocumentsByFacetsRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     }): Promise<ClientDocumentsGetByFacetsMutationData> {
       const mergedOptions = {
@@ -87,9 +81,7 @@ export function buildClientDocumentsGetByFacetsMutation(
       };
       return unwrapAsync(clientDocumentsGetByFacets(
         client$,
-        getDocumentsByFacetsRequest,
-        xGleanActAs,
-        xGleanAuthType,
+        request,
         mergedOptions,
       ));
     },

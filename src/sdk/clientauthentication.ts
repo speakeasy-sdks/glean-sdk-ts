@@ -15,14 +15,10 @@ export class ClientAuthentication extends ClientSDK {
    * Creates an authentication token for the authenticated user.
    */
   async createToken(
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.CreateAuthTokenResponse> {
     return unwrapAsync(clientAuthenticationCreateToken(
       this,
-      xGleanActAs,
-      xGleanAuthType,
       options,
     ));
   }

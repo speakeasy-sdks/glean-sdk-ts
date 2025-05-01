@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 9e4b1e83-7853-4088-b960-4cbc5769b62c
 management:
-  docChecksum: 5f39e048571bfcd8aae3cc610c7d8852
+  docChecksum: 1cc19604b6542fcea54e78c6786aba78
   docVersion: 0.9.0
-  speakeasyVersion: 1.541.0
-  generationVersion: 2.595.2
-  releaseVersion: 0.1.0-beta.1
-  configChecksum: 4d72514137c7e0629ea2992e39a79487
+  speakeasyVersion: 1.541.2
+  generationVersion: 2.595.4
+  releaseVersion: 0.1.0-beta.2
+  configChecksum: 0e38427161a2776fba7cd61456c3315c
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.21.6
+    core: 3.21.7
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -525,67 +525,25 @@ generatedFiles:
   - docs/models/components/writepermission.md
   - docs/models/errors/collectionerror.md
   - docs/models/errors/gleandataerror.md
-  - docs/models/operations/addcollectionitemsrequest.md
-  - docs/models/operations/addverificationreminderrequest.md
-  - docs/models/operations/adminsearchrequest.md
-  - docs/models/operations/autocompleterequest.md
   - docs/models/operations/chatrequest.md
-  - docs/models/operations/createannouncementrequest.md
-  - docs/models/operations/createanswerrequest.md
-  - docs/models/operations/createauthtokenrequest.md
-  - docs/models/operations/createcollectionrequest.md
-  - docs/models/operations/createshortcutrequest.md
   - docs/models/operations/deleteallchatsrequest.md
-  - docs/models/operations/deleteannouncementrequest.md
-  - docs/models/operations/deleteanswerrequest.md
   - docs/models/operations/deletechatfilesrequest.md
   - docs/models/operations/deletechatsrequest.md
-  - docs/models/operations/deletecollectionitemrequest.md
-  - docs/models/operations/deletecollectionrequest.md
-  - docs/models/operations/deleteshortcutrequest.md
-  - docs/models/operations/editanswerrequest.md
-  - docs/models/operations/editcollectionitemrequest.md
-  - docs/models/operations/editcollectionrequest.md
-  - docs/models/operations/editpinrequest.md
   - docs/models/operations/feedbackrequest.md
-  - docs/models/operations/feedrequest.md
   - docs/models/operations/getagentinputsrequest.md
-  - docs/models/operations/getanswerrequest.md
   - docs/models/operations/getchatapplicationrequest.md
   - docs/models/operations/getchatfilesrequest.md
   - docs/models/operations/getchatrequest.md
-  - docs/models/operations/getcollectionrequest.md
-  - docs/models/operations/getdocpermissionsrequest.md
-  - docs/models/operations/getdocumentsbyfacetsrequest.md
-  - docs/models/operations/getdocumentsrequest.md
-  - docs/models/operations/getpinrequest.md
-  - docs/models/operations/getshortcutrequest.md
-  - docs/models/operations/insightsrequest.md
   - docs/models/operations/listagentsrequest.md
-  - docs/models/operations/listanswersrequest.md
   - docs/models/operations/listchatsrequest.md
-  - docs/models/operations/listcollectionsrequest.md
-  - docs/models/operations/listentitiesrequest.md
   - docs/models/operations/listpinsrequest.md
-  - docs/models/operations/listpinsrequestbody.md
-  - docs/models/operations/listshortcutsrequest.md
   - docs/models/operations/listverificationsrequest.md
-  - docs/models/operations/messagesrequest.md
-  - docs/models/operations/peoplerequest.md
-  - docs/models/operations/pinrequest.md
   - docs/models/operations/postapiindexv1debugdatasourcedocumentrequest.md
   - docs/models/operations/postapiindexv1debugdatasourcedocumentsrequest.md
   - docs/models/operations/postapiindexv1debugdatasourcestatusrequest.md
   - docs/models/operations/postapiindexv1debugdatasourceuserrequest.md
-  - docs/models/operations/recommendationsrequest.md
   - docs/models/operations/runagentrequest.md
-  - docs/models/operations/searchrequest.md
-  - docs/models/operations/summarizerequest.md
-  - docs/models/operations/unpinrequest.md
-  - docs/models/operations/updateannouncementrequest.md
-  - docs/models/operations/updateshortcutrequest.md
   - docs/models/operations/uploadchatfilesrequest.md
-  - docs/models/operations/verifyrequest.md
   - docs/sdks/activities/README.md
   - docs/sdks/activity/README.md
   - docs/sdks/agents/README.md
@@ -1723,67 +1681,26 @@ generatedFiles:
   - src/models/errors/httpclienterrors.ts
   - src/models/errors/index.ts
   - src/models/errors/sdkvalidationerror.ts
-  - src/models/operations/addcollectionitems.ts
-  - src/models/operations/addverificationreminder.ts
-  - src/models/operations/adminsearch.ts
-  - src/models/operations/autocomplete.ts
   - src/models/operations/chat.ts
-  - src/models/operations/createannouncement.ts
-  - src/models/operations/createanswer.ts
-  - src/models/operations/createauthtoken.ts
-  - src/models/operations/createcollection.ts
-  - src/models/operations/createshortcut.ts
   - src/models/operations/deleteallchats.ts
-  - src/models/operations/deleteannouncement.ts
-  - src/models/operations/deleteanswer.ts
   - src/models/operations/deletechatfiles.ts
   - src/models/operations/deletechats.ts
-  - src/models/operations/deletecollection.ts
-  - src/models/operations/deletecollectionitem.ts
-  - src/models/operations/deleteshortcut.ts
-  - src/models/operations/editanswer.ts
-  - src/models/operations/editcollection.ts
-  - src/models/operations/editcollectionitem.ts
-  - src/models/operations/editpin.ts
-  - src/models/operations/feed.ts
   - src/models/operations/feedback.ts
   - src/models/operations/getagentinputs.ts
-  - src/models/operations/getanswer.ts
   - src/models/operations/getchat.ts
   - src/models/operations/getchatapplication.ts
   - src/models/operations/getchatfiles.ts
-  - src/models/operations/getcollection.ts
-  - src/models/operations/getdocpermissions.ts
-  - src/models/operations/getdocuments.ts
-  - src/models/operations/getdocumentsbyfacets.ts
-  - src/models/operations/getpin.ts
-  - src/models/operations/getshortcut.ts
   - src/models/operations/index.ts
-  - src/models/operations/insights.ts
   - src/models/operations/listagents.ts
-  - src/models/operations/listanswers.ts
   - src/models/operations/listchats.ts
-  - src/models/operations/listcollections.ts
-  - src/models/operations/listentities.ts
   - src/models/operations/listpins.ts
-  - src/models/operations/listshortcuts.ts
   - src/models/operations/listverifications.ts
-  - src/models/operations/messages.ts
-  - src/models/operations/people.ts
-  - src/models/operations/pin.ts
   - src/models/operations/postapiindexv1debugdatasourcedocument.ts
   - src/models/operations/postapiindexv1debugdatasourcedocuments.ts
   - src/models/operations/postapiindexv1debugdatasourcestatus.ts
   - src/models/operations/postapiindexv1debugdatasourceuser.ts
-  - src/models/operations/recommendations.ts
   - src/models/operations/runagent.ts
-  - src/models/operations/search.ts
-  - src/models/operations/summarize.ts
-  - src/models/operations/unpin.ts
-  - src/models/operations/updateannouncement.ts
-  - src/models/operations/updateshortcut.ts
   - src/models/operations/uploadchatfiles.ts
-  - src/models/operations/verify.ts
   - src/react-query/_context.tsx
   - src/react-query/_types.ts
   - src/react-query/agentsGetagentinputs.ts

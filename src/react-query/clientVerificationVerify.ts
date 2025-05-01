@@ -17,9 +17,7 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientVerificationVerifyMutationVariables = {
-  verifyRequest: components.VerifyRequest;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
+  request: components.VerifyRequest;
   options?: RequestOptions;
 };
 
@@ -65,9 +63,7 @@ export function buildClientVerificationVerifyMutation(
   return {
     mutationKey: mutationKeyClientVerificationVerify(),
     mutationFn: function clientVerificationVerifyMutationFn({
-      verifyRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     }): Promise<ClientVerificationVerifyMutationData> {
       const mergedOptions = {
@@ -84,9 +80,7 @@ export function buildClientVerificationVerifyMutation(
       };
       return unwrapAsync(clientVerificationVerify(
         client$,
-        verifyRequest,
-        xGleanActAs,
-        xGleanAuthType,
+        request,
         mergedOptions,
       ));
     },

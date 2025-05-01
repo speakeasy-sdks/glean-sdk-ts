@@ -17,9 +17,7 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientEntitiesListMutationVariables = {
-  listEntitiesRequest: components.ListEntitiesRequest;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
+  request: components.ListEntitiesRequest;
   options?: RequestOptions;
 };
 
@@ -65,9 +63,7 @@ export function buildClientEntitiesListMutation(
   return {
     mutationKey: mutationKeyClientEntitiesList(),
     mutationFn: function clientEntitiesListMutationFn({
-      listEntitiesRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     }): Promise<ClientEntitiesListMutationData> {
       const mergedOptions = {
@@ -84,9 +80,7 @@ export function buildClientEntitiesListMutation(
       };
       return unwrapAsync(clientEntitiesList(
         client$,
-        listEntitiesRequest,
-        xGleanActAs,
-        xGleanAuthType,
+        request,
         mergedOptions,
       ));
     },

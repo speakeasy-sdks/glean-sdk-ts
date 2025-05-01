@@ -18,8 +18,6 @@ import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatStartMutationVariables = {
   chatRequest: components.ChatRequest;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
@@ -67,8 +65,6 @@ export function buildClientChatStartMutation(
     mutationKey: mutationKeyClientChatStart(),
     mutationFn: function clientChatStartMutationFn({
       chatRequest,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     }): Promise<ClientChatStartMutationData> {
@@ -87,8 +83,6 @@ export function buildClientChatStartMutation(
       return unwrapAsync(clientChatStart(
         client$,
         chatRequest,
-        xGleanActAs,
-        xGleanAuthType,
         timezoneOffset,
         mergedOptions,
       ));
