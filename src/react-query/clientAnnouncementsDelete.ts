@@ -17,9 +17,7 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientAnnouncementsDeleteMutationVariables = {
-  deleteAnnouncementRequest: components.DeleteAnnouncementRequest;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
+  request: components.DeleteAnnouncementRequest;
   options?: RequestOptions;
 };
 
@@ -65,9 +63,7 @@ export function buildClientAnnouncementsDeleteMutation(
   return {
     mutationKey: mutationKeyClientAnnouncementsDelete(),
     mutationFn: function clientAnnouncementsDeleteMutationFn({
-      deleteAnnouncementRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     }): Promise<ClientAnnouncementsDeleteMutationData> {
       const mergedOptions = {
@@ -84,9 +80,7 @@ export function buildClientAnnouncementsDeleteMutation(
       };
       return unwrapAsync(clientAnnouncementsDelete(
         client$,
-        deleteAnnouncementRequest,
-        xGleanActAs,
-        xGleanAuthType,
+        request,
         mergedOptions,
       ));
     },

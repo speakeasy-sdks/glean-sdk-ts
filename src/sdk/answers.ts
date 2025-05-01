@@ -19,16 +19,12 @@ export class Answers extends ClientSDK {
    * Create a user-generated Answer that contains a question and answer.
    */
   async create(
-    createAnswerRequest: components.CreateAnswerRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.CreateAnswerRequest,
     options?: RequestOptions,
   ): Promise<components.Answer> {
     return unwrapAsync(clientAnswersCreate(
       this,
-      createAnswerRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }
@@ -40,16 +36,12 @@ export class Answers extends ClientSDK {
    * Delete an existing user-generated Answer.
    */
   async delete(
-    deleteAnswerRequest: components.DeleteAnswerRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.DeleteAnswerRequest,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(clientAnswersDelete(
       this,
-      deleteAnswerRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }
@@ -61,16 +53,12 @@ export class Answers extends ClientSDK {
    * Update an existing user-generated Answer.
    */
   async edit(
-    editAnswerRequest: components.EditAnswerRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.EditAnswerRequest,
     options?: RequestOptions,
   ): Promise<components.Answer> {
     return unwrapAsync(clientAnswersEdit(
       this,
-      editAnswerRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }
@@ -82,16 +70,12 @@ export class Answers extends ClientSDK {
    * Read the details of a particular Answer given its ID.
    */
   async get(
-    getAnswerRequest: components.GetAnswerRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.GetAnswerRequest,
     options?: RequestOptions,
   ): Promise<components.GetAnswerResponse> {
     return unwrapAsync(clientAnswersGet(
       this,
-      getAnswerRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }
@@ -103,16 +87,12 @@ export class Answers extends ClientSDK {
    * List Answers created by the current user.
    */
   async list(
-    listAnswersRequest: components.ListAnswersRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.ListAnswersRequest,
     options?: RequestOptions,
   ): Promise<components.ListAnswersResponse> {
     return unwrapAsync(clientAnswersList(
       this,
-      listAnswersRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }

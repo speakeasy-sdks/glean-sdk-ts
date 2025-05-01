@@ -17,16 +17,12 @@ export class Verification extends ClientSDK {
    * Creates a verification reminder for the document. Users can create verification reminders from different product surfaces.
    */
   async addReminder(
-    reminderRequest: components.ReminderRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.ReminderRequest,
     options?: RequestOptions,
   ): Promise<components.Verification> {
     return unwrapAsync(clientVerificationAddReminder(
       this,
-      reminderRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }
@@ -38,15 +34,11 @@ export class Verification extends ClientSDK {
    * Returns the information to be rendered in verification dashboard. Includes information for each document owned by user regarding their verifications.
    */
   async list(
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
     count?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.VerificationFeed> {
     return unwrapAsync(clientVerificationList(
       this,
-      xGleanActAs,
-      xGleanAuthType,
       count,
       options,
     ));
@@ -59,16 +51,12 @@ export class Verification extends ClientSDK {
    * Verify documents to keep the knowledge up to date within customer corpus.
    */
   async verify(
-    verifyRequest: components.VerifyRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.VerifyRequest,
     options?: RequestOptions,
   ): Promise<components.Verification> {
     return unwrapAsync(clientVerificationVerify(
       this,
-      verifyRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }

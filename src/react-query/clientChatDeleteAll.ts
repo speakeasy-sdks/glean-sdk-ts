@@ -16,8 +16,6 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatDeleteAllMutationVariables = {
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
@@ -64,8 +62,6 @@ export function buildClientChatDeleteAllMutation(
   return {
     mutationKey: mutationKeyClientChatDeleteAll(),
     mutationFn: function clientChatDeleteAllMutationFn({
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     }): Promise<ClientChatDeleteAllMutationData> {
@@ -83,8 +79,6 @@ export function buildClientChatDeleteAllMutation(
       };
       return unwrapAsync(clientChatDeleteAll(
         client$,
-        xGleanActAs,
-        xGleanAuthType,
         timezoneOffset,
         mergedOptions,
       ));

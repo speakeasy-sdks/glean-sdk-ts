@@ -18,16 +18,12 @@ export class Agents extends ClientSDK {
    */
   async runagent(
     runAgentRequest: components.RunAgentRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.ChatResponse> {
     return unwrapAsync(agentsRunagent(
       this,
       runAgentRequest,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     ));
@@ -41,16 +37,12 @@ export class Agents extends ClientSDK {
    */
   async listagents(
     requestBody?: any | undefined,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.ListAgentsResponse> {
     return unwrapAsync(agentsListagents(
       this,
       requestBody,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     ));
@@ -64,16 +56,12 @@ export class Agents extends ClientSDK {
    */
   async getagentinputs(
     getAgentInputsRequest: components.GetAgentInputsRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.GetAgentInputsResponse> {
     return unwrapAsync(agentsGetagentinputs(
       this,
       getAgentInputsRequest,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     ));

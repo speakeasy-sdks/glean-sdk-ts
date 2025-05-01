@@ -3,7 +3,7 @@
  */
 
 import { GleanCore } from "../core.js";
-import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -21,7 +21,6 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -33,9 +32,7 @@ import { Result } from "../types/fp.js";
  */
 export function clientSearchAdmin(
   client: GleanCore,
-  searchRequest?: components.SearchRequest | undefined,
-  xGleanActAs?: string | undefined,
-  xGleanAuthType?: string | undefined,
+  request?: components.SearchRequest | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -52,18 +49,14 @@ export function clientSearchAdmin(
 > {
   return new APIPromise($do(
     client,
-    searchRequest,
-    xGleanActAs,
-    xGleanAuthType,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  searchRequest?: components.SearchRequest | undefined,
-  xGleanActAs?: string | undefined,
-  xGleanAuthType?: string | undefined,
+  request?: components.SearchRequest | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -81,37 +74,24 @@ async function $do(
     APICall,
   ]
 > {
-  const input: operations.AdminsearchRequest = {
-    searchRequest: searchRequest,
-    xGleanActAs: xGleanActAs,
-    xGleanAuthType: xGleanAuthType,
-  };
-
   const parsed = safeParse(
-    input,
-    (value) => operations.AdminsearchRequest$outboundSchema.parse(value),
+    request,
+    (value) => components.SearchRequest$outboundSchema.optional().parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.SearchRequest, { explode: true });
+  const body = payload === undefined
+    ? null
+    : encodeJSON("body", payload, { explode: true });
 
   const path = pathToFunc("/rest/api/v1/adminsearch")();
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
-    "X-Glean-ActAs": encodeSimple("X-Glean-ActAs", payload["X-Glean-ActAs"], {
-      explode: false,
-      charEncoding: "none",
-    }),
-    "X-Glean-Auth-Type": encodeSimple(
-      "X-Glean-Auth-Type",
-      payload["X-Glean-Auth-Type"],
-      { explode: false, charEncoding: "none" },
-    ),
   }));
 
   const secConfig = await extractSecurity(client._options.bearerAuth);

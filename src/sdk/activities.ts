@@ -16,16 +16,12 @@ export class Activities extends ClientSDK {
    */
   async reportActivity(
     feedback1?: components.Feedback | undefined,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
     feedbackQueryParameter?: string | undefined,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(clientActivitiesReportActivity(
       this,
       feedback1,
-      xGleanActAs,
-      xGleanAuthType,
       feedbackQueryParameter,
       options,
     ));

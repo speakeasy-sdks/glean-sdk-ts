@@ -18,8 +18,6 @@ import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatDeleteMutationVariables = {
   deleteChatsRequest: components.DeleteChatsRequest;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
@@ -67,8 +65,6 @@ export function buildClientChatDeleteMutation(
     mutationKey: mutationKeyClientChatDelete(),
     mutationFn: function clientChatDeleteMutationFn({
       deleteChatsRequest,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     }): Promise<ClientChatDeleteMutationData> {
@@ -87,8 +83,6 @@ export function buildClientChatDeleteMutation(
       return unwrapAsync(clientChatDelete(
         client$,
         deleteChatsRequest,
-        xGleanActAs,
-        xGleanAuthType,
         timezoneOffset,
         mergedOptions,
       ));

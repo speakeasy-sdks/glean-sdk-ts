@@ -18,8 +18,6 @@ import { MutationHookOptions } from "./_types.js";
 
 export type AgentsGetagentinputsMutationVariables = {
   getAgentInputsRequest: components.GetAgentInputsRequest;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
@@ -68,8 +66,6 @@ export function buildAgentsGetagentinputsMutation(
     mutationKey: mutationKeyAgentsGetagentinputs(),
     mutationFn: function agentsGetagentinputsMutationFn({
       getAgentInputsRequest,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     }): Promise<AgentsGetagentinputsMutationData> {
@@ -88,8 +84,6 @@ export function buildAgentsGetagentinputsMutation(
       return unwrapAsync(agentsGetagentinputs(
         client$,
         getAgentInputsRequest,
-        xGleanActAs,
-        xGleanAuthType,
         timezoneOffset,
         mergedOptions,
       ));

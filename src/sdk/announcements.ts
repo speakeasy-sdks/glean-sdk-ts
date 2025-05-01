@@ -17,16 +17,12 @@ export class Announcements extends ClientSDK {
    * Create a textual announcement visible to some set of users based on department and location.
    */
   async create(
-    createAnnouncementRequest: components.CreateAnnouncementRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.CreateAnnouncementRequest,
     options?: RequestOptions,
   ): Promise<components.Announcement> {
     return unwrapAsync(clientAnnouncementsCreate(
       this,
-      createAnnouncementRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }
@@ -38,16 +34,12 @@ export class Announcements extends ClientSDK {
    * Delete an existing user-generated announcement.
    */
   async delete(
-    deleteAnnouncementRequest: components.DeleteAnnouncementRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.DeleteAnnouncementRequest,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(clientAnnouncementsDelete(
       this,
-      deleteAnnouncementRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }
@@ -59,16 +51,12 @@ export class Announcements extends ClientSDK {
    * Update a textual announcement visible to some set of users based on department and location.
    */
   async update(
-    updateAnnouncementRequest: components.UpdateAnnouncementRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.UpdateAnnouncementRequest,
     options?: RequestOptions,
   ): Promise<components.Announcement> {
     return unwrapAsync(clientAnnouncementsUpdate(
       this,
-      updateAnnouncementRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }

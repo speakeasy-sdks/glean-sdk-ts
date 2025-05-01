@@ -17,9 +17,7 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientEntitiesReadPeopleMutationVariables = {
-  peopleRequest: components.PeopleRequest;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
+  request: components.PeopleRequest;
   options?: RequestOptions;
 };
 
@@ -65,9 +63,7 @@ export function buildClientEntitiesReadPeopleMutation(
   return {
     mutationKey: mutationKeyClientEntitiesReadPeople(),
     mutationFn: function clientEntitiesReadPeopleMutationFn({
-      peopleRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     }): Promise<ClientEntitiesReadPeopleMutationData> {
       const mergedOptions = {
@@ -84,9 +80,7 @@ export function buildClientEntitiesReadPeopleMutation(
       };
       return unwrapAsync(clientEntitiesReadPeople(
         client$,
-        peopleRequest,
-        xGleanActAs,
-        xGleanAuthType,
+        request,
         mergedOptions,
       ));
     },

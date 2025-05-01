@@ -24,16 +24,12 @@ export class Chat extends ClientSDK {
    */
   async start(
     chatRequest: components.ChatRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<string> {
     return unwrapAsync(clientChatStart(
       this,
       chatRequest,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     ));
@@ -46,15 +42,11 @@ export class Chat extends ClientSDK {
    * Deletes all saved Chats a user has had and all their contained conversational content.
    */
   async deleteAll(
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(clientChatDeleteAll(
       this,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     ));
@@ -68,16 +60,12 @@ export class Chat extends ClientSDK {
    */
   async delete(
     deleteChatsRequest: components.DeleteChatsRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(clientChatDelete(
       this,
       deleteChatsRequest,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     ));
@@ -91,16 +79,12 @@ export class Chat extends ClientSDK {
    */
   async get(
     getChatRequest: components.GetChatRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.GetChatResponse> {
     return unwrapAsync(clientChatGet(
       this,
       getChatRequest,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     ));
@@ -113,15 +97,11 @@ export class Chat extends ClientSDK {
    * Retrieves all the saved Chats between Glean Assistant and the user. The returned Chats contain only metadata and no conversational content.
    */
   async list(
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.ListChatsResponse> {
     return unwrapAsync(clientChatList(
       this,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     ));
@@ -135,16 +115,12 @@ export class Chat extends ClientSDK {
    */
   async getApplication(
     getChatApplicationRequest: components.GetChatApplicationRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.GetChatApplicationResponse> {
     return unwrapAsync(clientChatGetApplication(
       this,
       getChatApplicationRequest,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     ));
@@ -158,16 +134,12 @@ export class Chat extends ClientSDK {
    */
   async uploadFiles(
     uploadChatFilesRequest: components.UploadChatFilesRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.UploadChatFilesResponse> {
     return unwrapAsync(clientChatUploadFiles(
       this,
       uploadChatFilesRequest,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     ));
@@ -181,16 +153,12 @@ export class Chat extends ClientSDK {
    */
   async getFiles(
     getChatFilesRequest: components.GetChatFilesRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.GetChatFilesResponse> {
     return unwrapAsync(clientChatGetFiles(
       this,
       getChatFilesRequest,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     ));
@@ -204,16 +172,12 @@ export class Chat extends ClientSDK {
    */
   async deleteFiles(
     deleteChatFilesRequest: components.DeleteChatFilesRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(clientChatDeleteFiles(
       this,
       deleteChatFilesRequest,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     ));

@@ -11,14 +11,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type FeedbackRequest = {
   /**
-   * Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).
-   */
-  xGleanActAs?: string | undefined;
-  /**
-   * Auth type being used to access the endpoint (should be non-empty only for global tokens).
-   */
-  xGleanAuthType?: string | undefined;
-  /**
    * A URL encoded versions of Feedback. This is useful for requests.
    */
   feedbackQueryParameter?: string | undefined;
@@ -31,22 +23,16 @@ export const FeedbackRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Glean-ActAs": z.string().optional(),
-  "X-Glean-Auth-Type": z.string().optional(),
   feedbackQueryParameter: z.string().optional(),
   Feedback1: components.Feedback$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
-    "X-Glean-ActAs": "xGleanActAs",
-    "X-Glean-Auth-Type": "xGleanAuthType",
     "Feedback1": "feedback1",
   });
 });
 
 /** @internal */
 export type FeedbackRequest$Outbound = {
-  "X-Glean-ActAs"?: string | undefined;
-  "X-Glean-Auth-Type"?: string | undefined;
   feedbackQueryParameter?: string | undefined;
   Feedback1?: components.Feedback$Outbound | undefined;
 };
@@ -57,14 +43,10 @@ export const FeedbackRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FeedbackRequest
 > = z.object({
-  xGleanActAs: z.string().optional(),
-  xGleanAuthType: z.string().optional(),
   feedbackQueryParameter: z.string().optional(),
   feedback1: components.Feedback$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
-    xGleanActAs: "X-Glean-ActAs",
-    xGleanAuthType: "X-Glean-Auth-Type",
     feedback1: "Feedback1",
   });
 });

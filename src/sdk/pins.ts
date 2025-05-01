@@ -20,16 +20,12 @@ export class Pins extends ClientSDK {
    * Update an existing user-generated pin.
    */
   async edit(
-    editPinRequest: components.EditPinRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.EditPinRequest,
     options?: RequestOptions,
   ): Promise<components.PinDocument> {
     return unwrapAsync(clientPinsEdit(
       this,
-      editPinRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }
@@ -41,16 +37,12 @@ export class Pins extends ClientSDK {
    * Read pin details given its ID.
    */
   async get(
-    getPinRequest: components.GetPinRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.GetPinRequest,
     options?: RequestOptions,
   ): Promise<components.GetPinResponse> {
     return unwrapAsync(clientPinsGet(
       this,
-      getPinRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }
@@ -62,16 +54,12 @@ export class Pins extends ClientSDK {
    * Lists all pins.
    */
   async list(
-    requestBody: operations.ListpinsRequestBody,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: operations.ListpinsRequest,
     options?: RequestOptions,
   ): Promise<components.ListPinsResponse> {
     return unwrapAsync(clientPinsList(
       this,
-      requestBody,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }
@@ -83,16 +71,12 @@ export class Pins extends ClientSDK {
    * Pin a document as a result for a given search query.Pin results that are known to be a good match.
    */
   async create(
-    pinRequest: components.PinRequest,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.PinRequest,
     options?: RequestOptions,
   ): Promise<components.PinDocument> {
     return unwrapAsync(clientPinsCreate(
       this,
-      pinRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }
@@ -104,16 +88,12 @@ export class Pins extends ClientSDK {
    * Unpin a previously pinned result.
    */
   async remove(
-    unpin: components.Unpin,
-    xGleanActAs?: string | undefined,
-    xGleanAuthType?: string | undefined,
+    request: components.Unpin,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(clientPinsRemove(
       this,
-      unpin,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     ));
   }

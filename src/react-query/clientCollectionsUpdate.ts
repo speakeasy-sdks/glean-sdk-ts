@@ -17,9 +17,7 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientCollectionsUpdateMutationVariables = {
-  editCollectionRequest: components.EditCollectionRequest;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
+  request: components.EditCollectionRequest;
   options?: RequestOptions;
 };
 
@@ -66,9 +64,7 @@ export function buildClientCollectionsUpdateMutation(
   return {
     mutationKey: mutationKeyClientCollectionsUpdate(),
     mutationFn: function clientCollectionsUpdateMutationFn({
-      editCollectionRequest,
-      xGleanActAs,
-      xGleanAuthType,
+      request,
       options,
     }): Promise<ClientCollectionsUpdateMutationData> {
       const mergedOptions = {
@@ -85,9 +81,7 @@ export function buildClientCollectionsUpdateMutation(
       };
       return unwrapAsync(clientCollectionsUpdate(
         client$,
-        editCollectionRequest,
-        xGleanActAs,
-        xGleanAuthType,
+        request,
         mergedOptions,
       ));
     },

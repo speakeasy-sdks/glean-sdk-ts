@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -11,111 +10,24 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * List pins request
  */
-export type ListpinsRequestBody = {};
-
-export type ListpinsRequest = {
-  /**
-   * Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).
-   */
-  xGleanActAs?: string | undefined;
-  /**
-   * Auth type being used to access the endpoint (should be non-empty only for global tokens).
-   */
-  xGleanAuthType?: string | undefined;
-  /**
-   * List pins request
-   */
-  requestBody: ListpinsRequestBody;
-};
-
-/** @internal */
-export const ListpinsRequestBody$inboundSchema: z.ZodType<
-  ListpinsRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type ListpinsRequestBody$Outbound = {};
-
-/** @internal */
-export const ListpinsRequestBody$outboundSchema: z.ZodType<
-  ListpinsRequestBody$Outbound,
-  z.ZodTypeDef,
-  ListpinsRequestBody
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListpinsRequestBody$ {
-  /** @deprecated use `ListpinsRequestBody$inboundSchema` instead. */
-  export const inboundSchema = ListpinsRequestBody$inboundSchema;
-  /** @deprecated use `ListpinsRequestBody$outboundSchema` instead. */
-  export const outboundSchema = ListpinsRequestBody$outboundSchema;
-  /** @deprecated use `ListpinsRequestBody$Outbound` instead. */
-  export type Outbound = ListpinsRequestBody$Outbound;
-}
-
-export function listpinsRequestBodyToJSON(
-  listpinsRequestBody: ListpinsRequestBody,
-): string {
-  return JSON.stringify(
-    ListpinsRequestBody$outboundSchema.parse(listpinsRequestBody),
-  );
-}
-
-export function listpinsRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<ListpinsRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListpinsRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListpinsRequestBody' from JSON`,
-  );
-}
+export type ListpinsRequest = {};
 
 /** @internal */
 export const ListpinsRequest$inboundSchema: z.ZodType<
   ListpinsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "X-Glean-ActAs": z.string().optional(),
-  "X-Glean-Auth-Type": z.string().optional(),
-  RequestBody: z.lazy(() => ListpinsRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "X-Glean-ActAs": "xGleanActAs",
-    "X-Glean-Auth-Type": "xGleanAuthType",
-    "RequestBody": "requestBody",
-  });
-});
+> = z.object({});
 
 /** @internal */
-export type ListpinsRequest$Outbound = {
-  "X-Glean-ActAs"?: string | undefined;
-  "X-Glean-Auth-Type"?: string | undefined;
-  RequestBody: ListpinsRequestBody$Outbound;
-};
+export type ListpinsRequest$Outbound = {};
 
 /** @internal */
 export const ListpinsRequest$outboundSchema: z.ZodType<
   ListpinsRequest$Outbound,
   z.ZodTypeDef,
   ListpinsRequest
-> = z.object({
-  xGleanActAs: z.string().optional(),
-  xGleanAuthType: z.string().optional(),
-  requestBody: z.lazy(() => ListpinsRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    xGleanActAs: "X-Glean-ActAs",
-    xGleanAuthType: "X-Glean-Auth-Type",
-    requestBody: "RequestBody",
-  });
-});
+> = z.object({});
 
 /**
  * @internal

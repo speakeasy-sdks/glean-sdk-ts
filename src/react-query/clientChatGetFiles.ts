@@ -18,8 +18,6 @@ import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatGetFilesMutationVariables = {
   getChatFilesRequest: components.GetChatFilesRequest;
-  xGleanActAs?: string | undefined;
-  xGleanAuthType?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
@@ -67,8 +65,6 @@ export function buildClientChatGetFilesMutation(
     mutationKey: mutationKeyClientChatGetFiles(),
     mutationFn: function clientChatGetFilesMutationFn({
       getChatFilesRequest,
-      xGleanActAs,
-      xGleanAuthType,
       timezoneOffset,
       options,
     }): Promise<ClientChatGetFilesMutationData> {
@@ -87,8 +83,6 @@ export function buildClientChatGetFilesMutation(
       return unwrapAsync(clientChatGetFiles(
         client$,
         getChatFilesRequest,
-        xGleanActAs,
-        xGleanAuthType,
         timezoneOffset,
         mergedOptions,
       ));
