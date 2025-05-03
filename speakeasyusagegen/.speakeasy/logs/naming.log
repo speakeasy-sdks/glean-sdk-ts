@@ -288,12 +288,6 @@ DEBUG	discriminated: Renamed to "indexing_authentication"
 	 registrationID: "scope:sdk mainSDK:Glean group:indexing originalName:authentication"
 DEBUG	
 
---- Renaming 2 types with name "chat" ---
-DEBUG	discriminated: Renamed to "client_chat" 
-	 labels: "original_name:chat group:client data_type:SDK mainSDK:Glean" 
-	 registrationID: "scope:sdk mainSDK:Glean group:client originalName:chat"
-DEBUG	
-
 --- Renaming 2 types with name "documents" ---
 DEBUG	discriminated: Renamed to "client_documents" 
 	 labels: "original_name:documents group:client data_type:SDK mainSDK:Glean" 
@@ -506,7 +500,7 @@ ListanswersResponse (HttpMeta: HTTPMetadata, ListAnswersResponse: ListAnswersRes
 ClientAuthentication (SDK empty)
 CreateauthtokenResponse (HttpMeta: HTTPMetadata, CreateAuthTokenResponse: CreateAuthTokenResponse)
  CreateAuthTokenResponse (token: string, expirationTime: integer)
-ClientChat (SDK empty)
+Chat (SDK empty)
 ChatRequest (timezoneOffset: integer, ChatRequest: ChatRequest)
  ChatRequest (saveChat: boolean, chatId: string, messages: array ...)
    ChatMessage (agentConfig: AgentConfig, author: enum, citations: array ...)
@@ -571,6 +565,8 @@ GetchatfilesResponse (HttpMeta: HTTPMetadata, GetChatFilesResponse: GetChatFiles
 DeletechatfilesRequest (timezoneOffset: integer, DeleteChatFilesRequest: DeleteChatFilesRequest)
  DeleteChatFilesRequest (fileIds: array)
 DeletechatfilesResponse (HttpMeta: HTTPMetadata)
+ChatStreamRequest (timezoneOffset: integer, ChatRequest: ChatRequest)
+ChatStreamResponse (HttpMeta: HTTPMetadata, ChatRequestStream: string)
 Collections (SDK empty)
 AddCollectionItemsRequest (collectionId: number, addedCollectionItemDescriptors: array)
   CollectionItemDescriptor (name: string, description: string, icon: string ...)
@@ -933,7 +929,4 @@ IndexingShortcuts (SDK empty)
 BulkIndexShortcutsRequest (uploadId: string, isFirstPage: boolean, isLastPage: boolean ...)
   ExternalShortcut (inputAlias: string, description: string, destinationUrl: string ...)
 PostApiIndexV1BulkindexshortcutsResponse (HttpMeta: HTTPMetadata)
-Chat (SDK empty)
-ChatStreamRequest (timezoneOffset: integer, ChatRequest: ChatRequest)
-ChatStreamResponse (HttpMeta: HTTPMetadata, ChatRequestStream: string)
 

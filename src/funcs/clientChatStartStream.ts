@@ -31,7 +31,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Have a conversation with Glean AI.
  */
-export function chatChatStream(
+export function clientChatStartStream(
   client: GleanCore,
   chatRequest: components.ChatRequest,
   timezoneOffset?: number | undefined,

@@ -8,7 +8,7 @@ import {
   UseMutationResult,
 } from "@tanstack/react-query";
 import { GleanCore } from "../core.js";
-import { chatChatStream } from "../funcs/chatChatStream.js";
+import { clientChatStartStream } from "../funcs/clientChatStartStream.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -16,13 +16,13 @@ import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
-export type ChatChatStreamMutationVariables = {
+export type ClientChatStartStreamMutationVariables = {
   chatRequest: components.ChatRequest;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
 
-export type ChatChatStreamMutationData = string;
+export type ClientChatStartStreamMutationData = string;
 
 /**
  * Chat
@@ -30,44 +30,44 @@ export type ChatChatStreamMutationData = string;
  * @remarks
  * Have a conversation with Glean AI.
  */
-export function useChatChatStreamMutation(
+export function useClientChatStartStreamMutation(
   options?: MutationHookOptions<
-    ChatChatStreamMutationData,
+    ClientChatStartStreamMutationData,
     Error,
-    ChatChatStreamMutationVariables
+    ClientChatStartStreamMutationVariables
   >,
 ): UseMutationResult<
-  ChatChatStreamMutationData,
+  ClientChatStartStreamMutationData,
   Error,
-  ChatChatStreamMutationVariables
+  ClientChatStartStreamMutationVariables
 > {
   const client = useGleanContext();
   return useMutation({
-    ...buildChatChatStreamMutation(client, options),
+    ...buildClientChatStartStreamMutation(client, options),
     ...options,
   });
 }
 
-export function mutationKeyChatChatStream(): MutationKey {
-  return ["@gleanwork/api-client", "Chat", "chatStream"];
+export function mutationKeyClientChatStartStream(): MutationKey {
+  return ["@gleanwork/api-client", "chat", "startStream"];
 }
 
-export function buildChatChatStreamMutation(
+export function buildClientChatStartStreamMutation(
   client$: GleanCore,
   hookOptions?: RequestOptions,
 ): {
   mutationKey: MutationKey;
   mutationFn: (
-    variables: ChatChatStreamMutationVariables,
-  ) => Promise<ChatChatStreamMutationData>;
+    variables: ClientChatStartStreamMutationVariables,
+  ) => Promise<ClientChatStartStreamMutationData>;
 } {
   return {
-    mutationKey: mutationKeyChatChatStream(),
-    mutationFn: function chatChatStreamMutationFn({
+    mutationKey: mutationKeyClientChatStartStream(),
+    mutationFn: function clientChatStartStreamMutationFn({
       chatRequest,
       timezoneOffset,
       options,
-    }): Promise<ChatChatStreamMutationData> {
+    }): Promise<ClientChatStartStreamMutationData> {
       const mergedOptions = {
         ...hookOptions,
         ...options,
@@ -80,7 +80,7 @@ export function buildChatChatStreamMutation(
           ),
         },
       };
-      return unwrapAsync(chatChatStream(
+      return unwrapAsync(clientChatStartStream(
         client$,
         chatRequest,
         timezoneOffset,

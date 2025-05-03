@@ -79,7 +79,7 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 <!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
 
-### Example
+### Example 1
 
 ```typescript
 import { Glean } from "@gleanwork/api-client";
@@ -90,6 +90,36 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.client.chat.start({
+    messages: [
+      {
+        fragments: [
+          {
+            text: "What are the company holidays this year?",
+          },
+        ],
+      },
+    ],
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+
+```
+
+### Example 2
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+});
+
+async function run() {
+  const result = await glean.client.chat.startStream({
     messages: [
       {
         fragments: [
@@ -175,10 +205,6 @@ run();
 * [listagents](docs/sdks/agents/README.md#listagents) - Lists all agents.
 * [getagentinputs](docs/sdks/agents/README.md#getagentinputs) - Gets the inputs to an agent.
 
-### [chat](docs/sdks/chat/README.md)
-
-* [chatStream](docs/sdks/chat/README.md#chatstream) - Chat
-
 ### [client](docs/sdks/client/README.md)
 
 
@@ -208,17 +234,18 @@ run();
 
 * [createToken](docs/sdks/clientauthentication/README.md#createtoken) - Create authentication token
 
-#### [client.chat](docs/sdks/clientchat/README.md)
+#### [client.chat](docs/sdks/chat/README.md)
 
-* [start](docs/sdks/clientchat/README.md#start) - Chat
-* [deleteAll](docs/sdks/clientchat/README.md#deleteall) - Deletes all saved Chats owned by a user
-* [delete](docs/sdks/clientchat/README.md#delete) - Deletes saved Chats
-* [get](docs/sdks/clientchat/README.md#get) - Retrieves a Chat
-* [list](docs/sdks/clientchat/README.md#list) - Retrieves all saved Chats
-* [getApplication](docs/sdks/clientchat/README.md#getapplication) - Gets the metadata for a custom Chat application
-* [uploadFiles](docs/sdks/clientchat/README.md#uploadfiles) - Upload files for Chat.
-* [getFiles](docs/sdks/clientchat/README.md#getfiles) - Get files uploaded by a user for Chat.
-* [deleteFiles](docs/sdks/clientchat/README.md#deletefiles) - Delete files uploaded by a user for chat.
+* [start](docs/sdks/chat/README.md#start) - Chat
+* [deleteAll](docs/sdks/chat/README.md#deleteall) - Deletes all saved Chats owned by a user
+* [delete](docs/sdks/chat/README.md#delete) - Deletes saved Chats
+* [get](docs/sdks/chat/README.md#get) - Retrieves a Chat
+* [list](docs/sdks/chat/README.md#list) - Retrieves all saved Chats
+* [getApplication](docs/sdks/chat/README.md#getapplication) - Gets the metadata for a custom Chat application
+* [uploadFiles](docs/sdks/chat/README.md#uploadfiles) - Upload files for Chat.
+* [getFiles](docs/sdks/chat/README.md#getfiles) - Get files uploaded by a user for Chat.
+* [deleteFiles](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat.
+* [startStream](docs/sdks/chat/README.md#startstream) - Chat
 
 #### [client.collections](docs/sdks/collections/README.md)
 
@@ -372,7 +399,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`agentsGetagentinputs`](docs/sdks/agents/README.md#getagentinputs) - Gets the inputs to an agent.
 - [`agentsListagents`](docs/sdks/agents/README.md#listagents) - Lists all agents.
 - [`agentsRunagent`](docs/sdks/agents/README.md#runagent) - Runs an Agent.
-- [`chatChatStream`](docs/sdks/chat/README.md#chatstream) - Chat
 - [`clientActivitiesReportActivity`](docs/sdks/activities/README.md#reportactivity) - Report client activity
 - [`clientActivityReport`](docs/sdks/activity/README.md#report) - Report document activity
 - [`clientAnnouncementsCreate`](docs/sdks/announcements/README.md#create) - Create Announcement
@@ -384,15 +410,16 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientAnswersGet`](docs/sdks/answers/README.md#get) - Read Answer
 - [`clientAnswersList`](docs/sdks/answers/README.md#list) - List Answers
 - [`clientAuthenticationCreateToken`](docs/sdks/clientauthentication/README.md#createtoken) - Create authentication token
-- [`clientChatDelete`](docs/sdks/clientchat/README.md#delete) - Deletes saved Chats
-- [`clientChatDeleteAll`](docs/sdks/clientchat/README.md#deleteall) - Deletes all saved Chats owned by a user
-- [`clientChatDeleteFiles`](docs/sdks/clientchat/README.md#deletefiles) - Delete files uploaded by a user for chat.
-- [`clientChatGet`](docs/sdks/clientchat/README.md#get) - Retrieves a Chat
-- [`clientChatGetApplication`](docs/sdks/clientchat/README.md#getapplication) - Gets the metadata for a custom Chat application
-- [`clientChatGetFiles`](docs/sdks/clientchat/README.md#getfiles) - Get files uploaded by a user for Chat.
-- [`clientChatList`](docs/sdks/clientchat/README.md#list) - Retrieves all saved Chats
-- [`clientChatStart`](docs/sdks/clientchat/README.md#start) - Chat
-- [`clientChatUploadFiles`](docs/sdks/clientchat/README.md#uploadfiles) - Upload files for Chat.
+- [`clientChatDelete`](docs/sdks/chat/README.md#delete) - Deletes saved Chats
+- [`clientChatDeleteAll`](docs/sdks/chat/README.md#deleteall) - Deletes all saved Chats owned by a user
+- [`clientChatDeleteFiles`](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat.
+- [`clientChatGet`](docs/sdks/chat/README.md#get) - Retrieves a Chat
+- [`clientChatGetApplication`](docs/sdks/chat/README.md#getapplication) - Gets the metadata for a custom Chat application
+- [`clientChatGetFiles`](docs/sdks/chat/README.md#getfiles) - Get files uploaded by a user for Chat.
+- [`clientChatList`](docs/sdks/chat/README.md#list) - Retrieves all saved Chats
+- [`clientChatStart`](docs/sdks/chat/README.md#start) - Chat
+- [`clientChatStartStream`](docs/sdks/chat/README.md#startstream) - Chat
+- [`clientChatUploadFiles`](docs/sdks/chat/README.md#uploadfiles) - Upload files for Chat.
 - [`clientCollectionsAddItems`](docs/sdks/collections/README.md#additems) - Add Collection item
 - [`clientCollectionsCreate`](docs/sdks/collections/README.md#create) - Create Collection
 - [`clientCollectionsDelete`](docs/sdks/collections/README.md#delete) - Delete Collection
@@ -498,7 +525,6 @@ To learn about this feature and how to get started, check
 - [`useAgentsGetagentinputsMutation`](docs/sdks/agents/README.md#getagentinputs) - Gets the inputs to an agent.
 - [`useAgentsListagentsMutation`](docs/sdks/agents/README.md#listagents) - Lists all agents.
 - [`useAgentsRunagentMutation`](docs/sdks/agents/README.md#runagent) - Runs an Agent.
-- [`useChatChatStreamMutation`](docs/sdks/chat/README.md#chatstream) - Chat
 - [`useClientActivitiesReportActivityMutation`](docs/sdks/activities/README.md#reportactivity) - Report client activity
 - [`useClientActivityReportMutation`](docs/sdks/activity/README.md#report) - Report document activity
 - [`useClientAnnouncementsCreateMutation`](docs/sdks/announcements/README.md#create) - Create Announcement
@@ -510,15 +536,16 @@ To learn about this feature and how to get started, check
 - [`useClientAnswersGetMutation`](docs/sdks/answers/README.md#get) - Read Answer
 - [`useClientAnswersListMutation`](docs/sdks/answers/README.md#list) - List Answers
 - [`useClientAuthenticationCreateTokenMutation`](docs/sdks/clientauthentication/README.md#createtoken) - Create authentication token
-- [`useClientChatDeleteAllMutation`](docs/sdks/clientchat/README.md#deleteall) - Deletes all saved Chats owned by a user
-- [`useClientChatDeleteFilesMutation`](docs/sdks/clientchat/README.md#deletefiles) - Delete files uploaded by a user for chat.
-- [`useClientChatDeleteMutation`](docs/sdks/clientchat/README.md#delete) - Deletes saved Chats
-- [`useClientChatGetApplicationMutation`](docs/sdks/clientchat/README.md#getapplication) - Gets the metadata for a custom Chat application
-- [`useClientChatGetFilesMutation`](docs/sdks/clientchat/README.md#getfiles) - Get files uploaded by a user for Chat.
-- [`useClientChatGetMutation`](docs/sdks/clientchat/README.md#get) - Retrieves a Chat
-- [`useClientChatListMutation`](docs/sdks/clientchat/README.md#list) - Retrieves all saved Chats
-- [`useClientChatStartMutation`](docs/sdks/clientchat/README.md#start) - Chat
-- [`useClientChatUploadFilesMutation`](docs/sdks/clientchat/README.md#uploadfiles) - Upload files for Chat.
+- [`useClientChatDeleteAllMutation`](docs/sdks/chat/README.md#deleteall) - Deletes all saved Chats owned by a user
+- [`useClientChatDeleteFilesMutation`](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat.
+- [`useClientChatDeleteMutation`](docs/sdks/chat/README.md#delete) - Deletes saved Chats
+- [`useClientChatGetApplicationMutation`](docs/sdks/chat/README.md#getapplication) - Gets the metadata for a custom Chat application
+- [`useClientChatGetFilesMutation`](docs/sdks/chat/README.md#getfiles) - Get files uploaded by a user for Chat.
+- [`useClientChatGetMutation`](docs/sdks/chat/README.md#get) - Retrieves a Chat
+- [`useClientChatListMutation`](docs/sdks/chat/README.md#list) - Retrieves all saved Chats
+- [`useClientChatStartMutation`](docs/sdks/chat/README.md#start) - Chat
+- [`useClientChatStartStreamMutation`](docs/sdks/chat/README.md#startstream) - Chat
+- [`useClientChatUploadFilesMutation`](docs/sdks/chat/README.md#uploadfiles) - Upload files for Chat.
 - [`useClientCollectionsAddItemsMutation`](docs/sdks/collections/README.md#additems) - Add Collection item
 - [`useClientCollectionsCreateMutation`](docs/sdks/collections/README.md#create) - Create Collection
 - [`useClientCollectionsDeleteItemMutation`](docs/sdks/collections/README.md#deleteitem) - Delete Collection item
