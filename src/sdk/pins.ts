@@ -3,10 +3,10 @@
  */
 
 import { clientPinsCreate } from "../funcs/clientPinsCreate.js";
-import { clientPinsEdit } from "../funcs/clientPinsEdit.js";
-import { clientPinsGet } from "../funcs/clientPinsGet.js";
 import { clientPinsList } from "../funcs/clientPinsList.js";
 import { clientPinsRemove } from "../funcs/clientPinsRemove.js";
+import { clientPinsRetrieve } from "../funcs/clientPinsRetrieve.js";
+import { clientPinsUpdate } from "../funcs/clientPinsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
@@ -19,11 +19,11 @@ export class Pins extends ClientSDK {
    * @remarks
    * Update an existing user-generated pin.
    */
-  async edit(
+  async update(
     request: components.EditPinRequest,
     options?: RequestOptions,
   ): Promise<components.PinDocument> {
-    return unwrapAsync(clientPinsEdit(
+    return unwrapAsync(clientPinsUpdate(
       this,
       request,
       options,
@@ -36,11 +36,11 @@ export class Pins extends ClientSDK {
    * @remarks
    * Read pin details given its ID.
    */
-  async get(
+  async retrieve(
     request: components.GetPinRequest,
     options?: RequestOptions,
   ): Promise<components.GetPinResponse> {
-    return unwrapAsync(clientPinsGet(
+    return unwrapAsync(clientPinsRetrieve(
       this,
       request,
       options,

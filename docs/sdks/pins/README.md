@@ -5,13 +5,13 @@
 
 ### Available Operations
 
-* [edit](#edit) - Update pin
-* [get](#get) - Read pin
+* [update](#update) - Update pin
+* [retrieve](#retrieve) - Read pin
 * [list](#list) - List pins
 * [create](#create) - Create pin
 * [remove](#remove) - Delete pin
 
-## edit
+## update
 
 Update an existing user-generated pin.
 
@@ -25,7 +25,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.pins.edit({
+  const result = await glean.client.pins.update({
     audienceFilters: [
       {
         fieldName: "type",
@@ -56,7 +56,7 @@ The standalone function version of this method:
 
 ```typescript
 import { GleanCore } from "@gleanwork/api-client/core.js";
-import { clientPinsEdit } from "@gleanwork/api-client/funcs/clientPinsEdit.js";
+import { clientPinsUpdate } from "@gleanwork/api-client/funcs/clientPinsUpdate.js";
 
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -65,7 +65,7 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientPinsEdit(glean, {
+  const res = await clientPinsUpdate(glean, {
     audienceFilters: [
       {
         fieldName: "type",
@@ -109,8 +109,8 @@ associated utilities.
 ```tsx
 import {
   // Mutation hook for triggering the API call.
-  useClientPinsEditMutation
-} from "@gleanwork/api-client/react-query/clientPinsEdit.js";
+  useClientPinsUpdateMutation
+} from "@gleanwork/api-client/react-query/clientPinsUpdate.js";
 ```
 
 ### Parameters
@@ -132,7 +132,7 @@ import {
 | ----------------- | ----------------- | ----------------- |
 | errors.GleanError | 4XX, 5XX          | \*/\*             |
 
-## get
+## retrieve
 
 Read pin details given its ID.
 
@@ -146,7 +146,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.pins.get({});
+  const result = await glean.client.pins.retrieve({});
 
   // Handle the result
   console.log(result);
@@ -161,7 +161,7 @@ The standalone function version of this method:
 
 ```typescript
 import { GleanCore } from "@gleanwork/api-client/core.js";
-import { clientPinsGet } from "@gleanwork/api-client/funcs/clientPinsGet.js";
+import { clientPinsRetrieve } from "@gleanwork/api-client/funcs/clientPinsRetrieve.js";
 
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -170,7 +170,7 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientPinsGet(glean, {});
+  const res = await clientPinsRetrieve(glean, {});
 
   if (!res.ok) {
     throw res.error;
@@ -198,8 +198,8 @@ associated utilities.
 ```tsx
 import {
   // Mutation hook for triggering the API call.
-  useClientPinsGetMutation
-} from "@gleanwork/api-client/react-query/clientPinsGet.js";
+  useClientPinsRetrieveMutation
+} from "@gleanwork/api-client/react-query/clientPinsRetrieve.js";
 ```
 
 ### Parameters

@@ -15,7 +15,7 @@ test("Pins Editpin", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.pins.edit({
+  const result = await glean.client.pins.update({
     audienceFilters: [
       {
         fieldName: "type",
@@ -44,7 +44,7 @@ test("Pins Getpin", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.pins.get({});
+  const result = await glean.client.pins.retrieve({});
   expect(result).toBeDefined();
 });
 

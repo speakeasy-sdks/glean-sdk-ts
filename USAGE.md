@@ -7,7 +7,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.chat.start({
+  const result = await glean.client.chat.create({
     messages: [
       {
         fragments: [
@@ -35,7 +35,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.chat.startStream({
+  const result = await glean.client.chat.createStream({
     messages: [
       {
         fragments: [

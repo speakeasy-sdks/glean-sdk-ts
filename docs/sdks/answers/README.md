@@ -7,8 +7,8 @@
 
 * [create](#create) - Create Answer
 * [delete](#delete) - Delete Answer
-* [edit](#edit) - Update Answer
-* [get](#get) - Read Answer
+* [update](#update) - Update Answer
+* [retrieve](#retrieve) - Read Answer
 * [list](#list) - List Answers
 
 ## create
@@ -381,7 +381,7 @@ import {
 | ----------------- | ----------------- | ----------------- |
 | errors.GleanError | 4XX, 5XX          | \*/\*             |
 
-## edit
+## update
 
 Update an existing user-generated Answer.
 
@@ -396,7 +396,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.answers.edit({
+  const result = await glean.client.answers.update({
     id: 3,
     docId: "ANSWERS_answer_3",
     question: "Why is the sky blue?",
@@ -492,7 +492,7 @@ The standalone function version of this method:
 
 ```typescript
 import { GleanCore } from "@gleanwork/api-client/core.js";
-import { clientAnswersEdit } from "@gleanwork/api-client/funcs/clientAnswersEdit.js";
+import { clientAnswersUpdate } from "@gleanwork/api-client/funcs/clientAnswersUpdate.js";
 import { RFCDate } from "@gleanwork/api-client/types";
 
 // Use `GleanCore` for best tree-shaking performance.
@@ -502,7 +502,7 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientAnswersEdit(glean, {
+  const res = await clientAnswersUpdate(glean, {
     id: 3,
     docId: "ANSWERS_answer_3",
     question: "Why is the sky blue?",
@@ -611,8 +611,8 @@ associated utilities.
 ```tsx
 import {
   // Mutation hook for triggering the API call.
-  useClientAnswersEditMutation
-} from "@gleanwork/api-client/react-query/clientAnswersEdit.js";
+  useClientAnswersUpdateMutation
+} from "@gleanwork/api-client/react-query/clientAnswersUpdate.js";
 ```
 
 ### Parameters
@@ -634,7 +634,7 @@ import {
 | ----------------- | ----------------- | ----------------- |
 | errors.GleanError | 4XX, 5XX          | \*/\*             |
 
-## get
+## retrieve
 
 Read the details of a particular Answer given its ID.
 
@@ -648,7 +648,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.answers.get({
+  const result = await glean.client.answers.retrieve({
     id: 3,
     docId: "ANSWERS_answer_3",
   });
@@ -666,7 +666,7 @@ The standalone function version of this method:
 
 ```typescript
 import { GleanCore } from "@gleanwork/api-client/core.js";
-import { clientAnswersGet } from "@gleanwork/api-client/funcs/clientAnswersGet.js";
+import { clientAnswersRetrieve } from "@gleanwork/api-client/funcs/clientAnswersRetrieve.js";
 
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -675,7 +675,7 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientAnswersGet(glean, {
+  const res = await clientAnswersRetrieve(glean, {
     id: 3,
     docId: "ANSWERS_answer_3",
   });
@@ -706,8 +706,8 @@ associated utilities.
 ```tsx
 import {
   // Mutation hook for triggering the API call.
-  useClientAnswersGetMutation
-} from "@gleanwork/api-client/react-query/clientAnswersGet.js";
+  useClientAnswersRetrieveMutation
+} from "@gleanwork/api-client/react-query/clientAnswersRetrieve.js";
 ```
 
 ### Parameters

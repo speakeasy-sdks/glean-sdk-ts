@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [get](#get) - Read messages
+* [retrieve](#retrieve) - Read messages
 
-## get
+## retrieve
 
 Retrieves list of messages from messaging/chat datasources (e.g. Slack, Teams).
 
@@ -21,7 +21,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.messages.get({
+  const result = await glean.client.messages.retrieve({
     idType: "CONVERSATION_ID",
     id: "<id>",
     timestampMillis: 558834,
@@ -40,7 +40,7 @@ The standalone function version of this method:
 
 ```typescript
 import { GleanCore } from "@gleanwork/api-client/core.js";
-import { clientMessagesGet } from "@gleanwork/api-client/funcs/clientMessagesGet.js";
+import { clientMessagesRetrieve } from "@gleanwork/api-client/funcs/clientMessagesRetrieve.js";
 
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -49,7 +49,7 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientMessagesGet(glean, {
+  const res = await clientMessagesRetrieve(glean, {
     idType: "CONVERSATION_ID",
     id: "<id>",
     timestampMillis: 558834,
@@ -81,8 +81,8 @@ associated utilities.
 ```tsx
 import {
   // Mutation hook for triggering the API call.
-  useClientMessagesGetMutation
-} from "@gleanwork/api-client/react-query/clientMessagesGet.js";
+  useClientMessagesRetrieveMutation
+} from "@gleanwork/api-client/react-query/clientMessagesRetrieve.js";
 ```
 
 ### Parameters

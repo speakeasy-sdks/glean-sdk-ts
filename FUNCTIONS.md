@@ -20,7 +20,7 @@ specific category of applications.
 
 ```typescript
 import { GleanCore } from "@gleanwork/api-client/core.js";
-import { clientChatStart } from "@gleanwork/api-client/funcs/clientChatStart.js";
+import { clientChatCreate } from "@gleanwork/api-client/funcs/clientChatCreate.js";
 import { SDKValidationError } from "@gleanwork/api-client/models/errors/sdkvalidationerror.js";
 
 // Use `GleanCore` for best tree-shaking performance.
@@ -30,7 +30,7 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientChatStart(glean, {
+  const res = await clientChatCreate(glean, {
     messages: [
       {
         fragments: [

@@ -15,7 +15,7 @@ test("Client Documents Getdocpermissions", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.documents.getPermissions({});
+  const result = await glean.client.documents.permissions.retrieve({});
   expect(result).toBeDefined();
 });
 
@@ -28,7 +28,7 @@ test("Client Documents Getdocuments", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.documents.get();
+  const result = await glean.client.documents.retrieve();
   expect(result).toBeDefined();
 });
 
@@ -41,7 +41,7 @@ test("Client Documents Getdocumentsbyfacets", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.documents.getByFacets({
+  const result = await glean.client.documents.retrieveByFacets({
     filterSets: [
       {
         filters: [

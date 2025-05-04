@@ -43,7 +43,7 @@ test("Troubleshooting Post /Api/index/v1 /Getdocumentstatus", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.indexing.troubleshooting.getStatus({
+  const result = await glean.indexing.troubleshooting.documents.status({
     datasource: "<value>",
     objectType: "<value>",
     docId: "<id>",
@@ -62,7 +62,7 @@ test("Troubleshooting Post /Api/index/v1 /Getdocumentcount", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.indexing.troubleshooting.getDocumentCount({
+  const result = await glean.indexing.troubleshooting.documents.count({
     datasource: "<value>",
   });
   expect(result).toBeDefined();
@@ -79,7 +79,7 @@ test("Troubleshooting Post /Api/index/v1 /Getusercount", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.indexing.troubleshooting.getUserCount({
+  const result = await glean.indexing.troubleshooting.users.count({
     datasource: "<value>",
   });
   expect(result).toBeDefined();
