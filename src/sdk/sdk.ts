@@ -3,9 +3,12 @@
  */
 
 import { ClientSDK } from "../lib/sdks.js";
-import { Agents } from "./agents.js";
 import { Client } from "./client.js";
 import { Indexing } from "./indexing.js";
+import { People } from "./people.js";
+import { Search } from "./search.js";
+import { Shortcuts } from "./shortcuts.js";
+import { Verification } from "./verification.js";
 
 export class Glean extends ClientSDK {
   private _client?: Client;
@@ -13,13 +16,28 @@ export class Glean extends ClientSDK {
     return (this._client ??= new Client(this._options));
   }
 
-  private _agents?: Agents;
-  get agents(): Agents {
-    return (this._agents ??= new Agents(this._options));
+  private _search?: Search;
+  get search(): Search {
+    return (this._search ??= new Search(this._options));
+  }
+
+  private _shortcuts?: Shortcuts;
+  get shortcuts(): Shortcuts {
+    return (this._shortcuts ??= new Shortcuts(this._options));
+  }
+
+  private _verification?: Verification;
+  get verification(): Verification {
+    return (this._verification ??= new Verification(this._options));
   }
 
   private _indexing?: Indexing;
   get indexing(): Indexing {
     return (this._indexing ??= new Indexing(this._options));
+  }
+
+  private _people?: People;
+  get people(): People {
+    return (this._people ??= new People(this._options));
   }
 }

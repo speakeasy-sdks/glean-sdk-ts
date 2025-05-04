@@ -15,7 +15,7 @@ test("Messages Messages", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.messages.get({
+  const result = await glean.client.messages.retrieve({
     idType: "CONVERSATION_ID",
     id: "<id>",
     timestampMillis: 558834,

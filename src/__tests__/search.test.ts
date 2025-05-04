@@ -16,7 +16,7 @@ test("Search Adminsearch", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.search.admin({
+  const result = await glean.client.search.admin.query({
     trackingToken: "trackingToken",
     pageSize: 10,
     query: "vacation policy",
@@ -60,7 +60,7 @@ test("Search Autocomplete", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.search.autocomplete({
+  const result = await glean.search.autocomplete({
     trackingToken: "trackingToken",
     query: "San Fra",
     datasource: "GDRIVE",
@@ -87,7 +87,7 @@ test("Search Feed", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.search.getFeed({});
+  const result = await glean.client.search.feed.retrieve({});
   expect(result).toBeDefined();
 });
 
@@ -247,7 +247,7 @@ test("Search Search", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.search.execute({
+  const result = await glean.client.search.query({
     trackingToken: "trackingToken",
     pageSize: 10,
     query: "vacation policy",

@@ -6,9 +6,9 @@ import { ClientSDK } from "../lib/sdks.js";
 import { Datasources } from "./datasources.js";
 import { IndexingAuthentication } from "./indexingauthentication.js";
 import { IndexingDocuments } from "./indexingdocuments.js";
+import { IndexingPeople } from "./indexingpeople.js";
+import { IndexingPermissions } from "./indexingpermissions.js";
 import { IndexingShortcuts } from "./indexingshortcuts.js";
-import { People } from "./people.js";
-import { Permissions } from "./permissions.js";
 import { Troubleshooting } from "./troubleshooting.js";
 
 export class Indexing extends ClientSDK {
@@ -17,9 +17,9 @@ export class Indexing extends ClientSDK {
     return (this._documents ??= new IndexingDocuments(this._options));
   }
 
-  private _permissions?: Permissions;
-  get permissions(): Permissions {
-    return (this._permissions ??= new Permissions(this._options));
+  private _permissions?: IndexingPermissions;
+  get permissions(): IndexingPermissions {
+    return (this._permissions ??= new IndexingPermissions(this._options));
   }
 
   private _troubleshooting?: Troubleshooting;
@@ -37,9 +37,9 @@ export class Indexing extends ClientSDK {
     return (this._authentication ??= new IndexingAuthentication(this._options));
   }
 
-  private _people?: People;
-  get people(): People {
-    return (this._people ??= new People(this._options));
+  private _people?: IndexingPeople;
+  get people(): IndexingPeople {
+    return (this._people ??= new IndexingPeople(this._options));
   }
 
   private _shortcuts?: IndexingShortcuts;

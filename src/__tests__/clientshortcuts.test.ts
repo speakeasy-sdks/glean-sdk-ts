@@ -16,7 +16,7 @@ test("Client Shortcuts Createshortcut", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.shortcuts.create({
+  const result = await glean.shortcuts.createshortcut({
     data: {
       addedRoles: [
         {
@@ -105,7 +105,7 @@ test("Client Shortcuts Getshortcut", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.shortcuts.get({
+  const result = await glean.client.shortcuts.retrieve({
     alias: "<value>",
   });
   expect(result).toBeDefined();

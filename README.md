@@ -89,7 +89,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.chat.start({
+  const result = await glean.client.chat.create({
     messages: [
       {
         fragments: [
@@ -119,7 +119,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.chat.startStream({
+  const result = await glean.client.chat.createStream({
     messages: [
       {
         fragments: [
@@ -199,22 +199,25 @@ run();
 <details open>
 <summary>Available methods</summary>
 
-### [agents](docs/sdks/agents/README.md)
-
-* [runagent](docs/sdks/agents/README.md#runagent) - Runs an Agent.
-* [listagents](docs/sdks/agents/README.md#listagents) - Lists all agents.
-* [getagentinputs](docs/sdks/agents/README.md#getagentinputs) - Gets the inputs to an agent.
-
 ### [client](docs/sdks/client/README.md)
 
-
-#### [client.activities](docs/sdks/activities/README.md)
-
-* [reportActivity](docs/sdks/activities/README.md#reportactivity) - Report client activity
 
 #### [client.activity](docs/sdks/activity/README.md)
 
 * [report](docs/sdks/activity/README.md#report) - Report document activity
+* [feedback](docs/sdks/activity/README.md#feedback) - Report client activity
+
+#### [client.agents](docs/sdks/agents/README.md)
+
+* [list](docs/sdks/agents/README.md#list) - Lists all agents.
+
+#### [client.agents.agent](docs/sdks/agent/README.md)
+
+* [run](docs/sdks/agent/README.md#run) - Runs an Agent.
+
+#### [client.agents.agent.inputs](docs/sdks/inputs/README.md)
+
+* [retrieve](docs/sdks/inputs/README.md#retrieve) - Gets the inputs to an agent.
 
 #### [client.announcements](docs/sdks/announcements/README.md)
 
@@ -226,8 +229,8 @@ run();
 
 * [create](docs/sdks/answers/README.md#create) - Create Answer
 * [delete](docs/sdks/answers/README.md#delete) - Delete Answer
-* [edit](docs/sdks/answers/README.md#edit) - Update Answer
-* [get](docs/sdks/answers/README.md#get) - Read Answer
+* [update](docs/sdks/answers/README.md#update) - Update Answer
+* [retrieve](docs/sdks/answers/README.md#retrieve) - Read Answer
 * [list](docs/sdks/answers/README.md#list) - List Answers
 
 #### [client.authentication](docs/sdks/clientauthentication/README.md)
@@ -236,33 +239,45 @@ run();
 
 #### [client.chat](docs/sdks/chat/README.md)
 
-* [start](docs/sdks/chat/README.md#start) - Chat
+* [create](docs/sdks/chat/README.md#create) - Chat
 * [deleteAll](docs/sdks/chat/README.md#deleteall) - Deletes all saved Chats owned by a user
 * [delete](docs/sdks/chat/README.md#delete) - Deletes saved Chats
-* [get](docs/sdks/chat/README.md#get) - Retrieves a Chat
+* [retrieve](docs/sdks/chat/README.md#retrieve) - Retrieves a Chat
 * [list](docs/sdks/chat/README.md#list) - Retrieves all saved Chats
-* [getApplication](docs/sdks/chat/README.md#getapplication) - Gets the metadata for a custom Chat application
-* [uploadFiles](docs/sdks/chat/README.md#uploadfiles) - Upload files for Chat.
-* [getFiles](docs/sdks/chat/README.md#getfiles) - Get files uploaded by a user for Chat.
-* [deleteFiles](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat.
-* [startStream](docs/sdks/chat/README.md#startstream) - Chat
+* [createStream](docs/sdks/chat/README.md#createstream) - Chat
+
+#### [client.chat.application](docs/sdks/application/README.md)
+
+* [retrieve](docs/sdks/application/README.md#retrieve) - Gets the metadata for a custom Chat application
+
+#### [client.chat.files](docs/sdks/files/README.md)
+
+* [upload](docs/sdks/files/README.md#upload) - Upload files for Chat.
+* [retrieve](docs/sdks/files/README.md#retrieve) - Get files uploaded by a user for Chat.
+* [delete](docs/sdks/files/README.md#delete) - Delete files uploaded by a user for chat.
 
 #### [client.collections](docs/sdks/collections/README.md)
 
 * [addItems](docs/sdks/collections/README.md#additems) - Add Collection item
 * [create](docs/sdks/collections/README.md#create) - Create Collection
 * [delete](docs/sdks/collections/README.md#delete) - Delete Collection
-* [deleteItem](docs/sdks/collections/README.md#deleteitem) - Delete Collection item
 * [update](docs/sdks/collections/README.md#update) - Update Collection
-* [editItem](docs/sdks/collections/README.md#edititem) - Update Collection item
-* [get](docs/sdks/collections/README.md#get) - Read Collection
+* [retrieve](docs/sdks/collections/README.md#retrieve) - Read Collection
 * [list](docs/sdks/collections/README.md#list) - List Collections
+
+#### [client.collections.item](docs/sdks/item/README.md)
+
+* [delete](docs/sdks/item/README.md#delete) - Delete Collection item
+* [update](docs/sdks/item/README.md#update) - Update Collection item
 
 #### [client.documents](docs/sdks/clientdocuments/README.md)
 
-* [getPermissions](docs/sdks/clientdocuments/README.md#getpermissions) - Read document permissions
-* [get](docs/sdks/clientdocuments/README.md#get) - Read documents
-* [getByFacets](docs/sdks/clientdocuments/README.md#getbyfacets) - Read documents by facets
+* [retrieve](docs/sdks/clientdocuments/README.md#retrieve) - Read documents
+* [retrieveByFacets](docs/sdks/clientdocuments/README.md#retrievebyfacets) - Read documents by facets
+
+#### [client.documents.permissions](docs/sdks/documentspermissions/README.md)
+
+* [retrieve](docs/sdks/documentspermissions/README.md#retrieve) - Read document permissions
 
 #### [client.entities](docs/sdks/entities/README.md)
 
@@ -271,33 +286,37 @@ run();
 
 #### [client.insights](docs/sdks/insights/README.md)
 
-* [get](docs/sdks/insights/README.md#get) - Read insights
+* [retrieve](docs/sdks/insights/README.md#retrieve) - Read insights
 
 #### [client.messages](docs/sdks/messages/README.md)
 
-* [get](docs/sdks/messages/README.md#get) - Read messages
+* [retrieve](docs/sdks/messages/README.md#retrieve) - Read messages
 
 #### [client.pins](docs/sdks/pins/README.md)
 
-* [edit](docs/sdks/pins/README.md#edit) - Update pin
-* [get](docs/sdks/pins/README.md#get) - Read pin
+* [update](docs/sdks/pins/README.md#update) - Update pin
+* [retrieve](docs/sdks/pins/README.md#retrieve) - Read pin
 * [list](docs/sdks/pins/README.md#list) - List pins
 * [create](docs/sdks/pins/README.md#create) - Create pin
 * [remove](docs/sdks/pins/README.md#remove) - Delete pin
 
-#### [client.search](docs/sdks/search/README.md)
+#### [client.search](docs/sdks/clientsearch/README.md)
 
-* [admin](docs/sdks/search/README.md#admin) - Search the index (admin)
-* [autocomplete](docs/sdks/search/README.md#autocomplete) - Autocomplete
-* [getFeed](docs/sdks/search/README.md#getfeed) - Feed of documents and events
-* [recommendations](docs/sdks/search/README.md#recommendations) - Recommend documents
-* [execute](docs/sdks/search/README.md#execute) - Search
+* [recommendations](docs/sdks/clientsearch/README.md#recommendations) - Recommend documents
+* [query](docs/sdks/clientsearch/README.md#query) - Search
+
+#### [client.search.admin](docs/sdks/admin/README.md)
+
+* [query](docs/sdks/admin/README.md#query) - Search the index (admin)
+
+#### [client.search.feed](docs/sdks/feed/README.md)
+
+* [retrieve](docs/sdks/feed/README.md#retrieve) - Feed of documents and events
 
 #### [client.shortcuts](docs/sdks/clientshortcuts/README.md)
 
-* [create](docs/sdks/clientshortcuts/README.md#create) - Create shortcut
 * [delete](docs/sdks/clientshortcuts/README.md#delete) - Delete shortcut
-* [get](docs/sdks/clientshortcuts/README.md#get) - Read shortcut
+* [retrieve](docs/sdks/clientshortcuts/README.md#retrieve) - Read shortcut
 * [list](docs/sdks/clientshortcuts/README.md#list) - List shortcuts
 * [update](docs/sdks/clientshortcuts/README.md#update) - Update shortcut
 * [upload](docs/sdks/clientshortcuts/README.md#upload) - Upload shortcuts
@@ -306,11 +325,10 @@ run();
 
 * [generate](docs/sdks/summarize/README.md#generate) - Summarize documents
 
-#### [client.verification](docs/sdks/verification/README.md)
+#### [client.verification](docs/sdks/clientverification/README.md)
 
-* [addReminder](docs/sdks/verification/README.md#addreminder) - Create verification
-* [list](docs/sdks/verification/README.md#list) - List verifications
-* [verify](docs/sdks/verification/README.md#verify) - Update verification
+* [addReminder](docs/sdks/clientverification/README.md#addreminder) - Create verification
+* [list](docs/sdks/clientverification/README.md#list) - List verifications
 
 
 ### [indexing](docs/sdks/indexing/README.md)
@@ -323,7 +341,10 @@ run();
 #### [indexing.datasources](docs/sdks/datasources/README.md)
 
 * [add](docs/sdks/datasources/README.md#add) - Add or update datasource
-* [getConfig](docs/sdks/datasources/README.md#getconfig) - Get datasource config
+
+#### [indexing.datasources.config](docs/sdks/config/README.md)
+
+* [retrieve](docs/sdks/config/README.md#retrieve) - Get datasource config
 
 #### [indexing.documents](docs/sdks/indexingdocuments/README.md)
 
@@ -333,31 +354,30 @@ run();
 * [processAll](docs/sdks/indexingdocuments/README.md#processall) - Schedules the processing of uploaded documents
 * [delete](docs/sdks/indexingdocuments/README.md#delete) - Delete document
 
-#### [indexing.people](docs/sdks/people/README.md)
+#### [indexing.people](docs/sdks/indexingpeople/README.md)
 
-* [index](docs/sdks/people/README.md#index) - Index employee
-* [bulkIndexEmployees](docs/sdks/people/README.md#bulkindexemployees) - Bulk index employees
-* [~~bulkIndex~~](docs/sdks/people/README.md#bulkindex) - Bulk index employees :warning: **Deprecated**
-* [processAllEmployeesAndTeams](docs/sdks/people/README.md#processallemployeesandteams) - Schedules the processing of uploaded employees and teams
-* [delete](docs/sdks/people/README.md#delete) - Delete employee
-* [indexTeam](docs/sdks/people/README.md#indexteam) - Index team
-* [deleteTeam](docs/sdks/people/README.md#deleteteam) - Delete team
-* [bulkIndexTeams](docs/sdks/people/README.md#bulkindexteams) - Bulk index teams
+* [index](docs/sdks/indexingpeople/README.md#index) - Index employee
+* [~~bulkIndex~~](docs/sdks/indexingpeople/README.md#bulkindex) - Bulk index employees :warning: **Deprecated**
+* [processAllEmployeesAndTeams](docs/sdks/indexingpeople/README.md#processallemployeesandteams) - Schedules the processing of uploaded employees and teams
+* [delete](docs/sdks/indexingpeople/README.md#delete) - Delete employee
+* [indexTeam](docs/sdks/indexingpeople/README.md#indexteam) - Index team
+* [deleteTeam](docs/sdks/indexingpeople/README.md#deleteteam) - Delete team
+* [bulkIndexTeams](docs/sdks/indexingpeople/README.md#bulkindexteams) - Bulk index teams
 
-#### [indexing.permissions](docs/sdks/permissions/README.md)
+#### [indexing.permissions](docs/sdks/indexingpermissions/README.md)
 
-* [updatePermissions](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
-* [indexUser](docs/sdks/permissions/README.md#indexuser) - Index user
-* [bulkIndexUsers](docs/sdks/permissions/README.md#bulkindexusers) - Bulk index users
-* [indexGroup](docs/sdks/permissions/README.md#indexgroup) - Index group
-* [bulkIndexGroups](docs/sdks/permissions/README.md#bulkindexgroups) - Bulk index groups
-* [indexMembership](docs/sdks/permissions/README.md#indexmembership) - Index membership
-* [bulkIndexMemberships](docs/sdks/permissions/README.md#bulkindexmemberships) - Bulk index memberships for a group
-* [processMemberships](docs/sdks/permissions/README.md#processmemberships) - Schedules the processing of group memberships
-* [deleteUser](docs/sdks/permissions/README.md#deleteuser) - Delete user
-* [deleteGroup](docs/sdks/permissions/README.md#deletegroup) - Delete group
-* [deleteMembership](docs/sdks/permissions/README.md#deletemembership) - Delete membership
-* [authorizeBetaUsers](docs/sdks/permissions/README.md#authorizebetausers) - Beta users
+* [updatePermissions](docs/sdks/indexingpermissions/README.md#updatepermissions) - Update document permissions
+* [indexUser](docs/sdks/indexingpermissions/README.md#indexuser) - Index user
+* [bulkIndexUsers](docs/sdks/indexingpermissions/README.md#bulkindexusers) - Bulk index users
+* [indexGroup](docs/sdks/indexingpermissions/README.md#indexgroup) - Index group
+* [bulkIndexGroups](docs/sdks/indexingpermissions/README.md#bulkindexgroups) - Bulk index groups
+* [indexMembership](docs/sdks/indexingpermissions/README.md#indexmembership) - Index membership
+* [bulkIndexMemberships](docs/sdks/indexingpermissions/README.md#bulkindexmemberships) - Bulk index memberships for a group
+* [processMemberships](docs/sdks/indexingpermissions/README.md#processmemberships) - Schedules the processing of group memberships
+* [deleteUser](docs/sdks/indexingpermissions/README.md#deleteuser) - Delete user
+* [deleteGroup](docs/sdks/indexingpermissions/README.md#deletegroup) - Delete group
+* [deleteMembership](docs/sdks/indexingpermissions/README.md#deletemembership) - Delete membership
+* [authorizeBetaUsers](docs/sdks/indexingpermissions/README.md#authorizebetausers) - Beta users
 
 #### [indexing.shortcuts](docs/sdks/indexingshortcuts/README.md)
 
@@ -365,18 +385,52 @@ run();
 
 #### [indexing.troubleshooting](docs/sdks/troubleshooting/README.md)
 
-* [getDatasourceStatus](docs/sdks/troubleshooting/README.md#getdatasourcestatus) - Beta: Get datasource status
-
-* [postDocumentDebug](docs/sdks/troubleshooting/README.md#postdocumentdebug) - Beta: Get document information
-
-* [postDocumentsDebug](docs/sdks/troubleshooting/README.md#postdocumentsdebug) - Beta: Get information of a batch of documents
-
-* [debugUser](docs/sdks/troubleshooting/README.md#debuguser) - Beta: Get user information
-
 * [checkAccess](docs/sdks/troubleshooting/README.md#checkaccess) - Check document access
-* [~~getStatus~~](docs/sdks/troubleshooting/README.md#getstatus) - Get document upload and indexing status :warning: **Deprecated**
-* [~~getDocumentCount~~](docs/sdks/troubleshooting/README.md#getdocumentcount) - Get document count :warning: **Deprecated**
-* [~~getUserCount~~](docs/sdks/troubleshooting/README.md#getusercount) - Get user count :warning: **Deprecated**
+
+#### [indexing.troubleshooting.datasource](docs/sdks/datasource/README.md)
+
+* [status](docs/sdks/datasource/README.md#status) - Beta: Get datasource status
+
+
+#### [indexing.troubleshooting.datasource.document](docs/sdks/document/README.md)
+
+* [debug](docs/sdks/document/README.md#debug) - Beta: Get document information
+
+
+#### [indexing.troubleshooting.datasource.documents](docs/sdks/datasourcedocuments/README.md)
+
+* [debug](docs/sdks/datasourcedocuments/README.md#debug) - Beta: Get information of a batch of documents
+
+
+#### [indexing.troubleshooting.datasource.user](docs/sdks/user/README.md)
+
+* [debug](docs/sdks/user/README.md#debug) - Beta: Get user information
+
+
+#### [~~indexing.troubleshooting.documents~~](docs/sdks/troubleshootingdocuments/README.md)
+
+* [~~status~~](docs/sdks/troubleshootingdocuments/README.md#status) - Get document upload and indexing status :warning: **Deprecated**
+* [~~count~~](docs/sdks/troubleshootingdocuments/README.md#count) - Get document count :warning: **Deprecated**
+
+#### [~~indexing.troubleshooting.users~~](docs/sdks/users/README.md)
+
+* [~~count~~](docs/sdks/users/README.md#count) - Get user count :warning: **Deprecated**
+
+### [people](docs/sdks/people/README.md)
+
+* [postApiIndexV1Bulkindexemployees](docs/sdks/people/README.md#postapiindexv1bulkindexemployees) - Bulk index employees
+
+### [search](docs/sdks/search/README.md)
+
+* [autocomplete](docs/sdks/search/README.md#autocomplete) - Autocomplete
+
+### [shortcuts](docs/sdks/shortcuts/README.md)
+
+* [createshortcut](docs/sdks/shortcuts/README.md#createshortcut) - Create shortcut
+
+### [verification](docs/sdks/verification/README.md)
+
+* [verify](docs/sdks/verification/README.md#verify) - Update verification
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -396,106 +450,106 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [`agentsGetagentinputs`](docs/sdks/agents/README.md#getagentinputs) - Gets the inputs to an agent.
-- [`agentsListagents`](docs/sdks/agents/README.md#listagents) - Lists all agents.
-- [`agentsRunagent`](docs/sdks/agents/README.md#runagent) - Runs an Agent.
-- [`clientActivitiesReportActivity`](docs/sdks/activities/README.md#reportactivity) - Report client activity
+- [`clientActivityFeedback`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`clientActivityReport`](docs/sdks/activity/README.md#report) - Report document activity
+- [`clientAgentsAgentInputsRetrieve`](docs/sdks/inputs/README.md#retrieve) - Gets the inputs to an agent.
+- [`clientAgentsAgentRun`](docs/sdks/agent/README.md#run) - Runs an Agent.
+- [`clientAgentsList`](docs/sdks/agents/README.md#list) - Lists all agents.
 - [`clientAnnouncementsCreate`](docs/sdks/announcements/README.md#create) - Create Announcement
 - [`clientAnnouncementsDelete`](docs/sdks/announcements/README.md#delete) - Delete Announcement
 - [`clientAnnouncementsUpdate`](docs/sdks/announcements/README.md#update) - Update Announcement
 - [`clientAnswersCreate`](docs/sdks/answers/README.md#create) - Create Answer
 - [`clientAnswersDelete`](docs/sdks/answers/README.md#delete) - Delete Answer
-- [`clientAnswersEdit`](docs/sdks/answers/README.md#edit) - Update Answer
-- [`clientAnswersGet`](docs/sdks/answers/README.md#get) - Read Answer
 - [`clientAnswersList`](docs/sdks/answers/README.md#list) - List Answers
+- [`clientAnswersRetrieve`](docs/sdks/answers/README.md#retrieve) - Read Answer
+- [`clientAnswersUpdate`](docs/sdks/answers/README.md#update) - Update Answer
 - [`clientAuthenticationCreateToken`](docs/sdks/clientauthentication/README.md#createtoken) - Create authentication token
+- [`clientChatApplicationRetrieve`](docs/sdks/application/README.md#retrieve) - Gets the metadata for a custom Chat application
+- [`clientChatCreate`](docs/sdks/chat/README.md#create) - Chat
+- [`clientChatCreateStream`](docs/sdks/chat/README.md#createstream) - Chat
 - [`clientChatDelete`](docs/sdks/chat/README.md#delete) - Deletes saved Chats
 - [`clientChatDeleteAll`](docs/sdks/chat/README.md#deleteall) - Deletes all saved Chats owned by a user
-- [`clientChatDeleteFiles`](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat.
-- [`clientChatGet`](docs/sdks/chat/README.md#get) - Retrieves a Chat
-- [`clientChatGetApplication`](docs/sdks/chat/README.md#getapplication) - Gets the metadata for a custom Chat application
-- [`clientChatGetFiles`](docs/sdks/chat/README.md#getfiles) - Get files uploaded by a user for Chat.
+- [`clientChatFilesDelete`](docs/sdks/files/README.md#delete) - Delete files uploaded by a user for chat.
+- [`clientChatFilesRetrieve`](docs/sdks/files/README.md#retrieve) - Get files uploaded by a user for Chat.
+- [`clientChatFilesUpload`](docs/sdks/files/README.md#upload) - Upload files for Chat.
 - [`clientChatList`](docs/sdks/chat/README.md#list) - Retrieves all saved Chats
-- [`clientChatStart`](docs/sdks/chat/README.md#start) - Chat
-- [`clientChatStartStream`](docs/sdks/chat/README.md#startstream) - Chat
-- [`clientChatUploadFiles`](docs/sdks/chat/README.md#uploadfiles) - Upload files for Chat.
+- [`clientChatRetrieve`](docs/sdks/chat/README.md#retrieve) - Retrieves a Chat
 - [`clientCollectionsAddItems`](docs/sdks/collections/README.md#additems) - Add Collection item
 - [`clientCollectionsCreate`](docs/sdks/collections/README.md#create) - Create Collection
 - [`clientCollectionsDelete`](docs/sdks/collections/README.md#delete) - Delete Collection
-- [`clientCollectionsDeleteItem`](docs/sdks/collections/README.md#deleteitem) - Delete Collection item
-- [`clientCollectionsEditItem`](docs/sdks/collections/README.md#edititem) - Update Collection item
-- [`clientCollectionsGet`](docs/sdks/collections/README.md#get) - Read Collection
+- [`clientCollectionsItemDelete`](docs/sdks/item/README.md#delete) - Delete Collection item
+- [`clientCollectionsItemUpdate`](docs/sdks/item/README.md#update) - Update Collection item
 - [`clientCollectionsList`](docs/sdks/collections/README.md#list) - List Collections
+- [`clientCollectionsRetrieve`](docs/sdks/collections/README.md#retrieve) - Read Collection
 - [`clientCollectionsUpdate`](docs/sdks/collections/README.md#update) - Update Collection
-- [`clientDocumentsGet`](docs/sdks/clientdocuments/README.md#get) - Read documents
-- [`clientDocumentsGetByFacets`](docs/sdks/clientdocuments/README.md#getbyfacets) - Read documents by facets
-- [`clientDocumentsGetPermissions`](docs/sdks/clientdocuments/README.md#getpermissions) - Read document permissions
+- [`clientDocumentsPermissionsRetrieve`](docs/sdks/documentspermissions/README.md#retrieve) - Read document permissions
+- [`clientDocumentsRetrieve`](docs/sdks/clientdocuments/README.md#retrieve) - Read documents
+- [`clientDocumentsRetrieveByFacets`](docs/sdks/clientdocuments/README.md#retrievebyfacets) - Read documents by facets
 - [`clientEntitiesList`](docs/sdks/entities/README.md#list) - List entities
 - [`clientEntitiesReadPeople`](docs/sdks/entities/README.md#readpeople) - Read people
-- [`clientInsightsGet`](docs/sdks/insights/README.md#get) - Read insights
-- [`clientMessagesGet`](docs/sdks/messages/README.md#get) - Read messages
+- [`clientInsightsRetrieve`](docs/sdks/insights/README.md#retrieve) - Read insights
+- [`clientMessagesRetrieve`](docs/sdks/messages/README.md#retrieve) - Read messages
 - [`clientPinsCreate`](docs/sdks/pins/README.md#create) - Create pin
-- [`clientPinsEdit`](docs/sdks/pins/README.md#edit) - Update pin
-- [`clientPinsGet`](docs/sdks/pins/README.md#get) - Read pin
 - [`clientPinsList`](docs/sdks/pins/README.md#list) - List pins
 - [`clientPinsRemove`](docs/sdks/pins/README.md#remove) - Delete pin
-- [`clientSearchAdmin`](docs/sdks/search/README.md#admin) - Search the index (admin)
-- [`clientSearchAutocomplete`](docs/sdks/search/README.md#autocomplete) - Autocomplete
-- [`clientSearchExecute`](docs/sdks/search/README.md#execute) - Search
-- [`clientSearchGetFeed`](docs/sdks/search/README.md#getfeed) - Feed of documents and events
-- [`clientSearchRecommendations`](docs/sdks/search/README.md#recommendations) - Recommend documents
-- [`clientShortcutsCreate`](docs/sdks/clientshortcuts/README.md#create) - Create shortcut
+- [`clientPinsRetrieve`](docs/sdks/pins/README.md#retrieve) - Read pin
+- [`clientPinsUpdate`](docs/sdks/pins/README.md#update) - Update pin
+- [`clientSearchAdminQuery`](docs/sdks/admin/README.md#query) - Search the index (admin)
+- [`clientSearchFeedRetrieve`](docs/sdks/feed/README.md#retrieve) - Feed of documents and events
+- [`clientSearchQuery`](docs/sdks/clientsearch/README.md#query) - Search
+- [`clientSearchRecommendations`](docs/sdks/clientsearch/README.md#recommendations) - Recommend documents
 - [`clientShortcutsDelete`](docs/sdks/clientshortcuts/README.md#delete) - Delete shortcut
-- [`clientShortcutsGet`](docs/sdks/clientshortcuts/README.md#get) - Read shortcut
 - [`clientShortcutsList`](docs/sdks/clientshortcuts/README.md#list) - List shortcuts
+- [`clientShortcutsRetrieve`](docs/sdks/clientshortcuts/README.md#retrieve) - Read shortcut
 - [`clientShortcutsUpdate`](docs/sdks/clientshortcuts/README.md#update) - Update shortcut
 - [`clientShortcutsUpload`](docs/sdks/clientshortcuts/README.md#upload) - Upload shortcuts
 - [`clientSummarizeGenerate`](docs/sdks/summarize/README.md#generate) - Summarize documents
-- [`clientVerificationAddReminder`](docs/sdks/verification/README.md#addreminder) - Create verification
-- [`clientVerificationList`](docs/sdks/verification/README.md#list) - List verifications
-- [`clientVerificationVerify`](docs/sdks/verification/README.md#verify) - Update verification
+- [`clientVerificationAddReminder`](docs/sdks/clientverification/README.md#addreminder) - Create verification
+- [`clientVerificationList`](docs/sdks/clientverification/README.md#list) - List verifications
 - [`indexingAuthenticationRotateToken`](docs/sdks/indexingauthentication/README.md#rotatetoken) - Rotate token
 - [`indexingDatasourcesAdd`](docs/sdks/datasources/README.md#add) - Add or update datasource
-- [`indexingDatasourcesGetConfig`](docs/sdks/datasources/README.md#getconfig) - Get datasource config
+- [`indexingDatasourcesConfigRetrieve`](docs/sdks/config/README.md#retrieve) - Get datasource config
 - [`indexingDocumentsAddOrUpdate`](docs/sdks/indexingdocuments/README.md#addorupdate) - Index document
 - [`indexingDocumentsBulkIndex`](docs/sdks/indexingdocuments/README.md#bulkindex) - Bulk index documents
 - [`indexingDocumentsDelete`](docs/sdks/indexingdocuments/README.md#delete) - Delete document
 - [`indexingDocumentsIndex`](docs/sdks/indexingdocuments/README.md#index) - Index documents
 - [`indexingDocumentsProcessAll`](docs/sdks/indexingdocuments/README.md#processall) - Schedules the processing of uploaded documents
-- [`indexingPeopleBulkIndexEmployees`](docs/sdks/people/README.md#bulkindexemployees) - Bulk index employees
-- [`indexingPeopleBulkIndexTeams`](docs/sdks/people/README.md#bulkindexteams) - Bulk index teams
-- [`indexingPeopleDelete`](docs/sdks/people/README.md#delete) - Delete employee
-- [`indexingPeopleDeleteTeam`](docs/sdks/people/README.md#deleteteam) - Delete team
-- [`indexingPeopleIndex`](docs/sdks/people/README.md#index) - Index employee
-- [`indexingPeopleIndexTeam`](docs/sdks/people/README.md#indexteam) - Index team
-- [`indexingPeopleProcessAllEmployeesAndTeams`](docs/sdks/people/README.md#processallemployeesandteams) - Schedules the processing of uploaded employees and teams
-- [`indexingPermissionsAuthorizeBetaUsers`](docs/sdks/permissions/README.md#authorizebetausers) - Beta users
-- [`indexingPermissionsBulkIndexGroups`](docs/sdks/permissions/README.md#bulkindexgroups) - Bulk index groups
-- [`indexingPermissionsBulkIndexMemberships`](docs/sdks/permissions/README.md#bulkindexmemberships) - Bulk index memberships for a group
-- [`indexingPermissionsBulkIndexUsers`](docs/sdks/permissions/README.md#bulkindexusers) - Bulk index users
-- [`indexingPermissionsDeleteGroup`](docs/sdks/permissions/README.md#deletegroup) - Delete group
-- [`indexingPermissionsDeleteMembership`](docs/sdks/permissions/README.md#deletemembership) - Delete membership
-- [`indexingPermissionsDeleteUser`](docs/sdks/permissions/README.md#deleteuser) - Delete user
-- [`indexingPermissionsIndexGroup`](docs/sdks/permissions/README.md#indexgroup) - Index group
-- [`indexingPermissionsIndexMembership`](docs/sdks/permissions/README.md#indexmembership) - Index membership
-- [`indexingPermissionsIndexUser`](docs/sdks/permissions/README.md#indexuser) - Index user
-- [`indexingPermissionsProcessMemberships`](docs/sdks/permissions/README.md#processmemberships) - Schedules the processing of group memberships
-- [`indexingPermissionsUpdatePermissions`](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
+- [`indexingPeopleBulkIndexTeams`](docs/sdks/indexingpeople/README.md#bulkindexteams) - Bulk index teams
+- [`indexingPeopleDelete`](docs/sdks/indexingpeople/README.md#delete) - Delete employee
+- [`indexingPeopleDeleteTeam`](docs/sdks/indexingpeople/README.md#deleteteam) - Delete team
+- [`indexingPeopleIndex`](docs/sdks/indexingpeople/README.md#index) - Index employee
+- [`indexingPeopleIndexTeam`](docs/sdks/indexingpeople/README.md#indexteam) - Index team
+- [`indexingPeopleProcessAllEmployeesAndTeams`](docs/sdks/indexingpeople/README.md#processallemployeesandteams) - Schedules the processing of uploaded employees and teams
+- [`indexingPermissionsAuthorizeBetaUsers`](docs/sdks/indexingpermissions/README.md#authorizebetausers) - Beta users
+- [`indexingPermissionsBulkIndexGroups`](docs/sdks/indexingpermissions/README.md#bulkindexgroups) - Bulk index groups
+- [`indexingPermissionsBulkIndexMemberships`](docs/sdks/indexingpermissions/README.md#bulkindexmemberships) - Bulk index memberships for a group
+- [`indexingPermissionsBulkIndexUsers`](docs/sdks/indexingpermissions/README.md#bulkindexusers) - Bulk index users
+- [`indexingPermissionsDeleteGroup`](docs/sdks/indexingpermissions/README.md#deletegroup) - Delete group
+- [`indexingPermissionsDeleteMembership`](docs/sdks/indexingpermissions/README.md#deletemembership) - Delete membership
+- [`indexingPermissionsDeleteUser`](docs/sdks/indexingpermissions/README.md#deleteuser) - Delete user
+- [`indexingPermissionsIndexGroup`](docs/sdks/indexingpermissions/README.md#indexgroup) - Index group
+- [`indexingPermissionsIndexMembership`](docs/sdks/indexingpermissions/README.md#indexmembership) - Index membership
+- [`indexingPermissionsIndexUser`](docs/sdks/indexingpermissions/README.md#indexuser) - Index user
+- [`indexingPermissionsProcessMemberships`](docs/sdks/indexingpermissions/README.md#processmemberships) - Schedules the processing of group memberships
+- [`indexingPermissionsUpdatePermissions`](docs/sdks/indexingpermissions/README.md#updatepermissions) - Update document permissions
 - [`indexingShortcutsBulkIndex`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`indexingTroubleshootingCheckAccess`](docs/sdks/troubleshooting/README.md#checkaccess) - Check document access
-- [`indexingTroubleshootingDebugUser`](docs/sdks/troubleshooting/README.md#debuguser) - Beta: Get user information
+- [`indexingTroubleshootingDatasourceDocumentDebug`](docs/sdks/document/README.md#debug) - Beta: Get document information
 
-- [`indexingTroubleshootingGetDatasourceStatus`](docs/sdks/troubleshooting/README.md#getdatasourcestatus) - Beta: Get datasource status
+- [`indexingTroubleshootingDatasourceDocumentsDebug`](docs/sdks/datasourcedocuments/README.md#debug) - Beta: Get information of a batch of documents
 
-- [`indexingTroubleshootingPostDocumentDebug`](docs/sdks/troubleshooting/README.md#postdocumentdebug) - Beta: Get document information
+- [`indexingTroubleshootingDatasourceStatus`](docs/sdks/datasource/README.md#status) - Beta: Get datasource status
 
-- [`indexingTroubleshootingPostDocumentsDebug`](docs/sdks/troubleshooting/README.md#postdocumentsdebug) - Beta: Get information of a batch of documents
+- [`indexingTroubleshootingDatasourceUserDebug`](docs/sdks/user/README.md#debug) - Beta: Get user information
 
-- ~~[`indexingPeopleBulkIndex`](docs/sdks/people/README.md#bulkindex)~~ - Bulk index employees :warning: **Deprecated**
-- ~~[`indexingTroubleshootingGetDocumentCount`](docs/sdks/troubleshooting/README.md#getdocumentcount)~~ - Get document count :warning: **Deprecated**
-- ~~[`indexingTroubleshootingGetStatus`](docs/sdks/troubleshooting/README.md#getstatus)~~ - Get document upload and indexing status :warning: **Deprecated**
-- ~~[`indexingTroubleshootingGetUserCount`](docs/sdks/troubleshooting/README.md#getusercount)~~ - Get user count :warning: **Deprecated**
+- [`peoplePostApiIndexV1Bulkindexemployees`](docs/sdks/people/README.md#postapiindexv1bulkindexemployees) - Bulk index employees
+- [`searchAutocomplete`](docs/sdks/search/README.md#autocomplete) - Autocomplete
+- [`shortcutsCreateshortcut`](docs/sdks/shortcuts/README.md#createshortcut) - Create shortcut
+- [`verificationVerify`](docs/sdks/verification/README.md#verify) - Update verification
+- ~~[`indexingPeopleBulkIndex`](docs/sdks/indexingpeople/README.md#bulkindex)~~ - Bulk index employees :warning: **Deprecated**
+- ~~[`indexingTroubleshootingDocumentsCount`](docs/sdks/troubleshootingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
+- ~~[`indexingTroubleshootingDocumentsStatus`](docs/sdks/troubleshootingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**
+- ~~[`indexingTroubleshootingUsersCount`](docs/sdks/users/README.md#count)~~ - Get user count :warning: **Deprecated**
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
@@ -522,106 +576,106 @@ To learn about this feature and how to get started, check
 
 <summary>Available React hooks</summary>
 
-- [`useAgentsGetagentinputsMutation`](docs/sdks/agents/README.md#getagentinputs) - Gets the inputs to an agent.
-- [`useAgentsListagentsMutation`](docs/sdks/agents/README.md#listagents) - Lists all agents.
-- [`useAgentsRunagentMutation`](docs/sdks/agents/README.md#runagent) - Runs an Agent.
-- [`useClientActivitiesReportActivityMutation`](docs/sdks/activities/README.md#reportactivity) - Report client activity
+- [`useClientActivityFeedbackMutation`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`useClientActivityReportMutation`](docs/sdks/activity/README.md#report) - Report document activity
+- [`useClientAgentsAgentInputsRetrieveMutation`](docs/sdks/inputs/README.md#retrieve) - Gets the inputs to an agent.
+- [`useClientAgentsAgentRunMutation`](docs/sdks/agent/README.md#run) - Runs an Agent.
+- [`useClientAgentsListMutation`](docs/sdks/agents/README.md#list) - Lists all agents.
 - [`useClientAnnouncementsCreateMutation`](docs/sdks/announcements/README.md#create) - Create Announcement
 - [`useClientAnnouncementsDeleteMutation`](docs/sdks/announcements/README.md#delete) - Delete Announcement
 - [`useClientAnnouncementsUpdateMutation`](docs/sdks/announcements/README.md#update) - Update Announcement
 - [`useClientAnswersCreateMutation`](docs/sdks/answers/README.md#create) - Create Answer
 - [`useClientAnswersDeleteMutation`](docs/sdks/answers/README.md#delete) - Delete Answer
-- [`useClientAnswersEditMutation`](docs/sdks/answers/README.md#edit) - Update Answer
-- [`useClientAnswersGetMutation`](docs/sdks/answers/README.md#get) - Read Answer
 - [`useClientAnswersListMutation`](docs/sdks/answers/README.md#list) - List Answers
+- [`useClientAnswersRetrieveMutation`](docs/sdks/answers/README.md#retrieve) - Read Answer
+- [`useClientAnswersUpdateMutation`](docs/sdks/answers/README.md#update) - Update Answer
 - [`useClientAuthenticationCreateTokenMutation`](docs/sdks/clientauthentication/README.md#createtoken) - Create authentication token
+- [`useClientChatApplicationRetrieveMutation`](docs/sdks/application/README.md#retrieve) - Gets the metadata for a custom Chat application
+- [`useClientChatCreateMutation`](docs/sdks/chat/README.md#create) - Chat
+- [`useClientChatCreateStreamMutation`](docs/sdks/chat/README.md#createstream) - Chat
 - [`useClientChatDeleteAllMutation`](docs/sdks/chat/README.md#deleteall) - Deletes all saved Chats owned by a user
-- [`useClientChatDeleteFilesMutation`](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat.
 - [`useClientChatDeleteMutation`](docs/sdks/chat/README.md#delete) - Deletes saved Chats
-- [`useClientChatGetApplicationMutation`](docs/sdks/chat/README.md#getapplication) - Gets the metadata for a custom Chat application
-- [`useClientChatGetFilesMutation`](docs/sdks/chat/README.md#getfiles) - Get files uploaded by a user for Chat.
-- [`useClientChatGetMutation`](docs/sdks/chat/README.md#get) - Retrieves a Chat
+- [`useClientChatFilesDeleteMutation`](docs/sdks/files/README.md#delete) - Delete files uploaded by a user for chat.
+- [`useClientChatFilesRetrieveMutation`](docs/sdks/files/README.md#retrieve) - Get files uploaded by a user for Chat.
+- [`useClientChatFilesUploadMutation`](docs/sdks/files/README.md#upload) - Upload files for Chat.
 - [`useClientChatListMutation`](docs/sdks/chat/README.md#list) - Retrieves all saved Chats
-- [`useClientChatStartMutation`](docs/sdks/chat/README.md#start) - Chat
-- [`useClientChatStartStreamMutation`](docs/sdks/chat/README.md#startstream) - Chat
-- [`useClientChatUploadFilesMutation`](docs/sdks/chat/README.md#uploadfiles) - Upload files for Chat.
+- [`useClientChatRetrieveMutation`](docs/sdks/chat/README.md#retrieve) - Retrieves a Chat
 - [`useClientCollectionsAddItemsMutation`](docs/sdks/collections/README.md#additems) - Add Collection item
 - [`useClientCollectionsCreateMutation`](docs/sdks/collections/README.md#create) - Create Collection
-- [`useClientCollectionsDeleteItemMutation`](docs/sdks/collections/README.md#deleteitem) - Delete Collection item
 - [`useClientCollectionsDeleteMutation`](docs/sdks/collections/README.md#delete) - Delete Collection
-- [`useClientCollectionsEditItemMutation`](docs/sdks/collections/README.md#edititem) - Update Collection item
-- [`useClientCollectionsGetMutation`](docs/sdks/collections/README.md#get) - Read Collection
+- [`useClientCollectionsItemDeleteMutation`](docs/sdks/item/README.md#delete) - Delete Collection item
+- [`useClientCollectionsItemUpdateMutation`](docs/sdks/item/README.md#update) - Update Collection item
 - [`useClientCollectionsListMutation`](docs/sdks/collections/README.md#list) - List Collections
+- [`useClientCollectionsRetrieveMutation`](docs/sdks/collections/README.md#retrieve) - Read Collection
 - [`useClientCollectionsUpdateMutation`](docs/sdks/collections/README.md#update) - Update Collection
-- [`useClientDocumentsGetByFacetsMutation`](docs/sdks/clientdocuments/README.md#getbyfacets) - Read documents by facets
-- [`useClientDocumentsGetMutation`](docs/sdks/clientdocuments/README.md#get) - Read documents
-- [`useClientDocumentsGetPermissionsMutation`](docs/sdks/clientdocuments/README.md#getpermissions) - Read document permissions
+- [`useClientDocumentsPermissionsRetrieveMutation`](docs/sdks/documentspermissions/README.md#retrieve) - Read document permissions
+- [`useClientDocumentsRetrieveByFacetsMutation`](docs/sdks/clientdocuments/README.md#retrievebyfacets) - Read documents by facets
+- [`useClientDocumentsRetrieveMutation`](docs/sdks/clientdocuments/README.md#retrieve) - Read documents
 - [`useClientEntitiesListMutation`](docs/sdks/entities/README.md#list) - List entities
 - [`useClientEntitiesReadPeopleMutation`](docs/sdks/entities/README.md#readpeople) - Read people
-- [`useClientInsightsGetMutation`](docs/sdks/insights/README.md#get) - Read insights
-- [`useClientMessagesGetMutation`](docs/sdks/messages/README.md#get) - Read messages
+- [`useClientInsightsRetrieveMutation`](docs/sdks/insights/README.md#retrieve) - Read insights
+- [`useClientMessagesRetrieveMutation`](docs/sdks/messages/README.md#retrieve) - Read messages
 - [`useClientPinsCreateMutation`](docs/sdks/pins/README.md#create) - Create pin
-- [`useClientPinsEditMutation`](docs/sdks/pins/README.md#edit) - Update pin
-- [`useClientPinsGetMutation`](docs/sdks/pins/README.md#get) - Read pin
 - [`useClientPinsListMutation`](docs/sdks/pins/README.md#list) - List pins
 - [`useClientPinsRemoveMutation`](docs/sdks/pins/README.md#remove) - Delete pin
-- [`useClientSearchAdminMutation`](docs/sdks/search/README.md#admin) - Search the index (admin)
-- [`useClientSearchAutocompleteMutation`](docs/sdks/search/README.md#autocomplete) - Autocomplete
-- [`useClientSearchExecuteMutation`](docs/sdks/search/README.md#execute) - Search
-- [`useClientSearchGetFeedMutation`](docs/sdks/search/README.md#getfeed) - Feed of documents and events
-- [`useClientSearchRecommendationsMutation`](docs/sdks/search/README.md#recommendations) - Recommend documents
-- [`useClientShortcutsCreateMutation`](docs/sdks/clientshortcuts/README.md#create) - Create shortcut
+- [`useClientPinsRetrieveMutation`](docs/sdks/pins/README.md#retrieve) - Read pin
+- [`useClientPinsUpdateMutation`](docs/sdks/pins/README.md#update) - Update pin
+- [`useClientSearchAdminQueryMutation`](docs/sdks/admin/README.md#query) - Search the index (admin)
+- [`useClientSearchFeedRetrieveMutation`](docs/sdks/feed/README.md#retrieve) - Feed of documents and events
+- [`useClientSearchQueryMutation`](docs/sdks/clientsearch/README.md#query) - Search
+- [`useClientSearchRecommendationsMutation`](docs/sdks/clientsearch/README.md#recommendations) - Recommend documents
 - [`useClientShortcutsDeleteMutation`](docs/sdks/clientshortcuts/README.md#delete) - Delete shortcut
-- [`useClientShortcutsGetMutation`](docs/sdks/clientshortcuts/README.md#get) - Read shortcut
 - [`useClientShortcutsListMutation`](docs/sdks/clientshortcuts/README.md#list) - List shortcuts
+- [`useClientShortcutsRetrieveMutation`](docs/sdks/clientshortcuts/README.md#retrieve) - Read shortcut
 - [`useClientShortcutsUpdateMutation`](docs/sdks/clientshortcuts/README.md#update) - Update shortcut
 - [`useClientShortcutsUploadMutation`](docs/sdks/clientshortcuts/README.md#upload) - Upload shortcuts
 - [`useClientSummarizeGenerateMutation`](docs/sdks/summarize/README.md#generate) - Summarize documents
-- [`useClientVerificationAddReminderMutation`](docs/sdks/verification/README.md#addreminder) - Create verification
-- [`useClientVerificationListMutation`](docs/sdks/verification/README.md#list) - List verifications
-- [`useClientVerificationVerifyMutation`](docs/sdks/verification/README.md#verify) - Update verification
+- [`useClientVerificationAddReminderMutation`](docs/sdks/clientverification/README.md#addreminder) - Create verification
+- [`useClientVerificationListMutation`](docs/sdks/clientverification/README.md#list) - List verifications
 - [`useIndexingAuthenticationRotateTokenMutation`](docs/sdks/indexingauthentication/README.md#rotatetoken) - Rotate token
 - [`useIndexingDatasourcesAddMutation`](docs/sdks/datasources/README.md#add) - Add or update datasource
-- [`useIndexingDatasourcesGetConfigMutation`](docs/sdks/datasources/README.md#getconfig) - Get datasource config
+- [`useIndexingDatasourcesConfigRetrieveMutation`](docs/sdks/config/README.md#retrieve) - Get datasource config
 - [`useIndexingDocumentsAddOrUpdateMutation`](docs/sdks/indexingdocuments/README.md#addorupdate) - Index document
 - [`useIndexingDocumentsBulkIndexMutation`](docs/sdks/indexingdocuments/README.md#bulkindex) - Bulk index documents
 - [`useIndexingDocumentsDeleteMutation`](docs/sdks/indexingdocuments/README.md#delete) - Delete document
 - [`useIndexingDocumentsIndexMutation`](docs/sdks/indexingdocuments/README.md#index) - Index documents
 - [`useIndexingDocumentsProcessAllMutation`](docs/sdks/indexingdocuments/README.md#processall) - Schedules the processing of uploaded documents
-- [`useIndexingPeopleBulkIndexEmployeesMutation`](docs/sdks/people/README.md#bulkindexemployees) - Bulk index employees
-- [`useIndexingPeopleBulkIndexTeamsMutation`](docs/sdks/people/README.md#bulkindexteams) - Bulk index teams
-- [`useIndexingPeopleDeleteMutation`](docs/sdks/people/README.md#delete) - Delete employee
-- [`useIndexingPeopleDeleteTeamMutation`](docs/sdks/people/README.md#deleteteam) - Delete team
-- [`useIndexingPeopleIndexMutation`](docs/sdks/people/README.md#index) - Index employee
-- [`useIndexingPeopleIndexTeamMutation`](docs/sdks/people/README.md#indexteam) - Index team
-- [`useIndexingPeopleProcessAllEmployeesAndTeamsMutation`](docs/sdks/people/README.md#processallemployeesandteams) - Schedules the processing of uploaded employees and teams
-- [`useIndexingPermissionsAuthorizeBetaUsersMutation`](docs/sdks/permissions/README.md#authorizebetausers) - Beta users
-- [`useIndexingPermissionsBulkIndexGroupsMutation`](docs/sdks/permissions/README.md#bulkindexgroups) - Bulk index groups
-- [`useIndexingPermissionsBulkIndexMembershipsMutation`](docs/sdks/permissions/README.md#bulkindexmemberships) - Bulk index memberships for a group
-- [`useIndexingPermissionsBulkIndexUsersMutation`](docs/sdks/permissions/README.md#bulkindexusers) - Bulk index users
-- [`useIndexingPermissionsDeleteGroupMutation`](docs/sdks/permissions/README.md#deletegroup) - Delete group
-- [`useIndexingPermissionsDeleteMembershipMutation`](docs/sdks/permissions/README.md#deletemembership) - Delete membership
-- [`useIndexingPermissionsDeleteUserMutation`](docs/sdks/permissions/README.md#deleteuser) - Delete user
-- [`useIndexingPermissionsIndexGroupMutation`](docs/sdks/permissions/README.md#indexgroup) - Index group
-- [`useIndexingPermissionsIndexMembershipMutation`](docs/sdks/permissions/README.md#indexmembership) - Index membership
-- [`useIndexingPermissionsIndexUserMutation`](docs/sdks/permissions/README.md#indexuser) - Index user
-- [`useIndexingPermissionsProcessMembershipsMutation`](docs/sdks/permissions/README.md#processmemberships) - Schedules the processing of group memberships
-- [`useIndexingPermissionsUpdatePermissionsMutation`](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
+- [`useIndexingPeopleBulkIndexTeamsMutation`](docs/sdks/indexingpeople/README.md#bulkindexteams) - Bulk index teams
+- [`useIndexingPeopleDeleteMutation`](docs/sdks/indexingpeople/README.md#delete) - Delete employee
+- [`useIndexingPeopleDeleteTeamMutation`](docs/sdks/indexingpeople/README.md#deleteteam) - Delete team
+- [`useIndexingPeopleIndexMutation`](docs/sdks/indexingpeople/README.md#index) - Index employee
+- [`useIndexingPeopleIndexTeamMutation`](docs/sdks/indexingpeople/README.md#indexteam) - Index team
+- [`useIndexingPeopleProcessAllEmployeesAndTeamsMutation`](docs/sdks/indexingpeople/README.md#processallemployeesandteams) - Schedules the processing of uploaded employees and teams
+- [`useIndexingPermissionsAuthorizeBetaUsersMutation`](docs/sdks/indexingpermissions/README.md#authorizebetausers) - Beta users
+- [`useIndexingPermissionsBulkIndexGroupsMutation`](docs/sdks/indexingpermissions/README.md#bulkindexgroups) - Bulk index groups
+- [`useIndexingPermissionsBulkIndexMembershipsMutation`](docs/sdks/indexingpermissions/README.md#bulkindexmemberships) - Bulk index memberships for a group
+- [`useIndexingPermissionsBulkIndexUsersMutation`](docs/sdks/indexingpermissions/README.md#bulkindexusers) - Bulk index users
+- [`useIndexingPermissionsDeleteGroupMutation`](docs/sdks/indexingpermissions/README.md#deletegroup) - Delete group
+- [`useIndexingPermissionsDeleteMembershipMutation`](docs/sdks/indexingpermissions/README.md#deletemembership) - Delete membership
+- [`useIndexingPermissionsDeleteUserMutation`](docs/sdks/indexingpermissions/README.md#deleteuser) - Delete user
+- [`useIndexingPermissionsIndexGroupMutation`](docs/sdks/indexingpermissions/README.md#indexgroup) - Index group
+- [`useIndexingPermissionsIndexMembershipMutation`](docs/sdks/indexingpermissions/README.md#indexmembership) - Index membership
+- [`useIndexingPermissionsIndexUserMutation`](docs/sdks/indexingpermissions/README.md#indexuser) - Index user
+- [`useIndexingPermissionsProcessMembershipsMutation`](docs/sdks/indexingpermissions/README.md#processmemberships) - Schedules the processing of group memberships
+- [`useIndexingPermissionsUpdatePermissionsMutation`](docs/sdks/indexingpermissions/README.md#updatepermissions) - Update document permissions
 - [`useIndexingShortcutsBulkIndexMutation`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`useIndexingTroubleshootingCheckAccessMutation`](docs/sdks/troubleshooting/README.md#checkaccess) - Check document access
-- [`useIndexingTroubleshootingDebugUserMutation`](docs/sdks/troubleshooting/README.md#debuguser) - Beta: Get user information
+- [`useIndexingTroubleshootingDatasourceDocumentDebugMutation`](docs/sdks/document/README.md#debug) - Beta: Get document information
 
-- [`useIndexingTroubleshootingGetDatasourceStatusMutation`](docs/sdks/troubleshooting/README.md#getdatasourcestatus) - Beta: Get datasource status
+- [`useIndexingTroubleshootingDatasourceDocumentsDebugMutation`](docs/sdks/datasourcedocuments/README.md#debug) - Beta: Get information of a batch of documents
 
-- [`useIndexingTroubleshootingPostDocumentDebugMutation`](docs/sdks/troubleshooting/README.md#postdocumentdebug) - Beta: Get document information
+- [`useIndexingTroubleshootingDatasourceStatusMutation`](docs/sdks/datasource/README.md#status) - Beta: Get datasource status
 
-- [`useIndexingTroubleshootingPostDocumentsDebugMutation`](docs/sdks/troubleshooting/README.md#postdocumentsdebug) - Beta: Get information of a batch of documents
+- [`useIndexingTroubleshootingDatasourceUserDebugMutation`](docs/sdks/user/README.md#debug) - Beta: Get user information
 
-- ~~[`useIndexingPeopleBulkIndexMutation`](docs/sdks/people/README.md#bulkindex)~~ - Bulk index employees :warning: **Deprecated**
-- ~~[`useIndexingTroubleshootingGetDocumentCountMutation`](docs/sdks/troubleshooting/README.md#getdocumentcount)~~ - Get document count :warning: **Deprecated**
-- ~~[`useIndexingTroubleshootingGetStatusMutation`](docs/sdks/troubleshooting/README.md#getstatus)~~ - Get document upload and indexing status :warning: **Deprecated**
-- ~~[`useIndexingTroubleshootingGetUserCountMutation`](docs/sdks/troubleshooting/README.md#getusercount)~~ - Get user count :warning: **Deprecated**
+- [`usePeoplePostApiIndexV1BulkindexemployeesMutation`](docs/sdks/people/README.md#postapiindexv1bulkindexemployees) - Bulk index employees
+- [`useSearchAutocompleteMutation`](docs/sdks/search/README.md#autocomplete) - Autocomplete
+- [`useShortcutsCreateshortcutMutation`](docs/sdks/shortcuts/README.md#createshortcut) - Create shortcut
+- [`useVerificationVerifyMutation`](docs/sdks/verification/README.md#verify) - Update verification
+- ~~[`useIndexingPeopleBulkIndexMutation`](docs/sdks/indexingpeople/README.md#bulkindex)~~ - Bulk index employees :warning: **Deprecated**
+- ~~[`useIndexingTroubleshootingDocumentsCountMutation`](docs/sdks/troubleshootingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
+- ~~[`useIndexingTroubleshootingDocumentsStatusMutation`](docs/sdks/troubleshootingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**
+- ~~[`useIndexingTroubleshootingUsersCountMutation`](docs/sdks/users/README.md#count)~~ - Get user count :warning: **Deprecated**
 
 </details>
 <!-- End React hooks with TanStack Query [react-query] -->

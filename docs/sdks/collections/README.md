@@ -8,10 +8,8 @@
 * [addItems](#additems) - Add Collection item
 * [create](#create) - Create Collection
 * [delete](#delete) - Delete Collection
-* [deleteItem](#deleteitem) - Delete Collection item
 * [update](#update) - Update Collection
-* [editItem](#edititem) - Update Collection item
-* [get](#get) - Read Collection
+* [retrieve](#retrieve) - Read Collection
 * [list](#list) - List Collections
 
 ## addItems
@@ -449,101 +447,6 @@ import {
 | errors.CollectionError | 422                    | application/json       |
 | errors.GleanError      | 4XX, 5XX               | \*/\*                  |
 
-## deleteItem
-
-Delete a single item from a Collection.
-
-### Example Usage
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const result = await glean.client.collections.deleteItem({
-    collectionId: 1357.59,
-    itemId: "<id>",
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { GleanCore } from "@gleanwork/api-client/core.js";
-import { clientCollectionsDeleteItem } from "@gleanwork/api-client/funcs/clientCollectionsDeleteItem.js";
-
-// Use `GleanCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const glean = new GleanCore({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const res = await clientCollectionsDeleteItem(glean, {
-    collectionId: 1357.59,
-    itemId: "<id>",
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### React hooks and utilities
-
-This method can be used in React components through the following hooks and
-associated utilities.
-
-> Check out [this guide][hook-guide] for information about each of the utilities
-> below and how to get started using React hooks.
-
-[hook-guide]: ../../../REACT_QUERY.md
-
-```tsx
-import {
-  // Mutation hook for triggering the API call.
-  useClientCollectionsDeleteItemMutation
-} from "@gleanwork/api-client/react-query/clientCollectionsDeleteItem.js";
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DeleteCollectionItemRequest](../../models/components/deletecollectionitemrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DeleteCollectionItemResponse](../../models/components/deletecollectionitemresponse.md)\>**
-
-### Errors
-
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
-
 ## update
 
 Update the properties of an existing Collection.
@@ -784,102 +687,7 @@ import {
 | errors.CollectionError | 422                    | application/json       |
 | errors.GleanError      | 4XX, 5XX               | \*/\*                  |
 
-## editItem
-
-Update the URL, Glean Document ID, description of an item within a Collection given its ID.
-
-### Example Usage
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const result = await glean.client.collections.editItem({
-    collectionId: 795203,
-    itemId: "<id>",
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { GleanCore } from "@gleanwork/api-client/core.js";
-import { clientCollectionsEditItem } from "@gleanwork/api-client/funcs/clientCollectionsEditItem.js";
-
-// Use `GleanCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const glean = new GleanCore({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const res = await clientCollectionsEditItem(glean, {
-    collectionId: 795203,
-    itemId: "<id>",
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### React hooks and utilities
-
-This method can be used in React components through the following hooks and
-associated utilities.
-
-> Check out [this guide][hook-guide] for information about each of the utilities
-> below and how to get started using React hooks.
-
-[hook-guide]: ../../../REACT_QUERY.md
-
-```tsx
-import {
-  // Mutation hook for triggering the API call.
-  useClientCollectionsEditItemMutation
-} from "@gleanwork/api-client/react-query/clientCollectionsEditItem.js";
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.EditCollectionItemRequest](../../models/components/editcollectionitemrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.EditCollectionItemResponse](../../models/components/editcollectionitemresponse.md)\>**
-
-### Errors
-
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
-
-## get
+## retrieve
 
 Read the details of a Collection given its ID. Does not fetch items in this Collection.
 
@@ -893,7 +701,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.collections.get({
+  const result = await glean.client.collections.retrieve({
     id: 700347,
   });
 
@@ -910,7 +718,7 @@ The standalone function version of this method:
 
 ```typescript
 import { GleanCore } from "@gleanwork/api-client/core.js";
-import { clientCollectionsGet } from "@gleanwork/api-client/funcs/clientCollectionsGet.js";
+import { clientCollectionsRetrieve } from "@gleanwork/api-client/funcs/clientCollectionsRetrieve.js";
 
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -919,7 +727,7 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientCollectionsGet(glean, {
+  const res = await clientCollectionsRetrieve(glean, {
     id: 700347,
   });
 
@@ -949,8 +757,8 @@ associated utilities.
 ```tsx
 import {
   // Mutation hook for triggering the API call.
-  useClientCollectionsGetMutation
-} from "@gleanwork/api-client/react-query/clientCollectionsGet.js";
+  useClientCollectionsRetrieveMutation
+} from "@gleanwork/api-client/react-query/clientCollectionsRetrieve.js";
 ```
 
 ### Parameters

@@ -139,7 +139,7 @@ test("Answers Editanswer", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.answers.edit({
+  const result = await glean.client.answers.update({
     id: 3,
     docId: "ANSWERS_answer_3",
     question: "Why is the sky blue?",
@@ -235,7 +235,7 @@ test("Answers Getanswer", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.answers.get({
+  const result = await glean.client.answers.retrieve({
     id: 3,
     docId: "ANSWERS_answer_3",
   });

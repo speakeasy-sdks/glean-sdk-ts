@@ -15,7 +15,7 @@ test("Activities Feedback", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  await glean.client.activities.reportActivity({
+  await glean.client.activity.feedback({
     trackingTokens: [
       "trackingTokens",
     ],

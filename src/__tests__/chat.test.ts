@@ -74,7 +74,7 @@ test("Chat Getchat", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.chat.get({
+  const result = await glean.client.chat.retrieve({
     id: "<id>",
   });
   expect(result).toBeDefined();
@@ -102,7 +102,7 @@ test("Chat Getchatapplication", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.chat.getApplication({
+  const result = await glean.client.chat.application.retrieve({
     id: "<id>",
   });
   expect(result).toBeDefined();
@@ -117,7 +117,7 @@ test("Chat Uploadchatfiles", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.chat.uploadFiles({
+  const result = await glean.client.chat.files.upload({
     files: [],
   });
   expect(result).toBeDefined();
@@ -132,7 +132,7 @@ test("Chat Getchatfiles", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.chat.getFiles({
+  const result = await glean.client.chat.files.retrieve({
     fileIds: [
       "<value>",
       "<value>",
@@ -150,7 +150,7 @@ test("Chat Deletechatfiles", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  await glean.client.chat.deleteFiles({
+  await glean.client.chat.files.delete({
     fileIds: [
       "<value>",
     ],
@@ -166,7 +166,7 @@ test("Chat Chat Stream Default Example", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.chat.startStream({
+  const result = await glean.client.chat.createStream({
     messages: [
       {
         fragments: [
@@ -189,7 +189,7 @@ test("Chat Chat Stream Gpt Agent Example", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.chat.startStream({
+  const result = await glean.client.chat.createStream({
     messages: [
       {
         fragments: [
@@ -215,7 +215,7 @@ test("Chat Chat Stream Streaming Example", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.chat.startStream({
+  const result = await glean.client.chat.createStream({
     messages: [
       {
         citations: [
@@ -716,7 +716,7 @@ test("Chat Chat Stream Update Response", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.chat.startStream({
+  const result = await glean.client.chat.createStream({
     messages: [
       {
         citations: [
@@ -1031,7 +1031,7 @@ test("Chat Chat Stream Citation Response", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.chat.startStream({
+  const result = await glean.client.chat.createStream({
     messages: [],
     timeoutMillis: 30000,
   });

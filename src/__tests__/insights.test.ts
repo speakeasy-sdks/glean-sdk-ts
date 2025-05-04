@@ -15,7 +15,7 @@ test("Insights Insights", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.insights.get({
+  const result = await glean.client.insights.retrieve({
     categories: [
       "CONTENT",
       "CONTENT",

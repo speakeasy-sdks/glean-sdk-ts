@@ -52,7 +52,7 @@ test("Datasources Post /Api/index/v1 /Getdatasourceconfig", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.indexing.datasources.getConfig({
+  const result = await glean.indexing.datasources.config.retrieve({
     datasource: "<value>",
   });
   expect(result).toBeDefined();

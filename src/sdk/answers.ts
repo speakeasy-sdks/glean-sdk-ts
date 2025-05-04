@@ -4,9 +4,9 @@
 
 import { clientAnswersCreate } from "../funcs/clientAnswersCreate.js";
 import { clientAnswersDelete } from "../funcs/clientAnswersDelete.js";
-import { clientAnswersEdit } from "../funcs/clientAnswersEdit.js";
-import { clientAnswersGet } from "../funcs/clientAnswersGet.js";
 import { clientAnswersList } from "../funcs/clientAnswersList.js";
+import { clientAnswersRetrieve } from "../funcs/clientAnswersRetrieve.js";
+import { clientAnswersUpdate } from "../funcs/clientAnswersUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
@@ -52,11 +52,11 @@ export class Answers extends ClientSDK {
    * @remarks
    * Update an existing user-generated Answer.
    */
-  async edit(
+  async update(
     request: components.EditAnswerRequest,
     options?: RequestOptions,
   ): Promise<components.Answer> {
-    return unwrapAsync(clientAnswersEdit(
+    return unwrapAsync(clientAnswersUpdate(
       this,
       request,
       options,
@@ -69,11 +69,11 @@ export class Answers extends ClientSDK {
    * @remarks
    * Read the details of a particular Answer given its ID.
    */
-  async get(
+  async retrieve(
     request: components.GetAnswerRequest,
     options?: RequestOptions,
   ): Promise<components.GetAnswerResponse> {
-    return unwrapAsync(clientAnswersGet(
+    return unwrapAsync(clientAnswersRetrieve(
       this,
       request,
       options,

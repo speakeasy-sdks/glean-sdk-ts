@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [get](#get) - Read insights
+* [retrieve](#retrieve) - Read insights
 
-## get
+## retrieve
 
 Reads the aggregate information for each user, query, and content.
 
@@ -21,7 +21,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.insights.get({
+  const result = await glean.client.insights.retrieve({
     categories: [
       "CONTENT",
       "CONTENT",
@@ -41,7 +41,7 @@ The standalone function version of this method:
 
 ```typescript
 import { GleanCore } from "@gleanwork/api-client/core.js";
-import { clientInsightsGet } from "@gleanwork/api-client/funcs/clientInsightsGet.js";
+import { clientInsightsRetrieve } from "@gleanwork/api-client/funcs/clientInsightsRetrieve.js";
 
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -50,7 +50,7 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientInsightsGet(glean, {
+  const res = await clientInsightsRetrieve(glean, {
     categories: [
       "CONTENT",
       "CONTENT",
@@ -83,8 +83,8 @@ associated utilities.
 ```tsx
 import {
   // Mutation hook for triggering the API call.
-  useClientInsightsGetMutation
-} from "@gleanwork/api-client/react-query/clientInsightsGet.js";
+  useClientInsightsRetrieveMutation
+} from "@gleanwork/api-client/react-query/clientInsightsRetrieve.js";
 ```
 
 ### Parameters

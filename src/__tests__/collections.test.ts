@@ -137,7 +137,7 @@ test("Collections Deletecollectionitem", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.collections.deleteItem({
+  const result = await glean.client.collections.item.delete({
     collectionId: 1357.59,
     itemId: "<id>",
   });
@@ -240,7 +240,7 @@ test("Collections Editcollectionitem", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.collections.editItem({
+  const result = await glean.client.collections.item.update({
     collectionId: 795203,
     itemId: "<id>",
   });
@@ -256,7 +256,7 @@ test("Collections Getcollection", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.collections.get({
+  const result = await glean.client.collections.retrieve({
     id: 700347,
   });
   expect(result).toBeDefined();
