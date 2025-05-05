@@ -53,10 +53,9 @@ func testEditcollectionitemEditcollectionitem0(w http.ResponseWriter, req *http.
 	}
 	respBody := &components.EditCollectionItemResponse{
 		Collection: &components.Collection{
-			Name:         "<value>",
-			Description:  "where nasalise emphasize jealously appliance",
-			AddedRoles:   []components.UserRoleSpecification{},
-			RemovedRoles: []components.UserRoleSpecification{},
+			Name:        "<value>",
+			Description: "trouser oddly however partridge ew meanwhile airmail duh famously",
+			AddedRoles:  []components.UserRoleSpecification{},
 			AudienceFilters: []components.FacetFilter{
 				components.FacetFilter{
 					FieldName: types.String("type"),
@@ -72,7 +71,7 @@ func testEditcollectionitemEditcollectionitem0(w http.ResponseWriter, req *http.
 					},
 				},
 			},
-			ID: 559534,
+			ID: 198148,
 			Creator: &components.Person{
 				Name:         "George Clooney",
 				ObfuscatedID: "abc123",
@@ -112,7 +111,6 @@ func testEditcollectionitemEditcollectionitem0(w http.ResponseWriter, req *http.
 				ObfuscatedID: "abc123",
 			},
 			Items: []components.CollectionItem{},
-			Roles: []components.UserRoleSpecification{},
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

@@ -81,6 +81,11 @@ let value: EditCollectionResponse = {
           },
         },
       },
+      shortcut: {
+        inputAlias: "<value>",
+        destinationDocument: {},
+        roles: [],
+      },
       collection: {
         name: "<value>",
         description:
@@ -102,7 +107,6 @@ let value: EditCollectionResponse = {
         ],
         id: 65405,
         children: [],
-        roles: [],
       },
       itemType: "DOCUMENT",
     },

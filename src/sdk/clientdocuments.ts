@@ -4,15 +4,28 @@
 
 import { clientDocumentsRetrieve } from "../funcs/clientDocumentsRetrieve.js";
 import { clientDocumentsRetrieveByFacets } from "../funcs/clientDocumentsRetrieveByFacets.js";
+import { clientDocumentsRetrievePermissions } from "../funcs/clientDocumentsRetrievePermissions.js";
+import { clientDocumentsSummarize } from "../funcs/clientDocumentsSummarize.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
-import { DocumentsPermissions } from "./documentspermissions.js";
 
 export class ClientDocuments extends ClientSDK {
-  private _permissions?: DocumentsPermissions;
-  get permissions(): DocumentsPermissions {
-    return (this._permissions ??= new DocumentsPermissions(this._options));
+  /**
+   * Read document permissions
+   *
+   * @remarks
+   * Read the emails of all users who have access to the given document.
+   */
+  async retrievePermissions(
+    request: components.GetDocPermissionsRequest,
+    options?: RequestOptions,
+  ): Promise<components.GetDocPermissionsResponse> {
+    return unwrapAsync(clientDocumentsRetrievePermissions(
+      this,
+      request,
+      options,
+    ));
   }
 
   /**
@@ -43,6 +56,23 @@ export class ClientDocuments extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.GetDocumentsByFacetsResponse> {
     return unwrapAsync(clientDocumentsRetrieveByFacets(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Summarize documents
+   *
+   * @remarks
+   * Generate an AI summary of the requested documents.
+   */
+  async summarize(
+    request: components.SummarizeRequest,
+    options?: RequestOptions,
+  ): Promise<components.SummarizeResponse> {
+    return unwrapAsync(clientDocumentsSummarize(
       this,
       request,
       options,

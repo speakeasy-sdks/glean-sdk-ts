@@ -4,21 +4,27 @@
 
 import { clientSearchQuery } from "../funcs/clientSearchQuery.js";
 import { clientSearchRecommendations } from "../funcs/clientSearchRecommendations.js";
+import { clientSearchRetrieveFeed } from "../funcs/clientSearchRetrieveFeed.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
-import { Admin } from "./admin.js";
-import { Feed } from "./feed.js";
 
 export class ClientSearch extends ClientSDK {
-  private _admin?: Admin;
-  get admin(): Admin {
-    return (this._admin ??= new Admin(this._options));
-  }
-
-  private _feed?: Feed;
-  get feed(): Feed {
-    return (this._feed ??= new Feed(this._options));
+  /**
+   * Feed of documents and events
+   *
+   * @remarks
+   * The personalized feed/home includes different types of contents including suggestions, recents, calendar events and many more.
+   */
+  async retrieveFeed(
+    request: components.FeedRequest,
+    options?: RequestOptions,
+  ): Promise<components.FeedResponse> {
+    return unwrapAsync(clientSearchRetrieveFeed(
+      this,
+      request,
+      options,
+    ));
   }
 
   /**

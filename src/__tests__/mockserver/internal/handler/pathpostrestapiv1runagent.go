@@ -85,6 +85,10 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 												Datasource: "github",
 												Handle:     "<value>",
 											},
+											components.DatasourceProfile{
+												Datasource: "github",
+												Handle:     "<value>",
+											},
 										},
 										QuerySuggestions: &components.QuerySuggestionList{
 											Suggestions: []components.QuerySuggestion{},
@@ -148,11 +152,12 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 												Name:         "George Clooney",
 												ObfuscatedID: "abc123",
 											},
-											RemindAt: 906369,
+											RemindAt: 975955,
 										},
 										CandidateVerifiers: []components.Person{},
 									},
 								},
+								Shortcuts: []components.Shortcut{},
 								CustomData: map[string]components.CustomDataValue{
 									"someCustomField": components.CustomDataValue{},
 								},
@@ -174,7 +179,7 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 						ReferenceRanges: []components.ReferenceRange{
 							components.ReferenceRange{
 								TextRange: &components.TextRange{
-									StartIndex: 540779,
+									StartIndex: 787576,
 									Document:   &components.Document{},
 								},
 								Snippets: []components.SearchResultSnippet{
@@ -184,40 +189,6 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 									},
 								},
 							},
-						},
-					},
-					components.ChatMessageCitation{
-						SourceFile: &components.ChatFile{
-							ID:   types.String("FILE_1234"),
-							URL:  types.String("www.google.com"),
-							Name: types.String("sample.pdf"),
-						},
-						ReferenceRanges: []components.ReferenceRange{
-							components.ReferenceRange{
-								Snippets: []components.SearchResultSnippet{
-									components.SearchResultSnippet{
-										Snippet:  "snippet",
-										MimeType: types.String("mimeType"),
-									},
-								},
-							},
-							components.ReferenceRange{
-								Snippets: []components.SearchResultSnippet{
-									components.SearchResultSnippet{
-										Snippet:  "snippet",
-										MimeType: types.String("mimeType"),
-									},
-								},
-							},
-						},
-					},
-					components.ChatMessageCitation{
-						SourceFile: &components.ChatFile{
-							ID:   types.String("FILE_1234"),
-							URL:  types.String("www.google.com"),
-							Name: types.String("sample.pdf"),
-						},
-						ReferenceRanges: []components.ReferenceRange{
 							components.ReferenceRange{
 								Snippets: []components.SearchResultSnippet{
 									components.SearchResultSnippet{
@@ -265,6 +236,14 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 											Datasource: "github",
 											Handle:     "<value>",
 										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
 									},
 									Status:       components.TeamStatusProcessed.ToPointer(),
 									CanBeDeleted: types.Bool(true),
@@ -296,12 +275,12 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 									},
 									Likes: &components.AnswerLikes{
 										LikedBy:     []components.AnswerLike{},
-										LikedByUser: false,
-										NumLikes:    320829,
+										LikedByUser: true,
+										NumLikes:    932956,
 									},
 									Board: &components.AnswerBoard{
 										Name:        "<value>",
-										Description: "transcend however notwithstanding",
+										Description: "blah uh-huh pish greatly gosh",
 										AudienceFilters: []components.FacetFilter{
 											components.FacetFilter{
 												FieldName: types.String("type"),
@@ -317,7 +296,7 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 												},
 											},
 										},
-										ID: 992075,
+										ID: 955391,
 										Creator: &components.Person{
 											Name:         "George Clooney",
 											ObfuscatedID: "abc123",
@@ -379,25 +358,8 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 															},
 														},
 													},
-													components.FacetFilterSet{
-														Filters: []components.FacetFilter{
-															components.FacetFilter{
-																FieldName: types.String("type"),
-																Values: []components.FacetFilterValue{
-																	components.FacetFilterValue{
-																		Value:        types.String("Spreadsheet"),
-																		RelationType: components.RelationTypeEquals.ToPointer(),
-																	},
-																	components.FacetFilterValue{
-																		Value:        types.String("Presentation"),
-																		RelationType: components.RelationTypeEquals.ToPointer(),
-																	},
-																},
-															},
-														},
-													},
 												},
-												FacetBucketSize: 694801,
+												FacetBucketSize: 906368,
 												AuthTokens: []components.AuthToken{
 													components.AuthToken{
 														AccessToken: "123abc",
@@ -421,7 +383,7 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 								},
 								Collection: &components.Collection{
 									Name:        "<value>",
-									Description: "cauliflower pop so",
+									Description: "psst information tedious chunder dash behind bitterly coast especially deficient",
 									AudienceFilters: []components.FacetFilter{
 										components.FacetFilter{
 											FieldName: types.String("type"),
@@ -437,11 +399,11 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 											},
 										},
 									},
-									ID: 511700,
+									ID: 745720,
 								},
 								AnswerBoard: &components.AnswerBoard{
 									Name:        "<value>",
-									Description: "sour loosely wherever commodity",
+									Description: "before which blah from hence how",
 									AudienceFilters: []components.FacetFilter{
 										components.FacetFilter{
 											FieldName: types.String("type"),
@@ -457,34 +419,23 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 											},
 										},
 									},
-									ID: 51997,
+									ID: 243829,
 								},
 								Code: &components.Code{
 									RepoName: types.String("scio"),
 									FileName: types.String("README.md"),
 									Lines:    []components.CodeLine{},
 								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{},
+								},
 								RelatedQuestion: &components.RelatedQuestion{},
 							},
-						},
-						File: &components.ChatFile{
-							ID:   types.String("FILE_1234"),
-							URL:  types.String("www.google.com"),
-							Name: types.String("sample.pdf"),
-						},
-						Action: &components.ToolInfo{
-							Metadata: &components.ToolMetadata{
-								Type:               components.ToolMetadataTypeRetrieval,
-								Name:               "<value>",
-								DisplayName:        "Gregg.Turner",
-								DisplayDescription: "<value>",
-								ObjectName:         types.String("[\"HR ticket\",\"Email\",\"Chat message\"]"),
-							},
-						},
-					},
-					components.ChatMessageFragment{
-						StructuredResults: []components.StructuredResult{
-							components.StructuredResult{},
 							components.StructuredResult{},
 						},
 						File: &components.ChatFile{
@@ -496,7 +447,28 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 							Metadata: &components.ToolMetadata{
 								Type:               components.ToolMetadataTypeAction,
 								Name:               "<value>",
-								DisplayName:        "Bethel_Blick23",
+								DisplayName:        "Flossie_Bergnaum",
+								DisplayDescription: "<value>",
+								ObjectName:         types.String("[\"HR ticket\",\"Email\",\"Chat message\"]"),
+							},
+						},
+					},
+					components.ChatMessageFragment{
+						StructuredResults: []components.StructuredResult{
+							components.StructuredResult{},
+							components.StructuredResult{},
+							components.StructuredResult{},
+						},
+						File: &components.ChatFile{
+							ID:   types.String("FILE_1234"),
+							URL:  types.String("www.google.com"),
+							Name: types.String("sample.pdf"),
+						},
+						Action: &components.ToolInfo{
+							Metadata: &components.ToolMetadata{
+								Type:               components.ToolMetadataTypeRetrieval,
+								Name:               "<value>",
+								DisplayName:        "Reginald.Borer",
 								DisplayDescription: "<value>",
 								ObjectName:         types.String("[\"HR ticket\",\"Email\",\"Chat message\"]"),
 							},
@@ -540,9 +512,9 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 						},
 						Action: &components.ToolInfo{
 							Metadata: &components.ToolMetadata{
-								Type:               components.ToolMetadataTypeRetrieval,
+								Type:               components.ToolMetadataTypeAction,
 								Name:               "<value>",
-								DisplayName:        "Eloisa_Bode",
+								DisplayName:        "Madaline.Roob42",
 								DisplayDescription: "<value>",
 								ObjectName:         types.String("[\"HR ticket\",\"Email\",\"Chat message\"]"),
 							},
@@ -550,6 +522,51 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 					},
 					components.ChatMessageFragment{
 						StructuredResults: []components.StructuredResult{
+							components.StructuredResult{},
+						},
+						File: &components.ChatFile{
+							ID:   types.String("FILE_1234"),
+							URL:  types.String("www.google.com"),
+							Name: types.String("sample.pdf"),
+						},
+						Action: &components.ToolInfo{
+							Metadata: &components.ToolMetadata{
+								Type:               components.ToolMetadataTypeAction,
+								Name:               "<value>",
+								DisplayName:        "Monte80",
+								DisplayDescription: "<value>",
+								ObjectName:         types.String("[\"HR ticket\",\"Email\",\"Chat message\"]"),
+							},
+						},
+					},
+				},
+				MessageType: components.MessageTypeContent.ToPointer(),
+			},
+			components.ChatMessage{
+				Author: components.AuthorUser.ToPointer(),
+				Citations: []components.ChatMessageCitation{
+					components.ChatMessageCitation{
+						SourceFile: &components.ChatFile{
+							ID:   types.String("FILE_1234"),
+							URL:  types.String("www.google.com"),
+							Name: types.String("sample.pdf"),
+						},
+						ReferenceRanges: []components.ReferenceRange{
+							components.ReferenceRange{
+								Snippets: []components.SearchResultSnippet{
+									components.SearchResultSnippet{
+										Snippet:  "snippet",
+										MimeType: types.String("mimeType"),
+									},
+								},
+							},
+						},
+					},
+				},
+				Fragments: []components.ChatMessageFragment{
+					components.ChatMessageFragment{
+						StructuredResults: []components.StructuredResult{
+							components.StructuredResult{},
 							components.StructuredResult{},
 							components.StructuredResult{},
 						},
@@ -560,9 +577,9 @@ func testRunagentRunagent0(w http.ResponseWriter, req *http.Request) {
 						},
 						Action: &components.ToolInfo{
 							Metadata: &components.ToolMetadata{
-								Type:               components.ToolMetadataTypeRetrieval,
+								Type:               components.ToolMetadataTypeAction,
 								Name:               "<value>",
-								DisplayName:        "Brandy_Langworth",
+								DisplayName:        "Jalon.Conroy31",
 								DisplayDescription: "<value>",
 								ObjectName:         types.String("[\"HR ticket\",\"Email\",\"Chat message\"]"),
 							},

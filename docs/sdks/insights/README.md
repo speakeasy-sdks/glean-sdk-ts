@@ -23,8 +23,7 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.insights.retrieve({
     categories: [
-      "CONTENT",
-      "CONTENT",
+      "USERS",
     ],
   });
 
@@ -52,8 +51,7 @@ const glean = new GleanCore({
 async function run() {
   const res = await clientInsightsRetrieve(glean, {
     categories: [
-      "CONTENT",
-      "CONTENT",
+      "USERS",
     ],
   });
 

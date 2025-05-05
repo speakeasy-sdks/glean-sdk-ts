@@ -53,7 +53,7 @@ func testEditcollectionEditcollection0(w http.ResponseWriter, req *http.Request)
 	}
 	respBody := &components.EditCollectionResponse{
 		Name:        "<value>",
-		Description: "urgently voluntarily scale gut",
+		Description: "whereas anenst habit onto worriedly revoke hm eminent sham",
 		AddedRoles: []components.UserRoleSpecification{
 			components.UserRoleSpecification{
 				Person: &components.Person{
@@ -100,24 +100,12 @@ func testEditcollectionEditcollection0(w http.ResponseWriter, req *http.Request)
 						},
 					},
 				},
-				Role: components.UserRoleOwner,
-			},
-			components.UserRoleSpecification{
-				Role: components.UserRoleViewer,
-			},
-			components.UserRoleSpecification{
-				Role: components.UserRoleEditor,
+				Role: components.UserRoleAnswerModerator,
 			},
 		},
 		RemovedRoles: []components.UserRoleSpecification{
 			components.UserRoleSpecification{
 				Role: components.UserRoleAnswerModerator,
-			},
-			components.UserRoleSpecification{
-				Role: components.UserRoleEditor,
-			},
-			components.UserRoleSpecification{
-				Role: components.UserRoleEditor,
 			},
 		},
 		AudienceFilters: []components.FacetFilter{
@@ -135,7 +123,7 @@ func testEditcollectionEditcollection0(w http.ResponseWriter, req *http.Request)
 				},
 			},
 		},
-		ID: 595467,
+		ID: 334552,
 		Creator: &components.Person{
 			Name:         "George Clooney",
 			ObfuscatedID: "abc123",
@@ -146,7 +134,7 @@ func testEditcollectionEditcollection0(w http.ResponseWriter, req *http.Request)
 		},
 		Items: []components.CollectionItem{
 			components.CollectionItem{
-				CollectionID: 619716,
+				CollectionID: 182892,
 				CreatedBy: &components.Person{
 					Name:         "George Clooney",
 					ObfuscatedID: "abc123",
@@ -195,7 +183,7 @@ func testEditcollectionEditcollection0(w http.ResponseWriter, req *http.Request)
 										Name:         "George Clooney",
 										ObfuscatedID: "abc123",
 									},
-									RemindAt: 22113,
+									RemindAt: 322125,
 								},
 							},
 						},
@@ -208,9 +196,13 @@ func testEditcollectionEditcollection0(w http.ResponseWriter, req *http.Request)
 						},
 					},
 				},
+				Shortcut: &components.Shortcut{
+					InputAlias:          "<value>",
+					DestinationDocument: &components.Document{},
+				},
 				Collection: &components.Collection{
 					Name:        "<value>",
-					Description: "queasily down worthy generously than narrate pish off",
+					Description: "gadzooks about ameliorate well",
 					AudienceFilters: []components.FacetFilter{
 						components.FacetFilter{
 							FieldName: types.String("type"),
@@ -226,7 +218,7 @@ func testEditcollectionEditcollection0(w http.ResponseWriter, req *http.Request)
 							},
 						},
 					},
-					ID: 567572,
+					ID: 268792,
 				},
 				ItemType: components.CollectionItemItemTypeText,
 			},
@@ -234,7 +226,7 @@ func testEditcollectionEditcollection0(w http.ResponseWriter, req *http.Request)
 		Children: []components.Collection{
 			components.Collection{
 				Name:        "<value>",
-				Description: "since straight gadzooks pulp",
+				Description: "camouflage although scary thorn pish inside what whenever woot",
 				AudienceFilters: []components.FacetFilter{
 					components.FacetFilter{
 						FieldName: types.String("type"),
@@ -250,15 +242,55 @@ func testEditcollectionEditcollection0(w http.ResponseWriter, req *http.Request)
 						},
 					},
 				},
-				ID: 89970,
+				ID: 439165,
+			},
+			components.Collection{
+				Name:        "<value>",
+				Description: "near drain infinite loftily what",
+				AudienceFilters: []components.FacetFilter{
+					components.FacetFilter{
+						FieldName: types.String("type"),
+						Values: []components.FacetFilterValue{
+							components.FacetFilterValue{
+								Value:        types.String("Spreadsheet"),
+								RelationType: components.RelationTypeEquals.ToPointer(),
+							},
+							components.FacetFilterValue{
+								Value:        types.String("Presentation"),
+								RelationType: components.RelationTypeEquals.ToPointer(),
+							},
+						},
+					},
+				},
+				ID: 877221,
+			},
+			components.Collection{
+				Name:        "<value>",
+				Description: "loudly achieve swim ajar throughout proliferate log knottily reluctantly",
+				AudienceFilters: []components.FacetFilter{
+					components.FacetFilter{
+						FieldName: types.String("type"),
+						Values: []components.FacetFilterValue{
+							components.FacetFilterValue{
+								Value:        types.String("Spreadsheet"),
+								RelationType: components.RelationTypeEquals.ToPointer(),
+							},
+							components.FacetFilterValue{
+								Value:        types.String("Presentation"),
+								RelationType: components.RelationTypeEquals.ToPointer(),
+							},
+						},
+					},
+				},
+				ID: 197473,
 			},
 		},
 		Roles: []components.UserRoleSpecification{
 			components.UserRoleSpecification{
-				Role: components.UserRoleOwner,
+				Role: components.UserRoleEditor,
 			},
 			components.UserRoleSpecification{
-				Role: components.UserRoleAnswerModerator,
+				Role: components.UserRoleViewer,
 			},
 		},
 		ErrorCode: components.EditCollectionResponseErrorCodeNameExists,

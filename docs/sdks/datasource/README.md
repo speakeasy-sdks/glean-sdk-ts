@@ -1,5 +1,5 @@
 # Datasource
-(*indexing.troubleshooting.datasource*)
+(*indexing.datasource*)
 
 ## Overview
 
@@ -25,7 +25,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.indexing.troubleshooting.datasource.status("<value>");
+  const result = await glean.indexing.datasource.status("<value>");
 
   // Handle the result
   console.log(result);
@@ -40,7 +40,7 @@ The standalone function version of this method:
 
 ```typescript
 import { GleanCore } from "@gleanwork/api-client/core.js";
-import { indexingTroubleshootingDatasourceStatus } from "@gleanwork/api-client/funcs/indexingTroubleshootingDatasourceStatus.js";
+import { indexingDatasourceStatus } from "@gleanwork/api-client/funcs/indexingDatasourceStatus.js";
 
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -49,7 +49,7 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await indexingTroubleshootingDatasourceStatus(glean, "<value>");
+  const res = await indexingDatasourceStatus(glean, "<value>");
 
   if (!res.ok) {
     throw res.error;
@@ -77,8 +77,8 @@ associated utilities.
 ```tsx
 import {
   // Mutation hook for triggering the API call.
-  useIndexingTroubleshootingDatasourceStatusMutation
-} from "@gleanwork/api-client/react-query/indexingTroubleshootingDatasourceStatus.js";
+  useIndexingDatasourceStatusMutation
+} from "@gleanwork/api-client/react-query/indexingDatasourceStatus.js";
 ```
 
 ### Parameters

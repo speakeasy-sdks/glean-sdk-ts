@@ -89,14 +89,6 @@ func testCreateannouncementCreateannouncement0(w http.ResponseWriter, req *http.
 						Datasource: "github",
 						Handle:     "<value>",
 					},
-					components.DatasourceProfile{
-						Datasource: "github",
-						Handle:     "<value>",
-					},
-					components.DatasourceProfile{
-						Datasource: "github",
-						Handle:     "<value>",
-					},
 				},
 				QuerySuggestions: &components.QuerySuggestionList{},
 				InviteInfo:       &components.InviteInfo{},
@@ -158,7 +150,7 @@ func testCreateannouncementCreateannouncement0(w http.ResponseWriter, req *http.
 								Name:         "George Clooney",
 								ObfuscatedID: "abc123",
 							},
-							RemindAt: 605172,
+							RemindAt: 48554,
 						},
 					},
 				},

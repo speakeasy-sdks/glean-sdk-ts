@@ -69,14 +69,6 @@ func testListverificationsListverifications0(w http.ResponseWriter, req *http.Re
 									Datasource: "github",
 									Handle:     "<value>",
 								},
-								components.DatasourceProfile{
-									Datasource: "github",
-									Handle:     "<value>",
-								},
-								components.DatasourceProfile{
-									Datasource: "github",
-									Handle:     "<value>",
-								},
 							},
 							QuerySuggestions: &components.QuerySuggestionList{
 								Suggestions: []components.QuerySuggestion{},

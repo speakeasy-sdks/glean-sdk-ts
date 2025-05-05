@@ -74,6 +74,27 @@ let value: InsightsResponse = {
       },
     ],
   },
+  shortcuts: {
+    shortcutInsights: [
+      {
+        shortcut: {
+          inputAlias: "<value>",
+          addedRoles: [],
+          removedRoles: [],
+          createdBy: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+          },
+          updatedBy: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+          },
+          destinationDocument: {},
+          roles: [],
+        },
+      },
+    ],
+  },
   announcements: {
     documentInsights: [
       {

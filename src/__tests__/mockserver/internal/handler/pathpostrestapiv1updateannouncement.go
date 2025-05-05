@@ -93,10 +93,6 @@ func testUpdateannouncementUpdateannouncement0(w http.ResponseWriter, req *http.
 						Datasource: "github",
 						Handle:     "<value>",
 					},
-					components.DatasourceProfile{
-						Datasource: "github",
-						Handle:     "<value>",
-					},
 				},
 				QuerySuggestions: &components.QuerySuggestionList{},
 				InviteInfo:       &components.InviteInfo{},
@@ -143,7 +139,7 @@ func testUpdateannouncementUpdateannouncement0(w http.ResponseWriter, req *http.
 				},
 				Interactions: &components.DocumentInteractions{},
 				Verification: &components.Verification{
-					State: components.StateDeprecated,
+					State: components.StateVerified,
 					Metadata: &components.VerificationMetadata{
 						LastVerifier: &components.Person{
 							Name:         "George Clooney",
@@ -158,7 +154,7 @@ func testUpdateannouncementUpdateannouncement0(w http.ResponseWriter, req *http.
 								Name:         "George Clooney",
 								ObfuscatedID: "abc123",
 							},
-							RemindAt: 726281,
+							RemindAt: 449998,
 						},
 					},
 				},

@@ -54,16 +54,46 @@ func testGetchatGetchat0(w http.ResponseWriter, req *http.Request) {
 	respBody := &components.GetChatResponse{
 		ChatResult: &components.ChatResult{
 			Chat: &components.Chat{
-				ID:         types.String("string"),
-				CreateTime: types.Int64(0),
 				CreatedBy: &components.Person{
-					Name:         "George Clooney",
-					ObfuscatedID: "abc123",
+					Name:             "George Clooney",
+					ObfuscatedID:     "abc123",
+					RelatedDocuments: []components.RelatedDocuments{},
+					Metadata: &components.PersonMetadata{
+						Type:       components.PersonMetadataTypeFullTime.ToPointer(),
+						Title:      types.String("Actor"),
+						Department: types.String("Movies"),
+						Email:      types.String("george@example.com"),
+						Location:   types.String("Hollywood, CA"),
+						Phone:      types.String("6505551234"),
+						PhotoURL:   types.String("https://example.com/george.jpg"),
+						StartDate:  types.MustNewDateFromString("2000-01-23"),
+						DatasourceProfile: []components.DatasourceProfile{
+							components.DatasourceProfile{
+								Datasource: "github",
+								Handle:     "<value>",
+							},
+						},
+						QuerySuggestions: &components.QuerySuggestionList{
+							Suggestions: []components.QuerySuggestion{},
+						},
+						InviteInfo: &components.InviteInfo{
+							Invites: []components.ChannelInviteInfo{},
+						},
+						CustomFields: []components.CustomFieldData{},
+						Badges: []components.Badge{
+							components.Badge{
+								Key:         types.String("deployment_name_new_hire"),
+								DisplayName: types.String("New hire"),
+								IconConfig: &components.IconConfig{
+									Color:    types.String("#343CED"),
+									Key:      types.String("person_icon"),
+									IconType: components.IconTypeGlyph.ToPointer(),
+									Name:     types.String("user"),
+								},
+							},
+						},
+					},
 				},
-				UpdateTime:      types.Int64(0),
-				Name:            types.String("string"),
-				ApplicationID:   types.String("string"),
-				ApplicationName: types.String("string"),
 				Icon: &components.IconConfig{
 					Color:    types.String("#343CED"),
 					Key:      types.String("person_icon"),
@@ -72,26 +102,10 @@ func testGetchatGetchat0(w http.ResponseWriter, req *http.Request) {
 				},
 				Messages: []components.ChatMessage{
 					components.ChatMessage{
-						AgentConfig: &components.AgentConfig{
-							Agent: components.AgentEnumDefault.ToPointer(),
-							Mode:  components.ModeDefault.ToPointer(),
-						},
 						Author: components.AuthorUser.ToPointer(),
 						Citations: []components.ChatMessageCitation{
 							components.ChatMessageCitation{
-								TrackingToken: types.String("string"),
 								SourceDocument: &components.Document{
-									ID:            types.String("string"),
-									Datasource:    types.String("string"),
-									ConnectorType: components.ConnectorTypeAPICrawl.ToPointer(),
-									DocType:       types.String("string"),
-									Content: &components.DocumentContent{
-										FullTextList: []string{
-											"<value>",
-										},
-									},
-									Title: types.String("string"),
-									URL:   types.String("string"),
 									Metadata: &components.DocumentMetadata{
 										Datasource: types.String("datasource"),
 										ObjectType: types.String("Feature Request"),
@@ -102,22 +116,53 @@ func testGetchatGetchat0(w http.ResponseWriter, req *http.Request) {
 										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
 										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
 										Author: &components.Person{
-											Name:         "name",
-											ObfuscatedID: "<id>",
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										Owner: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
 										},
 										Components: []string{
 											"Backend",
 											"Networking",
 										},
 										Status: types.String("[\"Done\"]"),
+										AssignedTo: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										Interactions: &components.DocumentInteractions{},
+										Verification: &components.Verification{
+											State: components.StateVerified,
+											Metadata: &components.VerificationMetadata{
+												LastVerifier: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												LastReminder: &components.Reminder{
+													Assignee: components.Person{
+														Name:         "George Clooney",
+														ObfuscatedID: "abc123",
+													},
+													Requestor: &components.Person{
+														Name:         "George Clooney",
+														ObfuscatedID: "abc123",
+													},
+													RemindAt: 755817,
+												},
+											},
+										},
 										CustomData: map[string]components.CustomDataValue{
 											"someCustomField": components.CustomDataValue{},
 										},
-									},
-									Sections: []components.DocumentSection{
-										components.DocumentSection{
-											Title: types.String("<value>"),
-											URL:   types.String("https://normal-making.name"),
+										ContactPerson: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
 										},
 									},
 								},
@@ -125,13 +170,6 @@ func testGetchatGetchat0(w http.ResponseWriter, req *http.Request) {
 									ID:   types.String("FILE_1234"),
 									URL:  types.String("www.google.com"),
 									Name: types.String("sample.pdf"),
-									Metadata: &components.ChatFileMetadata{
-										Status:        components.ChatFileStatusProcessing.ToPointer(),
-										UploadTime:    types.Int64(0),
-										ProcessedSize: types.Int64(0),
-										FailureReason: components.ChatFileFailureReasonParseFailed.ToPointer(),
-										MimeType:      types.String("string"),
-									},
 								},
 								SourcePerson: &components.Person{
 									Name:         "George Clooney",
@@ -140,24 +178,76 @@ func testGetchatGetchat0(w http.ResponseWriter, req *http.Request) {
 								ReferenceRanges: []components.ReferenceRange{
 									components.ReferenceRange{
 										TextRange: &components.TextRange{
-											StartIndex: 969961,
-											EndIndex:   types.Int64(458049),
-											Type:       components.TextRangeTypeCitation.ToPointer(),
-											URL:        types.String("https://earnest-tuber.info/"),
+											StartIndex: 811122,
 											Document:   &components.Document{},
 										},
 										Snippets: []components.SearchResultSnippet{
 											components.SearchResultSnippet{
-												Snippet: "<value>",
-												Ranges:  []components.TextRange{},
+												Snippet:  "snippet",
+												MimeType: types.String("mimeType"),
+											},
+										},
+									},
+									components.ReferenceRange{
+										Snippets: []components.SearchResultSnippet{
+											components.SearchResultSnippet{
+												Snippet:  "snippet",
+												MimeType: types.String("mimeType"),
 											},
 										},
 									},
 								},
 							},
-						},
-						UploadedFileIds: []string{
-							"string",
+							components.ChatMessageCitation{
+								SourceFile: &components.ChatFile{
+									ID:   types.String("FILE_1234"),
+									URL:  types.String("www.google.com"),
+									Name: types.String("sample.pdf"),
+								},
+								ReferenceRanges: []components.ReferenceRange{
+									components.ReferenceRange{
+										Snippets: []components.SearchResultSnippet{
+											components.SearchResultSnippet{
+												Snippet:  "snippet",
+												MimeType: types.String("mimeType"),
+											},
+										},
+									},
+									components.ReferenceRange{
+										Snippets: []components.SearchResultSnippet{
+											components.SearchResultSnippet{
+												Snippet:  "snippet",
+												MimeType: types.String("mimeType"),
+											},
+										},
+									},
+								},
+							},
+							components.ChatMessageCitation{
+								SourceFile: &components.ChatFile{
+									ID:   types.String("FILE_1234"),
+									URL:  types.String("www.google.com"),
+									Name: types.String("sample.pdf"),
+								},
+								ReferenceRanges: []components.ReferenceRange{
+									components.ReferenceRange{
+										Snippets: []components.SearchResultSnippet{
+											components.SearchResultSnippet{
+												Snippet:  "snippet",
+												MimeType: types.String("mimeType"),
+											},
+										},
+									},
+									components.ReferenceRange{
+										Snippets: []components.SearchResultSnippet{
+											components.SearchResultSnippet{
+												Snippet:  "snippet",
+												MimeType: types.String("mimeType"),
+											},
+										},
+									},
+								},
+							},
 						},
 						Fragments: []components.ChatMessageFragment{
 							components.ChatMessageFragment{
@@ -168,65 +258,58 @@ func testGetchatGetchat0(w http.ResponseWriter, req *http.Request) {
 											ObfuscatedID: "abc123",
 										},
 										Customer: &components.Customer{
-											ID:      "<id>",
-											Domains: []string{},
+											ID: "<id>",
 											Company: components.Company{
 												Name:     "<value>",
 												Location: types.String("New York City"),
 												Industry: types.String("Finances"),
 												About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
 											},
-											DocumentCounts: map[string]int64{
-												"key":  534384,
-												"key1": 901064,
-											},
-											Poc:                   []components.Person{},
-											MergedCustomers:       []components.Customer{},
-											StartDate:             types.MustNewDateFromString("2025-09-27"),
-											ContractAnnualRevenue: types.Float64(2187.45),
-											Notes:                 types.String("<value>"),
+											Poc:   []components.Person{},
+											Notes: types.String("CIO is interested in trying out the product."),
 										},
 										Team: &components.Team{
-											ID:                 "<id>",
-											Name:               "<value>",
-											Description:        types.String("aw fibre hassle freezing but conversation under"),
-											BusinessUnit:       types.String("<value>"),
-											Department:         types.String("<value>"),
-											PhotoURL:           types.String("https://sizzling-accountability.net/"),
-											BannerURL:          types.String("https://miserable-hydrant.biz/"),
-											ExternalLink:       types.String("https://hasty-cappelletti.name/"),
-											Members:            []components.PersonToTeamRelationship{},
-											MemberCount:        types.Int64(626356),
-											Emails:             []components.TeamEmail{},
-											DatasourceProfiles: []components.DatasourceProfile{},
-											Datasource:         types.String("<value>"),
-											CreatedFrom:        types.String("<value>"),
-											LastUpdatedAt:      types.MustNewTimeFromString("2023-08-02T00:17:06.651Z"),
-											Status:             components.TeamStatusQueuedForCreation.ToPointer(),
-											CanBeDeleted:       types.Bool(false),
-											LoggingID:          types.String("<id>"),
+											ID:      "<id>",
+											Name:    "<value>",
+											Members: []components.PersonToTeamRelationship{},
+											DatasourceProfiles: []components.DatasourceProfile{
+												components.DatasourceProfile{
+													Datasource: "github",
+													Handle:     "<value>",
+												},
+												components.DatasourceProfile{
+													Datasource: "github",
+													Handle:     "<value>",
+												},
+												components.DatasourceProfile{
+													Datasource: "github",
+													Handle:     "<value>",
+												},
+											},
+											Status:       components.TeamStatusProcessed.ToPointer(),
+											CanBeDeleted: types.Bool(true),
 										},
-										CustomEntity: &components.CustomEntity{
-											ID:         types.String("<id>"),
-											Title:      types.String("<value>"),
-											Datasource: types.String("<value>"),
-											ObjectType: types.String("<value>"),
-											Roles:      []components.UserRoleSpecification{},
-										},
+										CustomEntity: &components.CustomEntity{},
 										Answer: &components.Answer{
-											ID:                 313992,
-											DocID:              types.String("<id>"),
-											Question:           types.String("<value>"),
-											QuestionVariations: []string{},
-											BodyText:           types.String("<value>"),
-											BoardID:            types.Int64(933583),
-											AudienceFilters:    []components.FacetFilter{},
-											AddedRoles:         []components.UserRoleSpecification{},
-											RemovedRoles:       []components.UserRoleSpecification{},
-											SourceDocumentSpec: types.Pointer(components.CreateDocumentSpecUnionDocumentSpec1(
-												components.DocumentSpec1{},
-											)),
-											SourceType: components.AnswerSourceTypeAssistant.ToPointer(),
+											ID:       3,
+											DocID:    types.String("ANSWERS_answer_3"),
+											Question: types.String("Why is the sky blue?"),
+											BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+											AudienceFilters: []components.FacetFilter{
+												components.FacetFilter{
+													FieldName: types.String("type"),
+													Values: []components.FacetFilterValue{
+														components.FacetFilterValue{
+															Value:        types.String("Spreadsheet"),
+															RelationType: components.RelationTypeEquals.ToPointer(),
+														},
+														components.FacetFilterValue{
+															Value:        types.String("Presentation"),
+															RelationType: components.RelationTypeEquals.ToPointer(),
+														},
+													},
+												},
+											},
 											CombinedAnswerText: &components.StructuredText{
 												Text:           "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
 												StructuredList: []components.StructuredTextItem{},
@@ -234,49 +317,11 @@ func testGetchatGetchat0(w http.ResponseWriter, req *http.Request) {
 											Likes: &components.AnswerLikes{
 												LikedBy:     []components.AnswerLike{},
 												LikedByUser: false,
-												NumLikes:    30856,
-											},
-											CreateTime: types.MustNewTimeFromString("2024-01-11T09:24:54.882Z"),
-											UpdateTime: types.MustNewTimeFromString("2024-10-30T08:25:44.878Z"),
-											UpdatedBy: &components.Person{
-												Name:             "<value>",
-												ObfuscatedID:     "<id>",
-												RelatedDocuments: []components.RelatedDocuments{},
-												Metadata: &components.PersonMetadata{
-													Title:      types.String("Actor"),
-													Department: types.String("Movies"),
-													Email:      types.String("george@example.com"),
-													Location:   types.String("Hollywood, CA"),
-													Phone:      types.String("6505551234"),
-													PhotoURL:   types.String("https://example.com/george.jpg"),
-													StartDate:  types.MustNewDateFromString("2000-01-23"),
-												},
-											},
-											Verification: &components.Verification{
-												State: components.StateVerified,
-												Metadata: &components.VerificationMetadata{
-													LastVerifier: &components.Person{
-														Name:         "George Clooney",
-														ObfuscatedID: "abc123",
-													},
-													Reminders: []components.Reminder{},
-													LastReminder: &components.Reminder{
-														Assignee: components.Person{
-															Name:         "George Clooney",
-															ObfuscatedID: "abc123",
-														},
-														Requestor: &components.Person{
-															Name:         "George Clooney",
-															ObfuscatedID: "abc123",
-														},
-														RemindAt: 306618,
-													},
-													CandidateVerifiers: []components.Person{},
-												},
+												NumLikes:    470039,
 											},
 											Board: &components.AnswerBoard{
 												Name:        "<value>",
-												Description: "indolent vainly closely",
+												Description: "a igloo verbally lender lack since shabby",
 												AudienceFilters: []components.FacetFilter{
 													components.FacetFilter{
 														FieldName: types.String("type"),
@@ -292,187 +337,200 @@ func testGetchatGetchat0(w http.ResponseWriter, req *http.Request) {
 														},
 													},
 												},
-												ID: 601522,
+												ID: 541458,
 												Creator: &components.Person{
 													Name:         "George Clooney",
 													ObfuscatedID: "abc123",
 												},
 											},
-											Collections:      []components.Collection{},
-											DocumentCategory: types.String("<value>"),
 										},
 										ExtractedQnA: &components.ExtractedQnA{
-											Heading:  types.String("<value>"),
-											Question: types.String("<value>"),
 											QuestionResult: &components.SearchResult{
-												URL:                 "https://gorgeous-custom.org/",
-												RelatedResults:      []components.RelatedDocuments{},
-												AllClusteredResults: []components.ClusterGroup{},
-												MustIncludeSuggestions: &components.QuerySuggestionList{
-													Suggestions: []components.QuerySuggestion{},
-												},
+												Title:                  types.String("title"),
+												URL:                    "https://example.com/foo/bar",
+												NativeAppURL:           types.String("slack://foo/bar"),
+												RelatedResults:         []components.RelatedDocuments{},
+												AllClusteredResults:    []components.ClusterGroup{},
+												MustIncludeSuggestions: &components.QuerySuggestionList{},
 												QuerySuggestion: &components.QuerySuggestion{
-													Query:      "app:github type:pull author:mortimer",
+													Query: "app:github type:pull author:mortimer",
+													SearchProviderInfo: &components.SearchProviderInfo{
+														Name:                  types.String("Google"),
+														SearchLinkURLTemplate: types.String("https://www.google.com/search?q={query}&hl=en"),
+													},
 													Label:      types.String("Mortimer's PRs"),
 													Datasource: types.String("github"),
+													RequestOptions: &components.SearchRequestOptions{
+														DatasourceFilter: types.String("JIRA"),
+														DatasourcesFilter: []string{
+															"JIRA",
+														},
+														QueryOverridesFacetFilters: types.Bool(true),
+														FacetFilters: []components.FacetFilter{
+															components.FacetFilter{
+																FieldName: types.String("type"),
+																Values: []components.FacetFilterValue{
+																	components.FacetFilterValue{
+																		Value:        types.String("Spreadsheet"),
+																		RelationType: components.RelationTypeEquals.ToPointer(),
+																	},
+																	components.FacetFilterValue{
+																		Value:        types.String("Presentation"),
+																		RelationType: components.RelationTypeEquals.ToPointer(),
+																	},
+																},
+															},
+														},
+														FacetFilterSets: []components.FacetFilterSet{
+															components.FacetFilterSet{
+																Filters: []components.FacetFilter{
+																	components.FacetFilter{
+																		FieldName: types.String("type"),
+																		Values: []components.FacetFilterValue{
+																			components.FacetFilterValue{
+																				Value:        types.String("Spreadsheet"),
+																				RelationType: components.RelationTypeEquals.ToPointer(),
+																			},
+																			components.FacetFilterValue{
+																				Value:        types.String("Presentation"),
+																				RelationType: components.RelationTypeEquals.ToPointer(),
+																			},
+																		},
+																	},
+																},
+															},
+															components.FacetFilterSet{
+																Filters: []components.FacetFilter{
+																	components.FacetFilter{
+																		FieldName: types.String("type"),
+																		Values: []components.FacetFilterValue{
+																			components.FacetFilterValue{
+																				Value:        types.String("Spreadsheet"),
+																				RelationType: components.RelationTypeEquals.ToPointer(),
+																			},
+																			components.FacetFilterValue{
+																				Value:        types.String("Presentation"),
+																				RelationType: components.RelationTypeEquals.ToPointer(),
+																			},
+																		},
+																	},
+																},
+															},
+														},
+														FacetBucketSize: 851553,
+														AuthTokens: []components.AuthToken{
+															components.AuthToken{
+																AccessToken: "123abc",
+																Datasource:  "gmail",
+																Scope:       types.String("email profile https://www.googleapis.com/auth/gmail.readonly"),
+																TokenType:   types.String("Bearer"),
+																AuthUser:    types.String("1"),
+															},
+														},
+													},
+													InputDetails: &components.SearchRequestInputDetails{
+														HasCopyPaste: types.Bool(true),
+													},
 												},
-												Pins: []components.PinDocument{},
 											},
 										},
 										Meeting: &components.Meeting{
-											ID:          types.String("<id>"),
-											Title:       types.String("<value>"),
-											Description: types.String("inside dulcimer however sonnet um eek until geez phew"),
-											StartTime:   types.MustNewTimeFromString("2025-10-27T12:29:37.632Z"),
-											EndTime:     types.MustNewTimeFromString("2024-03-28T07:14:42.093Z"),
 											Attendees: &components.CalendarAttendees{
 												People: []components.CalendarAttendee{},
 											},
 										},
-										App: &components.AppResult{
-											Datasource: "<value>",
-											DocType:    types.String("<value>"),
-											MimeType:   types.String("<value>"),
-											IconURL:    types.String("https://bustling-birdbath.org"),
-										},
 										Collection: &components.Collection{
-											Name:              "<value>",
-											Description:       "unless yuck serenade cuddly rundown neighboring considering upliftingly why",
-											AudienceFilters:   []components.FacetFilter{},
-											Icon:              types.String("<value>"),
-											AdminLocked:       types.Bool(false),
-											ParentID:          types.Int64(896826),
-											AllowedDatasource: types.String("<value>"),
-											ID:                67110,
-											CreateTime:        types.MustNewTimeFromString("2024-07-30T13:34:32.569Z"),
-											UpdateTime:        types.MustNewTimeFromString("2023-04-24T03:06:17.109Z"),
-											ItemCount:         types.Int64(534236),
-											ChildCount:        types.Int64(215291),
-											Items:             []components.CollectionItem{},
-											Shortcuts:         []string{},
-											Children:          []components.Collection{},
+											Name:        "<value>",
+											Description: "ruddy those tag",
+											AudienceFilters: []components.FacetFilter{
+												components.FacetFilter{
+													FieldName: types.String("type"),
+													Values: []components.FacetFilterValue{
+														components.FacetFilterValue{
+															Value:        types.String("Spreadsheet"),
+															RelationType: components.RelationTypeEquals.ToPointer(),
+														},
+														components.FacetFilterValue{
+															Value:        types.String("Presentation"),
+															RelationType: components.RelationTypeEquals.ToPointer(),
+														},
+													},
+												},
+											},
+											ID: 638117,
 										},
 										AnswerBoard: &components.AnswerBoard{
-											Name:            "<value>",
-											Description:     "innocent downchange ick rudely what youthfully lightly yum",
-											AudienceFilters: []components.FacetFilter{},
-											ID:              569914,
-											CreateTime:      types.MustNewTimeFromString("2023-02-12T07:51:20.736Z"),
-											UpdateTime:      types.MustNewTimeFromString("2024-03-18T02:09:52.587Z"),
-											ItemCount:       types.Int64(771154),
+											Name:        "<value>",
+											Description: "amongst outside whose dally meh traffic",
+											AudienceFilters: []components.FacetFilter{
+												components.FacetFilter{
+													FieldName: types.String("type"),
+													Values: []components.FacetFilterValue{
+														components.FacetFilterValue{
+															Value:        types.String("Spreadsheet"),
+															RelationType: components.RelationTypeEquals.ToPointer(),
+														},
+														components.FacetFilterValue{
+															Value:        types.String("Presentation"),
+															RelationType: components.RelationTypeEquals.ToPointer(),
+														},
+													},
+												},
+											},
+											ID: 620338,
 										},
 										Code: &components.Code{
 											RepoName: types.String("scio"),
 											FileName: types.String("README.md"),
+											Lines:    []components.CodeLine{},
 										},
 										Shortcut: &components.Shortcut{
-											InputAlias:     "<value>",
-											Description:    types.String("however generally ew ha sonar usually slow guacamole"),
-											DestinationURL: "https://tight-version.org/",
-											CreatedBy:      "<value>",
-											CreateTime:     types.Int64(345296),
-											UpdatedBy:      types.String("<value>"),
-											UpdateTime:     types.Int64(68379),
-											Unlisted:       types.Bool(false),
-											URLTemplate:    types.String("<value>"),
+											InputAlias:          "<value>",
+											DestinationDocument: &components.Document{},
 										},
-										QuerySuggestions: &components.QuerySuggestionList{},
-										RelatedQuestion: &components.RelatedQuestion{
-											Question: types.String("<value>"),
-											Answer:   types.String("<value>"),
-										},
-										Disambiguation: &components.Disambiguation{
-											Name: types.String("<value>"),
-											ID:   types.String("<id>"),
-											Type: components.EntityTypePerson.ToPointer(),
-										},
-										TrackingToken: types.String("string"),
-										Prominence:    components.ProminenceHero.ToPointer(),
-										Source:        components.StructuredResultSourceExpertDetection.ToPointer(),
+										RelatedQuestion: &components.RelatedQuestion{},
 									},
 								},
-								TrackingToken: types.String("string"),
-								Text:          types.String("string"),
 								File: &components.ChatFile{
 									ID:   types.String("FILE_1234"),
 									URL:  types.String("www.google.com"),
 									Name: types.String("sample.pdf"),
-									Metadata: &components.ChatFileMetadata{
-										Status:        components.ChatFileStatusProcessing.ToPointer(),
-										UploadTime:    types.Int64(0),
-										ProcessedSize: types.Int64(0),
-										FailureReason: components.ChatFileFailureReasonParseFailed.ToPointer(),
-										MimeType:      types.String("string"),
+								},
+								Action: &components.ToolInfo{
+									Metadata: &components.ToolMetadata{
+										Type:               components.ToolMetadataTypeAction,
+										Name:               "<value>",
+										DisplayName:        "Brice_Runolfsson21",
+										DisplayDescription: "<value>",
+										ObjectName:         types.String("[\"HR ticket\",\"Email\",\"Chat message\"]"),
 									},
+								},
+							},
+							components.ChatMessageFragment{
+								StructuredResults: []components.StructuredResult{
+									components.StructuredResult{},
+									components.StructuredResult{},
+								},
+								File: &components.ChatFile{
+									ID:   types.String("FILE_1234"),
+									URL:  types.String("www.google.com"),
+									Name: types.String("sample.pdf"),
 								},
 								Action: &components.ToolInfo{
 									Metadata: &components.ToolMetadata{
 										Type:               components.ToolMetadataTypeRetrieval,
-										Name:               "string",
-										DisplayName:        "string",
-										ToolID:             types.String("string"),
-										DisplayDescription: "string",
-										LogoURL:            types.String("string"),
+										Name:               "<value>",
+										DisplayName:        "Hope_Torphy74",
+										DisplayDescription: "<value>",
 										ObjectName:         types.String("[\"HR ticket\",\"Email\",\"Chat message\"]"),
-										KnowledgeType:      components.KnowledgeTypeNeutralKnowledge.ToPointer(),
-										CreatedBy: &components.PersonObject{
-											Name:         "<value>",
-											ObfuscatedID: "<id>",
-										},
-										LastUpdatedBy: &components.PersonObject{
-											Name:         "<value>",
-											ObfuscatedID: "<id>",
-										},
-										CreatedAt:       types.MustNewTimeFromString("2019-08-24T14:15:22Z"),
-										LastUpdatedAt:   types.MustNewTimeFromString("2019-08-24T14:15:22Z"),
-										WriteActionType: components.WriteActionTypeRedirect.ToPointer(),
-										AuthType:        components.AuthTypeNone.ToPointer(),
-										Auth: &components.AuthConfig{
-											IsOnPrem:         types.Bool(true),
-											UsesCentralAuth:  types.Bool(false),
-											Type:             components.AuthConfigTypeDwd.ToPointer(),
-											GrantType:        components.GrantTypeAuthCode.ToPointer(),
-											Status:           components.AuthConfigStatusAuthorized.ToPointer(),
-											ClientURL:        types.String("https://woeful-trench.com/"),
-											Scopes:           []string{},
-											Audiences:        []string{},
-											AuthorizationURL: types.String("https://imaginative-premium.com/"),
-											LastAuthorizedAt: types.MustNewTimeFromString("2023-12-19T20:03:14.149Z"),
-										},
-										Permissions:       &components.ObjectPermissions{},
-										UsageInstructions: types.String("string"),
-										IsSetupFinished:   types.Bool(true),
-									},
-									Parameters: map[string]components.WriteActionParameter{
-										"property1": components.WriteActionParameter{
-											Type:           components.WriteActionParameterTypeUnknown.ToPointer(),
-											DisplayName:    types.String("Shemar63"),
-											Value:          types.String("<value>"),
-											IsRequired:     types.Bool(true),
-											Description:    types.String("handle unlike unlike fen gently or exotic mortally nor"),
-											PossibleValues: []components.PossibleValue{},
-										},
-										"property2": components.WriteActionParameter{
-											Type:           components.WriteActionParameterTypeString.ToPointer(),
-											DisplayName:    types.String("Ahmad_Reichel95"),
-											Value:          types.String("<value>"),
-											IsRequired:     types.Bool(false),
-											Description:    types.String("mmm premise pro instead bleakly starch including per ill-fated"),
-											PossibleValues: []components.PossibleValue{},
-										},
 									},
 								},
 							},
 						},
-						Ts:                   types.String("string"),
-						MessageID:            types.String("string"),
-						MessageTrackingToken: types.String("string"),
-						MessageType:          components.MessageTypeUpdate.ToPointer(),
-						HasMoreFragments:     types.Bool(true),
+						MessageType: components.MessageTypeContent.ToPointer(),
 					},
 				},
 			},
-			TrackingToken: types.String("string"),
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

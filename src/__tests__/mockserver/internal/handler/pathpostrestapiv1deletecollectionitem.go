@@ -53,10 +53,9 @@ func testDeletecollectionitemDeletecollectionitem0(w http.ResponseWriter, req *h
 	}
 	respBody := &components.DeleteCollectionItemResponse{
 		Collection: &components.Collection{
-			Name:         "<value>",
-			Description:  "up nice seafood",
-			AddedRoles:   []components.UserRoleSpecification{},
-			RemovedRoles: []components.UserRoleSpecification{},
+			Name:        "<value>",
+			Description: "up nice seafood",
+			AddedRoles:  []components.UserRoleSpecification{},
 			AudienceFilters: []components.FacetFilter{
 				components.FacetFilter{
 					FieldName: types.String("type"),
@@ -72,7 +71,7 @@ func testDeletecollectionitemDeletecollectionitem0(w http.ResponseWriter, req *h
 					},
 				},
 			},
-			ID: 260387,
+			ID: 441981,
 			Creator: &components.Person{
 				Name:         "George Clooney",
 				ObfuscatedID: "abc123",
@@ -86,6 +85,14 @@ func testDeletecollectionitemDeletecollectionitem0(w http.ResponseWriter, req *h
 					PhotoURL:   types.String("https://example.com/george.jpg"),
 					StartDate:  types.MustNewDateFromString("2000-01-23"),
 					DatasourceProfile: []components.DatasourceProfile{
+						components.DatasourceProfile{
+							Datasource: "github",
+							Handle:     "<value>",
+						},
+						components.DatasourceProfile{
+							Datasource: "github",
+							Handle:     "<value>",
+						},
 						components.DatasourceProfile{
 							Datasource: "github",
 							Handle:     "<value>",
@@ -112,7 +119,6 @@ func testDeletecollectionitemDeletecollectionitem0(w http.ResponseWriter, req *h
 				ObfuscatedID: "abc123",
 			},
 			Items: []components.CollectionItem{},
-			Roles: []components.UserRoleSpecification{},
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

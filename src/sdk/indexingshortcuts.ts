@@ -3,6 +3,7 @@
  */
 
 import { indexingShortcutsBulkIndex } from "../funcs/indexingShortcutsBulkIndex.js";
+import { indexingShortcutsUpload } from "../funcs/indexingShortcutsUpload.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
@@ -19,6 +20,23 @@ export class IndexingShortcuts extends ClientSDK {
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(indexingShortcutsBulkIndex(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Upload shortcuts
+   *
+   * @remarks
+   * Creates glean shortcuts for uploaded shortcuts info. Glean would host the shortcuts, and they can be managed in the knowledge tab once uploaded.
+   */
+  async upload(
+    request: components.UploadShortcutsRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(indexingShortcutsUpload(
       this,
       request,
       options,

@@ -81,7 +81,7 @@ func testGetanswerGetanswer0(w http.ResponseWriter, req *http.Request) {
 				Likes: &components.AnswerLikes{
 					LikedBy:     []components.AnswerLike{},
 					LikedByUser: false,
-					NumLikes:    576892,
+					NumLikes:    831435,
 				},
 				Author: &components.Person{
 					Name:         "George Clooney",
@@ -96,10 +96,6 @@ func testGetanswerGetanswer0(w http.ResponseWriter, req *http.Request) {
 						PhotoURL:   types.String("https://example.com/george.jpg"),
 						StartDate:  types.MustNewDateFromString("2000-01-23"),
 						DatasourceProfile: []components.DatasourceProfile{
-							components.DatasourceProfile{
-								Datasource: "github",
-								Handle:     "<value>",
-							},
 							components.DatasourceProfile{
 								Datasource: "github",
 								Handle:     "<value>",
@@ -130,7 +126,7 @@ func testGetanswerGetanswer0(w http.ResponseWriter, req *http.Request) {
 					ObfuscatedID: "abc123",
 				},
 				Verification: &components.Verification{
-					State: components.StateVerified,
+					State: components.StateUnverified,
 					Metadata: &components.VerificationMetadata{
 						LastVerifier: &components.Person{
 							Name:         "George Clooney",
@@ -178,13 +174,13 @@ func testGetanswerGetanswer0(w http.ResponseWriter, req *http.Request) {
 								Name:         "George Clooney",
 								ObfuscatedID: "abc123",
 							},
-							RemindAt: 258862,
+							RemindAt: 245350,
 						},
 					},
 				},
 				Board: &components.AnswerBoard{
 					Name:        "<value>",
-					Description: "whether deflate book knotty er beneath nervously than",
+					Description: "provided serpentine bin favorable penalise our",
 					AudienceFilters: []components.FacetFilter{
 						components.FacetFilter{
 							FieldName: types.String("type"),
@@ -200,7 +196,7 @@ func testGetanswerGetanswer0(w http.ResponseWriter, req *http.Request) {
 							},
 						},
 					},
-					ID: 194354,
+					ID: 236847,
 					Creator: &components.Person{
 						Name:         "George Clooney",
 						ObfuscatedID: "abc123",

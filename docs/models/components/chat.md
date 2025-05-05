@@ -255,6 +255,10 @@ let value: Chat = {
                 repoName: "scio",
                 fileName: "README.md",
               },
+              shortcut: {
+                inputAlias: "<value>",
+                destinationDocument: {},
+              },
               querySuggestions: {
                 suggestions: [],
               },

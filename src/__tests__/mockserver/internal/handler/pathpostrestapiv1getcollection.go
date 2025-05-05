@@ -53,10 +53,9 @@ func testGetcollectionGetcollection0(w http.ResponseWriter, req *http.Request) {
 	}
 	respBody := &components.GetCollectionResponse{
 		Collection: &components.Collection{
-			Name:         "<value>",
-			Description:  "for carefully glorious scrabble ignite aw showboat",
-			AddedRoles:   []components.UserRoleSpecification{},
-			RemovedRoles: []components.UserRoleSpecification{},
+			Name:        "<value>",
+			Description: "throughout quickly tabletop multicolored spirited gosh sandbar offend than mispronounce",
+			AddedRoles:  []components.UserRoleSpecification{},
 			AudienceFilters: []components.FacetFilter{
 				components.FacetFilter{
 					FieldName: types.String("type"),
@@ -72,7 +71,7 @@ func testGetcollectionGetcollection0(w http.ResponseWriter, req *http.Request) {
 					},
 				},
 			},
-			ID: 168726,
+			ID: 634174,
 			Creator: &components.Person{
 				Name:         "George Clooney",
 				ObfuscatedID: "abc123",
@@ -112,11 +111,10 @@ func testGetcollectionGetcollection0(w http.ResponseWriter, req *http.Request) {
 				ObfuscatedID: "abc123",
 			},
 			Items: []components.CollectionItem{},
-			Roles: []components.UserRoleSpecification{},
 		},
 		RootCollection: &components.Collection{
 			Name:        "<value>",
-			Description: "aw fibre hassle freezing but conversation under",
+			Description: "boyfriend help for opposite",
 			AudienceFilters: []components.FacetFilter{
 				components.FacetFilter{
 					FieldName: types.String("type"),
@@ -132,7 +130,7 @@ func testGetcollectionGetcollection0(w http.ResponseWriter, req *http.Request) {
 					},
 				},
 			},
-			ID: 22258,
+			ID: 817018,
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

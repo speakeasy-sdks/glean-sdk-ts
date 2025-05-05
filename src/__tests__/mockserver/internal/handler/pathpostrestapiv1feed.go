@@ -52,15 +52,55 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	respBody := &components.FeedResponse{
-		ServerTimestamp: 152670,
+		ServerTimestamp: 424700,
 		Results: []components.FeedResult{
 			components.FeedResult{
-				Category: components.FeedResultCategoryZeroStateWorkflowFavorites,
+				Category: components.FeedResultCategoryDisplayableList,
 				PrimaryEntry: components.FeedEntry{
 					Title: "<value>",
 					CreatedBy: &components.Person{
-						Name:         "George Clooney",
-						ObfuscatedID: "abc123",
+						Name:             "George Clooney",
+						ObfuscatedID:     "abc123",
+						RelatedDocuments: []components.RelatedDocuments{},
+						Metadata: &components.PersonMetadata{
+							Type:       components.PersonMetadataTypeFullTime.ToPointer(),
+							Title:      types.String("Actor"),
+							Department: types.String("Movies"),
+							Email:      types.String("george@example.com"),
+							Location:   types.String("Hollywood, CA"),
+							Phone:      types.String("6505551234"),
+							PhotoURL:   types.String("https://example.com/george.jpg"),
+							StartDate:  types.MustNewDateFromString("2000-01-23"),
+							DatasourceProfile: []components.DatasourceProfile{
+								components.DatasourceProfile{
+									Datasource: "github",
+									Handle:     "<value>",
+								},
+								components.DatasourceProfile{
+									Datasource: "github",
+									Handle:     "<value>",
+								},
+							},
+							QuerySuggestions: &components.QuerySuggestionList{
+								Suggestions: []components.QuerySuggestion{},
+							},
+							InviteInfo: &components.InviteInfo{
+								Invites: []components.ChannelInviteInfo{},
+							},
+							CustomFields: []components.CustomFieldData{},
+							Badges: []components.Badge{
+								components.Badge{
+									Key:         types.String("deployment_name_new_hire"),
+									DisplayName: types.String("New hire"),
+									IconConfig: &components.IconConfig{
+										Color:    types.String("#343CED"),
+										Key:      types.String("person_icon"),
+										IconType: components.IconTypeGlyph.ToPointer(),
+										Name:     types.String("user"),
+									},
+								},
+							},
+						},
 					},
 					Document: &components.Document{
 						Metadata: &components.DocumentMetadata{
@@ -73,28 +113,66 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 							CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
 							UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
 							Author: &components.Person{
-								Name:         "name",
-								ObfuscatedID: "<id>",
+								Name:         "George Clooney",
+								ObfuscatedID: "abc123",
+							},
+							Owner: &components.Person{
+								Name:         "George Clooney",
+								ObfuscatedID: "abc123",
 							},
 							Components: []string{
 								"Backend",
 								"Networking",
 							},
 							Status: types.String("[\"Done\"]"),
+							AssignedTo: &components.Person{
+								Name:         "George Clooney",
+								ObfuscatedID: "abc123",
+							},
+							UpdatedBy: &components.Person{
+								Name:         "George Clooney",
+								ObfuscatedID: "abc123",
+							},
+							Interactions: &components.DocumentInteractions{},
+							Verification: &components.Verification{
+								State: components.StateVerified,
+								Metadata: &components.VerificationMetadata{
+									LastVerifier: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									LastReminder: &components.Reminder{
+										Assignee: components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										Requestor: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										RemindAt: 302493,
+									},
+								},
+							},
 							CustomData: map[string]components.CustomDataValue{
 								"someCustomField": components.CustomDataValue{},
+							},
+							ContactPerson: &components.Person{
+								Name:         "George Clooney",
+								ObfuscatedID: "abc123",
 							},
 						},
 					},
 					Event: &components.CalendarEvent{
 						ID:  "<id>",
-						URL: "https://cultivated-longboat.com",
+						URL: "https://unselfish-anticodon.info/",
 						Attendees: &components.CalendarAttendees{
 							People: []components.CalendarAttendee{},
 						},
 						GeneratedAttachments: []components.GeneratedAttachment{
 							components.GeneratedAttachment{
 								Documents: []components.Document{
+									components.Document{},
 									components.Document{},
 									components.Document{},
 								},
@@ -122,6 +200,28 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 											Name:     types.String("user"),
 										},
 									},
+								},
+								Content: []components.GeneratedAttachmentContent{
+									components.GeneratedAttachmentContent{
+										DisplayHeader: types.String("Action Items"),
+									},
+								},
+							},
+							components.GeneratedAttachment{
+								Documents: []components.Document{
+									components.Document{},
+									components.Document{},
+									components.Document{},
+								},
+								ExternalLinks: []components.StructuredLink{
+									components.StructuredLink{
+										IconConfig: &components.IconConfig{
+											Color:    types.String("#343CED"),
+											Key:      types.String("person_icon"),
+											IconType: components.IconTypeGlyph.ToPointer(),
+											Name:     types.String("user"),
+										},
+									},
 									components.StructuredLink{
 										IconConfig: &components.IconConfig{
 											Color:    types.String("#343CED"),
@@ -140,13 +240,10 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 						},
 					},
 					Announcement: &components.Announcement{
-						DraftID: types.Int64(342),
-					},
-					Collection: &components.Collection{
-						Name:         "<value>",
-						Description:  "toward potentially zealous",
-						AddedRoles:   []components.UserRoleSpecification{},
-						RemovedRoles: []components.UserRoleSpecification{},
+						Body: &components.StructuredText{
+							Text:           "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+							StructuredList: []components.StructuredTextItem{},
+						},
 						AudienceFilters: []components.FacetFilter{
 							components.FacetFilter{
 								FieldName: types.String("type"),
@@ -162,36 +259,55 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 								},
 							},
 						},
-						ID: 455039,
+						DraftID:        types.Int64(342),
+						SourceDocument: &components.Document{},
+					},
+					Collection: &components.Collection{
+						Name:        "<value>",
+						Description: "what afford wholly disgorge electric winged",
+						AudienceFilters: []components.FacetFilter{
+							components.FacetFilter{
+								FieldName: types.String("type"),
+								Values: []components.FacetFilterValue{
+									components.FacetFilterValue{
+										Value:        types.String("Spreadsheet"),
+										RelationType: components.RelationTypeEquals.ToPointer(),
+									},
+									components.FacetFilterValue{
+										Value:        types.String("Presentation"),
+										RelationType: components.RelationTypeEquals.ToPointer(),
+									},
+								},
+							},
+						},
+						ID: 459310,
 						Creator: &components.Person{
 							Name:         "George Clooney",
 							ObfuscatedID: "abc123",
 						},
-						UpdatedBy: &components.Person{
-							Name:         "George Clooney",
-							ObfuscatedID: "abc123",
-						},
-						Items: []components.CollectionItem{},
-						Roles: []components.UserRoleSpecification{},
 					},
 					CollectionItem: &components.CollectionItem{
-						CollectionID: 250166,
-						ItemType:     components.CollectionItemItemTypeDocument,
+						CollectionID: 938026,
+						Shortcut: &components.Shortcut{
+							InputAlias:          "<value>",
+							DestinationDocument: &components.Document{},
+						},
+						ItemType: components.CollectionItemItemTypeCollection,
 					},
 					PromptTemplate: &components.PromptTemplateResult{
 						PromptTemplate: &components.PromptTemplate{
 							Template: "<value>",
 							AddedRoles: []components.UserRoleSpecification{
 								components.UserRoleSpecification{
-									Role: components.UserRoleAnswerModerator,
+									Role: components.UserRoleVerifier,
+								},
+								components.UserRoleSpecification{
+									Role: components.UserRoleOwner,
 								},
 							},
 							RemovedRoles: []components.UserRoleSpecification{
 								components.UserRoleSpecification{
 									Role: components.UserRoleAnswerModerator,
-								},
-								components.UserRoleSpecification{
-									Role: components.UserRoleEditor,
 								},
 							},
 							LastUpdatedBy: &components.Person{
@@ -199,12 +315,6 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 								ObfuscatedID: "abc123",
 							},
 							Roles: []components.UserRoleSpecification{
-								components.UserRoleSpecification{
-									Role: components.UserRoleVerifier,
-								},
-								components.UserRoleSpecification{
-									Role: components.UserRoleAnswerModerator,
-								},
 								components.UserRoleSpecification{
 									Role: components.UserRoleEditor,
 								},
@@ -222,7 +332,6 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 							},
 						},
 						components.UserActivity{},
-						components.UserActivity{},
 					},
 				},
 				SecondaryEntries: []components.FeedEntry{
@@ -230,41 +339,10 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 						Title: "<value>",
 						Event: &components.CalendarEvent{
 							ID:  "<id>",
-							URL: "https://partial-saw.com",
+							URL: "https://noxious-spork.org/",
 							GeneratedAttachments: []components.GeneratedAttachment{
 								components.GeneratedAttachment{
 									Documents: []components.Document{
-										components.Document{},
-										components.Document{},
-										components.Document{},
-									},
-									ExternalLinks: []components.StructuredLink{
-										components.StructuredLink{
-											IconConfig: &components.IconConfig{
-												Color:    types.String("#343CED"),
-												Key:      types.String("person_icon"),
-												IconType: components.IconTypeGlyph.ToPointer(),
-												Name:     types.String("user"),
-											},
-										},
-										components.StructuredLink{
-											IconConfig: &components.IconConfig{
-												Color:    types.String("#343CED"),
-												Key:      types.String("person_icon"),
-												IconType: components.IconTypeGlyph.ToPointer(),
-												Name:     types.String("user"),
-											},
-										},
-									},
-									Content: []components.GeneratedAttachmentContent{
-										components.GeneratedAttachmentContent{
-											DisplayHeader: types.String("Action Items"),
-										},
-									},
-								},
-								components.GeneratedAttachment{
-									Documents: []components.Document{
-										components.Document{},
 										components.Document{},
 										components.Document{},
 									},
@@ -303,6 +381,21 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 							},
 						},
 						Announcement: &components.Announcement{
+							AudienceFilters: []components.FacetFilter{
+								components.FacetFilter{
+									FieldName: types.String("type"),
+									Values: []components.FacetFilterValue{
+										components.FacetFilterValue{
+											Value:        types.String("Spreadsheet"),
+											RelationType: components.RelationTypeEquals.ToPointer(),
+										},
+										components.FacetFilterValue{
+											Value:        types.String("Presentation"),
+											RelationType: components.RelationTypeEquals.ToPointer(),
+										},
+									},
+								},
+							},
 							DraftID: types.Int64(342),
 						},
 						PromptTemplate: &components.PromptTemplateResult{
@@ -310,35 +403,23 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 								Template: "<value>",
 								AddedRoles: []components.UserRoleSpecification{
 									components.UserRoleSpecification{
-										Role: components.UserRoleEditor,
+										Role: components.UserRoleViewer,
 									},
 									components.UserRoleSpecification{
-										Role: components.UserRoleVerifier,
-									},
-									components.UserRoleSpecification{
-										Role: components.UserRoleEditor,
+										Role: components.UserRoleOwner,
 									},
 								},
 								RemovedRoles: []components.UserRoleSpecification{
 									components.UserRoleSpecification{
-										Role: components.UserRoleViewer,
-									},
-									components.UserRoleSpecification{
-										Role: components.UserRoleVerifier,
-									},
-									components.UserRoleSpecification{
-										Role: components.UserRoleAnswerModerator,
+										Role: components.UserRoleEditor,
 									},
 								},
 								Roles: []components.UserRoleSpecification{
 									components.UserRoleSpecification{
-										Role: components.UserRoleAnswerModerator,
-									},
-									components.UserRoleSpecification{
 										Role: components.UserRoleEditor,
 									},
 									components.UserRoleSpecification{
-										Role: components.UserRoleAnswerModerator,
+										Role: components.UserRoleOwner,
 									},
 								},
 							},
@@ -348,20 +429,47 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 						},
 						Activities: []components.UserActivity{
 							components.UserActivity{},
-							components.UserActivity{},
-							components.UserActivity{},
 						},
 					},
 				},
 			},
 			components.FeedResult{
-				Category: components.FeedResultCategoryDisplayableList,
+				Category: components.FeedResultCategoryEvent,
 				PrimaryEntry: components.FeedEntry{
 					Title: "<value>",
 					Event: &components.CalendarEvent{
 						ID:  "<id>",
-						URL: "https://qualified-plumber.info",
+						URL: "https://pure-rawhide.name",
 						GeneratedAttachments: []components.GeneratedAttachment{
+							components.GeneratedAttachment{
+								Documents: []components.Document{
+									components.Document{},
+									components.Document{},
+								},
+								ExternalLinks: []components.StructuredLink{
+									components.StructuredLink{
+										IconConfig: &components.IconConfig{
+											Color:    types.String("#343CED"),
+											Key:      types.String("person_icon"),
+											IconType: components.IconTypeGlyph.ToPointer(),
+											Name:     types.String("user"),
+										},
+									},
+									components.StructuredLink{
+										IconConfig: &components.IconConfig{
+											Color:    types.String("#343CED"),
+											Key:      types.String("person_icon"),
+											IconType: components.IconTypeGlyph.ToPointer(),
+											Name:     types.String("user"),
+										},
+									},
+								},
+								Content: []components.GeneratedAttachmentContent{
+									components.GeneratedAttachmentContent{
+										DisplayHeader: types.String("Action Items"),
+									},
+								},
+							},
 							components.GeneratedAttachment{
 								Documents: []components.Document{
 									components.Document{},
@@ -393,6 +501,21 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 						},
 					},
 					Announcement: &components.Announcement{
+						AudienceFilters: []components.FacetFilter{
+							components.FacetFilter{
+								FieldName: types.String("type"),
+								Values: []components.FacetFilterValue{
+									components.FacetFilterValue{
+										Value:        types.String("Spreadsheet"),
+										RelationType: components.RelationTypeEquals.ToPointer(),
+									},
+									components.FacetFilterValue{
+										Value:        types.String("Presentation"),
+										RelationType: components.RelationTypeEquals.ToPointer(),
+									},
+								},
+							},
+						},
 						DraftID: types.Int64(342),
 					},
 					PromptTemplate: &components.PromptTemplateResult{
@@ -400,26 +523,23 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 							Template: "<value>",
 							AddedRoles: []components.UserRoleSpecification{
 								components.UserRoleSpecification{
-									Role: components.UserRoleOwner,
+									Role: components.UserRoleEditor,
 								},
 							},
 							RemovedRoles: []components.UserRoleSpecification{
 								components.UserRoleSpecification{
-									Role: components.UserRoleViewer,
+									Role: components.UserRoleEditor,
 								},
 								components.UserRoleSpecification{
 									Role: components.UserRoleVerifier,
+								},
+								components.UserRoleSpecification{
+									Role: components.UserRoleViewer,
 								},
 							},
 							Roles: []components.UserRoleSpecification{
 								components.UserRoleSpecification{
-									Role: components.UserRoleEditor,
-								},
-								components.UserRoleSpecification{
 									Role: components.UserRoleVerifier,
-								},
-								components.UserRoleSpecification{
-									Role: components.UserRoleEditor,
 								},
 							},
 						},
@@ -437,8 +557,46 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 						Title: "<value>",
 						Event: &components.CalendarEvent{
 							ID:  "<id>",
-							URL: "https://utter-populist.net",
+							URL: "https://wretched-airport.com",
 							GeneratedAttachments: []components.GeneratedAttachment{
+								components.GeneratedAttachment{
+									Documents: []components.Document{
+										components.Document{},
+										components.Document{},
+										components.Document{},
+									},
+									ExternalLinks: []components.StructuredLink{
+										components.StructuredLink{
+											IconConfig: &components.IconConfig{
+												Color:    types.String("#343CED"),
+												Key:      types.String("person_icon"),
+												IconType: components.IconTypeGlyph.ToPointer(),
+												Name:     types.String("user"),
+											},
+										},
+										components.StructuredLink{
+											IconConfig: &components.IconConfig{
+												Color:    types.String("#343CED"),
+												Key:      types.String("person_icon"),
+												IconType: components.IconTypeGlyph.ToPointer(),
+												Name:     types.String("user"),
+											},
+										},
+										components.StructuredLink{
+											IconConfig: &components.IconConfig{
+												Color:    types.String("#343CED"),
+												Key:      types.String("person_icon"),
+												IconType: components.IconTypeGlyph.ToPointer(),
+												Name:     types.String("user"),
+											},
+										},
+									},
+									Content: []components.GeneratedAttachmentContent{
+										components.GeneratedAttachmentContent{
+											DisplayHeader: types.String("Action Items"),
+										},
+									},
+								},
 								components.GeneratedAttachment{
 									Documents: []components.Document{
 										components.Document{},
@@ -478,6 +636,21 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 							},
 						},
 						Announcement: &components.Announcement{
+							AudienceFilters: []components.FacetFilter{
+								components.FacetFilter{
+									FieldName: types.String("type"),
+									Values: []components.FacetFilterValue{
+										components.FacetFilterValue{
+											Value:        types.String("Spreadsheet"),
+											RelationType: components.RelationTypeEquals.ToPointer(),
+										},
+										components.FacetFilterValue{
+											Value:        types.String("Presentation"),
+											RelationType: components.RelationTypeEquals.ToPointer(),
+										},
+									},
+								},
+							},
 							DraftID: types.Int64(342),
 						},
 						PromptTemplate: &components.PromptTemplateResult{
@@ -485,27 +658,10 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 								Template: "<value>",
 								AddedRoles: []components.UserRoleSpecification{
 									components.UserRoleSpecification{
-										Role: components.UserRoleAnswerModerator,
-									},
-									components.UserRoleSpecification{
-										Role: components.UserRoleViewer,
-									},
-									components.UserRoleSpecification{
 										Role: components.UserRoleEditor,
 									},
 								},
 								RemovedRoles: []components.UserRoleSpecification{
-									components.UserRoleSpecification{
-										Role: components.UserRoleAnswerModerator,
-									},
-									components.UserRoleSpecification{
-										Role: components.UserRoleOwner,
-									},
-									components.UserRoleSpecification{
-										Role: components.UserRoleAnswerModerator,
-									},
-								},
-								Roles: []components.UserRoleSpecification{
 									components.UserRoleSpecification{
 										Role: components.UserRoleVerifier,
 									},
@@ -516,14 +672,20 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 										Role: components.UserRoleAnswerModerator,
 									},
 								},
+								Roles: []components.UserRoleSpecification{
+									components.UserRoleSpecification{
+										Role: components.UserRoleAnswerModerator,
+									},
+									components.UserRoleSpecification{
+										Role: components.UserRoleViewer,
+									},
+								},
 							},
 						},
 						Workflow: &components.WorkflowResult{
 							Workflow: components.Workflow{},
 						},
 						Activities: []components.UserActivity{
-							components.UserActivity{},
-							components.UserActivity{},
 							components.UserActivity{},
 						},
 					},
@@ -531,7 +693,7 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 						Title: "<value>",
 						Event: &components.CalendarEvent{
 							ID:  "<id>",
-							URL: "https://babyish-quinoa.name/",
+							URL: "https://competent-tail.info",
 							GeneratedAttachments: []components.GeneratedAttachment{
 								components.GeneratedAttachment{
 									Documents: []components.Document{
@@ -556,6 +718,55 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 												Name:     types.String("user"),
 											},
 										},
+										components.StructuredLink{
+											IconConfig: &components.IconConfig{
+												Color:    types.String("#343CED"),
+												Key:      types.String("person_icon"),
+												IconType: components.IconTypeGlyph.ToPointer(),
+												Name:     types.String("user"),
+											},
+										},
+									},
+									Content: []components.GeneratedAttachmentContent{
+										components.GeneratedAttachmentContent{
+											DisplayHeader: types.String("Action Items"),
+										},
+									},
+								},
+								components.GeneratedAttachment{
+									Documents: []components.Document{
+										components.Document{},
+										components.Document{},
+									},
+									ExternalLinks: []components.StructuredLink{
+										components.StructuredLink{
+											IconConfig: &components.IconConfig{
+												Color:    types.String("#343CED"),
+												Key:      types.String("person_icon"),
+												IconType: components.IconTypeGlyph.ToPointer(),
+												Name:     types.String("user"),
+											},
+										},
+									},
+									Content: []components.GeneratedAttachmentContent{
+										components.GeneratedAttachmentContent{
+											DisplayHeader: types.String("Action Items"),
+										},
+									},
+								},
+								components.GeneratedAttachment{
+									Documents: []components.Document{
+										components.Document{},
+									},
+									ExternalLinks: []components.StructuredLink{
+										components.StructuredLink{
+											IconConfig: &components.IconConfig{
+												Color:    types.String("#343CED"),
+												Key:      types.String("person_icon"),
+												IconType: components.IconTypeGlyph.ToPointer(),
+												Name:     types.String("user"),
+											},
+										},
 									},
 									Content: []components.GeneratedAttachmentContent{
 										components.GeneratedAttachmentContent{
@@ -566,6 +777,21 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 							},
 						},
 						Announcement: &components.Announcement{
+							AudienceFilters: []components.FacetFilter{
+								components.FacetFilter{
+									FieldName: types.String("type"),
+									Values: []components.FacetFilterValue{
+										components.FacetFilterValue{
+											Value:        types.String("Spreadsheet"),
+											RelationType: components.RelationTypeEquals.ToPointer(),
+										},
+										components.FacetFilterValue{
+											Value:        types.String("Presentation"),
+											RelationType: components.RelationTypeEquals.ToPointer(),
+										},
+									},
+								},
+							},
 							DraftID: types.Int64(342),
 						},
 						PromptTemplate: &components.PromptTemplateResult{
@@ -573,23 +799,23 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 								Template: "<value>",
 								AddedRoles: []components.UserRoleSpecification{
 									components.UserRoleSpecification{
+										Role: components.UserRoleOwner,
+									},
+									components.UserRoleSpecification{
 										Role: components.UserRoleViewer,
 									},
 								},
 								RemovedRoles: []components.UserRoleSpecification{
 									components.UserRoleSpecification{
-										Role: components.UserRoleVerifier,
-									},
-									components.UserRoleSpecification{
-										Role: components.UserRoleVerifier,
-									},
-									components.UserRoleSpecification{
-										Role: components.UserRoleAnswerModerator,
+										Role: components.UserRoleOwner,
 									},
 								},
 								Roles: []components.UserRoleSpecification{
 									components.UserRoleSpecification{
-										Role: components.UserRoleViewer,
+										Role: components.UserRoleVerifier,
+									},
+									components.UserRoleSpecification{
+										Role: components.UserRoleOwner,
 									},
 								},
 							},
@@ -598,7 +824,6 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 							Workflow: components.Workflow{},
 						},
 						Activities: []components.UserActivity{
-							components.UserActivity{},
 							components.UserActivity{},
 							components.UserActivity{},
 						},
@@ -628,43 +853,13 @@ func testFeedFeed0(w http.ResponseWriter, req *http.Request) {
 								},
 							},
 						},
-						components.FacetBucket{
-							Count:      types.Int64(1),
-							Datasource: types.String("jira"),
-							Percentage: types.Int64(5),
-							Value: &components.FacetValue{
-								StringValue:  types.String("engineering"),
-								IntegerValue: types.Int64(5),
-								DisplayLabel: types.String("engineering"),
-								IconConfig: &components.IconConfig{
-									Color:    types.String("#343CED"),
-									Key:      types.String("person_icon"),
-									IconType: components.IconTypeGlyph.ToPointer(),
-									Name:     types.String("user"),
-								},
-							},
-						},
-						components.FacetBucket{
-							Count:      types.Int64(1),
-							Datasource: types.String("jira"),
-							Percentage: types.Int64(5),
-							Value: &components.FacetValue{
-								StringValue:  types.String("engineering"),
-								IntegerValue: types.Int64(5),
-								DisplayLabel: types.String("engineering"),
-								IconConfig: &components.IconConfig{
-									Color:    types.String("#343CED"),
-									Key:      types.String("person_icon"),
-									IconType: components.IconTypeGlyph.ToPointer(),
-									Name:     types.String("user"),
-								},
-							},
-						},
 					},
 					HasMoreBuckets: types.Bool(false),
 					GroupName:      types.String("Service Cloud"),
 				},
 			},
+			"key1": []components.FacetResult{},
+			"key2": []components.FacetResult{},
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

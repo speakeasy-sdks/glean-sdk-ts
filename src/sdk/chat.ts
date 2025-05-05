@@ -6,25 +6,17 @@ import { clientChatCreate } from "../funcs/clientChatCreate.js";
 import { clientChatCreateStream } from "../funcs/clientChatCreateStream.js";
 import { clientChatDelete } from "../funcs/clientChatDelete.js";
 import { clientChatDeleteAll } from "../funcs/clientChatDeleteAll.js";
+import { clientChatDeleteFiles } from "../funcs/clientChatDeleteFiles.js";
 import { clientChatList } from "../funcs/clientChatList.js";
 import { clientChatRetrieve } from "../funcs/clientChatRetrieve.js";
+import { clientChatRetrieveApplication } from "../funcs/clientChatRetrieveApplication.js";
+import { clientChatRetrieveFiles } from "../funcs/clientChatRetrieveFiles.js";
+import { clientChatUploadFiles } from "../funcs/clientChatUploadFiles.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
-import { Application } from "./application.js";
-import { Files } from "./files.js";
 
 export class Chat extends ClientSDK {
-  private _application?: Application;
-  get application(): Application {
-    return (this._application ??= new Application(this._options));
-  }
-
-  private _files?: Files;
-  get files(): Files {
-    return (this._files ??= new Files(this._options));
-  }
-
   /**
    * Chat
    *
@@ -111,6 +103,82 @@ export class Chat extends ClientSDK {
   ): Promise<components.ListChatsResponse> {
     return unwrapAsync(clientChatList(
       this,
+      timezoneOffset,
+      options,
+    ));
+  }
+
+  /**
+   * Gets the metadata for a custom Chat application
+   *
+   * @remarks
+   * Gets the Chat application details for the specified application ID.
+   */
+  async retrieveApplication(
+    getChatApplicationRequest: components.GetChatApplicationRequest,
+    timezoneOffset?: number | undefined,
+    options?: RequestOptions,
+  ): Promise<components.GetChatApplicationResponse> {
+    return unwrapAsync(clientChatRetrieveApplication(
+      this,
+      getChatApplicationRequest,
+      timezoneOffset,
+      options,
+    ));
+  }
+
+  /**
+   * Upload files for Chat.
+   *
+   * @remarks
+   * Upload files for Chat.
+   */
+  async uploadFiles(
+    uploadChatFilesRequest: components.UploadChatFilesRequest,
+    timezoneOffset?: number | undefined,
+    options?: RequestOptions,
+  ): Promise<components.UploadChatFilesResponse> {
+    return unwrapAsync(clientChatUploadFiles(
+      this,
+      uploadChatFilesRequest,
+      timezoneOffset,
+      options,
+    ));
+  }
+
+  /**
+   * Get files uploaded by a user for Chat.
+   *
+   * @remarks
+   * Get files uploaded by a user for Chat.
+   */
+  async retrieveFiles(
+    getChatFilesRequest: components.GetChatFilesRequest,
+    timezoneOffset?: number | undefined,
+    options?: RequestOptions,
+  ): Promise<components.GetChatFilesResponse> {
+    return unwrapAsync(clientChatRetrieveFiles(
+      this,
+      getChatFilesRequest,
+      timezoneOffset,
+      options,
+    ));
+  }
+
+  /**
+   * Delete files uploaded by a user for chat.
+   *
+   * @remarks
+   * Delete files uploaded by a user for Chat.
+   */
+  async deleteFiles(
+    deleteChatFilesRequest: components.DeleteChatFilesRequest,
+    timezoneOffset?: number | undefined,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(clientChatDeleteFiles(
+      this,
+      deleteChatFilesRequest,
       timezoneOffset,
       options,
     ));

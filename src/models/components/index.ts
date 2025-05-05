@@ -223,6 +223,7 @@ export * from "./indexdocumentsrequest.js";
 export * from "./indexemployeelistrequest.js";
 export * from "./indexemployeerequest.js";
 export * from "./indexgrouprequest.js";
+export * from "./indexingshortcut.js";
 export * from "./indexmembershiprequest.js";
 export * from "./indexstatus.js";
 export * from "./indexteamrequest.js";

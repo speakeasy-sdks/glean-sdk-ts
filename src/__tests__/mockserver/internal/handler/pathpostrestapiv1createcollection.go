@@ -96,7 +96,7 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 						},
 					},
 				},
-				Role: components.UserRoleEditor,
+				Role: components.UserRoleVerifier,
 			},
 		},
 		RemovedRoles: []components.UserRoleSpecification{
@@ -104,10 +104,10 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 				Role: components.UserRoleEditor,
 			},
 			components.UserRoleSpecification{
-				Role: components.UserRoleAnswerModerator,
+				Role: components.UserRoleOwner,
 			},
 			components.UserRoleSpecification{
-				Role: components.UserRoleViewer,
+				Role: components.UserRoleOwner,
 			},
 		},
 		AudienceFilters: []components.FacetFilter{
@@ -125,7 +125,7 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 				},
 			},
 		},
-		ID: 48554,
+		ID: 257790,
 		Creator: &components.Person{
 			Name:         "George Clooney",
 			ObfuscatedID: "abc123",
@@ -136,7 +136,7 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 		},
 		Items: []components.CollectionItem{
 			components.CollectionItem{
-				CollectionID: 913385,
+				CollectionID: 65097,
 				CreatedBy: &components.Person{
 					Name:         "George Clooney",
 					ObfuscatedID: "abc123",
@@ -170,7 +170,7 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 						},
 						Interactions: &components.DocumentInteractions{},
 						Verification: &components.Verification{
-							State: components.StateVerified,
+							State: components.StateDeprecated,
 							Metadata: &components.VerificationMetadata{
 								LastVerifier: &components.Person{
 									Name:         "George Clooney",
@@ -185,7 +185,7 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 										Name:         "George Clooney",
 										ObfuscatedID: "abc123",
 									},
-									RemindAt: 816391,
+									RemindAt: 11475,
 								},
 							},
 						},
@@ -198,9 +198,13 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 						},
 					},
 				},
+				Shortcut: &components.Shortcut{
+					InputAlias:          "<value>",
+					DestinationDocument: &components.Document{},
+				},
 				Collection: &components.Collection{
 					Name:        "<value>",
-					Description: "grade underachieve secret",
+					Description: "numb compete marvelous opposite though inasmuch",
 					AudienceFilters: []components.FacetFilter{
 						components.FacetFilter{
 							FieldName: types.String("type"),
@@ -216,19 +220,23 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 							},
 						},
 					},
-					ID: 772467,
+					ID: 825614,
 				},
-				ItemType: components.CollectionItemItemTypeCollection,
+				ItemType: components.CollectionItemItemTypeText,
 			},
 			components.CollectionItem{
-				CollectionID: 611865,
-				ItemType:     components.CollectionItemItemTypeURL,
+				CollectionID: 6869,
+				ItemType:     components.CollectionItemItemTypeDocument,
+			},
+			components.CollectionItem{
+				CollectionID: 616491,
+				ItemType:     components.CollectionItemItemTypeText,
 			},
 		},
 		Children: []components.Collection{
 			components.Collection{
 				Name:        "<value>",
-				Description: "sweetly however whoever zowie wherever vivaciously",
+				Description: "sweatshop spring whereas when separately adventurously given mean alienated",
 				AudienceFilters: []components.FacetFilter{
 					components.FacetFilter{
 						FieldName: types.String("type"),
@@ -244,11 +252,11 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 						},
 					},
 				},
-				ID: 118148,
+				ID: 135133,
 			},
 			components.Collection{
 				Name:        "<value>",
-				Description: "shinny ugh sheepishly mmm queasily factorize arrogantly",
+				Description: "ack except concerning likewise",
 				AudienceFilters: []components.FacetFilter{
 					components.FacetFilter{
 						FieldName: types.String("type"),
@@ -264,15 +272,35 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 						},
 					},
 				},
-				ID: 754554,
+				ID: 360680,
+			},
+			components.Collection{
+				Name:        "<value>",
+				Description: "waterlogged across instead canter narrate grandpa during worst",
+				AudienceFilters: []components.FacetFilter{
+					components.FacetFilter{
+						FieldName: types.String("type"),
+						Values: []components.FacetFilterValue{
+							components.FacetFilterValue{
+								Value:        types.String("Spreadsheet"),
+								RelationType: components.RelationTypeEquals.ToPointer(),
+							},
+							components.FacetFilterValue{
+								Value:        types.String("Presentation"),
+								RelationType: components.RelationTypeEquals.ToPointer(),
+							},
+						},
+					},
+				},
+				ID: 354787,
 			},
 		},
 		Roles: []components.UserRoleSpecification{
 			components.UserRoleSpecification{
-				Role: components.UserRoleVerifier,
+				Role: components.UserRoleAnswerModerator,
 			},
 		},
-		ErrorCode: components.CreateCollectionResponseErrorCodeConcurrentHierarchyEdit,
+		ErrorCode: components.CreateCollectionResponseErrorCodeCollectionPinned,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

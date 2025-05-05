@@ -153,11 +153,12 @@ func testRecommendationsRecommendations0(w http.ResponseWriter, req *http.Reques
 										Name:         "George Clooney",
 										ObfuscatedID: "abc123",
 									},
-									RemindAt: 535774,
+									RemindAt: 785254,
 								},
 								CandidateVerifiers: []components.Person{},
 							},
 						},
+						Shortcuts: []components.Shortcut{},
 						CustomData: map[string]components.CustomDataValue{
 							"someCustomField": components.CustomDataValue{},
 						},
@@ -187,14 +188,6 @@ func testRecommendationsRecommendations0(w http.ResponseWriter, req *http.Reques
 					Name:    "<value>",
 					Members: []components.PersonToTeamRelationship{},
 					DatasourceProfiles: []components.DatasourceProfile{
-						components.DatasourceProfile{
-							Datasource: "github",
-							Handle:     "<value>",
-						},
-						components.DatasourceProfile{
-							Datasource: "github",
-							Handle:     "<value>",
-						},
 						components.DatasourceProfile{
 							Datasource: "github",
 							Handle:     "<value>",
@@ -231,11 +224,11 @@ func testRecommendationsRecommendations0(w http.ResponseWriter, req *http.Reques
 					Likes: &components.AnswerLikes{
 						LikedBy:     []components.AnswerLike{},
 						LikedByUser: false,
-						NumLikes:    297770,
+						NumLikes:    610516,
 					},
 					Board: &components.AnswerBoard{
 						Name:        "<value>",
-						Description: "adventurously notwithstanding canter generously tenderly helpfully front schnitzel",
+						Description: "pulverize bourgeoisie that carefree underneath ew doubtfully when",
 						AudienceFilters: []components.FacetFilter{
 							components.FacetFilter{
 								FieldName: types.String("type"),
@@ -251,7 +244,7 @@ func testRecommendationsRecommendations0(w http.ResponseWriter, req *http.Reques
 								},
 							},
 						},
-						ID: 324124,
+						ID: 743163,
 						Creator: &components.Person{
 							Name:         "George Clooney",
 							ObfuscatedID: "abc123",
@@ -349,7 +342,7 @@ func testRecommendationsRecommendations0(w http.ResponseWriter, req *http.Reques
 										},
 									},
 								},
-								FacetBucketSize: 952650,
+								FacetBucketSize: 246581,
 								AuthTokens: []components.AuthToken{
 									components.AuthToken{
 										AccessToken: "123abc",
@@ -373,7 +366,7 @@ func testRecommendationsRecommendations0(w http.ResponseWriter, req *http.Reques
 				},
 				Collection: &components.Collection{
 					Name:        "<value>",
-					Description: "furthermore hence formal tune flowery aside the schedule witty",
+					Description: "determined minor porter outrank how",
 					AudienceFilters: []components.FacetFilter{
 						components.FacetFilter{
 							FieldName: types.String("type"),
@@ -389,11 +382,11 @@ func testRecommendationsRecommendations0(w http.ResponseWriter, req *http.Reques
 							},
 						},
 					},
-					ID: 965,
+					ID: 974943,
 				},
 				AnswerBoard: &components.AnswerBoard{
 					Name:        "<value>",
-					Description: "fess um whoa times boohoo down",
+					Description: "justly jaggedly rout fooey divert vainly dividend",
 					AudienceFilters: []components.FacetFilter{
 						components.FacetFilter{
 							FieldName: types.String("type"),
@@ -409,26 +402,36 @@ func testRecommendationsRecommendations0(w http.ResponseWriter, req *http.Reques
 							},
 						},
 					},
-					ID: 762536,
+					ID: 964880,
 				},
 				Code: &components.Code{
 					RepoName: types.String("scio"),
 					FileName: types.String("README.md"),
 					Lines:    []components.CodeLine{},
 				},
+				Shortcut: &components.Shortcut{
+					InputAlias: "<value>",
+					CreatedBy: &components.Person{
+						Name:         "George Clooney",
+						ObfuscatedID: "abc123",
+					},
+					DestinationDocument: &components.Document{},
+				},
 				RelatedQuestion: &components.RelatedQuestion{},
 			},
+			components.StructuredResult{},
+			components.StructuredResult{},
 		},
 		GeneratedQnaResult: &components.GeneratedQna{
 			Ranges: []components.TextRange{
 				components.TextRange{
-					StartIndex: 389859,
+					StartIndex: 475135,
 				},
 				components.TextRange{
-					StartIndex: 63382,
+					StartIndex: 134908,
 				},
 				components.TextRange{
-					StartIndex: 466270,
+					StartIndex: 667484,
 				},
 			},
 		},

@@ -43,7 +43,7 @@ test("Verification Verify", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.verification.verify({
+  const result = await glean.client.verification.verify({
     documentId: "<id>",
   });
   expect(result).toBeDefined();

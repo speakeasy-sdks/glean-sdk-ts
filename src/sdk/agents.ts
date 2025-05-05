@@ -3,15 +3,30 @@
  */
 
 import { clientAgentsList } from "../funcs/clientAgentsList.js";
+import { clientAgentsRetrieveInputs } from "../funcs/clientAgentsRetrieveInputs.js";
+import { clientAgentsRun } from "../funcs/clientAgentsRun.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
-import { Agent } from "./agent.js";
 
 export class Agents extends ClientSDK {
-  private _agent?: Agent;
-  get agent(): Agent {
-    return (this._agent ??= new Agent(this._options));
+  /**
+   * Runs an Agent.
+   *
+   * @remarks
+   * Trigger an Agent with a given id.
+   */
+  async run(
+    runAgentRequest: components.RunAgentRequest,
+    timezoneOffset?: number | undefined,
+    options?: RequestOptions,
+  ): Promise<components.ChatResponse> {
+    return unwrapAsync(clientAgentsRun(
+      this,
+      runAgentRequest,
+      timezoneOffset,
+      options,
+    ));
   }
 
   /**
@@ -28,6 +43,25 @@ export class Agents extends ClientSDK {
     return unwrapAsync(clientAgentsList(
       this,
       requestBody,
+      timezoneOffset,
+      options,
+    ));
+  }
+
+  /**
+   * Gets the inputs to an agent.
+   *
+   * @remarks
+   * Get the inputs to an agent with a given id.
+   */
+  async retrieveInputs(
+    getAgentInputsRequest: components.GetAgentInputsRequest,
+    timezoneOffset?: number | undefined,
+    options?: RequestOptions,
+  ): Promise<components.GetAgentInputsResponse> {
+    return unwrapAsync(clientAgentsRetrieveInputs(
+      this,
+      getAgentInputsRequest,
       timezoneOffset,
       options,
     ));

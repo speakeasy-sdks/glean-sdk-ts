@@ -118,7 +118,7 @@ export const CollectionItem$inboundSchema: z.ZodType<
   createdAt: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   document: z.lazy(() => Document$inboundSchema).optional(),
-  shortcut: Shortcut$inboundSchema.optional(),
+  shortcut: z.lazy(() => Shortcut$inboundSchema).optional(),
   collection: z.lazy(() => Collection$inboundSchema).optional(),
   itemType: CollectionItemItemType$inboundSchema,
 });
@@ -156,7 +156,7 @@ export const CollectionItem$outboundSchema: z.ZodType<
   createdBy: z.lazy(() => Person$outboundSchema).optional(),
   createdAt: z.date().transform(v => v.toISOString()).optional(),
   document: z.lazy(() => Document$outboundSchema).optional(),
-  shortcut: Shortcut$outboundSchema.optional(),
+  shortcut: z.lazy(() => Shortcut$outboundSchema).optional(),
   collection: z.lazy(() => Collection$outboundSchema).optional(),
   itemType: CollectionItemItemType$outboundSchema,
 });

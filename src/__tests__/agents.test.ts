@@ -15,7 +15,7 @@ test("Agents Runagent", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.agents.agent.run({});
+  const result = await glean.client.agents.run({});
   expect(result).toBeDefined();
 });
 
@@ -41,6 +41,6 @@ test("Agents Getagentinputs", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.agents.agent.inputs.retrieve({});
+  const result = await glean.client.agents.retrieveInputs({});
   expect(result).toBeDefined();
 });

@@ -39,11 +39,20 @@ let value: CollectionItem = {
       },
     },
   },
+  shortcut: {
+    inputAlias: "<value>",
+    addedRoles: [],
+    removedRoles: [],
+    updatedBy: {
+      name: "George Clooney",
+      obfuscatedId: "abc123",
+    },
+    destinationDocument: {},
+    roles: [],
+  },
   collection: {
     name: "<value>",
     description: "overtrain safely mill lobotomise masticate",
-    addedRoles: [],
-    removedRoles: [],
     audienceFilters: [
       {
         fieldName: "type",
@@ -64,13 +73,8 @@ let value: CollectionItem = {
       name: "George Clooney",
       obfuscatedId: "abc123",
     },
-    updatedBy: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-    },
     items: [],
     children: [],
-    roles: [],
   },
   itemType: "COLLECTION",
 };

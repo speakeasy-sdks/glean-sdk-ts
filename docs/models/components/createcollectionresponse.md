@@ -82,6 +82,11 @@ let value: CreateCollectionResponse = {
           },
         },
       },
+      shortcut: {
+        inputAlias: "<value>",
+        destinationDocument: {},
+        roles: [],
+      },
       collection: {
         name: "<value>",
         description: "inside splendid any above enormously lobotomise",
@@ -102,7 +107,6 @@ let value: CreateCollectionResponse = {
         ],
         id: 956480,
         children: [],
-        roles: [],
       },
       itemType: "COLLECTION",
     },
