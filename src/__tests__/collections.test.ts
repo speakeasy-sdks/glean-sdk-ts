@@ -137,7 +137,7 @@ test("Collections Deletecollectionitem", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.collections.item.delete({
+  const result = await glean.client.collections.deleteItem({
     collectionId: 1357.59,
     itemId: "<id>",
   });
@@ -197,18 +197,21 @@ test("Collections Editcollection", async () => {
             ],
           },
         },
-        role: "ANSWER_MODERATOR",
-      },
-      {
         role: "EDITOR",
       },
       {
         role: "ANSWER_MODERATOR",
       },
+      {
+        role: "OWNER",
+      },
     ],
     removedRoles: [
       {
-        role: "ANSWER_MODERATOR",
+        role: "OWNER",
+      },
+      {
+        role: "VERIFIER",
       },
     ],
     audienceFilters: [
@@ -226,7 +229,7 @@ test("Collections Editcollection", async () => {
         ],
       },
     ],
-    id: 720396,
+    id: 958595,
   });
   expect(result).toBeDefined();
 });
@@ -240,8 +243,8 @@ test("Collections Editcollectionitem", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.collections.item.update({
-    collectionId: 795203,
+  const result = await glean.client.collections.updateItem({
+    collectionId: 590,
     itemId: "<id>",
   });
   expect(result).toBeDefined();
@@ -257,7 +260,7 @@ test("Collections Getcollection", async () => {
   });
 
   const result = await glean.client.collections.retrieve({
-    id: 700347,
+    id: 370456,
   });
   expect(result).toBeDefined();
 });

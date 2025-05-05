@@ -77,6 +77,10 @@ func testInsightsInsights0(w http.ResponseWriter, req *http.Request) {
 									Datasource: "github",
 									Handle:     "<value>",
 								},
+								components.DatasourceProfile{
+									Datasource: "github",
+									Handle:     "<value>",
+								},
 							},
 							QuerySuggestions: &components.QuerySuggestionList{
 								Suggestions: []components.QuerySuggestion{},
@@ -99,13 +103,6 @@ func testInsightsInsights0(w http.ResponseWriter, req *http.Request) {
 							},
 						},
 					},
-					Activity: components.ActivityEnumSearch,
-				},
-				components.UserActivityInsight{
-					User: components.Person{
-						Name:         "George Clooney",
-						ObfuscatedID: "abc123",
-					},
 					Activity: components.ActivityEnumAll,
 				},
 			},
@@ -116,20 +113,6 @@ func testInsightsInsights0(w http.ResponseWriter, req *http.Request) {
 						ObfuscatedID: "abc123",
 					},
 					Activity: components.ActivityEnumSearch,
-				},
-				components.UserActivityInsight{
-					User: components.Person{
-						Name:         "George Clooney",
-						ObfuscatedID: "abc123",
-					},
-					Activity: components.ActivityEnumSearch,
-				},
-				components.UserActivityInsight{
-					User: components.Person{
-						Name:         "George Clooney",
-						ObfuscatedID: "abc123",
-					},
-					Activity: components.ActivityEnumAll,
 				},
 			},
 		},
@@ -169,7 +152,7 @@ func testInsightsInsights0(w http.ResponseWriter, req *http.Request) {
 							},
 							Interactions: &components.DocumentInteractions{},
 							Verification: &components.Verification{
-								State: components.StateDeprecated,
+								State: components.StateUnverified,
 								Metadata: &components.VerificationMetadata{
 									LastVerifier: &components.Person{
 										Name:         "George Clooney",
@@ -184,7 +167,7 @@ func testInsightsInsights0(w http.ResponseWriter, req *http.Request) {
 											Name:         "George Clooney",
 											ObfuscatedID: "abc123",
 										},
-										RemindAt: 783566,
+										RemindAt: 859202,
 									},
 								},
 							},
@@ -198,19 +181,10 @@ func testInsightsInsights0(w http.ResponseWriter, req *http.Request) {
 						},
 					},
 				},
-				components.DocumentInsight{
-					Document: components.Document{},
-				},
-				components.DocumentInsight{
-					Document: components.Document{},
-				},
 			},
 		},
 		Collections: &components.ContentInsightsResponse{
 			DocumentInsights: []components.DocumentInsight{
-				components.DocumentInsight{
-					Document: components.Document{},
-				},
 				components.DocumentInsight{
 					Document: components.Document{},
 				},
@@ -227,8 +201,24 @@ func testInsightsInsights0(w http.ResponseWriter, req *http.Request) {
 				components.DocumentInsight{
 					Document: components.Document{},
 				},
-				components.DocumentInsight{
-					Document: components.Document{},
+			},
+		},
+		Shortcuts: &components.ShortcutInsightsResponse{
+			ShortcutInsights: []components.ShortcutInsight{
+				components.ShortcutInsight{
+					Shortcut: components.Shortcut{
+						InputAlias: "<value>",
+						CreatedBy: &components.Person{
+							Name:         "George Clooney",
+							ObfuscatedID: "abc123",
+						},
+						DestinationDocument: &components.Document{},
+					},
+				},
+				components.ShortcutInsight{
+					Shortcut: components.Shortcut{
+						InputAlias: "<value>",
+					},
 				},
 			},
 		},
@@ -247,13 +237,17 @@ func testInsightsInsights0(w http.ResponseWriter, req *http.Request) {
 				components.DocumentInsight{
 					Document: components.Document{},
 				},
-				components.DocumentInsight{
-					Document: components.Document{},
-				},
 			},
 		},
 		Ai: &components.AiInsightsResponse{
 			AssistantInsights: []components.UserActivityInsight{
+				components.UserActivityInsight{
+					User: components.Person{
+						Name:         "George Clooney",
+						ObfuscatedID: "abc123",
+					},
+					Activity: components.ActivityEnumSearch,
+				},
 				components.UserActivityInsight{
 					User: components.Person{
 						Name:         "George Clooney",
@@ -270,7 +264,25 @@ func testInsightsInsights0(w http.ResponseWriter, req *http.Request) {
 						Name:         "George Clooney",
 						ObfuscatedID: "abc123",
 					},
+					Activity: components.ActivityEnumAll,
+				},
+				components.UserActivityInsight{
+					User: components.Person{
+						Name:         "George Clooney",
+						ObfuscatedID: "abc123",
+					},
 					Activity: components.ActivityEnumSearch,
+				},
+			},
+		},
+		GleanAssist: &components.GleanAssistInsightsResponse{
+			ActivityInsights: []components.UserActivityInsight{
+				components.UserActivityInsight{
+					User: components.Person{
+						Name:         "George Clooney",
+						ObfuscatedID: "abc123",
+					},
+					Activity: components.ActivityEnumAll,
 				},
 				components.UserActivityInsight{
 					User: components.Person{
@@ -279,10 +291,6 @@ func testInsightsInsights0(w http.ResponseWriter, req *http.Request) {
 					},
 					Activity: components.ActivityEnumAll,
 				},
-			},
-		},
-		GleanAssist: &components.GleanAssistInsightsResponse{
-			ActivityInsights: []components.UserActivityInsight{
 				components.UserActivityInsight{
 					User: components.Person{
 						Name:         "George Clooney",

@@ -254,6 +254,10 @@ let value: ChatResult = {
                   repoName: "scio",
                   fileName: "README.md",
                 },
+                shortcut: {
+                  inputAlias: "<value>",
+                  destinationDocument: {},
+                },
                 querySuggestions: {
                   suggestions: [],
                 },

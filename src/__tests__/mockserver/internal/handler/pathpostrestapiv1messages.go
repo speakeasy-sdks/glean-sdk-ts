@@ -93,6 +93,14 @@ func testMessagesMessages0(w http.ResponseWriter, req *http.Request) {
 											Datasource: "github",
 											Handle:     "<value>",
 										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
 									},
 									QuerySuggestions: &components.QuerySuggestionList{
 										Suggestions: []components.QuerySuggestion{},
@@ -140,7 +148,7 @@ func testMessagesMessages0(w http.ResponseWriter, req *http.Request) {
 								Shares: []components.Share{},
 							},
 							Verification: &components.Verification{
-								State: components.StateDeprecated,
+								State: components.StateVerified,
 								Metadata: &components.VerificationMetadata{
 									LastVerifier: &components.Person{
 										Name:         "George Clooney",
@@ -156,11 +164,12 @@ func testMessagesMessages0(w http.ResponseWriter, req *http.Request) {
 											Name:         "George Clooney",
 											ObfuscatedID: "abc123",
 										},
-										RemindAt: 365275,
+										RemindAt: 86409,
 									},
 									CandidateVerifiers: []components.Person{},
 								},
 							},
+							Shortcuts: []components.Shortcut{},
 							CustomData: map[string]components.CustomDataValue{
 								"someCustomField": components.CustomDataValue{},
 							},
@@ -190,6 +199,10 @@ func testMessagesMessages0(w http.ResponseWriter, req *http.Request) {
 						Name:    "<value>",
 						Members: []components.PersonToTeamRelationship{},
 						DatasourceProfiles: []components.DatasourceProfile{
+							components.DatasourceProfile{
+								Datasource: "github",
+								Handle:     "<value>",
+							},
 							components.DatasourceProfile{
 								Datasource: "github",
 								Handle:     "<value>",
@@ -226,11 +239,11 @@ func testMessagesMessages0(w http.ResponseWriter, req *http.Request) {
 						Likes: &components.AnswerLikes{
 							LikedBy:     []components.AnswerLike{},
 							LikedByUser: true,
-							NumLikes:    750176,
+							NumLikes:    970360,
 						},
 						Board: &components.AnswerBoard{
 							Name:        "<value>",
-							Description: "absolve beside makeover amidst diver if behind drat",
+							Description: "gah brr detain known oof trash psst magnificent brr",
 							AudienceFilters: []components.FacetFilter{
 								components.FacetFilter{
 									FieldName: types.String("type"),
@@ -246,7 +259,7 @@ func testMessagesMessages0(w http.ResponseWriter, req *http.Request) {
 									},
 								},
 							},
-							ID: 435401,
+							ID: 521617,
 							Creator: &components.Person{
 								Name:         "George Clooney",
 								ObfuscatedID: "abc123",
@@ -326,25 +339,8 @@ func testMessagesMessages0(w http.ResponseWriter, req *http.Request) {
 												},
 											},
 										},
-										components.FacetFilterSet{
-											Filters: []components.FacetFilter{
-												components.FacetFilter{
-													FieldName: types.String("type"),
-													Values: []components.FacetFilterValue{
-														components.FacetFilterValue{
-															Value:        types.String("Spreadsheet"),
-															RelationType: components.RelationTypeEquals.ToPointer(),
-														},
-														components.FacetFilterValue{
-															Value:        types.String("Presentation"),
-															RelationType: components.RelationTypeEquals.ToPointer(),
-														},
-													},
-												},
-											},
-										},
 									},
-									FacetBucketSize: 478496,
+									FacetBucketSize: 474391,
 									AuthTokens: []components.AuthToken{
 										components.AuthToken{
 											AccessToken: "123abc",
@@ -368,7 +364,7 @@ func testMessagesMessages0(w http.ResponseWriter, req *http.Request) {
 					},
 					Collection: &components.Collection{
 						Name:        "<value>",
-						Description: "baptise kick ick gosh stall phew",
+						Description: "mmm parched justly gracefully enlightened exhausted",
 						AudienceFilters: []components.FacetFilter{
 							components.FacetFilter{
 								FieldName: types.String("type"),
@@ -384,11 +380,11 @@ func testMessagesMessages0(w http.ResponseWriter, req *http.Request) {
 								},
 							},
 						},
-						ID: 999561,
+						ID: 999457,
 					},
 					AnswerBoard: &components.AnswerBoard{
 						Name:        "<value>",
-						Description: "unnecessarily medium following pfft bashfully before",
+						Description: "loftily nudge mutate",
 						AudienceFilters: []components.FacetFilter{
 							components.FacetFilter{
 								FieldName: types.String("type"),
@@ -404,21 +400,31 @@ func testMessagesMessages0(w http.ResponseWriter, req *http.Request) {
 								},
 							},
 						},
-						ID: 534236,
+						ID: 86668,
 					},
 					Code: &components.Code{
 						RepoName: types.String("scio"),
 						FileName: types.String("README.md"),
 						Lines:    []components.CodeLine{},
 					},
+					Shortcut: &components.Shortcut{
+						InputAlias: "<value>",
+						CreatedBy: &components.Person{
+							Name:         "George Clooney",
+							ObfuscatedID: "abc123",
+						},
+						DestinationDocument: &components.Document{},
+					},
 					RelatedQuestion: &components.RelatedQuestion{},
 				},
-				components.StructuredResult{},
 			},
 			GeneratedQnaResult: &components.GeneratedQna{
 				Ranges: []components.TextRange{
 					components.TextRange{
-						StartIndex: 73819,
+						StartIndex: 644586,
+					},
+					components.TextRange{
+						StartIndex: 308767,
 					},
 				},
 			},
@@ -439,13 +445,10 @@ func testMessagesMessages0(w http.ResponseWriter, req *http.Request) {
 			Metadata: &components.SearchResponseMetadata{
 				SearchedQueryRanges: []components.TextRange{
 					components.TextRange{
-						StartIndex: 245129,
+						StartIndex: 338407,
 					},
 					components.TextRange{
-						StartIndex: 147593,
-					},
-					components.TextRange{
-						StartIndex: 600259,
+						StartIndex: 251471,
 					},
 				},
 				AdditionalQuerySuggestions: &components.QuerySuggestionList{},

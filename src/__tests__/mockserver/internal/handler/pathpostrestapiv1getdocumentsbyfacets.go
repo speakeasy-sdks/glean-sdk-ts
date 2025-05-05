@@ -81,6 +81,10 @@ func testGetdocumentsbyfacetsGetdocumentsbyfacets0(w http.ResponseWriter, req *h
 									Datasource: "github",
 									Handle:     "<value>",
 								},
+								components.DatasourceProfile{
+									Datasource: "github",
+									Handle:     "<value>",
+								},
 							},
 							QuerySuggestions: &components.QuerySuggestionList{
 								Suggestions: []components.QuerySuggestion{},
@@ -128,7 +132,7 @@ func testGetdocumentsbyfacetsGetdocumentsbyfacets0(w http.ResponseWriter, req *h
 						Shares: []components.Share{},
 					},
 					Verification: &components.Verification{
-						State: components.StateVerified,
+						State: components.StateUnverified,
 						Metadata: &components.VerificationMetadata{
 							LastVerifier: &components.Person{
 								Name:         "George Clooney",
@@ -144,11 +148,12 @@ func testGetdocumentsbyfacetsGetdocumentsbyfacets0(w http.ResponseWriter, req *h
 									Name:         "George Clooney",
 									ObfuscatedID: "abc123",
 								},
-								RemindAt: 511688,
+								RemindAt: 644942,
 							},
 							CandidateVerifiers: []components.Person{},
 						},
 					},
+					Shortcuts: []components.Shortcut{},
 					CustomData: map[string]components.CustomDataValue{
 						"someCustomField": components.CustomDataValue{},
 					},
@@ -158,6 +163,7 @@ func testGetdocumentsbyfacetsGetdocumentsbyfacets0(w http.ResponseWriter, req *h
 					},
 				},
 			},
+			components.Document{},
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

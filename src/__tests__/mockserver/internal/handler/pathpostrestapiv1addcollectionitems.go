@@ -53,10 +53,9 @@ func testAddcollectionitemsAddcollectionitems0(w http.ResponseWriter, req *http.
 	}
 	respBody := &components.AddCollectionItemsResponse{
 		Collection: &components.Collection{
-			Name:         "<value>",
-			Description:  "greedily indeed marten whereas rebel expansion",
-			AddedRoles:   []components.UserRoleSpecification{},
-			RemovedRoles: []components.UserRoleSpecification{},
+			Name:        "<value>",
+			Description: "greedily indeed marten whereas rebel expansion",
+			AddedRoles:  []components.UserRoleSpecification{},
 			AudienceFilters: []components.FacetFilter{
 				components.FacetFilter{
 					FieldName: types.String("type"),
@@ -72,7 +71,7 @@ func testAddcollectionitemsAddcollectionitems0(w http.ResponseWriter, req *http.
 					},
 				},
 			},
-			ID: 978832,
+			ID: 425700,
 			Creator: &components.Person{
 				Name:         "George Clooney",
 				ObfuscatedID: "abc123",
@@ -120,7 +119,6 @@ func testAddcollectionitemsAddcollectionitems0(w http.ResponseWriter, req *http.
 				ObfuscatedID: "abc123",
 			},
 			Items: []components.CollectionItem{},
-			Roles: []components.UserRoleSpecification{},
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

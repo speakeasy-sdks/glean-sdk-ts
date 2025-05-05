@@ -4,6 +4,7 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { Activity } from "./activity.js";
+import { Admin } from "./admin.js";
 import { Agents } from "./agents.js";
 import { Announcements } from "./announcements.js";
 import { Answers } from "./answers.js";
@@ -12,13 +13,12 @@ import { ClientAuthentication } from "./clientauthentication.js";
 import { ClientDocuments } from "./clientdocuments.js";
 import { ClientSearch } from "./clientsearch.js";
 import { ClientShortcuts } from "./clientshortcuts.js";
-import { ClientVerification } from "./clientverification.js";
 import { Collections } from "./collections.js";
 import { Entities } from "./entities.js";
 import { Insights } from "./insights.js";
 import { Messages } from "./messages.js";
 import { Pins } from "./pins.js";
-import { Summarize } from "./summarize.js";
+import { Verification } from "./verification.js";
 
 export class Client extends ClientSDK {
   private _activity?: Activity;
@@ -76,6 +76,11 @@ export class Client extends ClientSDK {
     return (this._pins ??= new Pins(this._options));
   }
 
+  private _admin?: Admin;
+  get admin(): Admin {
+    return (this._admin ??= new Admin(this._options));
+  }
+
   private _search?: ClientSearch;
   get search(): ClientSearch {
     return (this._search ??= new ClientSearch(this._options));
@@ -91,13 +96,8 @@ export class Client extends ClientSDK {
     return (this._shortcuts ??= new ClientShortcuts(this._options));
   }
 
-  private _summarize?: Summarize;
-  get summarize(): Summarize {
-    return (this._summarize ??= new Summarize(this._options));
-  }
-
-  private _verification?: ClientVerification;
-  get verification(): ClientVerification {
-    return (this._verification ??= new ClientVerification(this._options));
+  private _verification?: Verification;
+  get verification(): Verification {
+    return (this._verification ??= new Verification(this._options));
   }
 }

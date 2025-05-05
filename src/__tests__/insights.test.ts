@@ -17,8 +17,7 @@ test("Insights Insights", async () => {
 
   const result = await glean.client.insights.retrieve({
     categories: [
-      "CONTENT",
-      "CONTENT",
+      "USERS",
     ],
   });
   expect(result).toBeDefined();

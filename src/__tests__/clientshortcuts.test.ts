@@ -16,7 +16,7 @@ test("Client Shortcuts Createshortcut", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.shortcuts.createshortcut({
+  const result = await glean.client.shortcuts.create({
     data: {
       addedRoles: [
         {
@@ -105,9 +105,7 @@ test("Client Shortcuts Getshortcut", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.shortcuts.retrieve({
-    alias: "<value>",
-  });
+  const result = await glean.client.shortcuts.retrieve({});
   expect(result).toBeDefined();
 });
 
@@ -172,6 +170,14 @@ test("Client Shortcuts Updateshortcut", async () => {
                 datasource: "github",
                 handle: "<value>",
               },
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
             ],
             querySuggestions: {
               suggestions: [],
@@ -194,18 +200,21 @@ test("Client Shortcuts Updateshortcut", async () => {
             ],
           },
         },
-        role: "EDITOR",
+        role: "ANSWER_MODERATOR",
       },
       {
-        role: "ANSWER_MODERATOR",
+        role: "EDITOR",
       },
     ],
     removedRoles: [
       {
-        role: "EDITOR",
+        role: "VIEWER",
       },
       {
-        role: "ANSWER_MODERATOR",
+        role: "OWNER",
+      },
+      {
+        role: "VIEWER",
       },
     ],
   });

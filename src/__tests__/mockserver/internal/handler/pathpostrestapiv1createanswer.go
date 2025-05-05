@@ -78,8 +78,8 @@ func testCreateanswerCreateanswer0(w http.ResponseWriter, req *http.Request) {
 		},
 		Likes: &components.AnswerLikes{
 			LikedBy:     []components.AnswerLike{},
-			LikedByUser: true,
-			NumLikes:    453975,
+			LikedByUser: false,
+			NumLikes:    960909,
 		},
 		Author: &components.Person{
 			Name:         "George Clooney",
@@ -94,6 +94,14 @@ func testCreateanswerCreateanswer0(w http.ResponseWriter, req *http.Request) {
 				PhotoURL:   types.String("https://example.com/george.jpg"),
 				StartDate:  types.MustNewDateFromString("2000-01-23"),
 				DatasourceProfile: []components.DatasourceProfile{
+					components.DatasourceProfile{
+						Datasource: "github",
+						Handle:     "<value>",
+					},
+					components.DatasourceProfile{
+						Datasource: "github",
+						Handle:     "<value>",
+					},
 					components.DatasourceProfile{
 						Datasource: "github",
 						Handle:     "<value>",
@@ -120,7 +128,7 @@ func testCreateanswerCreateanswer0(w http.ResponseWriter, req *http.Request) {
 			ObfuscatedID: "abc123",
 		},
 		Verification: &components.Verification{
-			State: components.StateVerified,
+			State: components.StateDeprecated,
 			Metadata: &components.VerificationMetadata{
 				LastVerifier: &components.Person{
 					Name:         "George Clooney",
@@ -168,13 +176,13 @@ func testCreateanswerCreateanswer0(w http.ResponseWriter, req *http.Request) {
 						Name:         "George Clooney",
 						ObfuscatedID: "abc123",
 					},
-					RemindAt: 557925,
+					RemindAt: 409874,
 				},
 			},
 		},
 		Board: &components.AnswerBoard{
 			Name:        "<value>",
-			Description: "massive under meh severe ditch bungalow when sauerkraut",
+			Description: "sun scarily dispense quintessential besides mispronounce best-seller",
 			AudienceFilters: []components.FacetFilter{
 				components.FacetFilter{
 					FieldName: types.String("type"),
@@ -190,7 +198,7 @@ func testCreateanswerCreateanswer0(w http.ResponseWriter, req *http.Request) {
 					},
 				},
 			},
-			ID: 404062,
+			ID: 298820,
 			Creator: &components.Person{
 				Name:         "George Clooney",
 				ObfuscatedID: "abc123",

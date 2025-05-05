@@ -125,6 +125,10 @@ let value: FeedResult = {
     },
     collectionItem: {
       collectionId: 679242,
+      shortcut: {
+        inputAlias: "<value>",
+        destinationDocument: {},
+      },
       itemType: "DOCUMENT",
     },
     promptTemplate: {

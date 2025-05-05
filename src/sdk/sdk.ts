@@ -7,8 +7,6 @@ import { Client } from "./client.js";
 import { Indexing } from "./indexing.js";
 import { People } from "./people.js";
 import { Search } from "./search.js";
-import { Shortcuts } from "./shortcuts.js";
-import { Verification } from "./verification.js";
 
 export class Glean extends ClientSDK {
   private _client?: Client;
@@ -19,16 +17,6 @@ export class Glean extends ClientSDK {
   private _search?: Search;
   get search(): Search {
     return (this._search ??= new Search(this._options));
-  }
-
-  private _shortcuts?: Shortcuts;
-  get shortcuts(): Shortcuts {
-    return (this._shortcuts ??= new Shortcuts(this._options));
-  }
-
-  private _verification?: Verification;
-  get verification(): Verification {
-    return (this._verification ??= new Verification(this._options));
   }
 
   private _indexing?: Indexing;

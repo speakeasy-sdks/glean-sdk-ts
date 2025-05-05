@@ -128,6 +128,10 @@ let value: FeedResponse = {
         },
         collectionItem: {
           collectionId: 130670,
+          shortcut: {
+            inputAlias: "<value>",
+            destinationDocument: {},
+          },
           itemType: "TEXT",
         },
         promptTemplate: {

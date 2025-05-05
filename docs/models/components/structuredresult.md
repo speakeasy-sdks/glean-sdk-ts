@@ -215,6 +215,14 @@ let value: StructuredResult = {
     repoName: "scio",
     fileName: "README.md",
   },
+  shortcut: {
+    inputAlias: "<value>",
+    createdBy: {
+      name: "George Clooney",
+      obfuscatedId: "abc123",
+    },
+    destinationDocument: {},
+  },
   querySuggestions: {
     suggestions: [],
   },

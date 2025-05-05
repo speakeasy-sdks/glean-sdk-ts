@@ -78,8 +78,8 @@ func testEditanswerEditanswer0(w http.ResponseWriter, req *http.Request) {
 		},
 		Likes: &components.AnswerLikes{
 			LikedBy:     []components.AnswerLike{},
-			LikedByUser: false,
-			NumLikes:    526808,
+			LikedByUser: true,
+			NumLikes:    982873,
 		},
 		Author: &components.Person{
 			Name:         "George Clooney",
@@ -128,7 +128,7 @@ func testEditanswerEditanswer0(w http.ResponseWriter, req *http.Request) {
 			ObfuscatedID: "abc123",
 		},
 		Verification: &components.Verification{
-			State: components.StateVerified,
+			State: components.StateUnverified,
 			Metadata: &components.VerificationMetadata{
 				LastVerifier: &components.Person{
 					Name:         "George Clooney",
@@ -176,13 +176,13 @@ func testEditanswerEditanswer0(w http.ResponseWriter, req *http.Request) {
 						Name:         "George Clooney",
 						ObfuscatedID: "abc123",
 					},
-					RemindAt: 945691,
+					RemindAt: 241217,
 				},
 			},
 		},
 		Board: &components.AnswerBoard{
 			Name:        "<value>",
-			Description: "transparency lest while up yahoo towards fabricate motionless",
+			Description: "obligation clearly slope",
 			AudienceFilters: []components.FacetFilter{
 				components.FacetFilter{
 					FieldName: types.String("type"),
@@ -198,7 +198,7 @@ func testEditanswerEditanswer0(w http.ResponseWriter, req *http.Request) {
 					},
 				},
 			},
-			ID: 882159,
+			ID: 661551,
 			Creator: &components.Person{
 				Name:         "George Clooney",
 				ObfuscatedID: "abc123",

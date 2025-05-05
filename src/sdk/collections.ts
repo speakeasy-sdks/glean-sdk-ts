@@ -5,20 +5,16 @@
 import { clientCollectionsAddItems } from "../funcs/clientCollectionsAddItems.js";
 import { clientCollectionsCreate } from "../funcs/clientCollectionsCreate.js";
 import { clientCollectionsDelete } from "../funcs/clientCollectionsDelete.js";
+import { clientCollectionsDeleteItem } from "../funcs/clientCollectionsDeleteItem.js";
 import { clientCollectionsList } from "../funcs/clientCollectionsList.js";
 import { clientCollectionsRetrieve } from "../funcs/clientCollectionsRetrieve.js";
 import { clientCollectionsUpdate } from "../funcs/clientCollectionsUpdate.js";
+import { clientCollectionsUpdateItem } from "../funcs/clientCollectionsUpdateItem.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
-import { Item } from "./item.js";
 
 export class Collections extends ClientSDK {
-  private _item?: Item;
-  get item(): Item {
-    return (this._item ??= new Item(this._options));
-  }
-
   /**
    * Add Collection item
    *
@@ -71,6 +67,23 @@ export class Collections extends ClientSDK {
   }
 
   /**
+   * Delete Collection item
+   *
+   * @remarks
+   * Delete a single item from a Collection.
+   */
+  async deleteItem(
+    request: components.DeleteCollectionItemRequest,
+    options?: RequestOptions,
+  ): Promise<components.DeleteCollectionItemResponse> {
+    return unwrapAsync(clientCollectionsDeleteItem(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Update Collection
    *
    * @remarks
@@ -81,6 +94,23 @@ export class Collections extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.EditCollectionResponse> {
     return unwrapAsync(clientCollectionsUpdate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update Collection item
+   *
+   * @remarks
+   * Update the URL, Glean Document ID, description of an item within a Collection given its ID.
+   */
+  async updateItem(
+    request: components.EditCollectionItemRequest,
+    options?: RequestOptions,
+  ): Promise<components.EditCollectionItemResponse> {
+    return unwrapAsync(clientCollectionsUpdateItem(
       this,
       request,
       options,

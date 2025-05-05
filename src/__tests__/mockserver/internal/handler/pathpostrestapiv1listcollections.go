@@ -54,10 +54,9 @@ func testListcollectionsListcollections0(w http.ResponseWriter, req *http.Reques
 	respBody := &components.ListCollectionsResponse{
 		Collections: []components.Collection{
 			components.Collection{
-				Name:         "<value>",
-				Description:  "yuck accountability pish likewise excepting unimpressively quickly",
-				AddedRoles:   []components.UserRoleSpecification{},
-				RemovedRoles: []components.UserRoleSpecification{},
+				Name:        "<value>",
+				Description: "yuck accountability pish likewise excepting unimpressively quickly",
+				AddedRoles:  []components.UserRoleSpecification{},
 				AudienceFilters: []components.FacetFilter{
 					components.FacetFilter{
 						FieldName: types.String("type"),
@@ -73,7 +72,7 @@ func testListcollectionsListcollections0(w http.ResponseWriter, req *http.Reques
 						},
 					},
 				},
-				ID: 29267,
+				ID: 767950,
 				Creator: &components.Person{
 					Name:         "George Clooney",
 					ObfuscatedID: "abc123",
@@ -117,11 +116,10 @@ func testListcollectionsListcollections0(w http.ResponseWriter, req *http.Reques
 					ObfuscatedID: "abc123",
 				},
 				Items: []components.CollectionItem{},
-				Roles: []components.UserRoleSpecification{},
 			},
 			components.Collection{
 				Name:        "<value>",
-				Description: "massive sorrowful aw",
+				Description: "inasmuch unlined monthly lampoon",
 				AudienceFilters: []components.FacetFilter{
 					components.FacetFilter{
 						FieldName: types.String("type"),
@@ -137,11 +135,11 @@ func testListcollectionsListcollections0(w http.ResponseWriter, req *http.Reques
 						},
 					},
 				},
-				ID: 314888,
+				ID: 797143,
 			},
 			components.Collection{
 				Name:        "<value>",
-				Description: "merrily wherever failing orchestrate lest",
+				Description: "tooth swelter fund provided although dreary shrill",
 				AudienceFilters: []components.FacetFilter{
 					components.FacetFilter{
 						FieldName: types.String("type"),
@@ -157,7 +155,7 @@ func testListcollectionsListcollections0(w http.ResponseWriter, req *http.Reques
 						},
 					},
 				},
-				ID: 895039,
+				ID: 152303,
 			},
 		},
 	}

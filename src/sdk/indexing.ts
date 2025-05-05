@@ -3,13 +3,13 @@
  */
 
 import { ClientSDK } from "../lib/sdks.js";
+import { Datasource } from "./datasource.js";
 import { Datasources } from "./datasources.js";
 import { IndexingAuthentication } from "./indexingauthentication.js";
 import { IndexingDocuments } from "./indexingdocuments.js";
 import { IndexingPeople } from "./indexingpeople.js";
-import { IndexingPermissions } from "./indexingpermissions.js";
 import { IndexingShortcuts } from "./indexingshortcuts.js";
-import { Troubleshooting } from "./troubleshooting.js";
+import { Permissions } from "./permissions.js";
 
 export class Indexing extends ClientSDK {
   private _documents?: IndexingDocuments;
@@ -17,14 +17,19 @@ export class Indexing extends ClientSDK {
     return (this._documents ??= new IndexingDocuments(this._options));
   }
 
-  private _permissions?: IndexingPermissions;
-  get permissions(): IndexingPermissions {
-    return (this._permissions ??= new IndexingPermissions(this._options));
+  private _permissions?: Permissions;
+  get permissions(): Permissions {
+    return (this._permissions ??= new Permissions(this._options));
   }
 
-  private _troubleshooting?: Troubleshooting;
-  get troubleshooting(): Troubleshooting {
-    return (this._troubleshooting ??= new Troubleshooting(this._options));
+  private _datasource?: Datasource;
+  get datasource(): Datasource {
+    return (this._datasource ??= new Datasource(this._options));
+  }
+
+  private _people?: IndexingPeople;
+  get people(): IndexingPeople {
+    return (this._people ??= new IndexingPeople(this._options));
   }
 
   private _datasources?: Datasources;
@@ -35,11 +40,6 @@ export class Indexing extends ClientSDK {
   private _authentication?: IndexingAuthentication;
   get authentication(): IndexingAuthentication {
     return (this._authentication ??= new IndexingAuthentication(this._options));
-  }
-
-  private _people?: IndexingPeople;
-  get people(): IndexingPeople {
-    return (this._people ??= new IndexingPeople(this._options));
   }
 
   private _shortcuts?: IndexingShortcuts;

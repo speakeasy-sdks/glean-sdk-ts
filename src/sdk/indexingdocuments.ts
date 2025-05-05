@@ -4,9 +4,14 @@
 
 import { indexingDocumentsAddOrUpdate } from "../funcs/indexingDocumentsAddOrUpdate.js";
 import { indexingDocumentsBulkIndex } from "../funcs/indexingDocumentsBulkIndex.js";
+import { indexingDocumentsCheckAccess } from "../funcs/indexingDocumentsCheckAccess.js";
+import { indexingDocumentsCount } from "../funcs/indexingDocumentsCount.js";
+import { indexingDocumentsDebug } from "../funcs/indexingDocumentsDebug.js";
+import { indexingDocumentsDebugMany } from "../funcs/indexingDocumentsDebugMany.js";
 import { indexingDocumentsDelete } from "../funcs/indexingDocumentsDelete.js";
 import { indexingDocumentsIndex } from "../funcs/indexingDocumentsIndex.js";
 import { indexingDocumentsProcessAll } from "../funcs/indexingDocumentsProcessAll.js";
+import { indexingDocumentsStatus } from "../funcs/indexingDocumentsStatus.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
@@ -101,6 +106,109 @@ export class IndexingDocuments extends ClientSDK {
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(indexingDocumentsDelete(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Beta: Get document information
+   *
+   * @remarks
+   * Gives various information that would help in debugging related to a particular document. Currently in beta, might undergo breaking changes without prior notice.
+   *
+   * Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/) for more information.
+   */
+  async debug(
+    debugDocumentRequest: components.DebugDocumentRequest,
+    datasource: string,
+    options?: RequestOptions,
+  ): Promise<components.DebugDocumentResponse> {
+    return unwrapAsync(indexingDocumentsDebug(
+      this,
+      debugDocumentRequest,
+      datasource,
+      options,
+    ));
+  }
+
+  /**
+   * Beta: Get information of a batch of documents
+   *
+   * @remarks
+   * Gives various information that would help in debugging related to a batch of documents. Currently in beta, might undergo breaking changes without prior notice.
+   *
+   * Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/) for more information.
+   */
+  async debugMany(
+    debugDocumentsRequest: components.DebugDocumentsRequest,
+    datasource: string,
+    options?: RequestOptions,
+  ): Promise<components.DebugDocumentsResponse> {
+    return unwrapAsync(indexingDocumentsDebugMany(
+      this,
+      debugDocumentsRequest,
+      datasource,
+      options,
+    ));
+  }
+
+  /**
+   * Check document access
+   *
+   * @remarks
+   * Check if a given user has access to access a document in a custom datasource
+   *
+   * Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/) for more information.
+   */
+  async checkAccess(
+    request: components.CheckDocumentAccessRequest,
+    options?: RequestOptions,
+  ): Promise<components.CheckDocumentAccessResponse> {
+    return unwrapAsync(indexingDocumentsCheckAccess(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get document upload and indexing status
+   *
+   * @remarks
+   * Intended for debugging/validation. Fetches the current upload and indexing status of documents.
+   *
+   * Tip: Use [/debug/{datasource}/document](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/#debug-datasource-document) for richer information.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async status(
+    request: components.GetDocumentStatusRequest,
+    options?: RequestOptions,
+  ): Promise<components.GetDocumentStatusResponse> {
+    return unwrapAsync(indexingDocumentsStatus(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get document count
+   *
+   * @remarks
+   * Fetches document count for the specified custom datasource.
+   *
+   * Tip: Use [/debug/{datasource}/status](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/#debug-datasource-status) for richer information.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async count(
+    request: components.GetDocumentCountRequest,
+    options?: RequestOptions,
+  ): Promise<components.GetDocumentCountResponse> {
+    return unwrapAsync(indexingDocumentsCount(
       this,
       request,
       options,

@@ -244,7 +244,7 @@ export const StructuredResult$inboundSchema: z.ZodType<
   collection: z.lazy(() => Collection$inboundSchema).optional(),
   answerBoard: z.lazy(() => AnswerBoard$inboundSchema).optional(),
   code: z.lazy(() => Code$inboundSchema).optional(),
-  shortcut: Shortcut$inboundSchema.optional(),
+  shortcut: z.lazy(() => Shortcut$inboundSchema).optional(),
   querySuggestions: z.lazy(() => QuerySuggestionList$inboundSchema).optional(),
   relatedDocuments: z.array(z.lazy(() => RelatedDocuments$inboundSchema))
     .optional(),
@@ -299,7 +299,7 @@ export const StructuredResult$outboundSchema: z.ZodType<
   collection: z.lazy(() => Collection$outboundSchema).optional(),
   answerBoard: z.lazy(() => AnswerBoard$outboundSchema).optional(),
   code: z.lazy(() => Code$outboundSchema).optional(),
-  shortcut: Shortcut$outboundSchema.optional(),
+  shortcut: z.lazy(() => Shortcut$outboundSchema).optional(),
   querySuggestions: z.lazy(() => QuerySuggestionList$outboundSchema).optional(),
   relatedDocuments: z.array(z.lazy(() => RelatedDocuments$outboundSchema))
     .optional(),

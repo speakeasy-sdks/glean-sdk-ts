@@ -460,18 +460,30 @@ async function run() {
         },
         role: "EDITOR",
       },
-    ],
-    removedRoles: [
-      {
-        role: "EDITOR",
-      },
-    ],
-    roles: [
       {
         role: "ANSWER_MODERATOR",
       },
       {
         role: "OWNER",
+      },
+    ],
+    removedRoles: [
+      {
+        role: "OWNER",
+      },
+      {
+        role: "VERIFIER",
+      },
+    ],
+    roles: [
+      {
+        role: "EDITOR",
+      },
+      {
+        role: "VERIFIER",
+      },
+      {
+        role: "ANSWER_MODERATOR",
       },
     ],
     combinedAnswerText: {
@@ -566,18 +578,30 @@ async function run() {
         },
         role: "EDITOR",
       },
-    ],
-    removedRoles: [
-      {
-        role: "EDITOR",
-      },
-    ],
-    roles: [
       {
         role: "ANSWER_MODERATOR",
       },
       {
         role: "OWNER",
+      },
+    ],
+    removedRoles: [
+      {
+        role: "OWNER",
+      },
+      {
+        role: "VERIFIER",
+      },
+    ],
+    roles: [
+      {
+        role: "EDITOR",
+      },
+      {
+        role: "VERIFIER",
+      },
+      {
+        role: "ANSWER_MODERATOR",
       },
     ],
     combinedAnswerText: {

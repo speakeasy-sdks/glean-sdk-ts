@@ -7,6 +7,9 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
+	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/types"
+	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
 )
@@ -19,6 +22,16 @@ func pathPostRestAPIV1Chat(dir *logging.HTTPFileDirectory, rt *tracking.RequestT
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
+		case "chat-defaultExample[0]":
+			dir.HandlerFunc("chat", testChatChatDefaultExample0)(w, req)
+		case "chat-gptAgentExample[0]":
+			dir.HandlerFunc("chat", testChatChatGptAgentExample0)(w, req)
+		case "chat-streamingExample[0]":
+			dir.HandlerFunc("chat", testChatChatStreamingExample0)(w, req)
+		case "chat-updateResponse[0]":
+			dir.HandlerFunc("chat", testChatChatUpdateResponse0)(w, req)
+		case "chat-citationResponse[0]":
+			dir.HandlerFunc("chat", testChatChatCitationResponse0)(w, req)
 		case "chatStream-defaultExample[0]":
 			dir.HandlerFunc("chatStream", testChatStreamChatStreamDefaultExample0)(w, req)
 		case "chatStream-gptAgentExample[0]":
@@ -33,6 +46,1044 @@ func pathPostRestAPIV1Chat(dir *logging.HTTPFileDirectory, rt *tracking.RequestT
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
+}
+
+func testChatChatDefaultExample0(w http.ResponseWriter, req *http.Request) {
+	if err := assert.SecurityAuthorizationHeader(req, false, "Bearer"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
+	if err := assert.ContentType(req, "application/json", true); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if err := assert.HeaderExists(req, "User-Agent"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	respBody := &components.ChatResponse{
+		Messages: []components.ChatMessage{
+			components.ChatMessage{
+				AgentConfig: &components.AgentConfig{
+					Agent: components.AgentEnumDefault.ToPointer(),
+					Mode:  components.ModeDefault.ToPointer(),
+				},
+				Author: components.AuthorGleanAi.ToPointer(),
+				Fragments: []components.ChatMessageFragment{
+					components.ChatMessageFragment{
+						Text: types.String("There are no holidays!"),
+					},
+				},
+				MessageType:      components.MessageTypeContent.ToPointer(),
+				HasMoreFragments: types.Bool(false),
+			},
+		},
+	}
+	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
+
+	if err != nil {
+		http.Error(
+			w,
+			"Unable to encode response body as JSON: "+err.Error(),
+			http.StatusInternalServerError,
+		)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write(respBodyBytes)
+}
+
+func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
+	if err := assert.SecurityAuthorizationHeader(req, false, "Bearer"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
+	if err := assert.ContentType(req, "application/json", true); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if err := assert.HeaderExists(req, "User-Agent"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	respBody := &components.ChatResponse{
+		Messages: []components.ChatMessage{
+			components.ChatMessage{
+				Author: components.AuthorUser.ToPointer(),
+				Citations: []components.ChatMessageCitation{
+					components.ChatMessageCitation{
+						SourceDocument: &components.Document{
+							Metadata: &components.DocumentMetadata{
+								Datasource: types.String("datasource"),
+								ObjectType: types.String("Feature Request"),
+								Container:  types.String("container"),
+								ParentID:   types.String("JIRA_EN-1337"),
+								MimeType:   types.String("mimeType"),
+								DocumentID: types.String("documentId"),
+								CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+								UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+								Author: &components.Person{
+									Name:         "name",
+									ObfuscatedID: "<id>",
+								},
+								Components: []string{
+									"Backend",
+									"Networking",
+								},
+								Status: types.String("[\"Done\"]"),
+								CustomData: map[string]components.CustomDataValue{
+									"someCustomField": components.CustomDataValue{},
+								},
+							},
+						},
+						SourceFile: &components.ChatFile{
+							ID:   types.String("FILE_1234"),
+							URL:  types.String("www.google.com"),
+							Name: types.String("sample.pdf"),
+						},
+						SourcePerson: &components.Person{
+							Name:         "George Clooney",
+							ObfuscatedID: "abc123",
+						},
+						ReferenceRanges: []components.ReferenceRange{
+							components.ReferenceRange{
+								TextRange: &components.TextRange{
+									StartIndex: 134365,
+									Document:   &components.Document{},
+								},
+								Snippets: []components.SearchResultSnippet{
+									components.SearchResultSnippet{
+										Snippet:  "snippet",
+										MimeType: types.String("mimeType"),
+									},
+								},
+							},
+							components.ReferenceRange{
+								Snippets: []components.SearchResultSnippet{
+									components.SearchResultSnippet{
+										Snippet:  "snippet",
+										MimeType: types.String("mimeType"),
+									},
+								},
+							},
+						},
+					},
+					components.ChatMessageCitation{
+						SourceFile: &components.ChatFile{
+							ID:   types.String("FILE_1234"),
+							URL:  types.String("www.google.com"),
+							Name: types.String("sample.pdf"),
+						},
+						ReferenceRanges: []components.ReferenceRange{
+							components.ReferenceRange{
+								Snippets: []components.SearchResultSnippet{
+									components.SearchResultSnippet{
+										Snippet:  "snippet",
+										MimeType: types.String("mimeType"),
+									},
+								},
+							},
+							components.ReferenceRange{
+								Snippets: []components.SearchResultSnippet{
+									components.SearchResultSnippet{
+										Snippet:  "snippet",
+										MimeType: types.String("mimeType"),
+									},
+								},
+							},
+							components.ReferenceRange{
+								Snippets: []components.SearchResultSnippet{
+									components.SearchResultSnippet{
+										Snippet:  "snippet",
+										MimeType: types.String("mimeType"),
+									},
+								},
+							},
+						},
+					},
+				},
+				Fragments: []components.ChatMessageFragment{
+					components.ChatMessageFragment{
+						StructuredResults: []components.StructuredResult{
+							components.StructuredResult{
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Poc:   []components.Person{},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:           "<id>",
+									Name:         "<value>",
+									Members:      []components.PersonToTeamRelationship{},
+									CustomFields: []components.CustomFieldData{},
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{
+									Roles: []components.UserRoleSpecification{},
+								},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									AddedRoles:   []components.UserRoleSpecification{},
+									RemovedRoles: []components.UserRoleSpecification{},
+									CombinedAnswerText: &components.StructuredText{
+										Text:           "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+										StructuredList: []components.StructuredTextItem{},
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: true,
+										NumLikes:    621636,
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateVerified,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Reminders: []components.Reminder{},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 523523,
+											},
+											CandidateVerifiers: []components.Person{},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "whenever lively tousle",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 45416,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									Collections: []components.Collection{},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{
+										People: []components.CalendarAttendee{},
+									},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "rightfully brightly sleet where schedule insolence when",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 150565,
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "hastily hmph underneath afore downchange during",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 585844,
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Suggestions: []components.QuerySuggestion{},
+								},
+								RelatedDocuments: []components.RelatedDocuments{},
+								RelatedQuestion: &components.RelatedQuestion{
+									Ranges: []components.TextRange{},
+								},
+							},
+							components.StructuredResult{},
+							components.StructuredResult{},
+						},
+						QuerySuggestion: &components.QuerySuggestion{
+							Query:      "app:github type:pull author:mortimer",
+							Label:      types.String("Mortimer's PRs"),
+							Datasource: types.String("github"),
+						},
+						File: &components.ChatFile{
+							ID:   types.String("FILE_1234"),
+							URL:  types.String("www.google.com"),
+							Name: types.String("sample.pdf"),
+						},
+						Action: &components.ToolInfo{
+							Metadata: &components.ToolMetadata{
+								Type:               components.ToolMetadataTypeAction,
+								Name:               "<value>",
+								DisplayName:        "Destiny_Olson69",
+								DisplayDescription: "<value>",
+								ObjectName:         types.String("[\"HR ticket\",\"Email\",\"Chat message\"]"),
+							},
+						},
+					},
+				},
+				MessageType: components.MessageTypeContent.ToPointer(),
+			},
+			components.ChatMessage{
+				Author: components.AuthorUser.ToPointer(),
+				Citations: []components.ChatMessageCitation{
+					components.ChatMessageCitation{
+						SourceFile: &components.ChatFile{
+							ID:   types.String("FILE_1234"),
+							URL:  types.String("www.google.com"),
+							Name: types.String("sample.pdf"),
+						},
+						ReferenceRanges: []components.ReferenceRange{
+							components.ReferenceRange{
+								Snippets: []components.SearchResultSnippet{
+									components.SearchResultSnippet{
+										Snippet:  "snippet",
+										MimeType: types.String("mimeType"),
+									},
+								},
+							},
+							components.ReferenceRange{
+								Snippets: []components.SearchResultSnippet{
+									components.SearchResultSnippet{
+										Snippet:  "snippet",
+										MimeType: types.String("mimeType"),
+									},
+								},
+							},
+						},
+					},
+					components.ChatMessageCitation{
+						SourceFile: &components.ChatFile{
+							ID:   types.String("FILE_1234"),
+							URL:  types.String("www.google.com"),
+							Name: types.String("sample.pdf"),
+						},
+						ReferenceRanges: []components.ReferenceRange{
+							components.ReferenceRange{
+								Snippets: []components.SearchResultSnippet{
+									components.SearchResultSnippet{
+										Snippet:  "snippet",
+										MimeType: types.String("mimeType"),
+									},
+								},
+							},
+						},
+					},
+				},
+				Fragments: []components.ChatMessageFragment{
+					components.ChatMessageFragment{
+						StructuredResults: []components.StructuredResult{
+							components.StructuredResult{},
+							components.StructuredResult{},
+						},
+						File: &components.ChatFile{
+							ID:   types.String("FILE_1234"),
+							URL:  types.String("www.google.com"),
+							Name: types.String("sample.pdf"),
+						},
+						Action: &components.ToolInfo{
+							Metadata: &components.ToolMetadata{
+								Type:               components.ToolMetadataTypeRetrieval,
+								Name:               "<value>",
+								DisplayName:        "Alisha_Bergstrom",
+								DisplayDescription: "<value>",
+								ObjectName:         types.String("[\"HR ticket\",\"Email\",\"Chat message\"]"),
+							},
+						},
+					},
+					components.ChatMessageFragment{
+						StructuredResults: []components.StructuredResult{
+							components.StructuredResult{},
+						},
+						File: &components.ChatFile{
+							ID:   types.String("FILE_1234"),
+							URL:  types.String("www.google.com"),
+							Name: types.String("sample.pdf"),
+						},
+						Action: &components.ToolInfo{
+							Metadata: &components.ToolMetadata{
+								Type:               components.ToolMetadataTypeRetrieval,
+								Name:               "<value>",
+								DisplayName:        "Hilma.Gleichner",
+								DisplayDescription: "<value>",
+								ObjectName:         types.String("[\"HR ticket\",\"Email\",\"Chat message\"]"),
+							},
+						},
+					},
+				},
+				MessageType: components.MessageTypeContent.ToPointer(),
+			},
+		},
+		BackendTimeMillis: types.Int64(1100),
+	}
+	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
+
+	if err != nil {
+		http.Error(
+			w,
+			"Unable to encode response body as JSON: "+err.Error(),
+			http.StatusInternalServerError,
+		)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write(respBodyBytes)
+}
+
+func testChatChatStreamingExample0(w http.ResponseWriter, req *http.Request) {
+	if err := assert.SecurityAuthorizationHeader(req, false, "Bearer"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
+	if err := assert.ContentType(req, "application/json", true); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if err := assert.HeaderExists(req, "User-Agent"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	respBody := &components.ChatResponse{
+		Messages: []components.ChatMessage{
+			components.ChatMessage{
+				AgentConfig: &components.AgentConfig{
+					Agent: components.AgentEnumDefault.ToPointer(),
+					Mode:  components.ModeDefault.ToPointer(),
+				},
+				Author: components.AuthorGleanAi.ToPointer(),
+				Fragments: []components.ChatMessageFragment{
+					components.ChatMessageFragment{
+						StructuredResults: []components.StructuredResult{
+							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Poc:   []components.Person{},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:           "<id>",
+									Name:         "<value>",
+									Members:      []components.PersonToTeamRelationship{},
+									CustomFields: []components.CustomFieldData{},
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{
+									Roles: []components.UserRoleSpecification{},
+								},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									AddedRoles:   []components.UserRoleSpecification{},
+									RemovedRoles: []components.UserRoleSpecification{},
+									CombinedAnswerText: &components.StructuredText{
+										Text:           "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+										StructuredList: []components.StructuredTextItem{},
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: false,
+										NumLikes:    935878,
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateVerified,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Reminders: []components.Reminder{},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 930484,
+											},
+											CandidateVerifiers: []components.Person{},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "kettledrum expatiate intently ouch",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 637979,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									Collections:    []components.Collection{},
+									SourceDocument: &components.Document{},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+										Snippets:     []components.SearchResultSnippet{},
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{
+										People: []components.CalendarAttendee{},
+									},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "whenever major sometimes kiss",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 881035,
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "familiarize pish challenge how remark amused minus partridge pessimistic firsthand",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 156192,
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Suggestions: []components.QuerySuggestion{},
+								},
+								RelatedDocuments: []components.RelatedDocuments{},
+								RelatedQuestion: &components.RelatedQuestion{
+									Ranges: []components.TextRange{},
+								},
+							},
+							components.StructuredResult{},
+						},
+						QuerySuggestion: &components.QuerySuggestion{
+							Query:      "app:github type:pull author:mortimer",
+							Label:      types.String("Mortimer's PRs"),
+							Datasource: types.String("github"),
+						},
+						File: &components.ChatFile{
+							ID:   types.String("FILE_1234"),
+							URL:  types.String("www.google.com"),
+							Name: types.String("sample.pdf"),
+						},
+						Action: &components.ToolInfo{
+							Metadata: &components.ToolMetadata{
+								Type:               components.ToolMetadataTypeRetrieval,
+								Name:               "<value>",
+								DisplayName:        "Katlyn2",
+								DisplayDescription: "<value>",
+								ObjectName:         types.String("[\"HR ticket\",\"Email\",\"Chat message\"]"),
+							},
+						},
+					},
+					components.ChatMessageFragment{
+						StructuredResults: []components.StructuredResult{
+							components.StructuredResult{},
+							components.StructuredResult{},
+							components.StructuredResult{},
+						},
+						File: &components.ChatFile{
+							ID:   types.String("FILE_1234"),
+							URL:  types.String("www.google.com"),
+							Name: types.String("sample.pdf"),
+						},
+						Action: &components.ToolInfo{
+							Metadata: &components.ToolMetadata{
+								Type:               components.ToolMetadataTypeAction,
+								Name:               "<value>",
+								DisplayName:        "Sonia75",
+								DisplayDescription: "<value>",
+								ObjectName:         types.String("[\"HR ticket\",\"Email\",\"Chat message\"]"),
+							},
+						},
+					},
+					components.ChatMessageFragment{
+						StructuredResults: []components.StructuredResult{
+							components.StructuredResult{},
+							components.StructuredResult{},
+							components.StructuredResult{},
+						},
+						File: &components.ChatFile{
+							ID:   types.String("FILE_1234"),
+							URL:  types.String("www.google.com"),
+							Name: types.String("sample.pdf"),
+						},
+						Action: &components.ToolInfo{
+							Metadata: &components.ToolMetadata{
+								Type:               components.ToolMetadataTypeRetrieval,
+								Name:               "<value>",
+								DisplayName:        "Glen7",
+								DisplayDescription: "<value>",
+								ObjectName:         types.String("[\"HR ticket\",\"Email\",\"Chat message\"]"),
+							},
+						},
+					},
+				},
+				MessageType: components.MessageTypeContent.ToPointer(),
+			},
+			components.ChatMessage{
+				AgentConfig: &components.AgentConfig{
+					Agent: components.AgentEnumDefault.ToPointer(),
+					Mode:  components.ModeDefault.ToPointer(),
+				},
+				Author: components.AuthorGleanAi.ToPointer(),
+				Fragments: []components.ChatMessageFragment{
+					components.ChatMessageFragment{
+						StructuredResults: []components.StructuredResult{
+							components.StructuredResult{},
+							components.StructuredResult{},
+						},
+						File: &components.ChatFile{
+							ID:   types.String("FILE_1234"),
+							URL:  types.String("www.google.com"),
+							Name: types.String("sample.pdf"),
+						},
+						Action: &components.ToolInfo{
+							Metadata: &components.ToolMetadata{
+								Type:               components.ToolMetadataTypeRetrieval,
+								Name:               "<value>",
+								DisplayName:        "Chyna.Schaden46",
+								DisplayDescription: "<value>",
+								ObjectName:         types.String("[\"HR ticket\",\"Email\",\"Chat message\"]"),
+							},
+						},
+					},
+					components.ChatMessageFragment{
+						StructuredResults: []components.StructuredResult{
+							components.StructuredResult{},
+							components.StructuredResult{},
+							components.StructuredResult{},
+						},
+						File: &components.ChatFile{
+							ID:   types.String("FILE_1234"),
+							URL:  types.String("www.google.com"),
+							Name: types.String("sample.pdf"),
+						},
+						Action: &components.ToolInfo{
+							Metadata: &components.ToolMetadata{
+								Type:               components.ToolMetadataTypeRetrieval,
+								Name:               "<value>",
+								DisplayName:        "Jessy_Gerhold",
+								DisplayDescription: "<value>",
+								ObjectName:         types.String("[\"HR ticket\",\"Email\",\"Chat message\"]"),
+							},
+						},
+					},
+				},
+				MessageType: components.MessageTypeContent.ToPointer(),
+			},
+			components.ChatMessage{
+				AgentConfig: &components.AgentConfig{
+					Agent: components.AgentEnumDefault.ToPointer(),
+					Mode:  components.ModeDefault.ToPointer(),
+				},
+				Author: components.AuthorGleanAi.ToPointer(),
+				Fragments: []components.ChatMessageFragment{
+					components.ChatMessageFragment{
+						Text: types.String("e are"),
+					},
+				},
+				MessageType: components.MessageTypeContent.ToPointer(),
+			},
+			components.ChatMessage{
+				AgentConfig: &components.AgentConfig{
+					Agent: components.AgentEnumDefault.ToPointer(),
+					Mode:  components.ModeDefault.ToPointer(),
+				},
+				Author: components.AuthorGleanAi.ToPointer(),
+				Fragments: []components.ChatMessageFragment{
+					components.ChatMessageFragment{
+						Text: types.String("no hol"),
+					},
+				},
+				MessageType: components.MessageTypeContent.ToPointer(),
+			},
+			components.ChatMessage{
+				AgentConfig: &components.AgentConfig{
+					Agent: components.AgentEnumDefault.ToPointer(),
+					Mode:  components.ModeDefault.ToPointer(),
+				},
+				Author: components.AuthorGleanAi.ToPointer(),
+				Fragments: []components.ChatMessageFragment{
+					components.ChatMessageFragment{
+						Text: types.String("idays!"),
+					},
+				},
+				MessageType: components.MessageTypeContent.ToPointer(),
+			},
+		},
+	}
+	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
+
+	if err != nil {
+		http.Error(
+			w,
+			"Unable to encode response body as JSON: "+err.Error(),
+			http.StatusInternalServerError,
+		)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write(respBodyBytes)
+}
+
+func testChatChatUpdateResponse0(w http.ResponseWriter, req *http.Request) {
+	if err := assert.SecurityAuthorizationHeader(req, false, "Bearer"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
+	if err := assert.ContentType(req, "application/json", true); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if err := assert.HeaderExists(req, "User-Agent"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	respBody := &components.ChatResponse{
+		Messages: []components.ChatMessage{
+			components.ChatMessage{
+				AgentConfig: &components.AgentConfig{
+					Agent: components.AgentEnumDefault.ToPointer(),
+					Mode:  components.ModeDefault.ToPointer(),
+				},
+				Author: components.AuthorGleanAi.ToPointer(),
+				Fragments: []components.ChatMessageFragment{
+					components.ChatMessageFragment{
+						Text: types.String("**Reading:**"),
+					},
+					components.ChatMessageFragment{
+						StructuredResults: []components.StructuredResult{
+							components.StructuredResult{
+								Document: &components.Document{
+									ID:    types.String("123"),
+									Title: types.String("Company Handbook"),
+								},
+							},
+						},
+					},
+				},
+				MessageType: components.MessageTypeUpdate.ToPointer(),
+			},
+		},
+	}
+	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
+
+	if err != nil {
+		http.Error(
+			w,
+			"Unable to encode response body as JSON: "+err.Error(),
+			http.StatusInternalServerError,
+		)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write(respBodyBytes)
+}
+
+func testChatChatCitationResponse0(w http.ResponseWriter, req *http.Request) {
+	if err := assert.SecurityAuthorizationHeader(req, false, "Bearer"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
+	if err := assert.ContentType(req, "application/json", true); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if err := assert.HeaderExists(req, "User-Agent"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	respBody := &components.ChatResponse{
+		Messages: []components.ChatMessage{
+			components.ChatMessage{
+				AgentConfig: &components.AgentConfig{
+					Agent: components.AgentEnumDefault.ToPointer(),
+					Mode:  components.ModeDefault.ToPointer(),
+				},
+				Author: components.AuthorGleanAi.ToPointer(),
+				Citations: []components.ChatMessageCitation{
+					components.ChatMessageCitation{
+						SourceDocument: &components.Document{
+							ID:    types.String("123"),
+							Title: types.String("Company Handbook"),
+						},
+					},
+				},
+				MessageType: components.MessageTypeContent.ToPointer(),
+			},
+		},
+	}
+	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
+
+	if err != nil {
+		http.Error(
+			w,
+			"Unable to encode response body as JSON: "+err.Error(),
+			http.StatusInternalServerError,
+		)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write(respBodyBytes)
 }
 
 func testChatStreamChatStreamDefaultExample0(w http.ResponseWriter, req *http.Request) {

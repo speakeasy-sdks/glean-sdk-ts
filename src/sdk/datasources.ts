@@ -3,17 +3,12 @@
  */
 
 import { indexingDatasourcesAdd } from "../funcs/indexingDatasourcesAdd.js";
+import { indexingDatasourcesRetrieveConfig } from "../funcs/indexingDatasourcesRetrieveConfig.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
-import { Config } from "./config.js";
 
 export class Datasources extends ClientSDK {
-  private _config?: Config;
-  get config(): Config {
-    return (this._config ??= new Config(this._options));
-  }
-
   /**
    * Add or update datasource
    *
@@ -25,6 +20,23 @@ export class Datasources extends ClientSDK {
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(indexingDatasourcesAdd(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get datasource config
+   *
+   * @remarks
+   * Fetches the datasource config for the specified custom datasource.
+   */
+  async retrieveConfig(
+    request: components.GetDatasourceConfigRequest,
+    options?: RequestOptions,
+  ): Promise<components.CustomDatasourceConfig> {
+    return unwrapAsync(indexingDatasourcesRetrieveConfig(
       this,
       request,
       options,

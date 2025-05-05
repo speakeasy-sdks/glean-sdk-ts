@@ -82,7 +82,7 @@ func testListanswersListanswers0(w http.ResponseWriter, req *http.Request) {
 					Likes: &components.AnswerLikes{
 						LikedBy:     []components.AnswerLike{},
 						LikedByUser: false,
-						NumLikes:    50388,
+						NumLikes:    8211,
 					},
 					Author: &components.Person{
 						Name:         "George Clooney",
@@ -127,7 +127,7 @@ func testListanswersListanswers0(w http.ResponseWriter, req *http.Request) {
 						ObfuscatedID: "abc123",
 					},
 					Verification: &components.Verification{
-						State: components.StateUnverified,
+						State: components.StateDeprecated,
 						Metadata: &components.VerificationMetadata{
 							LastVerifier: &components.Person{
 								Name:         "George Clooney",
@@ -175,13 +175,13 @@ func testListanswersListanswers0(w http.ResponseWriter, req *http.Request) {
 									Name:         "George Clooney",
 									ObfuscatedID: "abc123",
 								},
-								RemindAt: 487446,
+								RemindAt: 385327,
 							},
 						},
 					},
 					Board: &components.AnswerBoard{
 						Name:        "<value>",
-						Description: "boo massive sorrowful aw strict behind along energetic oddball",
+						Description: "jump joyfully discourse merrily wherever failing orchestrate lest validity yuck",
 						AudienceFilters: []components.FacetFilter{
 							components.FacetFilter{
 								FieldName: types.String("type"),
@@ -197,7 +197,7 @@ func testListanswersListanswers0(w http.ResponseWriter, req *http.Request) {
 								},
 							},
 						},
-						ID: 472871,
+						ID: 537506,
 						Creator: &components.Person{
 							Name:         "George Clooney",
 							ObfuscatedID: "abc123",

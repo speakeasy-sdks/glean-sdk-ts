@@ -22,9 +22,8 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.client.messages.retrieve({
-    idType: "CONVERSATION_ID",
+    idType: "THREAD_ID",
     id: "<id>",
-    timestampMillis: 558834,
   });
 
   // Handle the result
@@ -50,9 +49,8 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientMessagesRetrieve(glean, {
-    idType: "CONVERSATION_ID",
+    idType: "THREAD_ID",
     id: "<id>",
-    timestampMillis: 558834,
   });
 
   if (!res.ok) {

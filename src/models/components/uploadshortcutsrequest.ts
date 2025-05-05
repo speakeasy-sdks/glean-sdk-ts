@@ -7,11 +7,11 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  Shortcut,
-  Shortcut$inboundSchema,
-  Shortcut$Outbound,
-  Shortcut$outboundSchema,
-} from "./shortcut.js";
+  IndexingShortcut,
+  IndexingShortcut$inboundSchema,
+  IndexingShortcut$Outbound,
+  IndexingShortcut$outboundSchema,
+} from "./indexingshortcut.js";
 
 /**
  * Describes the request body of the /uploadshortcuts API call
@@ -36,7 +36,7 @@ export type UploadShortcutsRequest = {
   /**
    * Batch of shortcuts information
    */
-  shortcuts: Array<Shortcut>;
+  shortcuts: Array<IndexingShortcut>;
 };
 
 /** @internal */
@@ -49,7 +49,7 @@ export const UploadShortcutsRequest$inboundSchema: z.ZodType<
   isFirstPage: z.boolean().optional(),
   isLastPage: z.boolean().optional(),
   forceRestartUpload: z.boolean().optional(),
-  shortcuts: z.array(Shortcut$inboundSchema),
+  shortcuts: z.array(IndexingShortcut$inboundSchema),
 });
 
 /** @internal */
@@ -58,7 +58,7 @@ export type UploadShortcutsRequest$Outbound = {
   isFirstPage?: boolean | undefined;
   isLastPage?: boolean | undefined;
   forceRestartUpload?: boolean | undefined;
-  shortcuts: Array<Shortcut$Outbound>;
+  shortcuts: Array<IndexingShortcut$Outbound>;
 };
 
 /** @internal */
@@ -71,7 +71,7 @@ export const UploadShortcutsRequest$outboundSchema: z.ZodType<
   isFirstPage: z.boolean().optional(),
   isLastPage: z.boolean().optional(),
   forceRestartUpload: z.boolean().optional(),
-  shortcuts: z.array(Shortcut$outboundSchema),
+  shortcuts: z.array(IndexingShortcut$outboundSchema),
 });
 
 /**
