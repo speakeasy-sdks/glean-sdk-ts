@@ -5,8 +5,6 @@
 import { ClientSDK } from "../lib/sdks.js";
 import { Client } from "./client.js";
 import { Indexing } from "./indexing.js";
-import { People } from "./people.js";
-import { Search } from "./search.js";
 
 export class Glean extends ClientSDK {
   private _client?: Client;
@@ -14,18 +12,8 @@ export class Glean extends ClientSDK {
     return (this._client ??= new Client(this._options));
   }
 
-  private _search?: Search;
-  get search(): Search {
-    return (this._search ??= new Search(this._options));
-  }
-
   private _indexing?: Indexing;
   get indexing(): Indexing {
     return (this._indexing ??= new Indexing(this._options));
-  }
-
-  private _people?: People;
-  get people(): People {
-    return (this._people ??= new People(this._options));
   }
 }

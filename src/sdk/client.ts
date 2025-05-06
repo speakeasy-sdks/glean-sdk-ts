@@ -4,20 +4,19 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { Activity } from "./activity.js";
-import { Admin } from "./admin.js";
 import { Agents } from "./agents.js";
 import { Announcements } from "./announcements.js";
 import { Answers } from "./answers.js";
 import { Chat } from "./chat.js";
 import { ClientAuthentication } from "./clientauthentication.js";
 import { ClientDocuments } from "./clientdocuments.js";
-import { ClientSearch } from "./clientsearch.js";
 import { ClientShortcuts } from "./clientshortcuts.js";
 import { Collections } from "./collections.js";
 import { Entities } from "./entities.js";
 import { Insights } from "./insights.js";
 import { Messages } from "./messages.js";
 import { Pins } from "./pins.js";
+import { Search } from "./search.js";
 import { Verification } from "./verification.js";
 
 export class Client extends ClientSDK {
@@ -76,14 +75,9 @@ export class Client extends ClientSDK {
     return (this._pins ??= new Pins(this._options));
   }
 
-  private _admin?: Admin;
-  get admin(): Admin {
-    return (this._admin ??= new Admin(this._options));
-  }
-
-  private _search?: ClientSearch;
-  get search(): ClientSearch {
-    return (this._search ??= new ClientSearch(this._options));
+  private _search?: Search;
+  get search(): Search {
+    return (this._search ??= new Search(this._options));
   }
 
   private _entities?: Entities;
