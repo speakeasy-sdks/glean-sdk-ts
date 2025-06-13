@@ -2,8 +2,6 @@ openapi: 3.0.0
 info:
     version: 0.9.0
     title: Glean API
-    contact:
-        email: support@glean.com
     description: |
         # Introduction
         In addition to the data sources that Glean has built-in support for, Glean also provides a REST API that enables customers to put arbitrary content in the search index. This is useful, for example, for doing permissions-aware search over content in internal tools that reside on-prem as well as for searching over applications that Glean does not currently support first class. In addition these APIs allow the customer to push organization data (people info, organization structure etc) into Glean.
@@ -23,7 +21,7 @@ info:
         These API clients provide type-safe, idiomatic interfaces for working with Glean IndexingAPIs in your language of choice.
     x-logo:
         url: https://app.glean.com/images/glean-text2.svg
-    x-speakeasy-name: "Glean API"
+    x-speakeasy-name: 'Glean API'
 servers:
     - url: https://{instance}-be.glean.com
       variables:
@@ -414,7 +412,7 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: "#/components/schemas/ChatResponse"
+                                $ref: '#/components/schemas/ChatResponse'
                             examples:
                                 defaultExample:
                                     value:
@@ -477,10 +475,10 @@ paths:
                                                 agent: DEFAULT
                                                 mode: DEFAULT
                                               fragments:
-                                                - text: "**Reading:**"
+                                                - text: '**Reading:**'
                                                 - structuredResults:
                                                     - document:
-                                                        id: "123"
+                                                        id: '123'
                                                         title: Company Handbook
                                 citationResponse:
                                     value:
@@ -492,7 +490,7 @@ paths:
                                                 mode: DEFAULT
                                               citations:
                                                 - sourceDocument:
-                                                    id: "123"
+                                                    id: '123'
                                                     title: Company Handbook
                                                     referenceRanges:
                                                         - textRange:
@@ -758,8 +756,8 @@ paths:
         get:
             tags:
                 - Agents
-            summary: Get Agent
-            description: Get an agent by ID. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/GET/agents/{agent_id}). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+            summary: Retrieve an agent
+            description: Returns details of an [agent](https://developers.glean.com/agents/agents-api) created in the Agent Builder.
             operationId: getAgent
             x-visibility: Preview
             parameters:
@@ -797,8 +795,8 @@ paths:
         get:
             tags:
                 - Agents
-            summary: Get Agent Schemas
-            description: Get an agent's schemas by ID. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/GET/agents/{agent_id}/schemas). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+            summary: List an agent's schemas
+            description: Return [agent](https://developers.glean.com/agents/agents-api)'s input and output schemas. You can use these schemas to detect changes to an agent's input or output structure.
             operationId: getAgentSchemas
             x-visibility: Preview
             parameters:
@@ -842,8 +840,8 @@ paths:
         post:
             tags:
                 - Agents
-            summary: Search Agents
-            description: List Agents available in this service. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/POST/agents/search). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+            summary: Search agents
+            description: Search for [agents](https://developers.glean.com/agents/agents-api) by agent name.
             operationId: searchAgents
             x-visibility: Preview
             requestBody:
@@ -883,8 +881,8 @@ paths:
         post:
             tags:
                 - Agents
-            summary: Create Run, Stream Output
-            description: Creates and triggers a run of an agent. Streams the output in SSE format. This endpoint implements the LangChain Agent Protocol, specifically part of the Runs stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/runs/POST/runs/stream). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol. Note that running agents that reference third party platform write actions is unsupported as it requires user confirmation.
+            summary: Create an agent run and stream the response
+            description: Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the result as a stream of server-sent events (SSE).
             operationId: createAndStreamRun
             x-visibility: Preview
             requestBody:
@@ -900,12 +898,23 @@ paths:
                         text/event-stream:
                             schema:
                                 type: string
-                                description: |-
-                                    The server will send a stream of events in SSE format.
-                                    **Example event**:
+                                description: The server will send a stream of events in server-sent events (SSE) format.
+                                example: |
                                     id: 1
                                     event: message
-                                    data: {}
+                                    data: {"messages":[{"role":"GLEAN_AI","content":[{"text":"Hello","type":"text"}]}]}
+
+                                    id: 2
+                                    event: message
+                                    data: {"messages":[{"role":"GLEAN_AI","content":[{"text":",","type":"text"}]}]}
+
+                                    id: 3
+                                    event: message
+                                    data: {"messages":[{"role":"GLEAN_AI","content":[{"text":" I'm","type":"text"}]}]}
+
+                                    id: 4
+                                    event: message
+                                    data: {"messages":[{"role":"GLEAN_AI","content":[{"text":" your","type":"text"}]}]}
                 "400":
                     description: Bad request
                 "403":
@@ -936,8 +945,8 @@ paths:
         post:
             tags:
                 - Agents
-            summary: Create Run, Wait for Output
-            description: Creates and triggers a run of an agent. Waits for final output and then returns it. This endpoint implements the LangChain Agent Protocol, specifically part of the Runs stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/runs/POST/runs/wait). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol. Note that running agents that reference third party platform write actions is unsupported as it requires user confirmation.
+            summary: Create an agent run and wait for the response
+            description: Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the final response.
             operationId: createAndWaitRun
             x-visibility: Preview
             requestBody:
@@ -3179,7 +3188,7 @@ paths:
     /rest/api/v1/governance/data/policies/{id}:
         get:
             description: Fetches the specified policy version, or the latest if no version is provided.
-            summary: Gets specified Policy.
+            summary: Gets specified policy
             operationId: getpolicy
             x-visibility: Public
             tags:
@@ -3213,7 +3222,7 @@ paths:
             x-speakeasy-name-override: retrieve
         post:
             description: Updates an existing policy.
-            summary: Updates an existing policy.
+            summary: Updates an existing policy
             operationId: updatepolicy
             tags:
                 - Governance
@@ -3246,7 +3255,7 @@ paths:
     /rest/api/v1/governance/data/policies:
         get:
             description: Lists policies with filtering.
-            summary: Lists policies.
+            summary: Lists policies
             operationId: listpolicies
             x-visibility: Public
             tags:
@@ -3279,7 +3288,7 @@ paths:
             x-speakeasy-name-override: list
         post:
             description: Creates a new policy with specified specifications and returns its id.
-            summary: Creates new policy.
+            summary: Creates new policy
             operationId: createpolicy
             x-visibility: Public
             tags:
@@ -3306,7 +3315,7 @@ paths:
     /rest/api/v1/governance/data/policies/{id}/download:
         get:
             description: Downloads CSV violations report for a specific policy id. This does not support continuous policies.
-            summary: Downloads violations CSV for policy.
+            summary: Downloads violations CSV for policy
             operationId: downloadpolicycsv
             x-visibility: Public
             tags:
@@ -3335,7 +3344,7 @@ paths:
     /rest/api/v1/governance/data/reports:
         post:
             description: Creates a new one-time report and executes its batch job.
-            summary: Creates new one-time report.
+            summary: Creates new one-time report
             operationId: createreport
             x-visibility: Public
             tags:
@@ -3362,7 +3371,7 @@ paths:
     /rest/api/v1/governance/data/reports/{id}/download:
         get:
             description: Downloads CSV violations report for a specific report id.
-            summary: Downloads violations CSV for report.
+            summary: Downloads violations CSV for report
             operationId: downloadreportcsv
             x-visibility: Public
             tags:
@@ -3391,7 +3400,7 @@ paths:
     /rest/api/v1/governance/data/reports/{id}/status:
         get:
             description: Fetches the status of the run corresponding to the report-id.
-            summary: Fetches report run status.
+            summary: Fetches report run status
             operationId: getreportstatus
             x-visibility: Public
             tags:
@@ -3419,7 +3428,7 @@ paths:
     /rest/api/v1/governance/documents/visibilityoverrides:
         get:
             description: Fetches the visibility override status of the documents passed.
-            summary: Fetches documents visibility.
+            summary: Fetches documents visibility
             operationId: getdocvisibility
             x-visibility: Public
             tags:
@@ -3447,7 +3456,7 @@ paths:
             x-speakeasy-name-override: list
         post:
             description: Sets the visibility-override state of the documents specified, effectively hiding or un-hiding documents.
-            summary: Hide/Un-hide docs.
+            summary: Hide or unhide docs
             operationId: setdocvisibility
             x-visibility: Public
             tags:
@@ -6817,9 +6826,11 @@ components:
                     x-enumDescriptions:
                         DEFAULT: Integrates with your company's knowledge.
                         GPT: Communicates directly with the LLM.
+                        UNIVERSAL: Uses both company and web knowledge.
                     enum:
                         - DEFAULT
                         - GPT
+                        - UNIVERSAL
                 mode:
                     type: string
                     description: Top level modes to run GleanChat in.
@@ -7244,9 +7255,15 @@ components:
                     type: integer
                     description: Timeout in milliseconds for the request. A `408` error will be returned if handling the request takes longer.
                     example: 30000
+                sessionInfo:
+                    description: Optional object for tracking the session used by the client and for debugging purposes.
+                    $ref: "#/components/schemas/SessionInfo"
                 applicationId:
                     type: string
                     description: The ID of the application this request originates from, used to determine the configuration of underlying chat processes. This should correspond to the ID set during admin setup. If not specified, the default chat experience will be used.
+                agentId:
+                    type: string
+                    description: The ID of the Agent that should process this chat request. Only Agents with trigger set to 'User chat message' are invokable through this API. If not specified, the default chat experience will be used.
                 stream:
                     type: boolean
                     description: If set, response lines will be streamed one-by-one as they become available. Each will be a ChatResponse, formatted as JSON, and separated by a new line. If false, the entire response will be returned at once. Note that if this is set and the model being used does not support streaming, the model's response will not be streamed, but other messages from the endpoint still will be.
@@ -7416,31 +7433,38 @@ components:
                     type: string
                     title: Agent Id
                     description: The ID of the agent.
+                    example: mho4lwzylcozgoc2
                 name:
                     type: string
                     title: Agent Name
                     description: The name of the agent
+                    example: HR Policy Agent
                 description:
                     type: string
                     title: Description
                     description: The description of the agent.
+                    example: This agent answers questions about the current company HR policies.
                 metadata:
                     type: object
                     title: Metadata
-                    description: The agent metadata.
+                    description: The agent metadata. Currently not implemented.
                 capabilities:
                     type: object
                     title: Agent Capabilities
-                    description: Describes which protocol features the agent supports. In addition to the standard capabilities (prefixed with ap.), implementations can declare custom capabilities, named in reverse domain notation (eg. com.example.some.capability).
+                    description: |-
+                        Describes features that the agent supports. example: {
+                          "ap.io.messages": true,
+                          "ap.io.streaming": true
+                        }
                     properties:
                         ap.io.messages:
                             type: boolean
                             title: Messages
-                            description: Whether the agent supports Messages as input/output/state. If true, the agent uses the `messages` key in threads/runs endpoints.
+                            description: Whether the agent supports messages as an input. If true, you'll pass `messages` as an input when running the agent.
                         ap.io.streaming:
                             type: boolean
                             title: Streaming
-                            description: Whether the agent supports streaming output.
+                            description: Whether the agent supports streaming output. If true, you you can stream agent ouput. All agents currently support streaming.
                     additionalProperties: true
         ErrorResponse:
             type: string
@@ -7452,6 +7476,7 @@ components:
                     type: string
                     title: Agent Id
                     description: The ID of the agent.
+                    example: mho4lwzylcozgoc2
                 input_schema:
                     type: object
                     title: Input Schema
@@ -7472,7 +7497,8 @@ components:
             properties:
                 name:
                     type: string
-                    description: Filters on the name of the agent. If empty, acts as no filter.
+                    description: Filters on the name of the agent. The keyword search is case-insensitive. If search string is ommited or empty, acts as no filter.
+                    example: HR Policy Agent
         SearchAgentsResponse:
             type: object
             title: Response Search Agents
@@ -7510,6 +7536,8 @@ components:
         AgentRunCreate:
             description: Payload for creating a run.
             type: object
+            required:
+                - agent_id
             properties:
                 agent_id:
                     type: string
@@ -7526,6 +7554,11 @@ components:
                         $ref: "#/components/schemas/Message"
                     title: Messages
                     description: The messages to pass an input to the agent.
+                metadata:
+                    type: object
+                    title: Metadata
+                    description: The metadata to pass to the agent.
+                    additionalProperties: true
         AgentExecutionStatus:
             description: The status of the run. One of 'error', 'success'.
             type: string
@@ -9269,11 +9302,16 @@ components:
                 runCount:
                     $ref: "#/components/schemas/CountInfo"
                     description: This tracks how many times this prompt template was run. If user runs a prompt template after modifying the original one, it still counts as a run for the original template.
-        WorkflowMutableProperties:
+        WorkflowDraftableProperties:
             properties:
                 name:
                     type: string
                     description: The name of the workflow.
+        WorkflowMutableProperties:
+            type: object
+            allOf:
+                - $ref: "#/components/schemas/WorkflowDraftableProperties"
+                - type: object
         WorkflowMetadata:
             allOf:
                 - type: object
