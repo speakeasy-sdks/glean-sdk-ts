@@ -5,16 +5,18 @@ package components
 // AgentRunCreate - Payload for creating a run.
 type AgentRunCreate struct {
 	// The ID of the agent to run.
-	AgentID *string `json:"agent_id,omitempty"`
+	AgentID string `json:"agent_id"`
 	// The input to the agent.
 	Input map[string]any `json:"input,omitempty"`
 	// The messages to pass an input to the agent.
 	Messages []Message `json:"messages,omitempty"`
+	// The metadata to pass to the agent.
+	Metadata map[string]any `json:"metadata,omitempty"`
 }
 
-func (o *AgentRunCreate) GetAgentID() *string {
+func (o *AgentRunCreate) GetAgentID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.AgentID
 }
@@ -31,4 +33,11 @@ func (o *AgentRunCreate) GetMessages() []Message {
 		return nil
 	}
 	return o.Messages
+}
+
+func (o *AgentRunCreate) GetMetadata() map[string]any {
+	if o == nil {
+		return nil
+	}
+	return o.Metadata
 }
