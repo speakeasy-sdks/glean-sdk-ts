@@ -56,8 +56,8 @@ let value: ChatRequest = {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -195,6 +195,9 @@ let value: ChatRequest = {
                   },
                   collections: [],
                 },
+                generatedQna: {
+                  ranges: [],
+                },
                 extractedQnA: {
                   questionResult: {
                     title: "title",
@@ -202,8 +205,8 @@ let value: ChatRequest = {
                     nativeAppUrl: "slack://foo/bar",
                     snippets: [
                       {
-                        snippet: "snippet",
                         mimeType: "mimeType",
+                        snippet: "snippet",
                       },
                     ],
                     mustIncludeSuggestions: {},
@@ -278,9 +281,7 @@ let value: ChatRequest = {
                   ],
                 },
                 relatedDocuments: [],
-                relatedQuestion: {
-                  ranges: [],
-                },
+                relatedQuestion: {},
               },
             ],
             querySuggestion: {
@@ -301,6 +302,23 @@ let value: ChatRequest = {
                 displayDescription: "<value>",
                 objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
               },
+            },
+            citation: {
+              sourceFile: {
+                id: "FILE_1234",
+                url: "www.google.com",
+                name: "sample.pdf",
+              },
+              referenceRanges: [
+                {
+                  snippets: [
+                    {
+                      mimeType: "mimeType",
+                      snippet: "snippet",
+                    },
+                  ],
+                },
+              ],
             },
           },
         ],

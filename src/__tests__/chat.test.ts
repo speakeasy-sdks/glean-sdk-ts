@@ -133,8 +133,8 @@ test("Chat Chat Streaming Example", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -168,8 +168,8 @@ test("Chat Chat Streaming Example", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -1585,8 +1585,8 @@ test("Chat Chat Streaming Example", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -1620,8 +1620,8 @@ test("Chat Chat Streaming Example", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -1655,8 +1655,8 @@ test("Chat Chat Streaming Example", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -1727,8 +1727,8 @@ test("Chat Chat Streaming Example", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -1762,8 +1762,8 @@ test("Chat Chat Streaming Example", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -1797,8 +1797,8 @@ test("Chat Chat Streaming Example", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -3469,8 +3469,8 @@ test("Chat Chat Streaming Example", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -3504,8 +3504,8 @@ test("Chat Chat Streaming Example", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -3539,8 +3539,8 @@ test("Chat Chat Streaming Example", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -3611,8 +3611,8 @@ test("Chat Chat Streaming Example", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -3646,8 +3646,8 @@ test("Chat Chat Streaming Example", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -3681,8 +3681,8 @@ test("Chat Chat Streaming Example", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -3753,8 +3753,8 @@ test("Chat Chat Streaming Example", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -3788,8 +3788,8 @@ test("Chat Chat Streaming Example", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -4510,8 +4510,8 @@ test("Chat Chat Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -4545,8 +4545,8 @@ test("Chat Chat Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -5261,8 +5261,8 @@ test("Chat Chat Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -5296,8 +5296,8 @@ test("Chat Chat Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -5368,8 +5368,8 @@ test("Chat Chat Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -5403,8 +5403,8 @@ test("Chat Chat Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -5475,8 +5475,8 @@ test("Chat Chat Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -5510,8 +5510,8 @@ test("Chat Chat Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -6539,8 +6539,8 @@ test("Chat Chat Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -6574,8 +6574,8 @@ test("Chat Chat Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -8571,8 +8571,8 @@ test("Chat Chat Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -8606,8 +8606,8 @@ test("Chat Chat Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -8641,8 +8641,8 @@ test("Chat Chat Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -8713,8 +8713,8 @@ test("Chat Chat Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -8748,8 +8748,8 @@ test("Chat Chat Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -8783,8 +8783,8 @@ test("Chat Chat Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -10280,8 +10280,8 @@ test("Chat Chat Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -11490,8 +11490,8 @@ test("Chat Chat Stream Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -11525,8 +11525,8 @@ test("Chat Chat Stream Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -11560,8 +11560,8 @@ test("Chat Chat Stream Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -13682,8 +13682,8 @@ test("Chat Chat Stream Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -13717,8 +13717,8 @@ test("Chat Chat Stream Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -13789,8 +13789,8 @@ test("Chat Chat Stream Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -13861,8 +13861,8 @@ test("Chat Chat Stream Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -13896,8 +13896,8 @@ test("Chat Chat Stream Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -13931,8 +13931,8 @@ test("Chat Chat Stream Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -15909,8 +15909,8 @@ test("Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -15944,8 +15944,8 @@ test("Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -16016,8 +16016,8 @@ test("Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -16051,8 +16051,8 @@ test("Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -16086,8 +16086,8 @@ test("Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -17933,8 +17933,8 @@ test("Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -17968,8 +17968,8 @@ test("Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -18003,8 +18003,8 @@ test("Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -19023,8 +19023,8 @@ test("Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -19058,8 +19058,8 @@ test("Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -19130,8 +19130,8 @@ test("Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -19165,8 +19165,8 @@ test("Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -19200,8 +19200,8 @@ test("Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -19272,8 +19272,8 @@ test("Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -19307,8 +19307,8 @@ test("Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },

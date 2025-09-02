@@ -24,6 +24,12 @@ import {
   ChatRestrictionFilters$Outbound,
   ChatRestrictionFilters$outboundSchema,
 } from "./chatrestrictionfilters.js";
+import {
+  SessionInfo,
+  SessionInfo$inboundSchema,
+  SessionInfo$Outbound,
+  SessionInfo$outboundSchema,
+} from "./sessioninfo.js";
 
 export type ChatRequest = {
   /**
@@ -35,7 +41,7 @@ export type ChatRequest = {
    */
   chatId?: string | undefined;
   /**
-   * A list of chat messages, from most recent to least recent. It can be assumed that the first chat message in the list is the user's most recent query.
+   * A list of chat messages, from most recent to least recent. At least one message must specify a USER author.
    */
   messages: Array<ChatMessage>;
   /**
@@ -48,10 +54,15 @@ export type ChatRequest = {
    * Timeout in milliseconds for the request. A `408` error will be returned if handling the request takes longer.
    */
   timeoutMillis?: number | undefined;
+  sessionInfo?: SessionInfo | undefined;
   /**
    * The ID of the application this request originates from, used to determine the configuration of underlying chat processes. This should correspond to the ID set during admin setup. If not specified, the default chat experience will be used.
    */
   applicationId?: string | undefined;
+  /**
+   * The ID of the Agent that should process this chat request. Only Agents with trigger set to 'User chat message' are invokable through this API. If not specified, the default chat experience will be used.
+   */
+  agentId?: string | undefined;
   /**
    * If set, response lines will be streamed one-by-one as they become available. Each will be a ChatResponse, formatted as JSON, and separated by a new line. If false, the entire response will be returned at once. Note that if this is set and the model being used does not support streaming, the model's response will not be streamed, but other messages from the endpoint still will be.
    */
@@ -71,7 +82,9 @@ export const ChatRequest$inboundSchema: z.ZodType<
   inclusions: ChatRestrictionFilters$inboundSchema.optional(),
   exclusions: ChatRestrictionFilters$inboundSchema.optional(),
   timeoutMillis: z.number().int().optional(),
+  sessionInfo: SessionInfo$inboundSchema.optional(),
   applicationId: z.string().optional(),
+  agentId: z.string().optional(),
   stream: z.boolean().optional(),
 });
 
@@ -84,7 +97,9 @@ export type ChatRequest$Outbound = {
   inclusions?: ChatRestrictionFilters$Outbound | undefined;
   exclusions?: ChatRestrictionFilters$Outbound | undefined;
   timeoutMillis?: number | undefined;
+  sessionInfo?: SessionInfo$Outbound | undefined;
   applicationId?: string | undefined;
+  agentId?: string | undefined;
   stream?: boolean | undefined;
 };
 
@@ -101,7 +116,9 @@ export const ChatRequest$outboundSchema: z.ZodType<
   inclusions: ChatRestrictionFilters$outboundSchema.optional(),
   exclusions: ChatRestrictionFilters$outboundSchema.optional(),
   timeoutMillis: z.number().int().optional(),
+  sessionInfo: SessionInfo$outboundSchema.optional(),
   applicationId: z.string().optional(),
+  agentId: z.string().optional(),
   stream: z.boolean().optional(),
 });
 

@@ -36,12 +36,14 @@ export const FeedRequestCategory = {
   DisplayableList: "DISPLAYABLE_LIST",
   SocialLink: "SOCIAL_LINK",
   ExternalTasks: "EXTERNAL_TASKS",
+  WorkflowCollections: "WORKFLOW_COLLECTIONS",
   ZeroStateChatSuggestion: "ZERO_STATE_CHAT_SUGGESTION",
   ZeroStateChatToolSuggestion: "ZERO_STATE_CHAT_TOOL_SUGGESTION",
   ZeroStateWorkflowCreatedByMe: "ZERO_STATE_WORKFLOW_CREATED_BY_ME",
   ZeroStateWorkflowFavorites: "ZERO_STATE_WORKFLOW_FAVORITES",
   ZeroStateWorkflowPopular: "ZERO_STATE_WORKFLOW_POPULAR",
   ZeroStateWorkflowSuggestion: "ZERO_STATE_WORKFLOW_SUGGESTION",
+  PersonalizedChatSuggestion: "PERSONALIZED_CHAT_SUGGESTION",
 } as const;
 export type FeedRequestCategory = ClosedEnum<typeof FeedRequestCategory>;
 

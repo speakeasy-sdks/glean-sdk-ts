@@ -2,8 +2,6 @@ openapi: 3.0.0
 info:
     version: 0.9.0
     title: Glean API
-    contact:
-        email: support@glean.com
     description: |
         # Introduction
         In addition to the data sources that Glean has built-in support for, Glean also provides a REST API that enables customers to put arbitrary content in the search index. This is useful, for example, for doing permissions-aware search over content in internal tools that reside on-prem as well as for searching over applications that Glean does not currently support first class. In addition these APIs allow the customer to push organization data (people info, organization structure etc) into Glean.
@@ -23,7 +21,7 @@ info:
         These API clients provide type-safe, idiomatic interfaces for working with Glean IndexingAPIs in your language of choice.
     x-logo:
         url: https://app.glean.com/images/glean-text2.svg
-    x-speakeasy-name: "Glean API"
+    x-speakeasy-name: 'Glean API'
 servers:
     - url: https://{instance}-be.glean.com
       variables:
@@ -353,7 +351,12 @@ paths:
             tags:
                 - Authentication
             summary: Create authentication token
-            description: Creates an authentication token for the authenticated user.
+            description: |
+                Creates an authentication token for the authenticated user. These are
+                specifically intended to be used with the [Web SDK](https://developers.glean.com/web).
+
+                Note: The tokens generated from this endpoint are **not** valid tokens
+                for use with the Client API (e.g. `/rest/api/v1/*`).
             operationId: createauthtoken
             x-visibility: Public
             parameters: []
@@ -414,7 +417,7 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: "#/components/schemas/ChatResponse"
+                                $ref: '#/components/schemas/ChatResponse'
                             examples:
                                 defaultExample:
                                     value:
@@ -477,10 +480,10 @@ paths:
                                                 agent: DEFAULT
                                                 mode: DEFAULT
                                               fragments:
-                                                - text: "**Reading:**"
+                                                - text: '**Reading:**'
                                                 - structuredResults:
                                                     - document:
-                                                        id: "123"
+                                                        id: '123'
                                                         title: Company Handbook
                                 citationResponse:
                                     value:
@@ -492,7 +495,7 @@ paths:
                                                 mode: DEFAULT
                                               citations:
                                                 - sourceDocument:
-                                                    id: "123"
+                                                    id: '123'
                                                     title: Company Handbook
                                                     referenceRanges:
                                                         - textRange:
@@ -758,8 +761,8 @@ paths:
         get:
             tags:
                 - Agents
-            summary: Get Agent
-            description: Get an agent by ID. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/GET/agents/{agent_id}). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+            summary: Retrieve an agent
+            description: Returns details of an [agent](https://developers.glean.com/agents/agents-api) created in the Agent Builder.
             operationId: getAgent
             x-visibility: Preview
             parameters:
@@ -797,8 +800,8 @@ paths:
         get:
             tags:
                 - Agents
-            summary: Get Agent Schemas
-            description: Get an agent's schemas by ID. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/GET/agents/{agent_id}/schemas). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+            summary: List an agent's schemas
+            description: Return [agent](https://developers.glean.com/agents/agents-api)'s input and output schemas. You can use these schemas to detect changes to an agent's input or output structure.
             operationId: getAgentSchemas
             x-visibility: Preview
             parameters:
@@ -842,8 +845,8 @@ paths:
         post:
             tags:
                 - Agents
-            summary: Search Agents
-            description: List Agents available in this service. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/POST/agents/search). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+            summary: Search agents
+            description: Search for [agents](https://developers.glean.com/agents/agents-api) by agent name.
             operationId: searchAgents
             x-visibility: Preview
             requestBody:
@@ -883,8 +886,8 @@ paths:
         post:
             tags:
                 - Agents
-            summary: Create Run, Stream Output
-            description: Creates and triggers a run of an agent. Streams the output in SSE format. This endpoint implements the LangChain Agent Protocol, specifically part of the Runs stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/runs/POST/runs/stream). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol. Note that running agents that reference third party platform write actions is unsupported as it requires user confirmation.
+            summary: Create an agent run and stream the response
+            description: Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the result as a stream of server-sent events (SSE).
             operationId: createAndStreamRun
             x-visibility: Preview
             requestBody:
@@ -900,12 +903,23 @@ paths:
                         text/event-stream:
                             schema:
                                 type: string
-                                description: |-
-                                    The server will send a stream of events in SSE format.
-                                    **Example event**:
+                                description: The server will send a stream of events in server-sent events (SSE) format.
+                                example: |
                                     id: 1
                                     event: message
-                                    data: {}
+                                    data: {"messages":[{"role":"GLEAN_AI","content":[{"text":"Hello","type":"text"}]}]}
+
+                                    id: 2
+                                    event: message
+                                    data: {"messages":[{"role":"GLEAN_AI","content":[{"text":",","type":"text"}]}]}
+
+                                    id: 3
+                                    event: message
+                                    data: {"messages":[{"role":"GLEAN_AI","content":[{"text":" I'm","type":"text"}]}]}
+
+                                    id: 4
+                                    event: message
+                                    data: {"messages":[{"role":"GLEAN_AI","content":[{"text":" your","type":"text"}]}]}
                 "400":
                     description: Bad request
                 "403":
@@ -936,8 +950,8 @@ paths:
         post:
             tags:
                 - Agents
-            summary: Create Run, Wait for Output
-            description: Creates and triggers a run of an agent. Waits for final output and then returns it. This endpoint implements the LangChain Agent Protocol, specifically part of the Runs stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/runs/POST/runs/wait). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol. Note that running agents that reference third party platform write actions is unsupported as it requires user confirmation.
+            summary: Create an agent run and wait for the response
+            description: Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the final response.
             operationId: createAndWaitRun
             x-visibility: Preview
             requestBody:
@@ -1781,7 +1795,7 @@ paths:
             tags:
                 - Entities
             summary: List entities
-            description: List some set of details for all entities that fit the given criteria and return in the requested order. Does not support negation in filters, assumes relation type EQUALS. There is a limit of 10000 entities that can be retrieved via this endpoint.
+            description: List some set of details for all entities that fit the given criteria and return in the requested order. Does not support negation in filters, assumes relation type EQUALS. There is a limit of 10000 entities that can be retrieved via this endpoint, except when using FULL_DIRECTORY request type for people entities.
             operationId: listentities
             x-visibility: Public
             x-codegen-request-body-name: payload
@@ -2231,7 +2245,7 @@ paths:
     /api/index/v1/indexdocuments:
         post:
             summary: Index documents
-            description: Adds or updates multiple documents in the index. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#choosing-indexdocuments-vs-bulkindexdocuments) documentation for an explanation of when to use this endpoint.
+            description: Adds or updates multiple documents in the index. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-indexing/choosing-indexdocuments-vs-bulkindexdocuments) documentation for an explanation of when to use this endpoint.
             tags:
                 - Documents
             requestBody:
@@ -2257,7 +2271,7 @@ paths:
     /api/index/v1/bulkindexdocuments:
         post:
             summary: Bulk index documents
-            description: Replaces the documents in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+            description: Replaces the documents in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
             tags:
                 - Documents
             requestBody:
@@ -2389,7 +2403,7 @@ paths:
     /api/index/v1/bulkindexusers:
         post:
             summary: Bulk index users
-            description: Replaces the users in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+            description: Replaces the users in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
             tags:
                 - Permissions
             requestBody:
@@ -2437,7 +2451,7 @@ paths:
     /api/index/v1/bulkindexgroups:
         post:
             summary: Bulk index groups
-            description: Replaces the groups in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+            description: Replaces the groups in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
             tags:
                 - Permissions
             requestBody:
@@ -2485,7 +2499,7 @@ paths:
     /api/index/v1/bulkindexmemberships:
         post:
             summary: Bulk index memberships for a group
-            description: Replaces the memberships for a group in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+            description: Replaces the memberships for a group in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
             tags:
                 - Permissions
             requestBody:
@@ -2608,7 +2622,7 @@ paths:
             description: |
                 Gather information about the datasource's overall status. Currently in beta, might undergo breaking changes without prior notice.
 
-                Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/) for more information.
+                Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexing/debugging/datasource-config) for more information.
             tags:
                 - Troubleshooting
             parameters:
@@ -2639,7 +2653,7 @@ paths:
             description: |
                 Gives various information that would help in debugging related to a particular document. Currently in beta, might undergo breaking changes without prior notice.
 
-                Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/) for more information.
+                Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexing/debugging/datasource-config) for more information.
             tags:
                 - Troubleshooting
             parameters:
@@ -2677,7 +2691,7 @@ paths:
             description: |
                 Gives various information that would help in debugging related to a batch of documents. Currently in beta, might undergo breaking changes without prior notice.
 
-                Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/) for more information.
+                Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexing/debugging/datasource-config) for more information.
             tags:
                 - Troubleshooting
             parameters:
@@ -2715,7 +2729,7 @@ paths:
             description: |
                 Gives various information that would help in debugging related to a particular user. Currently in beta, might undergo breaking changes without prior notice.
 
-                Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/) for more information.
+                Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexing/debugging/datasource-config) for more information.
             tags:
                 - Troubleshooting
             parameters:
@@ -2751,7 +2765,7 @@ paths:
             description: |
                 Check if a given user has access to access a document in a custom datasource
 
-                Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/) for more information.
+                Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexing/debugging/datasource-config) for more information.
             tags:
                 - Troubleshooting
             requestBody:
@@ -2783,7 +2797,7 @@ paths:
             description: |
                 Intended for debugging/validation. Fetches the current upload and indexing status of documents.
 
-                Tip: Use [/debug/{datasource}/document](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/#debug-datasource-document) for richer information.
+                Tip: Use [/debug/{datasource}/document](https://developers.glean.com/indexing/debugging/datasource-document) for richer information.
             tags:
                 - Troubleshooting
             requestBody:
@@ -2815,7 +2829,7 @@ paths:
             description: |
                 Fetches document count for the specified custom datasource.
 
-                Tip: Use [/debug/{datasource}/status](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/#debug-datasource-status) for richer information.
+                Tip: Use [/debug/{datasource}/status](https://developers.glean.com/indexing/debugging/datasource-status) for richer information.
             tags:
                 - Troubleshooting
             requestBody:
@@ -2847,7 +2861,7 @@ paths:
             description: |
                 Fetches user count for the specified custom datasource.
 
-                Tip: Use [/debug/{datasource}/status](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/#debug-datasource-status) for richer information.
+                Tip: Use [/debug/{datasource}/status](https://developers.glean.com/indexing/debugging/datasource-status) for richer information.
             tags:
                 - Troubleshooting
             requestBody:
@@ -2949,7 +2963,7 @@ paths:
     /api/index/v1/rotatetoken:
         post:
             summary: Rotate token
-            description: Rotates the secret value inside the Indexing API token and returns the new raw secret. All other properties of the token are unchanged. In order to rotate the secret value, include the token as the bearer token in the `/rotatetoken` request. Please refer to [Token rotation](https://developers.glean.com/docs/indexing_api_token_rotation/) documentation for more information.
+            description: Rotates the secret value inside the Indexing API token and returns the new raw secret. All other properties of the token are unchanged. In order to rotate the secret value, include the token as the bearer token in the `/rotatetoken` request. Please refer to [Token rotation](https://developers.glean.com/indexing/authentication/token-rotation) documentation for more information.
             tags:
                 - Authentication
             responses:
@@ -2992,7 +3006,7 @@ paths:
     /api/index/v1/bulkindexemployees:
         post:
             summary: Bulk index employees
-            description: Replaces all the currently indexed employees using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+            description: Replaces all the currently indexed employees using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
             tags:
                 - People
             requestBody:
@@ -3107,7 +3121,7 @@ paths:
     /api/index/v1/bulkindexteams:
         post:
             summary: Bulk index teams
-            description: Replaces all the currently indexed teams using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+            description: Replaces all the currently indexed teams using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
             tags:
                 - People
             requestBody:
@@ -3179,7 +3193,7 @@ paths:
     /rest/api/v1/governance/data/policies/{id}:
         get:
             description: Fetches the specified policy version, or the latest if no version is provided.
-            summary: Gets specified Policy.
+            summary: Gets specified policy
             operationId: getpolicy
             x-visibility: Public
             tags:
@@ -3213,7 +3227,7 @@ paths:
             x-speakeasy-name-override: retrieve
         post:
             description: Updates an existing policy.
-            summary: Updates an existing policy.
+            summary: Updates an existing policy
             operationId: updatepolicy
             tags:
                 - Governance
@@ -3246,7 +3260,7 @@ paths:
     /rest/api/v1/governance/data/policies:
         get:
             description: Lists policies with filtering.
-            summary: Lists policies.
+            summary: Lists policies
             operationId: listpolicies
             x-visibility: Public
             tags:
@@ -3279,7 +3293,7 @@ paths:
             x-speakeasy-name-override: list
         post:
             description: Creates a new policy with specified specifications and returns its id.
-            summary: Creates new policy.
+            summary: Creates new policy
             operationId: createpolicy
             x-visibility: Public
             tags:
@@ -3306,7 +3320,7 @@ paths:
     /rest/api/v1/governance/data/policies/{id}/download:
         get:
             description: Downloads CSV violations report for a specific policy id. This does not support continuous policies.
-            summary: Downloads violations CSV for policy.
+            summary: Downloads violations CSV for policy
             operationId: downloadpolicycsv
             x-visibility: Public
             tags:
@@ -3335,7 +3349,7 @@ paths:
     /rest/api/v1/governance/data/reports:
         post:
             description: Creates a new one-time report and executes its batch job.
-            summary: Creates new one-time report.
+            summary: Creates new one-time report
             operationId: createreport
             x-visibility: Public
             tags:
@@ -3362,7 +3376,7 @@ paths:
     /rest/api/v1/governance/data/reports/{id}/download:
         get:
             description: Downloads CSV violations report for a specific report id.
-            summary: Downloads violations CSV for report.
+            summary: Downloads violations CSV for report
             operationId: downloadreportcsv
             x-visibility: Public
             tags:
@@ -3391,7 +3405,7 @@ paths:
     /rest/api/v1/governance/data/reports/{id}/status:
         get:
             description: Fetches the status of the run corresponding to the report-id.
-            summary: Fetches report run status.
+            summary: Fetches report run status
             operationId: getreportstatus
             x-visibility: Public
             tags:
@@ -3419,7 +3433,7 @@ paths:
     /rest/api/v1/governance/documents/visibilityoverrides:
         get:
             description: Fetches the visibility override status of the documents passed.
-            summary: Fetches documents visibility.
+            summary: Fetches documents visibility
             operationId: getdocvisibility
             x-visibility: Public
             tags:
@@ -3447,7 +3461,7 @@ paths:
             x-speakeasy-name-override: list
         post:
             description: Sets the visibility-override state of the documents specified, effectively hiding or un-hiding documents.
-            summary: Hide/Un-hide docs.
+            summary: Hide or unhide docs
             operationId: setdocvisibility
             x-visibility: Public
             tags:
@@ -3760,6 +3774,7 @@ components:
                 email:
                     type: string
                     description: The email address of the user who submitted the Feedback.event.MANUAL_FEEDBACK event.
+                    deprecated: true
                 source:
                     type: string
                     description: The source associated with the Feedback.event.MANUAL_FEEDBACK event.
@@ -3854,6 +3869,71 @@ components:
                 ratingScale:
                     type: integer
                     description: The scale of comparison for a rating associated with the feedback. Rating values start from one and go up to the maximum specified by ratingScale. For example, a five-option satisfaction rating will have a ratingScale of 5 and a thumbs-up/thumbs-down rating will have a ratingScale of 2.
+        SideBySideImplementation:
+            properties:
+                implementationId:
+                    type: string
+                    description: Unique identifier for this implementation variant.
+                implementationName:
+                    type: string
+                    description: Human-readable name for this implementation (e.g., "Variant A", "GPT-4", "Claude").
+                searchParams:
+                    type: object
+                    description: The search/chat parameters used for this implementation.
+                    additionalProperties:
+                        type: string
+                response:
+                    type: string
+                    description: The full response generated by this implementation.
+                responseMetadata:
+                    type: object
+                    description: Metadata about the response (e.g., latency, token count).
+                    properties:
+                        latencyMs:
+                            type: integer
+                            description: Time taken to generate the response in milliseconds.
+                        tokenCount:
+                            type: integer
+                            description: Number of tokens in the response.
+                        modelUsed:
+                            type: string
+                            description: The specific model version used.
+        ManualFeedbackSideBySideInfo:
+            properties:
+                email:
+                    type: string
+                    description: The email address of the user who submitted the side-by-side feedback.
+                source:
+                    type: string
+                    description: The source associated with the side-by-side feedback event.
+                    enum:
+                        - LIVE_EVAL
+                        - CHAT
+                        - SEARCH
+                query:
+                    type: string
+                    description: The query or prompt that was evaluated across multiple implementations.
+                implementations:
+                    type: array
+                    description: Array of implementations that were compared side-by-side.
+                    items:
+                        $ref: "#/components/schemas/SideBySideImplementation"
+                evaluationSessionId:
+                    type: string
+                    description: Unique identifier for this evaluation session to group related feedback events.
+                implementationId:
+                    type: string
+                    description: The ID of the implementation this specific feedback event is for.
+                vote:
+                    type: string
+                    description: The vote for this specific implementation.
+                    enum:
+                        - UPVOTE
+                        - DOWNVOTE
+                        - NEUTRAL
+                comments:
+                    type: string
+                    description: Specific feedback comments for this implementation.
         SeenFeedbackInfo:
             properties:
                 isExplicit:
@@ -3924,6 +4004,7 @@ components:
                         FOCUS_IN: The user clicked into an interactive element, e.g. the search box.
                         LAST_TOKEN: The final token of a streaming response is received.
                         MANUAL_FEEDBACK: The user submitted textual manual feedback regarding the object.
+                        MANUAL_FEEDBACK_SIDE_BY_SIDE: The user submitted comparative feedback for multiple side-by-side implementations.
                         MARK_AS_READ: The user explicitly marked the content as read.
                         MESSAGE: The user attempted to send a message using their default messaing app.
                         MIDDLE_CLICK: The user middle clicked the object's primary link with the intent to open its full representation in a new tab.
@@ -3953,6 +4034,7 @@ components:
                         - FOCUS_IN
                         - LAST_TOKEN
                         - MANUAL_FEEDBACK
+                        - MANUAL_FEEDBACK_SIDE_BY_SIDE
                         - MARK_AS_READ
                         - MESSAGE
                         - MIDDLE_CLICK
@@ -4007,6 +4089,8 @@ components:
                     description: The UI element associated with the event, if any.
                 manualFeedbackInfo:
                     $ref: "#/components/schemas/ManualFeedbackInfo"
+                manualFeedbackSideBySideInfo:
+                    $ref: "#/components/schemas/ManualFeedbackSideBySideInfo"
                 seenFeedbackInfo:
                     $ref: "#/components/schemas/SeenFeedbackInfo"
                 userViewInfo:
@@ -4108,6 +4192,7 @@ components:
                         - ID_EQUALS
                         - LT
                         - GT
+                        - NOT_EQUALS
                     example: EQUALS
                 isNegated:
                     type: boolean
@@ -4282,7 +4367,7 @@ components:
                     description: Disables automatic adjustment of the input query for spelling corrections or other reasons.
                 returnLlmContentOverSnippets:
                     type: boolean
-                    description: "[beta] Enables expanded content to be returned for LLM usage. The size of content per result returned should be modified using maxSnippetSize. Server may return less or more than what is specified in maxSnippetSize. For more details, https://docs.google.com/document/d/1CTOLSxWWT9WDEnHVLoCUaxbGYyXYP8kctPRF-RluSQY/edit. Requires sufficient permissions."
+                    description: Enables expanded content to be returned for LLM usage. The size of content per result returned should be modified using maxSnippetSize. Server may return less or more than what is specified in maxSnippetSize. For more details, see https://developers.glean.com/guides/search/llm-content.
                 inclusions:
                     $ref: "#/components/schemas/RestrictionFilters"
                     description: A list of filters which restrict the search results to only the specified content.
@@ -4780,6 +4865,9 @@ components:
                 name:
                     type: string
                     description: Name of the group.
+                datasourceInstance:
+                    type: string
+                    description: Datasource instance if the group belongs to one e.g. external groups.
         UserRole:
             type: string
             description: A user's role with respect to a specific document.
@@ -4854,7 +4942,8 @@ components:
                     example: From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.
                 boardId:
                     type: integer
-                    description: The parent board ID of this Answer, or 0 if it's a floating Answer.
+                    description: The parent board ID of this Answer, or 0 if it's a floating Answer. Adding Answers to Answer Boards is no longer permitted.
+                    deprecated: true
                 audienceFilters:
                     type: array
                     description: Filters which restrict who should see the answer. Values are taken from the corresponding filters in people search.
@@ -5379,6 +5468,68 @@ components:
                         description: The document's document_category(.proto).
                     sourceDocument:
                         $ref: "#/components/schemas/Document"
+        FollowupAction:
+            description: A follow-up action that can be invoked by the user after a response. The action parameters are not included and need to be predicted/filled separately.
+            properties:
+                actionRunId:
+                    type: string
+                    description: Unique identifier for this actionRun recommendation event.
+                actionInstanceId:
+                    type: string
+                    description: The ID of the action instance that will be invoked.
+                actionId:
+                    type: string
+                    description: The ID of the associated action.
+                recommendationText:
+                    type: string
+                    description: Text to be displayed to the user when recommending the action instance.
+                actionLabel:
+                    type: string
+                    description: The label to be used when displaying a button to execute this action instance.
+                userConfirmationRequired:
+                    type: boolean
+                    description: Whether user confirmation is needed before executing this action instance.
+        GeneratedQna:
+            properties:
+                question:
+                    type: string
+                    description: Search query rephrased into a question.
+                answer:
+                    type: string
+                    description: Answer generated for the given query or the generated question.
+                followUpPrompts:
+                    type: array
+                    items:
+                        type: string
+                    description: List of all follow-up prompts generated for the given query or the generated question.
+                followupActions:
+                    description: List of follow-up actions generated for the given query or the generated question.
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/FollowupAction"
+                ranges:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/TextRange"
+                    description: Answer subsections to mark with special formatting (citations, bolding etc)
+                status:
+                    type: string
+                    enum:
+                        - COMPUTING
+                        - DISABLED
+                        - FAILED
+                        - NO_ANSWER
+                        - SKIPPED
+                        - STREAMING
+                        - SUCCEEDED
+                        - TIMEOUT
+                    description: Status of backend generating the answer
+                cursor:
+                    type: string
+                    description: An opaque cursor representing the search request
+                trackingToken:
+                    type: string
+                    description: An opaque token that represents this particular result in this particular query. To be used for /feedback reporting.
         SearchResult:
             required:
                 - url
@@ -5626,11 +5777,13 @@ components:
                         - ATTACHMENT
                         - CANONICAL
                         - CASE
+                        - contact
                         - CONTACT
                         - CONVERSATION_MESSAGES
                         - EXPERT
                         - FROM
                         - HIGHLIGHT
+                        - opportunity
                         - OPPORTUNITY
                         - RECENT
                         - SOURCE
@@ -5692,9 +5845,6 @@ components:
             required:
                 - snippet
             properties:
-                snippet:
-                    type: string
-                    description: A matching snippet from the document. Query term matches are marked by the unicode characters uE006 and uE007.
                 mimeType:
                     type: string
                     description: The mime type of the snippets, currently either text/plain or text/html.
@@ -5712,6 +5862,10 @@ components:
                 url:
                     type: string
                     description: A URL, generated based on availability, that links to the position of the snippet text or to the nearest header above the snippet text.
+                snippet:
+                    type: string
+                    deprecated: true
+                    description: A matching snippet from the document. Query term matches are marked by the unicode characters uE006 and uE007. Use 'text' field instead.
             example:
                 snippet: snippet
                 mimeType: mimeType
@@ -5730,6 +5884,8 @@ components:
                     $ref: "#/components/schemas/CustomEntity"
                 answer:
                     $ref: "#/components/schemas/Answer"
+                generatedQna:
+                    $ref: "#/components/schemas/GeneratedQna"
                 extractedQnA:
                     $ref: "#/components/schemas/ExtractedQnA"
                 meeting:
@@ -5803,6 +5959,8 @@ components:
                 - THREAD_ROOT
                 - PREFIX
                 - SUFFIX
+                - AUTHOR_PREFIX
+                - AUTHOR_SUFFIX
         ClusterGroup:
             required:
                 - visibleCountHint
@@ -6817,9 +6975,11 @@ components:
                     x-enumDescriptions:
                         DEFAULT: Integrates with your company's knowledge.
                         GPT: Communicates directly with the LLM.
+                        UNIVERSAL: Uses both company and web knowledge.
                     enum:
                         - DEFAULT
                         - GPT
+                        - UNIVERSAL
                 mode:
                     type: string
                     description: Top level modes to run GleanChat in.
@@ -6974,6 +7134,7 @@ components:
                     enum:
                         - AWAITING_AUTH
                         - AUTHORIZED
+                        - AUTH_DISABLED
                 client_url:
                     type: string
                     format: url
@@ -7142,6 +7303,9 @@ components:
                     action:
                         description: Basic information about an action. This can be used to construct rich-text messages with action references.
                         $ref: "#/components/schemas/ToolInfo"
+                    citation:
+                        description: Inline citation.
+                        $ref: "#/components/schemas/ChatMessageCitation"
         ChatMessage:
             description: A message that is rendered as one coherent unit with one given sender.
             properties:
@@ -7228,7 +7392,7 @@ components:
                     description: The id of the Chat that context should be retrieved from and messages added to. An empty id starts a new Chat, and the Chat is saved if saveChat is true.
                 messages:
                     type: array
-                    description: A list of chat messages, from most recent to least recent. It can be assumed that the first chat message in the list is the user's most recent query.
+                    description: A list of chat messages, from most recent to least recent. At least one message must specify a USER author.
                     items:
                         $ref: "#/components/schemas/ChatMessage"
                 agentConfig:
@@ -7244,9 +7408,15 @@ components:
                     type: integer
                     description: Timeout in milliseconds for the request. A `408` error will be returned if handling the request takes longer.
                     example: 30000
+                sessionInfo:
+                    description: Optional object for tracking the session used by the client and for debugging purposes.
+                    $ref: "#/components/schemas/SessionInfo"
                 applicationId:
                     type: string
                     description: The ID of the application this request originates from, used to determine the configuration of underlying chat processes. This should correspond to the ID set during admin setup. If not specified, the default chat experience will be used.
+                agentId:
+                    type: string
+                    description: The ID of the Agent that should process this chat request. Only Agents with trigger set to 'User chat message' are invokable through this API. If not specified, the default chat experience will be used.
                 stream:
                     type: boolean
                     description: If set, response lines will be streamed one-by-one as they become available. Each will be a ChatResponse, formatted as JSON, and separated by a new line. If false, the entire response will be returned at once. Note that if this is set and the model being used does not support streaming, the model's response will not be streamed, but other messages from the endpoint still will be.
@@ -7416,31 +7586,38 @@ components:
                     type: string
                     title: Agent Id
                     description: The ID of the agent.
+                    example: mho4lwzylcozgoc2
                 name:
                     type: string
                     title: Agent Name
                     description: The name of the agent
+                    example: HR Policy Agent
                 description:
                     type: string
                     title: Description
                     description: The description of the agent.
+                    example: This agent answers questions about the current company HR policies.
                 metadata:
                     type: object
                     title: Metadata
-                    description: The agent metadata.
+                    description: The agent metadata. Currently not implemented.
                 capabilities:
                     type: object
                     title: Agent Capabilities
-                    description: Describes which protocol features the agent supports. In addition to the standard capabilities (prefixed with ap.), implementations can declare custom capabilities, named in reverse domain notation (eg. com.example.some.capability).
+                    description: |-
+                        Describes features that the agent supports. example: {
+                          "ap.io.messages": true,
+                          "ap.io.streaming": true
+                        }
                     properties:
                         ap.io.messages:
                             type: boolean
                             title: Messages
-                            description: Whether the agent supports Messages as input/output/state. If true, the agent uses the `messages` key in threads/runs endpoints.
+                            description: Whether the agent supports messages as an input. If true, you'll pass `messages` as an input when running the agent.
                         ap.io.streaming:
                             type: boolean
                             title: Streaming
-                            description: Whether the agent supports streaming output.
+                            description: Whether the agent supports streaming output. If true, you you can stream agent ouput. All agents currently support streaming.
                     additionalProperties: true
         ErrorResponse:
             type: string
@@ -7452,6 +7629,7 @@ components:
                     type: string
                     title: Agent Id
                     description: The ID of the agent.
+                    example: mho4lwzylcozgoc2
                 input_schema:
                     type: object
                     title: Input Schema
@@ -7472,7 +7650,8 @@ components:
             properties:
                 name:
                     type: string
-                    description: Filters on the name of the agent. If empty, acts as no filter.
+                    description: Filters on the name of the agent. The keyword search is case-insensitive. If search string is ommited or empty, acts as no filter.
+                    example: HR Policy Agent
         SearchAgentsResponse:
             type: object
             title: Response Search Agents
@@ -7492,6 +7671,7 @@ components:
                     type: string
                     title: Role
                     description: The role of the message.
+                    example: USER
                 content:
                     title: Content
                     description: The content of the message.
@@ -7510,6 +7690,8 @@ components:
         AgentRunCreate:
             description: Payload for creating a run.
             type: object
+            required:
+                - agent_id
             properties:
                 agent_id:
                     type: string
@@ -7526,6 +7708,11 @@ components:
                         $ref: "#/components/schemas/Message"
                     title: Messages
                     description: The messages to pass an input to the agent.
+                metadata:
+                    type: object
+                    title: Metadata
+                    description: The metadata to pass to the agent.
+                    additionalProperties: true
         AgentExecutionStatus:
             description: The status of the run. One of 'error', 'success'.
             type: string
@@ -8234,68 +8421,6 @@ components:
                 datasourceInstanceDisplayName:
                     type: string
                     description: The datasource instance display name from which the document was extracted. This is used for appinstance facet filter for datasources that support multiple instances.
-        FollowupAction:
-            description: A follow-up action that can be invoked by the user after a response. The action parameters are not included and need to be predicted/filled separately.
-            properties:
-                actionRunId:
-                    type: string
-                    description: Unique identifier for this actionRun recommendation event.
-                actionInstanceId:
-                    type: string
-                    description: The ID of the action instance that will be invoked.
-                actionId:
-                    type: string
-                    description: The ID of the associated action.
-                recommendationText:
-                    type: string
-                    description: Text to be displayed to the user when recommending the action instance.
-                actionLabel:
-                    type: string
-                    description: The label to be used when displaying a button to execute this action instance.
-                userConfirmationRequired:
-                    type: boolean
-                    description: Whether user confirmation is needed before executing this action instance.
-        GeneratedQna:
-            properties:
-                question:
-                    type: string
-                    description: Search query rephrased into a question.
-                answer:
-                    type: string
-                    description: Answer generated for the given query or the generated question.
-                followUpPrompts:
-                    type: array
-                    items:
-                        type: string
-                    description: List of all follow-up prompts generated for the given query or the generated question.
-                followupActions:
-                    description: List of follow-up actions generated for the given query or the generated question.
-                    type: array
-                    items:
-                        $ref: "#/components/schemas/FollowupAction"
-                ranges:
-                    type: array
-                    items:
-                        $ref: "#/components/schemas/TextRange"
-                    description: Answer subsections to mark with special formatting (citations, bolding etc)
-                status:
-                    type: string
-                    enum:
-                        - COMPUTING
-                        - DISABLED
-                        - FAILED
-                        - NO_ANSWER
-                        - SKIPPED
-                        - STREAMING
-                        - SUCCEEDED
-                        - TIMEOUT
-                    description: Status of backend generating the answer
-                cursor:
-                    type: string
-                    description: An opaque cursor representing the search request
-                trackingToken:
-                    type: string
-                    description: An opaque token that represents this particular result in this particular query. To be used for /feedback reporting.
         InvalidOperatorValueError:
             properties:
                 key:
@@ -8377,6 +8502,7 @@ components:
                         - COPYPASTED_QUOTES
                         - INVALID_OPERATOR
                         - MAYBE_INVALID_FACET_QUERY
+                        - TOO_MANY_DATASOURCE_GROUPS
                     description: The type of the warning.
                 lastUsedTerm:
                     type: string
@@ -8397,6 +8523,10 @@ components:
                 searchedQuery:
                     type: string
                     description: The actual query used to perform search and return results.
+                searchedQueryWithoutNegation:
+                    type: string
+                    description: The query used to perform search and return results, with negated terms and facets removed.
+                    x-includeEmpty: true
                 searchedQueryRanges:
                     type: array
                     items:
@@ -8721,11 +8851,6 @@ components:
                         type: integer
                         description: Timeout in milliseconds for the request. A `408` error will be returned if handling the request takes longer.
                         example: 5000
-                    people:
-                        type: array
-                        description: People associated with the search request. Hints to the server to fetch additional information for these people. Note that in this request, an email may be used as a person's obfuscatedId value.
-                        items:
-                            $ref: "#/components/schemas/Person"
                     disableSpellcheck:
                         type: boolean
                         description: Whether or not to disable spellcheck.
@@ -9020,12 +9145,14 @@ components:
                             - DISPLAYABLE_LIST
                             - SOCIAL_LINK
                             - EXTERNAL_TASKS
+                            - WORKFLOW_COLLECTIONS
                             - ZERO_STATE_CHAT_SUGGESTION
                             - ZERO_STATE_CHAT_TOOL_SUGGESTION
                             - ZERO_STATE_WORKFLOW_CREATED_BY_ME
                             - ZERO_STATE_WORKFLOW_FAVORITES
                             - ZERO_STATE_WORKFLOW_POPULAR
                             - ZERO_STATE_WORKFLOW_SUGGESTION
+                            - PERSONALIZED_CHAT_SUGGESTION
                     description: Categories of content requested. An allowlist gives flexibility to request content separately or together.
                 requestOptions:
                     $ref: "#/components/schemas/FeedRequestOptions"
@@ -9181,6 +9308,14 @@ components:
                         type: array
                         items:
                             $ref: "#/components/schemas/GeneratedAttachment"
+        ChatSuggestion:
+            properties:
+                query:
+                    type: string
+                    description: The actionable chat query to run when the user selects this suggestion.
+                feature:
+                    type: string
+                    description: Targeted Glean Chat feature for the suggestion.
         PromptTemplateMutableProperties:
             required:
                 - template
@@ -9269,11 +9404,16 @@ components:
                 runCount:
                     $ref: "#/components/schemas/CountInfo"
                     description: This tracks how many times this prompt template was run. If user runs a prompt template after modifying the original one, it still counts as a run for the original template.
-        WorkflowMutableProperties:
+        WorkflowDraftableProperties:
             properties:
                 name:
                     type: string
                     description: The name of the workflow.
+        WorkflowMutableProperties:
+            type: object
+            allOf:
+                - $ref: "#/components/schemas/WorkflowDraftableProperties"
+                - type: object
         WorkflowMetadata:
             allOf:
                 - type: object
@@ -9389,6 +9529,7 @@ components:
                         - ZERO_STATE_PROMPT_TEMPLATE_SUGGESTION
                         - ZERO_STATE_STATIC_WORKFLOW_SUGGESTION
                         - ZERO_STATE_AGENT_SUGGESTION
+                        - PERSONALIZED_CHAT_SUGGESTION
                     description: Type of the justification.
                 justification:
                     type: string
@@ -9413,6 +9554,8 @@ components:
                     $ref: "#/components/schemas/Person"
                 app:
                     $ref: "#/components/schemas/AppResult"
+                chatSuggestion:
+                    $ref: "#/components/schemas/ChatSuggestion"
                 promptTemplate:
                     $ref: "#/components/schemas/PromptTemplateResult"
                 workflow:
@@ -9454,6 +9597,7 @@ components:
                         - ZERO_STATE_WORKFLOW_FAVORITES
                         - ZERO_STATE_WORKFLOW_POPULAR
                         - ZERO_STATE_WORKFLOW_SUGGESTION
+                        - PERSONALIZED_CHAT_SUGGESTION
                     description: Category of the result, one of the requested categories in incoming request.
                 primaryEntry:
                     $ref: "#/components/schemas/FeedEntry"
@@ -9589,6 +9733,16 @@ components:
                 source:
                     type: string
                     description: A string denoting the search surface from which the endpoint is called.
+                requestType:
+                    type: string
+                    default: STANDARD
+                    description: The type of request being made.
+                    x-enumDescriptions:
+                        STANDARD: Used by default for all requests and satisfies all standard use cases for list requests. Limited to 10000 entities.
+                        FULL_DIRECTORY: Used exclusively to return a comprehensive list of all people entities in the organization, typically for audit like purposes. The recommended approach is to sort by FIRST_NAME or LAST_NAME, and use pagination for large organizations.
+                    enum:
+                        - STANDARD
+                        - FULL_DIRECTORY
         EntitiesSortOrder:
             type: string
             description: Different ways of sorting entities
@@ -10058,7 +10212,7 @@ components:
                         The permalink for viewing the document. **Note: viewURL is a required field if id was not set when uploading the document.**'
                 permissions:
                     $ref: "#/components/schemas/DocumentPermissionsDefinition"
-                    description: The permissions that define who can view this document in the search results. Please refer to [this](https://developers.glean.com/docs/indexing_api_permissions/) for more details.
+                    description: The permissions that define who can view this document in the search results. Please refer to [this](https://developers.glean.com/indexing/documents/permissions) for more details.
             required:
                 - permissions
                 - datasource
@@ -10560,7 +10714,7 @@ components:
                     description: The current owner of the document, if not the author.
                 permissions:
                     $ref: "#/components/schemas/DocumentPermissionsDefinition"
-                    description: The permissions that define who can view this document in the search results. Please refer to [this](https://developers.glean.com/docs/indexing_api_permissions/) for more details.
+                    description: The permissions that define who can view this document in the search results. Please refer to [this](https://developers.glean.com/indexing/documents/permissions) for more details.
                 createdAt:
                     type: integer
                     format: int64
@@ -10594,7 +10748,7 @@ components:
                     type: array
                     items:
                         $ref: "#/components/schemas/CustomProperty"
-                    description: Additional metadata properties of the document. These can surface as [facets and operators](https://developers.glean.com/docs/facets_and_operators_for_custom_datasources/).
+                    description: Additional metadata properties of the document. These can surface as [facets and operators](https://developers.glean.com/indexing/datasource/custom-properties/operators_and_facets).
             required:
                 - datasource
         CommentDefinition:
@@ -11702,6 +11856,10 @@ components:
                     type: string
                     description: end time of the time range, applicable for the CUSTOM type.
                     format: date-time
+                lastNDaysValue:
+                    type: integer
+                    description: The number of days to look back from the current time, applicable for the LAST_N_DAYS type.
+                    format: int64
         InputOptions:
             description: Controls which data-sources and what time-range to include in scans.
             properties:
@@ -11736,6 +11894,7 @@ components:
                         - PAST_YEAR
                         - PAST_DAY
                         - CUSTOM
+                        - LAST_N_DAYS
                 customTimeRange:
                     $ref: "#/components/schemas/TimeRange"
         SharingOptions:
