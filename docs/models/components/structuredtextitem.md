@@ -167,6 +167,9 @@ let value: StructuredTextItem = {
       collections: [],
       sourceDocument: {},
     },
+    generatedQna: {
+      ranges: [],
+    },
     extractedQnA: {
       questionResult: {
         title: "title",
@@ -174,8 +177,8 @@ let value: StructuredTextItem = {
         nativeAppUrl: "slack://foo/bar",
         snippets: [
           {
-            snippet: "snippet",
             mimeType: "mimeType",
+            snippet: "snippet",
           },
         ],
         mustIncludeSuggestions: {},
@@ -251,9 +254,7 @@ let value: StructuredTextItem = {
       ],
     },
     relatedDocuments: [],
-    relatedQuestion: {
-      ranges: [],
-    },
+    relatedQuestion: {},
   },
 };
 ```

@@ -150,8 +150,8 @@ test("Admin Search Adminsearch", async () => {
                   nativeAppUrl: "slack://foo/bar",
                   snippets: [
                     {
-                      snippet: "snippet",
                       mimeType: "mimeType",
+                      snippet: "snippet",
                     },
                   ],
                 },
@@ -1998,12 +1998,6 @@ test("Admin Search Adminsearch", async () => {
       ],
     },
     timeoutMillis: 5000,
-    people: [
-      {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-    ],
   });
   expect(result).toBeDefined();
 });

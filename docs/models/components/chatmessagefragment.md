@@ -1,6 +1,6 @@
 # ChatMessageFragment
 
-Represents a part of a ChatMessage that originates from a single action/tool. It is designed to support rich data formats beyond simple text, allowing for a more dynamic and interactive chat experience. Each fragment can include various types of content, such as text, search queries, action information, and more. Also, each ChatMessageFragment should only have one of structuredResults, querySuggestion, writeAction, followupAction, or file.
+Represents a part of a ChatMessage that originates from a single action/tool. It is designed to support rich data formats beyond simple text, allowing for a more dynamic and interactive chat experience. Each fragment can include various types of content, such as text, search queries, action information, and more. Also, each ChatMessageFragment should only have one of structuredResults, querySuggestion, writeAction, followupAction, agentRecommendation or file.
 
 ## Example Usage
 
@@ -166,6 +166,9 @@ let value: ChatMessageFragment = {
         collections: [],
         sourceDocument: {},
       },
+      generatedQna: {
+        ranges: [],
+      },
       extractedQnA: {
         questionResult: {
           title: "title",
@@ -173,8 +176,8 @@ let value: ChatMessageFragment = {
           nativeAppUrl: "slack://foo/bar",
           snippets: [
             {
-              snippet: "snippet",
               mimeType: "mimeType",
+              snippet: "snippet",
             },
           ],
           mustIncludeSuggestions: {},
@@ -249,9 +252,7 @@ let value: ChatMessageFragment = {
         ],
       },
       relatedDocuments: [],
-      relatedQuestion: {
-        ranges: [],
-      },
+      relatedQuestion: {},
     },
   ],
   querySuggestion: {
@@ -273,6 +274,30 @@ let value: ChatMessageFragment = {
       objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
     },
   },
+  citation: {
+    sourceFile: {
+      id: "FILE_1234",
+      url: "www.google.com",
+      name: "sample.pdf",
+    },
+    sourcePerson: {
+      name: "George Clooney",
+      obfuscatedId: "abc123",
+    },
+    referenceRanges: [
+      {
+        textRange: {
+          startIndex: 879208,
+        },
+        snippets: [
+          {
+            mimeType: "mimeType",
+            snippet: "snippet",
+          },
+        ],
+      },
+    ],
+  },
 };
 ```
 
@@ -286,3 +311,4 @@ let value: ChatMessageFragment = {
 | `querySuggestion`                                                                                                    | [components.QuerySuggestion](../../models/components/querysuggestion.md)                                             | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  | {<br/>"query": "app:github type:pull author:mortimer",<br/>"label": "Mortimer's PRs",<br/>"datasource": "github"<br/>} |
 | `file`                                                                                                               | [components.ChatFile](../../models/components/chatfile.md)                                                           | :heavy_minus_sign:                                                                                                   | Structure for file uploaded by a user for Chat.                                                                      |                                                                                                                      |
 | `action`                                                                                                             | [components.ToolInfo](../../models/components/toolinfo.md)                                                           | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |                                                                                                                      |
+| `citation`                                                                                                           | [components.ChatMessageCitation](../../models/components/chatmessagecitation.md)                                     | :heavy_minus_sign:                                                                                                   | Information about the source for a ChatMessage.                                                                      |                                                                                                                      |

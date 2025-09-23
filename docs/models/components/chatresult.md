@@ -66,8 +66,8 @@ let value: ChatResult = {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -205,6 +205,9 @@ let value: ChatResult = {
                   },
                   collections: [],
                 },
+                generatedQna: {
+                  ranges: [],
+                },
                 extractedQnA: {
                   questionResult: {
                     title: "title",
@@ -212,8 +215,8 @@ let value: ChatResult = {
                     nativeAppUrl: "slack://foo/bar",
                     snippets: [
                       {
-                        snippet: "snippet",
                         mimeType: "mimeType",
+                        snippet: "snippet",
                       },
                     ],
                     mustIncludeSuggestions: {},
@@ -284,9 +287,7 @@ let value: ChatResult = {
                   ],
                 },
                 relatedDocuments: [],
-                relatedQuestion: {
-                  ranges: [],
-                },
+                relatedQuestion: {},
               },
             ],
             querySuggestion: {
@@ -308,8 +309,30 @@ let value: ChatResult = {
                 objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
               },
             },
+            citation: {
+              sourceFile: {
+                id: "FILE_1234",
+                url: "www.google.com",
+                name: "sample.pdf",
+              },
+              referenceRanges: [
+                {
+                  snippets: [
+                    {
+                      mimeType: "mimeType",
+                      snippet: "snippet",
+                    },
+                  ],
+                },
+              ],
+            },
           },
         ],
+      },
+    ],
+    roles: [
+      {
+        role: "EDITOR",
       },
     ],
   },
