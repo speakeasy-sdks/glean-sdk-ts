@@ -93,7 +93,10 @@ test("Client Documents Summarize", async () => {
 
   const result = await glean.client.documents.summarize({
     documentSpecs: [
-      {},
+      {
+        ugcType: "SHORTCUTS",
+        ugcId: "<id>",
+      },
     ],
   });
   expect(result).toBeDefined();

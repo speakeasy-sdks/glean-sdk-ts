@@ -67,8 +67,8 @@ let value: GetChatResponse = {
                   },
                   snippets: [
                     {
-                      snippet: "snippet",
                       mimeType: "mimeType",
+                      snippet: "snippet",
                     },
                   ],
                 },
@@ -206,6 +206,9 @@ let value: GetChatResponse = {
                     },
                     collections: [],
                   },
+                  generatedQna: {
+                    ranges: [],
+                  },
                   extractedQnA: {
                     questionResult: {
                       title: "title",
@@ -213,8 +216,8 @@ let value: GetChatResponse = {
                       nativeAppUrl: "slack://foo/bar",
                       snippets: [
                         {
-                          snippet: "snippet",
                           mimeType: "mimeType",
+                          snippet: "snippet",
                         },
                       ],
                       mustIncludeSuggestions: {},
@@ -287,9 +290,7 @@ let value: GetChatResponse = {
                     ],
                   },
                   relatedDocuments: [],
-                  relatedQuestion: {
-                    ranges: [],
-                  },
+                  relatedQuestion: {},
                 },
               ],
               querySuggestion: {
@@ -311,8 +312,30 @@ let value: GetChatResponse = {
                   objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
                 },
               },
+              citation: {
+                sourceFile: {
+                  id: "FILE_1234",
+                  url: "www.google.com",
+                  name: "sample.pdf",
+                },
+                referenceRanges: [
+                  {
+                    snippets: [
+                      {
+                        mimeType: "mimeType",
+                        snippet: "snippet",
+                      },
+                    ],
+                  },
+                ],
+              },
             },
           ],
+        },
+      ],
+      roles: [
+        {
+          role: "VIEWER",
         },
       ],
     },
