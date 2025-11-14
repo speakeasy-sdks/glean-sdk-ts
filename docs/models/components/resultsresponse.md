@@ -13,8 +13,8 @@ let value: ResultsResponse = {
       nativeAppUrl: "slack://foo/bar",
       snippets: [
         {
-          snippet: "snippet",
           mimeType: "mimeType",
+          snippet: "snippet",
         },
       ],
       mustIncludeSuggestions: {},
@@ -178,6 +178,9 @@ let value: ResultsResponse = {
         collections: [],
         sourceDocument: {},
       },
+      generatedQna: {
+        ranges: [],
+      },
       extractedQnA: {
         questionResult: {
           title: "title",
@@ -185,8 +188,8 @@ let value: ResultsResponse = {
           nativeAppUrl: "slack://foo/bar",
           snippets: [
             {
-              snippet: "snippet",
               mimeType: "mimeType",
+              snippet: "snippet",
             },
           ],
           mustIncludeSuggestions: {},
@@ -260,19 +263,19 @@ let value: ResultsResponse = {
           },
         ],
       },
-      relatedDocuments: [],
-      relatedQuestion: {
-        ranges: [],
+      chat: {
+        icon: {
+          color: "#343CED",
+          key: "person_icon",
+          iconType: "GLYPH",
+          name: "user",
+        },
       },
+      relatedDocuments: [],
+      relatedQuestion: {},
     },
   ],
-  generatedQnaResult: {
-    ranges: [
-      {
-        startIndex: 559226,
-      },
-    ],
-  },
+  generatedQnaResult: {},
   backendTimeMillis: 1100,
 };
 ```

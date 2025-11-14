@@ -212,7 +212,9 @@ import {
 
 ## bulkIndexUsers
 
-Replaces the users in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+Replaces the users in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+Note: Any users deleted from the existing set will have their associated memberships deleted as well.
+
 
 ### Example Usage
 
@@ -430,7 +432,9 @@ import {
 
 ## bulkIndexGroups
 
-Replaces the groups in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+Replaces the groups in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+Note: Any groups deleted from the existing set will have their associated memberships deleted as well.
+
 
 ### Example Usage
 
@@ -636,7 +640,7 @@ import {
 
 ## bulkIndexMemberships
 
-Replaces the memberships for a group in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+Replaces the memberships for a group in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
 
 ### Example Usage
 
@@ -828,6 +832,8 @@ import {
 ## deleteUser
 
 Delete the user from the datasource. Silently succeeds if user is not present.
+Note: All memberships associated with the deleted user will also be deleted.
+
 
 ### Example Usage
 
@@ -921,6 +927,8 @@ import {
 ## deleteGroup
 
 Delete group from the datasource. Silently succeeds if group is not present.
+Note: All memberships associated with the deleted group will also be deleted.
+
 
 ### Example Usage
 

@@ -21,7 +21,7 @@ export type AgentRunCreate = {
   /**
    * The ID of the agent to run.
    */
-  agentId?: string | undefined;
+  agentId: string;
   /**
    * The input to the agent.
    */
@@ -30,6 +30,10 @@ export type AgentRunCreate = {
    * The messages to pass an input to the agent.
    */
   messages?: Array<Message> | undefined;
+  /**
+   * The metadata to pass to the agent.
+   */
+  metadata?: { [k: string]: any } | undefined;
 };
 
 /** @internal */
@@ -38,9 +42,10 @@ export const AgentRunCreate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  agent_id: z.string().optional(),
+  agent_id: z.string(),
   input: z.record(z.any()).optional(),
   messages: z.array(Message$inboundSchema).optional(),
+  metadata: z.record(z.any()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "agent_id": "agentId",
@@ -49,9 +54,10 @@ export const AgentRunCreate$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AgentRunCreate$Outbound = {
-  agent_id?: string | undefined;
+  agent_id: string;
   input?: { [k: string]: any } | undefined;
   messages?: Array<Message$Outbound> | undefined;
+  metadata?: { [k: string]: any } | undefined;
 };
 
 /** @internal */
@@ -60,9 +66,10 @@ export const AgentRunCreate$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AgentRunCreate
 > = z.object({
-  agentId: z.string().optional(),
+  agentId: z.string(),
   input: z.record(z.any()).optional(),
   messages: z.array(Message$outboundSchema).optional(),
+  metadata: z.record(z.any()).optional(),
 }).transform((v) => {
   return remap$(v, {
     agentId: "agent_id",

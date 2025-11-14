@@ -26,6 +26,12 @@ import {
   AppResult$outboundSchema,
 } from "./appresult.js";
 import {
+  ChatMetadata,
+  ChatMetadata$inboundSchema,
+  ChatMetadata$Outbound,
+  ChatMetadata$outboundSchema,
+} from "./chatmetadata.js";
+import {
   Code,
   Code$inboundSchema,
   Code$Outbound,
@@ -67,6 +73,12 @@ import {
   ExtractedQnA$Outbound,
   ExtractedQnA$outboundSchema,
 } from "./extractedqna.js";
+import {
+  GeneratedQna,
+  GeneratedQna$inboundSchema,
+  GeneratedQna$Outbound,
+  GeneratedQna$outboundSchema,
+} from "./generatedqna.js";
 import {
   Meeting,
   Meeting$inboundSchema,
@@ -151,6 +163,7 @@ export type StructuredResult = {
   team?: Team | undefined;
   customEntity?: CustomEntity | undefined;
   answer?: Answer | undefined;
+  generatedQna?: GeneratedQna | undefined;
   extractedQnA?: ExtractedQnA | undefined;
   meeting?: Meeting | undefined;
   app?: AppResult | undefined;
@@ -159,6 +172,10 @@ export type StructuredResult = {
   code?: Code | undefined;
   shortcut?: Shortcut | undefined;
   querySuggestions?: QuerySuggestionList | undefined;
+  /**
+   * Metadata of a Chat a user had with Glean Assistant. This contains no actual conversational content.
+   */
+  chat?: ChatMetadata | undefined;
   /**
    * A list of documents related to this structured result.
    */
@@ -238,6 +255,7 @@ export const StructuredResult$inboundSchema: z.ZodType<
   team: z.lazy(() => Team$inboundSchema).optional(),
   customEntity: z.lazy(() => CustomEntity$inboundSchema).optional(),
   answer: z.lazy(() => Answer$inboundSchema).optional(),
+  generatedQna: z.lazy(() => GeneratedQna$inboundSchema).optional(),
   extractedQnA: z.lazy(() => ExtractedQnA$inboundSchema).optional(),
   meeting: z.lazy(() => Meeting$inboundSchema).optional(),
   app: AppResult$inboundSchema.optional(),
@@ -246,6 +264,7 @@ export const StructuredResult$inboundSchema: z.ZodType<
   code: z.lazy(() => Code$inboundSchema).optional(),
   shortcut: z.lazy(() => Shortcut$inboundSchema).optional(),
   querySuggestions: z.lazy(() => QuerySuggestionList$inboundSchema).optional(),
+  chat: z.lazy(() => ChatMetadata$inboundSchema).optional(),
   relatedDocuments: z.array(z.lazy(() => RelatedDocuments$inboundSchema))
     .optional(),
   relatedQuestion: z.lazy(() => RelatedQuestion$inboundSchema).optional(),
@@ -264,6 +283,7 @@ export type StructuredResult$Outbound = {
   team?: Team$Outbound | undefined;
   customEntity?: CustomEntity$Outbound | undefined;
   answer?: Answer$Outbound | undefined;
+  generatedQna?: GeneratedQna$Outbound | undefined;
   extractedQnA?: ExtractedQnA$Outbound | undefined;
   meeting?: Meeting$Outbound | undefined;
   app?: AppResult$Outbound | undefined;
@@ -272,6 +292,7 @@ export type StructuredResult$Outbound = {
   code?: Code$Outbound | undefined;
   shortcut?: Shortcut$Outbound | undefined;
   querySuggestions?: QuerySuggestionList$Outbound | undefined;
+  chat?: ChatMetadata$Outbound | undefined;
   relatedDocuments?: Array<RelatedDocuments$Outbound> | undefined;
   relatedQuestion?: RelatedQuestion$Outbound | undefined;
   disambiguation?: Disambiguation$Outbound | undefined;
@@ -293,6 +314,7 @@ export const StructuredResult$outboundSchema: z.ZodType<
   team: z.lazy(() => Team$outboundSchema).optional(),
   customEntity: z.lazy(() => CustomEntity$outboundSchema).optional(),
   answer: z.lazy(() => Answer$outboundSchema).optional(),
+  generatedQna: z.lazy(() => GeneratedQna$outboundSchema).optional(),
   extractedQnA: z.lazy(() => ExtractedQnA$outboundSchema).optional(),
   meeting: z.lazy(() => Meeting$outboundSchema).optional(),
   app: AppResult$outboundSchema.optional(),
@@ -301,6 +323,7 @@ export const StructuredResult$outboundSchema: z.ZodType<
   code: z.lazy(() => Code$outboundSchema).optional(),
   shortcut: z.lazy(() => Shortcut$outboundSchema).optional(),
   querySuggestions: z.lazy(() => QuerySuggestionList$outboundSchema).optional(),
+  chat: z.lazy(() => ChatMetadata$outboundSchema).optional(),
   relatedDocuments: z.array(z.lazy(() => RelatedDocuments$outboundSchema))
     .optional(),
   relatedQuestion: z.lazy(() => RelatedQuestion$outboundSchema).optional(),

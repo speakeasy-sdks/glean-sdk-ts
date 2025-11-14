@@ -124,8 +124,8 @@ test("Announcements Createannouncement", async () => {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -1915,8 +1915,8 @@ test("Announcements Updateannouncement", async () => {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },

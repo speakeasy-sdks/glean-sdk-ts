@@ -25,12 +25,16 @@ const (
 	FeedRequestCategoryDisplayableList              FeedRequestCategory = "DISPLAYABLE_LIST"
 	FeedRequestCategorySocialLink                   FeedRequestCategory = "SOCIAL_LINK"
 	FeedRequestCategoryExternalTasks                FeedRequestCategory = "EXTERNAL_TASKS"
+	FeedRequestCategoryWorkflowCollections          FeedRequestCategory = "WORKFLOW_COLLECTIONS"
 	FeedRequestCategoryZeroStateChatSuggestion      FeedRequestCategory = "ZERO_STATE_CHAT_SUGGESTION"
 	FeedRequestCategoryZeroStateChatToolSuggestion  FeedRequestCategory = "ZERO_STATE_CHAT_TOOL_SUGGESTION"
 	FeedRequestCategoryZeroStateWorkflowCreatedByMe FeedRequestCategory = "ZERO_STATE_WORKFLOW_CREATED_BY_ME"
 	FeedRequestCategoryZeroStateWorkflowFavorites   FeedRequestCategory = "ZERO_STATE_WORKFLOW_FAVORITES"
 	FeedRequestCategoryZeroStateWorkflowPopular     FeedRequestCategory = "ZERO_STATE_WORKFLOW_POPULAR"
+	FeedRequestCategoryZeroStateWorkflowRecent      FeedRequestCategory = "ZERO_STATE_WORKFLOW_RECENT"
 	FeedRequestCategoryZeroStateWorkflowSuggestion  FeedRequestCategory = "ZERO_STATE_WORKFLOW_SUGGESTION"
+	FeedRequestCategoryPersonalizedChatSuggestion   FeedRequestCategory = "PERSONALIZED_CHAT_SUGGESTION"
+	FeedRequestCategoryDailyDigest                  FeedRequestCategory = "DAILY_DIGEST"
 )
 
 func (e FeedRequestCategory) ToPointer() *FeedRequestCategory {
@@ -72,6 +76,8 @@ func (e *FeedRequestCategory) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "EXTERNAL_TASKS":
 		fallthrough
+	case "WORKFLOW_COLLECTIONS":
+		fallthrough
 	case "ZERO_STATE_CHAT_SUGGESTION":
 		fallthrough
 	case "ZERO_STATE_CHAT_TOOL_SUGGESTION":
@@ -82,7 +88,13 @@ func (e *FeedRequestCategory) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "ZERO_STATE_WORKFLOW_POPULAR":
 		fallthrough
+	case "ZERO_STATE_WORKFLOW_RECENT":
+		fallthrough
 	case "ZERO_STATE_WORKFLOW_SUGGESTION":
+		fallthrough
+	case "PERSONALIZED_CHAT_SUGGESTION":
+		fallthrough
+	case "DAILY_DIGEST":
 		*e = FeedRequestCategory(v)
 		return nil
 	default:

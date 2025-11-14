@@ -27,7 +27,8 @@ export type IndexingPermissionsBulkIndexGroupsMutationData = void;
  * Bulk index groups
  *
  * @remarks
- * Replaces the groups in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+ * Replaces the groups in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+ * Note: Any groups deleted from the existing set will have their associated memberships deleted as well.
  */
 export function useIndexingPermissionsBulkIndexGroupsMutation(
   options?: MutationHookOptions<
