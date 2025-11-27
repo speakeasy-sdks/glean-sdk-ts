@@ -57,7 +57,8 @@ export class Permissions extends ClientSDK {
    * Bulk index users
    *
    * @remarks
-   * Replaces the users in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+   * Replaces the users in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+   * Note: Any users deleted from the existing set will have their associated memberships deleted as well.
    */
   async bulkIndexUsers(
     request: components.BulkIndexUsersRequest,
@@ -91,7 +92,8 @@ export class Permissions extends ClientSDK {
    * Bulk index groups
    *
    * @remarks
-   * Replaces the groups in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+   * Replaces the groups in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+   * Note: Any groups deleted from the existing set will have their associated memberships deleted as well.
    */
   async bulkIndexGroups(
     request: components.BulkIndexGroupsRequest,
@@ -125,7 +127,7 @@ export class Permissions extends ClientSDK {
    * Bulk index memberships for a group
    *
    * @remarks
-   * Replaces the memberships for a group in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+   * Replaces the memberships for a group in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
    */
   async bulkIndexMemberships(
     request: components.BulkIndexMembershipsRequest,
@@ -160,6 +162,7 @@ export class Permissions extends ClientSDK {
    *
    * @remarks
    * Delete the user from the datasource. Silently succeeds if user is not present.
+   * Note: All memberships associated with the deleted user will also be deleted.
    */
   async deleteUser(
     request: components.DeleteUserRequest,
@@ -177,6 +180,7 @@ export class Permissions extends ClientSDK {
    *
    * @remarks
    * Delete group from the datasource. Silently succeeds if group is not present.
+   * Note: All memberships associated with the deleted group will also be deleted.
    */
   async deleteGroup(
     request: components.DeleteGroupRequest,

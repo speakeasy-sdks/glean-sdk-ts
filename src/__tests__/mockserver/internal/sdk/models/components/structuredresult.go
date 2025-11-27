@@ -72,6 +72,7 @@ type StructuredResult struct {
 	Team             *Team                `json:"team,omitempty"`
 	CustomEntity     *CustomEntity        `json:"customEntity,omitempty"`
 	Answer           *Answer              `json:"answer,omitempty"`
+	GeneratedQna     *GeneratedQna        `json:"generatedQna,omitempty"`
 	ExtractedQnA     *ExtractedQnA        `json:"extractedQnA,omitempty"`
 	Meeting          *Meeting             `json:"meeting,omitempty"`
 	App              *AppResult           `json:"app,omitempty"`
@@ -80,6 +81,8 @@ type StructuredResult struct {
 	Code             *Code                `json:"code,omitempty"`
 	Shortcut         *Shortcut            `json:"shortcut,omitempty"`
 	QuerySuggestions *QuerySuggestionList `json:"querySuggestions,omitempty"`
+	// Metadata of a Chat a user had with Glean Assistant. This contains no actual conversational content.
+	Chat *ChatMetadata `json:"chat,omitempty"`
 	// A list of documents related to this structured result.
 	RelatedDocuments []RelatedDocuments `json:"relatedDocuments,omitempty"`
 	RelatedQuestion  *RelatedQuestion   `json:"relatedQuestion,omitempty"`
@@ -137,6 +140,13 @@ func (o *StructuredResult) GetAnswer() *Answer {
 	return o.Answer
 }
 
+func (o *StructuredResult) GetGeneratedQna() *GeneratedQna {
+	if o == nil {
+		return nil
+	}
+	return o.GeneratedQna
+}
+
 func (o *StructuredResult) GetExtractedQnA() *ExtractedQnA {
 	if o == nil {
 		return nil
@@ -191,6 +201,13 @@ func (o *StructuredResult) GetQuerySuggestions() *QuerySuggestionList {
 		return nil
 	}
 	return o.QuerySuggestions
+}
+
+func (o *StructuredResult) GetChat() *ChatMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.Chat
 }
 
 func (o *StructuredResult) GetRelatedDocuments() []RelatedDocuments {

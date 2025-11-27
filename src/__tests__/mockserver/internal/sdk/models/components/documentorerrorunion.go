@@ -10,12 +10,12 @@ import (
 
 type DocumentOrError struct {
 	// The text for error, reason.
-	Error *string `json:"error,omitempty"`
+	Error string `json:"error"`
 }
 
-func (o *DocumentOrError) GetError() *string {
+func (o *DocumentOrError) GetError() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Error
 }

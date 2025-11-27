@@ -7,6 +7,7 @@ generation:
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: true
@@ -23,23 +24,35 @@ generation:
   tests:
     generateNewTests: true
     skipResponseBodyAssertions: true
+  requestBodyFieldName: ""
+  schemas:
+    allOfMergeStrategy: shallowMerge
 typescript:
-  version: 0.4.4
+  version: 0.5.1
+  acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
   additionalPackageJSON: {}
+  additionalScripts: {}
+  alwaysIncludeInboundAndOutbound: false
   author: Speakeasy
+  baseErrorName: GleanBaseError
   clientServerStatusCodesAsErrors: true
+  constFieldsAlwaysOptional: true
   defaultErrorName: GleanError
   enableCustomCodeRegions: false
   enableMCPServer: false
   enableReactQuery: true
   enumFormat: union
   envVarPrefix: GLEAN
+  exportZodModelNamespace: false
   flattenGlobalSecurity: true
   flatteningOrder: body-first
+  formStringArrayEncodeMode: encoded-string
+  forwardCompatibleEnumsByDefault: false
+  generateExamples: true
   imports:
     option: openapi
     paths:
@@ -48,13 +61,20 @@ typescript:
       operations: models/operations
       shared: models/components
       webhooks: models/webhooks
+  inferUnionDiscriminators: true
   inputModelSuffix: input
   jsonpath: rfc9535
+  laxMode: strict
   maxMethodParams: 5
   methodArguments: require-security-and-request
+  modelPropertyCasing: camel
   moduleFormat: dual
   outputModelSuffix: output
   packageName: '@gleanwork/api-client'
   responseFormat: flat
+  sseFlatResponse: false
   templateVersion: v2
+  unionStrategy: left-to-right
+  usageSDKInitImports: []
   useIndexModules: true
+  zodVersion: v3
