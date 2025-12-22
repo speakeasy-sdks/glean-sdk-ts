@@ -167,6 +167,9 @@ let value: StructuredTextItem = {
       collections: [],
       sourceDocument: {},
     },
+    generatedQna: {
+      ranges: [],
+    },
     extractedQnA: {
       questionResult: {
         title: "title",
@@ -174,8 +177,8 @@ let value: StructuredTextItem = {
         nativeAppUrl: "slack://foo/bar",
         snippets: [
           {
-            snippet: "snippet",
             mimeType: "mimeType",
+            snippet: "snippet",
           },
         ],
         mustIncludeSuggestions: {},
@@ -250,10 +253,16 @@ let value: StructuredTextItem = {
         },
       ],
     },
-    relatedDocuments: [],
-    relatedQuestion: {
-      ranges: [],
+    chat: {
+      icon: {
+        color: "#343CED",
+        key: "person_icon",
+        iconType: "GLYPH",
+        name: "user",
+      },
     },
+    relatedDocuments: [],
+    relatedQuestion: {},
   },
 };
 ```

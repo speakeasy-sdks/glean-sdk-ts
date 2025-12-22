@@ -34,20 +34,21 @@ func (e *DatasourcesType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// TimePeriodType - Type of time period for which to run the report/policy. PAST_DAY is deprecated.
-type TimePeriodType string
+// InputOptionsTimePeriodType - Type of time period for which to run the report/policy. PAST_DAY is deprecated.
+type InputOptionsTimePeriodType string
 
 const (
-	TimePeriodTypeAllTime  TimePeriodType = "ALL_TIME"
-	TimePeriodTypePastYear TimePeriodType = "PAST_YEAR"
-	TimePeriodTypePastDay  TimePeriodType = "PAST_DAY"
-	TimePeriodTypeCustom   TimePeriodType = "CUSTOM"
+	InputOptionsTimePeriodTypeAllTime   InputOptionsTimePeriodType = "ALL_TIME"
+	InputOptionsTimePeriodTypePastYear  InputOptionsTimePeriodType = "PAST_YEAR"
+	InputOptionsTimePeriodTypePastDay   InputOptionsTimePeriodType = "PAST_DAY"
+	InputOptionsTimePeriodTypeCustom    InputOptionsTimePeriodType = "CUSTOM"
+	InputOptionsTimePeriodTypeLastNDays InputOptionsTimePeriodType = "LAST_N_DAYS"
 )
 
-func (e TimePeriodType) ToPointer() *TimePeriodType {
+func (e InputOptionsTimePeriodType) ToPointer() *InputOptionsTimePeriodType {
 	return &e
 }
-func (e *TimePeriodType) UnmarshalJSON(data []byte) error {
+func (e *InputOptionsTimePeriodType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -60,10 +61,12 @@ func (e *TimePeriodType) UnmarshalJSON(data []byte) error {
 	case "PAST_DAY":
 		fallthrough
 	case "CUSTOM":
-		*e = TimePeriodType(v)
+		fallthrough
+	case "LAST_N_DAYS":
+		*e = InputOptionsTimePeriodType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TimePeriodType: %v", v)
+		return fmt.Errorf("invalid value for InputOptionsTimePeriodType: %v", v)
 	}
 }
 
@@ -82,8 +85,8 @@ type InputOptions struct {
 	// List of datasource instances to consider for report/policy.
 	DatasourceInstances []string `json:"datasourceInstances,omitempty"`
 	// Type of time period for which to run the report/policy. PAST_DAY is deprecated.
-	TimePeriodType  *TimePeriodType `json:"timePeriodType,omitempty"`
-	CustomTimeRange *TimeRange      `json:"customTimeRange,omitempty"`
+	TimePeriodType  *InputOptionsTimePeriodType `json:"timePeriodType,omitempty"`
+	CustomTimeRange *TimeRange                  `json:"customTimeRange,omitempty"`
 }
 
 func (o *InputOptions) GetURLGreenlist() []string {
@@ -114,7 +117,7 @@ func (o *InputOptions) GetDatasourceInstances() []string {
 	return o.DatasourceInstances
 }
 
-func (o *InputOptions) GetTimePeriodType() *TimePeriodType {
+func (o *InputOptions) GetTimePeriodType() *InputOptionsTimePeriodType {
 	if o == nil {
 		return nil
 	}

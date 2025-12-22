@@ -57,8 +57,8 @@ let value: ChatResponse = {
               },
               snippets: [
                 {
-                  snippet: "snippet",
                   mimeType: "mimeType",
+                  snippet: "snippet",
                 },
               ],
             },
@@ -197,6 +197,9 @@ let value: ChatResponse = {
                 },
                 collections: [],
               },
+              generatedQna: {
+                ranges: [],
+              },
               extractedQnA: {
                 questionResult: {
                   title: "title",
@@ -204,8 +207,8 @@ let value: ChatResponse = {
                   nativeAppUrl: "slack://foo/bar",
                   snippets: [
                     {
-                      snippet: "snippet",
                       mimeType: "mimeType",
+                      snippet: "snippet",
                     },
                   ],
                   mustIncludeSuggestions: {},
@@ -279,10 +282,16 @@ let value: ChatResponse = {
                   },
                 ],
               },
-              relatedDocuments: [],
-              relatedQuestion: {
-                ranges: [],
+              chat: {
+                icon: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
               },
+              relatedDocuments: [],
+              relatedQuestion: {},
             },
           ],
           querySuggestion: {
@@ -303,6 +312,23 @@ let value: ChatResponse = {
               displayDescription: "<value>",
               objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
             },
+          },
+          citation: {
+            sourceFile: {
+              id: "FILE_1234",
+              url: "www.google.com",
+              name: "sample.pdf",
+            },
+            referenceRanges: [
+              {
+                snippets: [
+                  {
+                    mimeType: "mimeType",
+                    snippet: "snippet",
+                  },
+                ],
+              },
+            ],
           },
         },
       ],

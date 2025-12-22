@@ -25,7 +25,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Downloads violations CSV for policy.
+ * Downloads violations CSV for policy
  *
  * @remarks
  * Downloads CSV violations report for a specific policy id. This does not support continuous policies.
@@ -136,7 +136,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["403", "4XX", "500", "5XX"],
+    errorCodes: ["400", "403", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -156,7 +156,7 @@ async function $do(
     | ConnectionError
   >(
     M.text(200, z.string(), { ctype: "text/csv; charset=UTF-8" }),
-    M.fail([403, "4XX"]),
+    M.fail([400, 403, "4XX"]),
     M.fail([500, "5XX"]),
   )(response);
   if (!result.ok) {

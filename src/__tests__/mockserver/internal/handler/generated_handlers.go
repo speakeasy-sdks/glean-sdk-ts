@@ -12,8 +12,10 @@ import (
 // GeneratedHandlers returns all generated handlers.
 func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) []*GeneratedHandler {
 	return []*GeneratedHandler{
+		NewGeneratedHandler(ctx, http.MethodDelete, "/rest/api/v1/governance/data/findings/exports/{id}", pathDeleteRestAPIV1GovernanceDataFindingsExportsID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/rest/api/v1/agents/{agent_id}", pathGetRestAPIV1AgentsAgentID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/rest/api/v1/agents/{agent_id}/schemas", pathGetRestAPIV1AgentsAgentIDSchemas(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodGet, "/rest/api/v1/governance/data/findings/exports", pathGetRestAPIV1GovernanceDataFindingsExports(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/rest/api/v1/governance/data/policies", pathGetRestAPIV1GovernanceDataPolicies(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/rest/api/v1/governance/data/policies/{id}", pathGetRestAPIV1GovernanceDataPoliciesID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/rest/api/v1/tools/list", pathGetRestAPIV1ToolsList(dir, rt)),

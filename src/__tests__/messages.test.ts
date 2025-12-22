@@ -18,6 +18,7 @@ test("Messages Messages", async () => {
   const result = await glean.client.messages.retrieve({
     idType: "THREAD_ID",
     id: "<id>",
+    datasource: "SLACKENTGRID",
   });
   expect(result).toBeDefined();
 });

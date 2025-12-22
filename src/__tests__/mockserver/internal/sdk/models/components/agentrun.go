@@ -5,18 +5,20 @@ package components
 // AgentRun - Payload for creating a run.
 type AgentRun struct {
 	// The ID of the agent to run.
-	AgentID *string `json:"agent_id,omitempty"`
+	AgentID string `json:"agent_id"`
 	// The input to the agent.
 	Input map[string]any `json:"input,omitempty"`
 	// The messages to pass an input to the agent.
 	Messages []Message `json:"messages,omitempty"`
+	// The metadata to pass to the agent.
+	Metadata map[string]any `json:"metadata,omitempty"`
 	// The status of the run. One of 'error', 'success'.
 	Status *AgentExecutionStatus `json:"status,omitempty"`
 }
 
-func (o *AgentRun) GetAgentID() *string {
+func (o *AgentRun) GetAgentID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.AgentID
 }
@@ -33,6 +35,13 @@ func (o *AgentRun) GetMessages() []Message {
 		return nil
 	}
 	return o.Messages
+}
+
+func (o *AgentRun) GetMetadata() map[string]any {
+	if o == nil {
+		return nil
+	}
+	return o.Metadata
 }
 
 func (o *AgentRun) GetStatus() *AgentExecutionStatus {

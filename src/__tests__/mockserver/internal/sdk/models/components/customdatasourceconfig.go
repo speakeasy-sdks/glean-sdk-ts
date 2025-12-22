@@ -29,6 +29,7 @@ const (
 	DatasourceCategoryExternalShortcut     DatasourceCategory = "EXTERNAL_SHORTCUT"
 	DatasourceCategoryEntity               DatasourceCategory = "ENTITY"
 	DatasourceCategoryCalendar             DatasourceCategory = "CALENDAR"
+	DatasourceCategoryAgents               DatasourceCategory = "AGENTS"
 )
 
 func (e DatasourceCategory) ToPointer() *DatasourceCategory {
@@ -73,6 +74,8 @@ func (e *DatasourceCategory) UnmarshalJSON(data []byte) error {
 	case "ENTITY":
 		fallthrough
 	case "CALENDAR":
+		fallthrough
+	case "AGENTS":
 		*e = DatasourceCategory(v)
 		return nil
 	default:
@@ -202,7 +205,7 @@ type CustomDatasourceConfig struct {
 	IncludeUtmSource *bool `json:"includeUtmSource,omitempty"`
 	// If true, the fragment part of the URL will be stripped when converting to a canonical url.
 	StripFragmentInCanonicalURL *bool `default:"true" json:"stripFragmentInCanonicalUrl"`
-	// If the datasource uses another datasource for identity info, then the name of the datasource. The identity datasource must exist already.
+	// If the datasource uses another datasource for identity info, then the name of the datasource. The identity datasource must exist already and the datasource with identity info should have its visibility enabled for search results.
 	IdentityDatasourceName *string `json:"identityDatasourceName,omitempty"`
 	// If the datasource uses a specific product access group, then the name of that group.
 	ProductAccessGroup *string `json:"productAccessGroup,omitempty"`
