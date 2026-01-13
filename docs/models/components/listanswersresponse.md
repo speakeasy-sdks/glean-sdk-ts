@@ -105,30 +105,6 @@ let value: ListAnswersResponse = {
             ],
           },
         },
-        board: {
-          name: "<value>",
-          description: "after pivot promise pish who talkative more",
-          audienceFilters: [
-            {
-              fieldName: "type",
-              values: [
-                {
-                  value: "Spreadsheet",
-                  relationType: "EQUALS",
-                },
-                {
-                  value: "Presentation",
-                  relationType: "EQUALS",
-                },
-              ],
-            },
-          ],
-          id: 26919,
-          creator: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-        },
         collections: [],
         sourceDocument: {},
       },

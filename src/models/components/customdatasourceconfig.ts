@@ -47,6 +47,7 @@ export const DatasourceCategory = {
   ExternalShortcut: "EXTERNAL_SHORTCUT",
   Entity: "ENTITY",
   Calendar: "CALENDAR",
+  Agents: "AGENTS",
 } as const;
 /**
  * The type of this datasource. It is an important signal for relevance and must be specified and cannot be UNCATEGORIZED. Please refer to [this](https://developers.glean.com/docs/indexing_api_datasource_category/) for more details.
@@ -171,7 +172,7 @@ export type CustomDatasourceConfig = {
    */
   stripFragmentInCanonicalUrl?: boolean | undefined;
   /**
-   * If the datasource uses another datasource for identity info, then the name of the datasource. The identity datasource must exist already.
+   * If the datasource uses another datasource for identity info, then the name of the datasource. The identity datasource must exist already and the datasource with identity info should have its visibility enabled for search results.
    */
   identityDatasourceName?: string | undefined;
   /**

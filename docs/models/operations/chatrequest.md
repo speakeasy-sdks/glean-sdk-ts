@@ -56,8 +56,8 @@ let value: ChatRequest = {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -169,31 +169,10 @@ let value: ChatRequest = {
                       ],
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description: "decongestant beyond yuck till obvious",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 148141,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   collections: [],
+                },
+                generatedQna: {
+                  ranges: [],
                 },
                 extractedQnA: {
                   questionResult: {
@@ -202,8 +181,8 @@ let value: ChatRequest = {
                     nativeAppUrl: "slack://foo/bar",
                     snippets: [
                       {
-                        snippet: "snippet",
                         mimeType: "mimeType",
+                        snippet: "snippet",
                       },
                     ],
                     mustIncludeSuggestions: {},
@@ -216,7 +195,7 @@ let value: ChatRequest = {
                 },
                 collection: {
                   name: "<value>",
-                  description: "beneath meatloaf sticky creature",
+                  description: "decongestant beyond yuck till obvious",
                   audienceFilters: [
                     {
                       fieldName: "type",
@@ -232,29 +211,13 @@ let value: ChatRequest = {
                       ],
                     },
                   ],
-                  id: 224949,
+                  id: 148141,
+                  creator: {
+                    name: "George Clooney",
+                    obfuscatedId: "abc123",
+                  },
                   items: [],
                   children: [],
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description: "besides yearly unfortunately institute",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 882696,
                 },
                 code: {
                   repoName: "scio",
@@ -277,10 +240,16 @@ let value: ChatRequest = {
                     },
                   ],
                 },
-                relatedDocuments: [],
-                relatedQuestion: {
-                  ranges: [],
+                chat: {
+                  icon: {
+                    color: "#343CED",
+                    key: "person_icon",
+                    iconType: "GLYPH",
+                    name: "user",
+                  },
                 },
+                relatedDocuments: [],
+                relatedQuestion: {},
               },
             ],
             querySuggestion: {
@@ -295,12 +264,29 @@ let value: ChatRequest = {
             },
             action: {
               metadata: {
-                type: "ACTION",
+                type: "RETRIEVAL",
                 name: "<value>",
-                displayName: "Garret_Pagac-Armstrong28",
+                displayName: "Gudrun87",
                 displayDescription: "<value>",
                 objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
               },
+            },
+            citation: {
+              sourceFile: {
+                id: "FILE_1234",
+                url: "www.google.com",
+                name: "sample.pdf",
+              },
+              referenceRanges: [
+                {
+                  snippets: [
+                    {
+                      mimeType: "mimeType",
+                      snippet: "snippet",
+                    },
+                  ],
+                },
+              ],
             },
           },
         ],

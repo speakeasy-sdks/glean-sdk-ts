@@ -19,6 +19,7 @@ export const GetDocumentsRequestIncludeField = {
   VisitorsCount: "VISITORS_COUNT",
   RecentShares: "RECENT_SHARES",
   DocumentContent: "DOCUMENT_CONTENT",
+  CustomMetadata: "CUSTOM_METADATA",
 } as const;
 export type GetDocumentsRequestIncludeField = ClosedEnum<
   typeof GetDocumentsRequestIncludeField

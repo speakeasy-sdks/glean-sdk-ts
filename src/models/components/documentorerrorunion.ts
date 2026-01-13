@@ -17,7 +17,7 @@ export type DocumentOrError = {
   /**
    * The text for error, reason.
    */
-  error?: string | undefined;
+  error: string;
 };
 
 export type DocumentOrErrorUnion = DocumentOrError | Document;
@@ -28,12 +28,12 @@ export const DocumentOrError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  error: z.string().optional(),
+  error: z.string(),
 });
 
 /** @internal */
 export type DocumentOrError$Outbound = {
-  error?: string | undefined;
+  error: string;
 };
 
 /** @internal */
@@ -42,7 +42,7 @@ export const DocumentOrError$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DocumentOrError
 > = z.object({
-  error: z.string().optional(),
+  error: z.string(),
 });
 
 /**

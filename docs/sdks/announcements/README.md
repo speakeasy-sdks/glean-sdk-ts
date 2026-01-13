@@ -146,8 +146,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -252,8 +252,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -358,8 +358,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -2664,8 +2664,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -2770,8 +2770,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -2876,8 +2876,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -6256,138 +6256,6 @@ async function run() {
                   ],
                 },
               },
-              board: {
-                name: "<value>",
-                description: "or overdue uncover daddy inside er fortunately behind ha likewise",
-                audienceFilters: [
-                  {
-                    fieldName: "type",
-                    values: [
-                      {
-                        value: "Spreadsheet",
-                        relationType: "EQUALS",
-                      },
-                      {
-                        value: "Presentation",
-                        relationType: "EQUALS",
-                      },
-                    ],
-                  },
-                ],
-                id: 12133,
-                creator: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-                updatedBy: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-              },
               sourceDocument: {
                 metadata: {
                   datasource: "datasource",
@@ -9723,8 +9591,8 @@ async function run() {
                 nativeAppUrl: "slack://foo/bar",
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
                 relatedResults: [
@@ -10262,130 +10130,6 @@ async function run() {
                   photoUrl: "https://example.com/george.jpg",
                   startDate: new RFCDate("2000-01-23"),
                   datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-            },
-            answerBoard: {
-              name: "<value>",
-              description: "celsius busily without off ick circa whose",
-              audienceFilters: [
-                {
-                  fieldName: "type",
-                  values: [
-                    {
-                      value: "Spreadsheet",
-                      relationType: "EQUALS",
-                    },
-                    {
-                      value: "Presentation",
-                      relationType: "EQUALS",
-                    },
-                  ],
-                },
-              ],
-              id: 275867,
-              creator: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-              updatedBy: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
                     {
                       datasource: "github",
                       handle: "<value>",
@@ -11142,8 +10886,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -11248,8 +10992,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -11354,8 +11098,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -13660,8 +13404,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -13766,8 +13510,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -13872,8 +13616,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -17252,138 +16996,6 @@ async function run() {
                   ],
                 },
               },
-              board: {
-                name: "<value>",
-                description: "or overdue uncover daddy inside er fortunately behind ha likewise",
-                audienceFilters: [
-                  {
-                    fieldName: "type",
-                    values: [
-                      {
-                        value: "Spreadsheet",
-                        relationType: "EQUALS",
-                      },
-                      {
-                        value: "Presentation",
-                        relationType: "EQUALS",
-                      },
-                    ],
-                  },
-                ],
-                id: 12133,
-                creator: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-                updatedBy: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-              },
               sourceDocument: {
                 metadata: {
                   datasource: "datasource",
@@ -20719,8 +20331,8 @@ async function run() {
                 nativeAppUrl: "slack://foo/bar",
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
                 relatedResults: [
@@ -21262,130 +20874,6 @@ async function run() {
                   photoUrl: "https://example.com/george.jpg",
                   startDate: new RFCDate("2000-01-23"),
                   datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-            },
-            answerBoard: {
-              name: "<value>",
-              description: "celsius busily without off ick circa whose",
-              audienceFilters: [
-                {
-                  fieldName: "type",
-                  values: [
-                    {
-                      value: "Spreadsheet",
-                      relationType: "EQUALS",
-                    },
-                    {
-                      value: "Presentation",
-                      relationType: "EQUALS",
-                    },
-                  ],
-                },
-              ],
-              id: 275867,
-              creator: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-              updatedBy: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
                     {
                       datasource: "github",
                       handle: "<value>",
@@ -22199,8 +21687,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -22305,8 +21793,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -22411,8 +21899,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -24717,8 +24205,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -24823,8 +24311,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -24929,8 +24417,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -28309,138 +27797,6 @@ async function run() {
                   ],
                 },
               },
-              board: {
-                name: "<value>",
-                description: "or overdue uncover daddy inside er fortunately behind ha likewise",
-                audienceFilters: [
-                  {
-                    fieldName: "type",
-                    values: [
-                      {
-                        value: "Spreadsheet",
-                        relationType: "EQUALS",
-                      },
-                      {
-                        value: "Presentation",
-                        relationType: "EQUALS",
-                      },
-                    ],
-                  },
-                ],
-                id: 12133,
-                creator: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-                updatedBy: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-              },
               sourceDocument: {
                 metadata: {
                   datasource: "datasource",
@@ -31776,8 +31132,8 @@ async function run() {
                 nativeAppUrl: "slack://foo/bar",
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
                 relatedResults: [
@@ -32315,130 +31671,6 @@ async function run() {
                   photoUrl: "https://example.com/george.jpg",
                   startDate: new RFCDate("2000-01-23"),
                   datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-            },
-            answerBoard: {
-              name: "<value>",
-              description: "celsius busily without off ick circa whose",
-              audienceFilters: [
-                {
-                  fieldName: "type",
-                  values: [
-                    {
-                      value: "Spreadsheet",
-                      relationType: "EQUALS",
-                    },
-                    {
-                      value: "Presentation",
-                      relationType: "EQUALS",
-                    },
-                  ],
-                },
-              ],
-              id: 275867,
-              creator: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-              updatedBy: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
                     {
                       datasource: "github",
                       handle: "<value>",
@@ -33195,8 +32427,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -33301,8 +32533,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -33407,8 +32639,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -35713,8 +34945,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -35819,8 +35051,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -35925,8 +35157,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -39305,138 +38537,6 @@ async function run() {
                   ],
                 },
               },
-              board: {
-                name: "<value>",
-                description: "or overdue uncover daddy inside er fortunately behind ha likewise",
-                audienceFilters: [
-                  {
-                    fieldName: "type",
-                    values: [
-                      {
-                        value: "Spreadsheet",
-                        relationType: "EQUALS",
-                      },
-                      {
-                        value: "Presentation",
-                        relationType: "EQUALS",
-                      },
-                    ],
-                  },
-                ],
-                id: 12133,
-                creator: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-                updatedBy: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-              },
               sourceDocument: {
                 metadata: {
                   datasource: "datasource",
@@ -42772,8 +41872,8 @@ async function run() {
                 nativeAppUrl: "slack://foo/bar",
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
                 relatedResults: [
@@ -43315,130 +42415,6 @@ async function run() {
                   photoUrl: "https://example.com/george.jpg",
                   startDate: new RFCDate("2000-01-23"),
                   datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-            },
-            answerBoard: {
-              name: "<value>",
-              description: "celsius busily without off ick circa whose",
-              audienceFilters: [
-                {
-                  fieldName: "type",
-                  values: [
-                    {
-                      value: "Spreadsheet",
-                      relationType: "EQUALS",
-                    },
-                    {
-                      value: "Presentation",
-                      relationType: "EQUALS",
-                    },
-                  ],
-                },
-              ],
-              id: 275867,
-              creator: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-              updatedBy: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
                     {
                       datasource: "github",
                       handle: "<value>",
@@ -44378,8 +43354,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -44478,8 +43454,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -44578,8 +43554,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -48543,8 +47519,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -48643,8 +47619,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -48743,8 +47719,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -53624,122 +52600,6 @@ async function run() {
                   ],
                 },
               },
-              board: {
-                name: "<value>",
-                description: "cuddly mockingly gust lobster yet openly",
-                audienceFilters: [
-                  {
-                    fieldName: "type",
-                    values: [
-                      {
-                        value: "Spreadsheet",
-                        relationType: "EQUALS",
-                      },
-                      {
-                        value: "Presentation",
-                        relationType: "EQUALS",
-                      },
-                    ],
-                  },
-                ],
-                id: 455966,
-                creator: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-                updatedBy: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-              },
               sourceDocument: {
                 metadata: {
                   datasource: "datasource",
@@ -58520,8 +57380,8 @@ async function run() {
                 nativeAppUrl: "slack://foo/bar",
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
                 relatedResults: [
@@ -59007,134 +57867,6 @@ async function run() {
                   photoUrl: "https://example.com/george.jpg",
                   startDate: new RFCDate("2000-01-23"),
                   datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-            },
-            answerBoard: {
-              name: "<value>",
-              description: "consequently overspend unimpressively notwithstanding before",
-              audienceFilters: [
-                {
-                  fieldName: "type",
-                  values: [
-                    {
-                      value: "Spreadsheet",
-                      relationType: "EQUALS",
-                    },
-                    {
-                      value: "Presentation",
-                      relationType: "EQUALS",
-                    },
-                  ],
-                },
-              ],
-              id: 728903,
-              creator: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-              updatedBy: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
                     {
                       datasource: "github",
                       handle: "<value>",
@@ -59905,8 +58637,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -60005,8 +58737,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -60105,8 +58837,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -64070,8 +62802,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -64170,8 +62902,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -64270,8 +63002,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -69151,122 +67883,6 @@ async function run() {
                   ],
                 },
               },
-              board: {
-                name: "<value>",
-                description: "cuddly mockingly gust lobster yet openly",
-                audienceFilters: [
-                  {
-                    fieldName: "type",
-                    values: [
-                      {
-                        value: "Spreadsheet",
-                        relationType: "EQUALS",
-                      },
-                      {
-                        value: "Presentation",
-                        relationType: "EQUALS",
-                      },
-                    ],
-                  },
-                ],
-                id: 455966,
-                creator: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-                updatedBy: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-              },
               sourceDocument: {
                 metadata: {
                   datasource: "datasource",
@@ -74047,8 +72663,8 @@ async function run() {
                 nativeAppUrl: "slack://foo/bar",
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
                 relatedResults: [
@@ -74530,134 +73146,6 @@ async function run() {
                   photoUrl: "https://example.com/george.jpg",
                   startDate: new RFCDate("2000-01-23"),
                   datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-            },
-            answerBoard: {
-              name: "<value>",
-              description: "consequently overspend unimpressively notwithstanding before",
-              audienceFilters: [
-                {
-                  fieldName: "type",
-                  values: [
-                    {
-                      value: "Spreadsheet",
-                      relationType: "EQUALS",
-                    },
-                    {
-                      value: "Presentation",
-                      relationType: "EQUALS",
-                    },
-                  ],
-                },
-              ],
-              id: 728903,
-              creator: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-              updatedBy: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
                     {
                       datasource: "github",
                       handle: "<value>",
@@ -75428,8 +73916,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -75528,8 +74016,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -75628,8 +74116,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -79593,8 +78081,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -79693,8 +78181,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -79793,8 +78281,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -84674,122 +83162,6 @@ async function run() {
                   ],
                 },
               },
-              board: {
-                name: "<value>",
-                description: "cuddly mockingly gust lobster yet openly",
-                audienceFilters: [
-                  {
-                    fieldName: "type",
-                    values: [
-                      {
-                        value: "Spreadsheet",
-                        relationType: "EQUALS",
-                      },
-                      {
-                        value: "Presentation",
-                        relationType: "EQUALS",
-                      },
-                    ],
-                  },
-                ],
-                id: 455966,
-                creator: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-                updatedBy: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-              },
               sourceDocument: {
                 metadata: {
                   datasource: "datasource",
@@ -89570,8 +87942,8 @@ async function run() {
                 nativeAppUrl: "slack://foo/bar",
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
                 relatedResults: [
@@ -90061,134 +88433,6 @@ async function run() {
                   photoUrl: "https://example.com/george.jpg",
                   startDate: new RFCDate("2000-01-23"),
                   datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-            },
-            answerBoard: {
-              name: "<value>",
-              description: "consequently overspend unimpressively notwithstanding before",
-              audienceFilters: [
-                {
-                  fieldName: "type",
-                  values: [
-                    {
-                      value: "Spreadsheet",
-                      relationType: "EQUALS",
-                    },
-                    {
-                      value: "Presentation",
-                      relationType: "EQUALS",
-                    },
-                  ],
-                },
-              ],
-              id: 728903,
-              creator: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-              updatedBy: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
                     {
                       datasource: "github",
                       handle: "<value>",
@@ -91017,8 +89261,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -91117,8 +89361,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -91217,8 +89461,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -95182,8 +93426,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -95282,8 +93526,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -95382,8 +93626,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -100263,122 +98507,6 @@ async function run() {
                   ],
                 },
               },
-              board: {
-                name: "<value>",
-                description: "cuddly mockingly gust lobster yet openly",
-                audienceFilters: [
-                  {
-                    fieldName: "type",
-                    values: [
-                      {
-                        value: "Spreadsheet",
-                        relationType: "EQUALS",
-                      },
-                      {
-                        value: "Presentation",
-                        relationType: "EQUALS",
-                      },
-                    ],
-                  },
-                ],
-                id: 455966,
-                creator: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-                updatedBy: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-              },
               sourceDocument: {
                 metadata: {
                   datasource: "datasource",
@@ -105159,8 +103287,8 @@ async function run() {
                 nativeAppUrl: "slack://foo/bar",
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
                 relatedResults: [
@@ -105646,134 +103774,6 @@ async function run() {
                   photoUrl: "https://example.com/george.jpg",
                   startDate: new RFCDate("2000-01-23"),
                   datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-            },
-            answerBoard: {
-              name: "<value>",
-              description: "consequently overspend unimpressively notwithstanding before",
-              audienceFilters: [
-                {
-                  fieldName: "type",
-                  values: [
-                    {
-                      value: "Spreadsheet",
-                      relationType: "EQUALS",
-                    },
-                    {
-                      value: "Presentation",
-                      relationType: "EQUALS",
-                    },
-                  ],
-                },
-              ],
-              id: 728903,
-              creator: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-              updatedBy: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
                     {
                       datasource: "github",
                       handle: "<value>",
@@ -106544,8 +104544,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -106644,8 +104644,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -106744,8 +104744,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -110709,8 +108709,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -110809,8 +108809,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -110909,8 +108909,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -115790,122 +113790,6 @@ async function run() {
                   ],
                 },
               },
-              board: {
-                name: "<value>",
-                description: "cuddly mockingly gust lobster yet openly",
-                audienceFilters: [
-                  {
-                    fieldName: "type",
-                    values: [
-                      {
-                        value: "Spreadsheet",
-                        relationType: "EQUALS",
-                      },
-                      {
-                        value: "Presentation",
-                        relationType: "EQUALS",
-                      },
-                    ],
-                  },
-                ],
-                id: 455966,
-                creator: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-                updatedBy: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-              },
               sourceDocument: {
                 metadata: {
                   datasource: "datasource",
@@ -120686,8 +118570,8 @@ async function run() {
                 nativeAppUrl: "slack://foo/bar",
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
                 relatedResults: [
@@ -121169,134 +119053,6 @@ async function run() {
                   photoUrl: "https://example.com/george.jpg",
                   startDate: new RFCDate("2000-01-23"),
                   datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-            },
-            answerBoard: {
-              name: "<value>",
-              description: "consequently overspend unimpressively notwithstanding before",
-              audienceFilters: [
-                {
-                  fieldName: "type",
-                  values: [
-                    {
-                      value: "Spreadsheet",
-                      relationType: "EQUALS",
-                    },
-                    {
-                      value: "Presentation",
-                      relationType: "EQUALS",
-                    },
-                  ],
-                },
-              ],
-              id: 728903,
-              creator: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-              updatedBy: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
                     {
                       datasource: "github",
                       handle: "<value>",
@@ -122067,8 +119823,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -122167,8 +119923,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -122267,8 +120023,8 @@ async function run() {
                         nativeAppUrl: "slack://foo/bar",
                         snippets: [
                           {
-                            snippet: "snippet",
                             mimeType: "mimeType",
+                            snippet: "snippet",
                           },
                         ],
                       },
@@ -126232,8 +123988,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -126332,8 +124088,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -126432,8 +124188,8 @@ async function run() {
                           nativeAppUrl: "slack://foo/bar",
                           snippets: [
                             {
-                              snippet: "snippet",
                               mimeType: "mimeType",
+                              snippet: "snippet",
                             },
                           ],
                         },
@@ -131313,122 +129069,6 @@ async function run() {
                   ],
                 },
               },
-              board: {
-                name: "<value>",
-                description: "cuddly mockingly gust lobster yet openly",
-                audienceFilters: [
-                  {
-                    fieldName: "type",
-                    values: [
-                      {
-                        value: "Spreadsheet",
-                        relationType: "EQUALS",
-                      },
-                      {
-                        value: "Presentation",
-                        relationType: "EQUALS",
-                      },
-                    ],
-                  },
-                ],
-                id: 455966,
-                creator: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-                updatedBy: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                  metadata: {
-                    type: "FULL_TIME",
-                    title: "Actor",
-                    department: "Movies",
-                    email: "george@example.com",
-                    location: "Hollywood, CA",
-                    phone: "6505551234",
-                    photoUrl: "https://example.com/george.jpg",
-                    startDate: new RFCDate("2000-01-23"),
-                    datasourceProfile: [
-                      {
-                        datasource: "github",
-                        handle: "<value>",
-                      },
-                    ],
-                    querySuggestions: {
-                      suggestions: [
-                        {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
-                        },
-                      ],
-                    },
-                    inviteInfo: {
-                      invites: [
-                        {},
-                        {},
-                        {},
-                      ],
-                    },
-                    badges: [
-                      {
-                        key: "deployment_name_new_hire",
-                        displayName: "New hire",
-                        iconConfig: {
-                          color: "#343CED",
-                          key: "person_icon",
-                          iconType: "GLYPH",
-                          name: "user",
-                        },
-                      },
-                    ],
-                  },
-                },
-              },
               sourceDocument: {
                 metadata: {
                   datasource: "datasource",
@@ -136209,8 +133849,8 @@ async function run() {
                 nativeAppUrl: "slack://foo/bar",
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
                 relatedResults: [
@@ -136700,134 +134340,6 @@ async function run() {
                   photoUrl: "https://example.com/george.jpg",
                   startDate: new RFCDate("2000-01-23"),
                   datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-            },
-            answerBoard: {
-              name: "<value>",
-              description: "consequently overspend unimpressively notwithstanding before",
-              audienceFilters: [
-                {
-                  fieldName: "type",
-                  values: [
-                    {
-                      value: "Spreadsheet",
-                      relationType: "EQUALS",
-                    },
-                    {
-                      value: "Presentation",
-                      relationType: "EQUALS",
-                    },
-                  ],
-                },
-              ],
-              id: 728903,
-              creator: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                  ],
-                  querySuggestions: {
-                    suggestions: [
-                      {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
-                      },
-                    ],
-                  },
-                  inviteInfo: {
-                    invites: [
-                      {},
-                      {},
-                      {},
-                    ],
-                  },
-                  badges: [
-                    {
-                      key: "deployment_name_new_hire",
-                      displayName: "New hire",
-                      iconConfig: {
-                        color: "#343CED",
-                        key: "person_icon",
-                        iconType: "GLYPH",
-                        name: "user",
-                      },
-                    },
-                  ],
-                },
-              },
-              updatedBy: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
-                    {
-                      datasource: "github",
-                      handle: "<value>",
-                    },
                     {
                       datasource: "github",
                       handle: "<value>",

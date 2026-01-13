@@ -293,11 +293,11 @@ For more information on obtaining the appropriate token type, please contact you
 
 #### [client.agents](docs/sdks/agents/README.md)
 
-* [retrieve](docs/sdks/agents/README.md#retrieve) - Get Agent
-* [retrieveSchemas](docs/sdks/agents/README.md#retrieveschemas) - Get Agent Schemas
-* [list](docs/sdks/agents/README.md#list) - Search Agents
-* [runStream](docs/sdks/agents/README.md#runstream) - Create Run, Stream Output
-* [run](docs/sdks/agents/README.md#run) - Create Run, Wait for Output
+* [retrieve](docs/sdks/agents/README.md#retrieve) - Retrieve an agent
+* [retrieveSchemas](docs/sdks/agents/README.md#retrieveschemas) - List an agent's schemas
+* [list](docs/sdks/agents/README.md#list) - Search agents
+* [runStream](docs/sdks/agents/README.md#runstream) - Create an agent run and stream the response
+* [run](docs/sdks/agents/README.md#run) - Create an agent run and wait for the response
 
 #### [client.announcements](docs/sdks/announcements/README.md)
 
@@ -311,7 +311,7 @@ For more information on obtaining the appropriate token type, please contact you
 * [delete](docs/sdks/answers/README.md#delete) - Delete Answer
 * [update](docs/sdks/answers/README.md#update) - Update Answer
 * [retrieve](docs/sdks/answers/README.md#retrieve) - Read Answer
-* [list](docs/sdks/answers/README.md#list) - List Answers
+* [~~list~~](docs/sdks/answers/README.md#list) - List Answers :warning: **Deprecated**
 
 #### [client.authentication](docs/sdks/clientauthentication/README.md)
 
@@ -359,29 +359,29 @@ For more information on obtaining the appropriate token type, please contact you
 
 #### [client.governance.data.policies](docs/sdks/policies/README.md)
 
-* [retrieve](docs/sdks/policies/README.md#retrieve) - Gets specified Policy.
-* [update](docs/sdks/policies/README.md#update) - Updates an existing policy.
-* [list](docs/sdks/policies/README.md#list) - Lists policies.
-* [create](docs/sdks/policies/README.md#create) - Creates new policy.
-* [download](docs/sdks/policies/README.md#download) - Downloads violations CSV for policy.
+* [retrieve](docs/sdks/policies/README.md#retrieve) - Gets specified policy
+* [update](docs/sdks/policies/README.md#update) - Updates an existing policy
+* [list](docs/sdks/policies/README.md#list) - Lists policies
+* [create](docs/sdks/policies/README.md#create) - Creates new policy
+* [download](docs/sdks/policies/README.md#download) - Downloads violations CSV for policy
 
 #### [client.governance.data.reports](docs/sdks/reports/README.md)
 
-* [create](docs/sdks/reports/README.md#create) - Creates new one-time report.
-* [download](docs/sdks/reports/README.md#download) - Downloads violations CSV for report.
-* [status](docs/sdks/reports/README.md#status) - Fetches report run status.
+* [create](docs/sdks/reports/README.md#create) - Creates new one-time report
+* [download](docs/sdks/reports/README.md#download) - Downloads violations CSV for report
+* [status](docs/sdks/reports/README.md#status) - Fetches report run status
 
 #### [client.governance.documents](docs/sdks/governancedocuments/README.md)
 
 
 #### [client.governance.documents.visibilityoverrides](docs/sdks/visibilityoverrides/README.md)
 
-* [list](docs/sdks/visibilityoverrides/README.md#list) - Fetches documents visibility.
-* [create](docs/sdks/visibilityoverrides/README.md#create) - Hide/Un-hide docs.
+* [list](docs/sdks/visibilityoverrides/README.md#list) - Fetches documents visibility
+* [create](docs/sdks/visibilityoverrides/README.md#create) - Hide or unhide docs
 
 #### [client.insights](docs/sdks/insights/README.md)
 
-* [retrieve](docs/sdks/insights/README.md#retrieve) - Read insights
+* [retrieve](docs/sdks/insights/README.md#retrieve) - Get insights
 
 #### [client.messages](docs/sdks/messages/README.md)
 
@@ -422,6 +422,13 @@ For more information on obtaining the appropriate token type, please contact you
 * [list](docs/sdks/verification/README.md#list) - List verifications
 * [verify](docs/sdks/verification/README.md#verify) - Update verification
 
+
+### [governance](docs/sdks/governance/README.md)
+
+* [createfindingsexport](docs/sdks/governance/README.md#createfindingsexport) - Creates findings export
+* [listfindingsexports](docs/sdks/governance/README.md#listfindingsexports) - Lists findings exports
+* [downloadfindingsexport](docs/sdks/governance/README.md#downloadfindingsexport) - Downloads findings export
+* [deletefindingsexport](docs/sdks/governance/README.md#deletefindingsexport) - Deletes findings export
 
 ### [indexing](docs/sdks/indexing/README.md)
 
@@ -508,17 +515,16 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 - [`clientActivityFeedback`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`clientActivityReport`](docs/sdks/activity/README.md#report) - Report document activity
-- [`clientAgentsList`](docs/sdks/agents/README.md#list) - Search Agents
-- [`clientAgentsRetrieve`](docs/sdks/agents/README.md#retrieve) - Get Agent
-- [`clientAgentsRetrieveSchemas`](docs/sdks/agents/README.md#retrieveschemas) - Get Agent Schemas
-- [`clientAgentsRun`](docs/sdks/agents/README.md#run) - Create Run, Wait for Output
-- [`clientAgentsRunStream`](docs/sdks/agents/README.md#runstream) - Create Run, Stream Output
+- [`clientAgentsList`](docs/sdks/agents/README.md#list) - Search agents
+- [`clientAgentsRetrieve`](docs/sdks/agents/README.md#retrieve) - Retrieve an agent
+- [`clientAgentsRetrieveSchemas`](docs/sdks/agents/README.md#retrieveschemas) - List an agent's schemas
+- [`clientAgentsRun`](docs/sdks/agents/README.md#run) - Create an agent run and wait for the response
+- [`clientAgentsRunStream`](docs/sdks/agents/README.md#runstream) - Create an agent run and stream the response
 - [`clientAnnouncementsCreate`](docs/sdks/announcements/README.md#create) - Create Announcement
 - [`clientAnnouncementsDelete`](docs/sdks/announcements/README.md#delete) - Delete Announcement
 - [`clientAnnouncementsUpdate`](docs/sdks/announcements/README.md#update) - Update Announcement
 - [`clientAnswersCreate`](docs/sdks/answers/README.md#create) - Create Answer
 - [`clientAnswersDelete`](docs/sdks/answers/README.md#delete) - Delete Answer
-- [`clientAnswersList`](docs/sdks/answers/README.md#list) - List Answers
 - [`clientAnswersRetrieve`](docs/sdks/answers/README.md#retrieve) - Read Answer
 - [`clientAnswersUpdate`](docs/sdks/answers/README.md#update) - Update Answer
 - [`clientAuthenticationCreateToken`](docs/sdks/clientauthentication/README.md#createtoken) - Create authentication token
@@ -546,17 +552,17 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientDocumentsSummarize`](docs/sdks/clientdocuments/README.md#summarize) - Summarize documents
 - [`clientEntitiesList`](docs/sdks/entities/README.md#list) - List entities
 - [`clientEntitiesReadPeople`](docs/sdks/entities/README.md#readpeople) - Read people
-- [`clientGovernanceDataPoliciesCreate`](docs/sdks/policies/README.md#create) - Creates new policy.
-- [`clientGovernanceDataPoliciesDownload`](docs/sdks/policies/README.md#download) - Downloads violations CSV for policy.
-- [`clientGovernanceDataPoliciesList`](docs/sdks/policies/README.md#list) - Lists policies.
-- [`clientGovernanceDataPoliciesRetrieve`](docs/sdks/policies/README.md#retrieve) - Gets specified Policy.
-- [`clientGovernanceDataPoliciesUpdate`](docs/sdks/policies/README.md#update) - Updates an existing policy.
-- [`clientGovernanceDataReportsCreate`](docs/sdks/reports/README.md#create) - Creates new one-time report.
-- [`clientGovernanceDataReportsDownload`](docs/sdks/reports/README.md#download) - Downloads violations CSV for report.
-- [`clientGovernanceDataReportsStatus`](docs/sdks/reports/README.md#status) - Fetches report run status.
-- [`clientGovernanceDocumentsVisibilityoverridesCreate`](docs/sdks/visibilityoverrides/README.md#create) - Hide/Un-hide docs.
-- [`clientGovernanceDocumentsVisibilityoverridesList`](docs/sdks/visibilityoverrides/README.md#list) - Fetches documents visibility.
-- [`clientInsightsRetrieve`](docs/sdks/insights/README.md#retrieve) - Read insights
+- [`clientGovernanceDataPoliciesCreate`](docs/sdks/policies/README.md#create) - Creates new policy
+- [`clientGovernanceDataPoliciesDownload`](docs/sdks/policies/README.md#download) - Downloads violations CSV for policy
+- [`clientGovernanceDataPoliciesList`](docs/sdks/policies/README.md#list) - Lists policies
+- [`clientGovernanceDataPoliciesRetrieve`](docs/sdks/policies/README.md#retrieve) - Gets specified policy
+- [`clientGovernanceDataPoliciesUpdate`](docs/sdks/policies/README.md#update) - Updates an existing policy
+- [`clientGovernanceDataReportsCreate`](docs/sdks/reports/README.md#create) - Creates new one-time report
+- [`clientGovernanceDataReportsDownload`](docs/sdks/reports/README.md#download) - Downloads violations CSV for report
+- [`clientGovernanceDataReportsStatus`](docs/sdks/reports/README.md#status) - Fetches report run status
+- [`clientGovernanceDocumentsVisibilityoverridesCreate`](docs/sdks/visibilityoverrides/README.md#create) - Hide or unhide docs
+- [`clientGovernanceDocumentsVisibilityoverridesList`](docs/sdks/visibilityoverrides/README.md#list) - Fetches documents visibility
+- [`clientInsightsRetrieve`](docs/sdks/insights/README.md#retrieve) - Get insights
 - [`clientMessagesRetrieve`](docs/sdks/messages/README.md#retrieve) - Read messages
 - [`clientPinsCreate`](docs/sdks/pins/README.md#create) - Create pin
 - [`clientPinsList`](docs/sdks/pins/README.md#list) - List pins
@@ -578,6 +584,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientVerificationAddReminder`](docs/sdks/verification/README.md#addreminder) - Create verification
 - [`clientVerificationList`](docs/sdks/verification/README.md#list) - List verifications
 - [`clientVerificationVerify`](docs/sdks/verification/README.md#verify) - Update verification
+- [`governanceCreatefindingsexport`](docs/sdks/governance/README.md#createfindingsexport) - Creates findings export
+- [`governanceDeletefindingsexport`](docs/sdks/governance/README.md#deletefindingsexport) - Deletes findings export
+- [`governanceDownloadfindingsexport`](docs/sdks/governance/README.md#downloadfindingsexport) - Downloads findings export
+- [`governanceListfindingsexports`](docs/sdks/governance/README.md#listfindingsexports) - Lists findings exports
 - [`indexingAuthenticationRotateToken`](docs/sdks/indexingauthentication/README.md#rotatetoken) - Rotate token
 - [`indexingDatasourcesAdd`](docs/sdks/datasources/README.md#add) - Add or update datasource
 - [`indexingDatasourcesRetrieveConfig`](docs/sdks/datasources/README.md#retrieveconfig) - Get datasource config
@@ -616,6 +626,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`indexingPermissionsUpdatePermissions`](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
 - [`indexingShortcutsBulkIndex`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`indexingShortcutsUpload`](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
+- ~~[`clientAnswersList`](docs/sdks/answers/README.md#list)~~ - List Answers :warning: **Deprecated**
 - ~~[`indexingDocumentsCount`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
 - ~~[`indexingDocumentsStatus`](docs/sdks/indexingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**
 - ~~[`indexingPeopleCount`](docs/sdks/people/README.md#count)~~ - Get user count :warning: **Deprecated**
@@ -647,17 +658,16 @@ To learn about this feature and how to get started, check
 
 - [`useClientActivityFeedbackMutation`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`useClientActivityReportMutation`](docs/sdks/activity/README.md#report) - Report document activity
-- [`useClientAgentsListMutation`](docs/sdks/agents/README.md#list) - Search Agents
-- [`useClientAgentsRetrieve`](docs/sdks/agents/README.md#retrieve) - Get Agent
-- [`useClientAgentsRetrieveSchemas`](docs/sdks/agents/README.md#retrieveschemas) - Get Agent Schemas
-- [`useClientAgentsRunMutation`](docs/sdks/agents/README.md#run) - Create Run, Wait for Output
-- [`useClientAgentsRunStreamMutation`](docs/sdks/agents/README.md#runstream) - Create Run, Stream Output
+- [`useClientAgentsListMutation`](docs/sdks/agents/README.md#list) - Search agents
+- [`useClientAgentsRetrieve`](docs/sdks/agents/README.md#retrieve) - Retrieve an agent
+- [`useClientAgentsRetrieveSchemas`](docs/sdks/agents/README.md#retrieveschemas) - List an agent's schemas
+- [`useClientAgentsRunMutation`](docs/sdks/agents/README.md#run) - Create an agent run and wait for the response
+- [`useClientAgentsRunStreamMutation`](docs/sdks/agents/README.md#runstream) - Create an agent run and stream the response
 - [`useClientAnnouncementsCreateMutation`](docs/sdks/announcements/README.md#create) - Create Announcement
 - [`useClientAnnouncementsDeleteMutation`](docs/sdks/announcements/README.md#delete) - Delete Announcement
 - [`useClientAnnouncementsUpdateMutation`](docs/sdks/announcements/README.md#update) - Update Announcement
 - [`useClientAnswersCreateMutation`](docs/sdks/answers/README.md#create) - Create Answer
 - [`useClientAnswersDeleteMutation`](docs/sdks/answers/README.md#delete) - Delete Answer
-- [`useClientAnswersListMutation`](docs/sdks/answers/README.md#list) - List Answers
 - [`useClientAnswersRetrieveMutation`](docs/sdks/answers/README.md#retrieve) - Read Answer
 - [`useClientAnswersUpdateMutation`](docs/sdks/answers/README.md#update) - Update Answer
 - [`useClientAuthenticationCreateTokenMutation`](docs/sdks/clientauthentication/README.md#createtoken) - Create authentication token
@@ -685,17 +695,17 @@ To learn about this feature and how to get started, check
 - [`useClientDocumentsSummarizeMutation`](docs/sdks/clientdocuments/README.md#summarize) - Summarize documents
 - [`useClientEntitiesListMutation`](docs/sdks/entities/README.md#list) - List entities
 - [`useClientEntitiesReadPeopleMutation`](docs/sdks/entities/README.md#readpeople) - Read people
-- [`useClientGovernanceDataPoliciesCreateMutation`](docs/sdks/policies/README.md#create) - Creates new policy.
-- [`useClientGovernanceDataPoliciesDownload`](docs/sdks/policies/README.md#download) - Downloads violations CSV for policy.
-- [`useClientGovernanceDataPoliciesList`](docs/sdks/policies/README.md#list) - Lists policies.
-- [`useClientGovernanceDataPoliciesRetrieve`](docs/sdks/policies/README.md#retrieve) - Gets specified Policy.
-- [`useClientGovernanceDataPoliciesUpdateMutation`](docs/sdks/policies/README.md#update) - Updates an existing policy.
-- [`useClientGovernanceDataReportsCreateMutation`](docs/sdks/reports/README.md#create) - Creates new one-time report.
-- [`useClientGovernanceDataReportsDownload`](docs/sdks/reports/README.md#download) - Downloads violations CSV for report.
-- [`useClientGovernanceDataReportsStatus`](docs/sdks/reports/README.md#status) - Fetches report run status.
-- [`useClientGovernanceDocumentsVisibilityoverridesCreateMutation`](docs/sdks/visibilityoverrides/README.md#create) - Hide/Un-hide docs.
-- [`useClientGovernanceDocumentsVisibilityoverridesList`](docs/sdks/visibilityoverrides/README.md#list) - Fetches documents visibility.
-- [`useClientInsightsRetrieveMutation`](docs/sdks/insights/README.md#retrieve) - Read insights
+- [`useClientGovernanceDataPoliciesCreateMutation`](docs/sdks/policies/README.md#create) - Creates new policy
+- [`useClientGovernanceDataPoliciesDownload`](docs/sdks/policies/README.md#download) - Downloads violations CSV for policy
+- [`useClientGovernanceDataPoliciesList`](docs/sdks/policies/README.md#list) - Lists policies
+- [`useClientGovernanceDataPoliciesRetrieve`](docs/sdks/policies/README.md#retrieve) - Gets specified policy
+- [`useClientGovernanceDataPoliciesUpdateMutation`](docs/sdks/policies/README.md#update) - Updates an existing policy
+- [`useClientGovernanceDataReportsCreateMutation`](docs/sdks/reports/README.md#create) - Creates new one-time report
+- [`useClientGovernanceDataReportsDownload`](docs/sdks/reports/README.md#download) - Downloads violations CSV for report
+- [`useClientGovernanceDataReportsStatus`](docs/sdks/reports/README.md#status) - Fetches report run status
+- [`useClientGovernanceDocumentsVisibilityoverridesCreateMutation`](docs/sdks/visibilityoverrides/README.md#create) - Hide or unhide docs
+- [`useClientGovernanceDocumentsVisibilityoverridesList`](docs/sdks/visibilityoverrides/README.md#list) - Fetches documents visibility
+- [`useClientInsightsRetrieveMutation`](docs/sdks/insights/README.md#retrieve) - Get insights
 - [`useClientMessagesRetrieveMutation`](docs/sdks/messages/README.md#retrieve) - Read messages
 - [`useClientPinsCreateMutation`](docs/sdks/pins/README.md#create) - Create pin
 - [`useClientPinsListMutation`](docs/sdks/pins/README.md#list) - List pins
@@ -717,6 +727,10 @@ To learn about this feature and how to get started, check
 - [`useClientVerificationAddReminderMutation`](docs/sdks/verification/README.md#addreminder) - Create verification
 - [`useClientVerificationListMutation`](docs/sdks/verification/README.md#list) - List verifications
 - [`useClientVerificationVerifyMutation`](docs/sdks/verification/README.md#verify) - Update verification
+- [`useGovernanceCreatefindingsexportMutation`](docs/sdks/governance/README.md#createfindingsexport) - Creates findings export
+- [`useGovernanceDeletefindingsexportMutation`](docs/sdks/governance/README.md#deletefindingsexport) - Deletes findings export
+- [`useGovernanceDownloadfindingsexport`](docs/sdks/governance/README.md#downloadfindingsexport) - Downloads findings export
+- [`useGovernanceListfindingsexports`](docs/sdks/governance/README.md#listfindingsexports) - Lists findings exports
 - [`useIndexingAuthenticationRotateTokenMutation`](docs/sdks/indexingauthentication/README.md#rotatetoken) - Rotate token
 - [`useIndexingDatasourcesAddMutation`](docs/sdks/datasources/README.md#add) - Add or update datasource
 - [`useIndexingDatasourcesRetrieveConfigMutation`](docs/sdks/datasources/README.md#retrieveconfig) - Get datasource config
@@ -755,6 +769,7 @@ To learn about this feature and how to get started, check
 - [`useIndexingPermissionsUpdatePermissionsMutation`](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
 - [`useIndexingShortcutsBulkIndexMutation`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`useIndexingShortcutsUploadMutation`](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
+- ~~[`useClientAnswersListMutation`](docs/sdks/answers/README.md#list)~~ - List Answers :warning: **Deprecated**
 - ~~[`useIndexingDocumentsCountMutation`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
 - ~~[`useIndexingDocumentsStatusMutation`](docs/sdks/indexingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**
 - ~~[`useIndexingPeopleCountMutation`](docs/sdks/people/README.md#count)~~ - Get user count :warning: **Deprecated**

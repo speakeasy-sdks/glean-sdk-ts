@@ -43,6 +43,8 @@ type StructuredResultSource string
 const (
 	StructuredResultSourceExpertDetection StructuredResultSource = "EXPERT_DETECTION"
 	StructuredResultSourceEntityNlq       StructuredResultSource = "ENTITY_NLQ"
+	StructuredResultSourceCalendarEvent   StructuredResultSource = "CALENDAR_EVENT"
+	StructuredResultSourceAgent           StructuredResultSource = "AGENT"
 )
 
 func (e StructuredResultSource) ToPointer() *StructuredResultSource {
@@ -57,6 +59,10 @@ func (e *StructuredResultSource) UnmarshalJSON(data []byte) error {
 	case "EXPERT_DETECTION":
 		fallthrough
 	case "ENTITY_NLQ":
+		fallthrough
+	case "CALENDAR_EVENT":
+		fallthrough
+	case "AGENT":
 		*e = StructuredResultSource(v)
 		return nil
 	default:
@@ -72,14 +78,16 @@ type StructuredResult struct {
 	Team             *Team                `json:"team,omitempty"`
 	CustomEntity     *CustomEntity        `json:"customEntity,omitempty"`
 	Answer           *Answer              `json:"answer,omitempty"`
+	GeneratedQna     *GeneratedQna        `json:"generatedQna,omitempty"`
 	ExtractedQnA     *ExtractedQnA        `json:"extractedQnA,omitempty"`
 	Meeting          *Meeting             `json:"meeting,omitempty"`
 	App              *AppResult           `json:"app,omitempty"`
 	Collection       *Collection          `json:"collection,omitempty"`
-	AnswerBoard      *AnswerBoard         `json:"answerBoard,omitempty"`
 	Code             *Code                `json:"code,omitempty"`
 	Shortcut         *Shortcut            `json:"shortcut,omitempty"`
 	QuerySuggestions *QuerySuggestionList `json:"querySuggestions,omitempty"`
+	// Metadata of a Chat a user had with Glean Assistant. This contains no actual conversational content.
+	Chat *ChatMetadata `json:"chat,omitempty"`
 	// A list of documents related to this structured result.
 	RelatedDocuments []RelatedDocuments `json:"relatedDocuments,omitempty"`
 	RelatedQuestion  *RelatedQuestion   `json:"relatedQuestion,omitempty"`
@@ -137,6 +145,13 @@ func (o *StructuredResult) GetAnswer() *Answer {
 	return o.Answer
 }
 
+func (o *StructuredResult) GetGeneratedQna() *GeneratedQna {
+	if o == nil {
+		return nil
+	}
+	return o.GeneratedQna
+}
+
 func (o *StructuredResult) GetExtractedQnA() *ExtractedQnA {
 	if o == nil {
 		return nil
@@ -165,13 +180,6 @@ func (o *StructuredResult) GetCollection() *Collection {
 	return o.Collection
 }
 
-func (o *StructuredResult) GetAnswerBoard() *AnswerBoard {
-	if o == nil {
-		return nil
-	}
-	return o.AnswerBoard
-}
-
 func (o *StructuredResult) GetCode() *Code {
 	if o == nil {
 		return nil
@@ -191,6 +199,13 @@ func (o *StructuredResult) GetQuerySuggestions() *QuerySuggestionList {
 		return nil
 	}
 	return o.QuerySuggestions
+}
+
+func (o *StructuredResult) GetChat() *ChatMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.Chat
 }
 
 func (o *StructuredResult) GetRelatedDocuments() []RelatedDocuments {

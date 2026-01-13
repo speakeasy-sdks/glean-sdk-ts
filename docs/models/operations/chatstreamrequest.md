@@ -56,8 +56,8 @@ let value: ChatStreamRequest = {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -169,32 +169,10 @@ let value: ChatStreamRequest = {
                       ],
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description:
-                      "account thoughtfully redound unpleasant scornful yum instead",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 208769,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   collections: [],
+                },
+                generatedQna: {
+                  ranges: [],
                 },
                 extractedQnA: {
                   questionResult: {
@@ -203,8 +181,8 @@ let value: ChatStreamRequest = {
                     nativeAppUrl: "slack://foo/bar",
                     snippets: [
                       {
-                        snippet: "snippet",
                         mimeType: "mimeType",
+                        snippet: "snippet",
                       },
                     ],
                     mustIncludeSuggestions: {},
@@ -218,7 +196,7 @@ let value: ChatStreamRequest = {
                 collection: {
                   name: "<value>",
                   description:
-                    "zowie faithfully calculating amidst lowball minus",
+                    "account thoughtfully redound unpleasant scornful yum instead",
                   audienceFilters: [
                     {
                       fieldName: "type",
@@ -234,30 +212,13 @@ let value: ChatStreamRequest = {
                       ],
                     },
                   ],
-                  id: 669860,
+                  id: 208769,
+                  creator: {
+                    name: "George Clooney",
+                    obfuscatedId: "abc123",
+                  },
                   items: [],
                   children: [],
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description:
-                    "longingly thyme weight volleyball alongside christen",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 217369,
                 },
                 code: {
                   repoName: "scio",
@@ -280,10 +241,16 @@ let value: ChatStreamRequest = {
                     },
                   ],
                 },
-                relatedDocuments: [],
-                relatedQuestion: {
-                  ranges: [],
+                chat: {
+                  icon: {
+                    color: "#343CED",
+                    key: "person_icon",
+                    iconType: "GLYPH",
+                    name: "user",
+                  },
                 },
+                relatedDocuments: [],
+                relatedQuestion: {},
               },
             ],
             querySuggestion: {
@@ -300,10 +267,27 @@ let value: ChatStreamRequest = {
               metadata: {
                 type: "RETRIEVAL",
                 name: "<value>",
-                displayName: "Sandrine78",
+                displayName: "Adonis50",
                 displayDescription: "<value>",
                 objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
               },
+            },
+            citation: {
+              sourceFile: {
+                id: "FILE_1234",
+                url: "www.google.com",
+                name: "sample.pdf",
+              },
+              referenceRanges: [
+                {
+                  snippets: [
+                    {
+                      mimeType: "mimeType",
+                      snippet: "snippet",
+                    },
+                  ],
+                },
+              ],
             },
           },
         ],

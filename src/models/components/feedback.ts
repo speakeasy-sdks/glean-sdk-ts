@@ -14,6 +14,12 @@ import {
   ManualFeedbackInfo$outboundSchema,
 } from "./manualfeedbackinfo.js";
 import {
+  ManualFeedbackSideBySideInfo,
+  ManualFeedbackSideBySideInfo$inboundSchema,
+  ManualFeedbackSideBySideInfo$Outbound,
+  ManualFeedbackSideBySideInfo$outboundSchema,
+} from "./manualfeedbacksidebysideinfo.js";
+import {
   SeenFeedbackInfo,
   SeenFeedbackInfo$inboundSchema,
   SeenFeedbackInfo$Outbound,
@@ -58,6 +64,7 @@ export const FeedbackCategory = {
   Workflows: "WORKFLOWS",
   Summary: "SUMMARY",
   General: "GENERAL",
+  Prism: "PRISM",
   Prompts: "PROMPTS",
 } as const;
 /**
@@ -82,6 +89,7 @@ export const Event = {
   FocusIn: "FOCUS_IN",
   LastToken: "LAST_TOKEN",
   ManualFeedback: "MANUAL_FEEDBACK",
+  ManualFeedbackSideBySide: "MANUAL_FEEDBACK_SIDE_BY_SIDE",
   MarkAsRead: "MARK_AS_READ",
   Message: "MESSAGE",
   MiddleClick: "MIDDLE_CLICK",
@@ -93,6 +101,7 @@ export const Event = {
   RightClick: "RIGHT_CLICK",
   SectionClick: "SECTION_CLICK",
   Seen: "SEEN",
+  Select: "SELECT",
   Share: "SHARE",
   ShowMore: "SHOW_MORE",
   Upvote: "UPVOTE",
@@ -162,6 +171,7 @@ export type Feedback = {
    */
   uiElement?: string | undefined;
   manualFeedbackInfo?: ManualFeedbackInfo | undefined;
+  manualFeedbackSideBySideInfo?: ManualFeedbackSideBySideInfo | undefined;
   seenFeedbackInfo?: SeenFeedbackInfo | undefined;
   userViewInfo?: UserViewInfo | undefined;
   workflowFeedbackInfo?: WorkflowFeedbackInfo | undefined;
@@ -259,6 +269,8 @@ export const Feedback$inboundSchema: z.ZodType<
   uiTree: z.array(z.string()).optional(),
   uiElement: z.string().optional(),
   manualFeedbackInfo: ManualFeedbackInfo$inboundSchema.optional(),
+  manualFeedbackSideBySideInfo: ManualFeedbackSideBySideInfo$inboundSchema
+    .optional(),
   seenFeedbackInfo: SeenFeedbackInfo$inboundSchema.optional(),
   userViewInfo: UserViewInfo$inboundSchema.optional(),
   workflowFeedbackInfo: WorkflowFeedbackInfo$inboundSchema.optional(),
@@ -283,6 +295,9 @@ export type Feedback$Outbound = {
   uiTree?: Array<string> | undefined;
   uiElement?: string | undefined;
   manualFeedbackInfo?: ManualFeedbackInfo$Outbound | undefined;
+  manualFeedbackSideBySideInfo?:
+    | ManualFeedbackSideBySideInfo$Outbound
+    | undefined;
   seenFeedbackInfo?: SeenFeedbackInfo$Outbound | undefined;
   userViewInfo?: UserViewInfo$Outbound | undefined;
   workflowFeedbackInfo?: WorkflowFeedbackInfo$Outbound | undefined;
@@ -311,6 +326,8 @@ export const Feedback$outboundSchema: z.ZodType<
   uiTree: z.array(z.string()).optional(),
   uiElement: z.string().optional(),
   manualFeedbackInfo: ManualFeedbackInfo$outboundSchema.optional(),
+  manualFeedbackSideBySideInfo: ManualFeedbackSideBySideInfo$outboundSchema
+    .optional(),
   seenFeedbackInfo: SeenFeedbackInfo$outboundSchema.optional(),
   userViewInfo: UserViewInfo$outboundSchema.optional(),
   workflowFeedbackInfo: WorkflowFeedbackInfo$outboundSchema.optional(),

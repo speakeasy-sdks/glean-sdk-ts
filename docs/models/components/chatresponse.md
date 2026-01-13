@@ -57,8 +57,8 @@ let value: ChatResponse = {
               },
               snippets: [
                 {
-                  snippet: "snippet",
                   mimeType: "mimeType",
+                  snippet: "snippet",
                 },
               ],
             },
@@ -170,32 +170,10 @@ let value: ChatResponse = {
                     ],
                   },
                 },
-                board: {
-                  name: "<value>",
-                  description:
-                    "phew terribly burly nutritious mysteriously who",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 135035,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
                 collections: [],
+              },
+              generatedQna: {
+                ranges: [],
               },
               extractedQnA: {
                 questionResult: {
@@ -204,8 +182,8 @@ let value: ChatResponse = {
                   nativeAppUrl: "slack://foo/bar",
                   snippets: [
                     {
-                      snippet: "snippet",
                       mimeType: "mimeType",
+                      snippet: "snippet",
                     },
                   ],
                   mustIncludeSuggestions: {},
@@ -218,7 +196,7 @@ let value: ChatResponse = {
               },
               collection: {
                 name: "<value>",
-                description: "tightly at submissive successfully annually um",
+                description: "phew terribly burly nutritious mysteriously who",
                 audienceFilters: [
                   {
                     fieldName: "type",
@@ -234,29 +212,13 @@ let value: ChatResponse = {
                     ],
                   },
                 ],
-                id: 19074,
+                id: 135035,
+                creator: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                },
                 items: [],
                 children: [],
-              },
-              answerBoard: {
-                name: "<value>",
-                description: "or around hence potentially till",
-                audienceFilters: [
-                  {
-                    fieldName: "type",
-                    values: [
-                      {
-                        value: "Spreadsheet",
-                        relationType: "EQUALS",
-                      },
-                      {
-                        value: "Presentation",
-                        relationType: "EQUALS",
-                      },
-                    ],
-                  },
-                ],
-                id: 27404,
               },
               code: {
                 repoName: "scio",
@@ -279,10 +241,16 @@ let value: ChatResponse = {
                   },
                 ],
               },
-              relatedDocuments: [],
-              relatedQuestion: {
-                ranges: [],
+              chat: {
+                icon: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
               },
+              relatedDocuments: [],
+              relatedQuestion: {},
             },
           ],
           querySuggestion: {
@@ -299,10 +267,27 @@ let value: ChatResponse = {
             metadata: {
               type: "RETRIEVAL",
               name: "<value>",
-              displayName: "Henderson76",
+              displayName: "Vito.Yost71",
               displayDescription: "<value>",
               objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
             },
+          },
+          citation: {
+            sourceFile: {
+              id: "FILE_1234",
+              url: "www.google.com",
+              name: "sample.pdf",
+            },
+            referenceRanges: [
+              {
+                snippets: [
+                  {
+                    mimeType: "mimeType",
+                    snippet: "snippet",
+                  },
+                ],
+              },
+            ],
           },
         },
       ],

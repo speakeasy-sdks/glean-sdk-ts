@@ -67,8 +67,8 @@ let value: GetChatResponse = {
                   },
                   snippets: [
                     {
-                      snippet: "snippet",
                       mimeType: "mimeType",
+                      snippet: "snippet",
                     },
                   ],
                 },
@@ -180,31 +180,10 @@ let value: GetChatResponse = {
                         ],
                       },
                     },
-                    board: {
-                      name: "<value>",
-                      description: "during ick flustered incidentally",
-                      audienceFilters: [
-                        {
-                          fieldName: "type",
-                          values: [
-                            {
-                              value: "Spreadsheet",
-                              relationType: "EQUALS",
-                            },
-                            {
-                              value: "Presentation",
-                              relationType: "EQUALS",
-                            },
-                          ],
-                        },
-                      ],
-                      id: 263742,
-                      creator: {
-                        name: "George Clooney",
-                        obfuscatedId: "abc123",
-                      },
-                    },
                     collections: [],
+                  },
+                  generatedQna: {
+                    ranges: [],
                   },
                   extractedQnA: {
                     questionResult: {
@@ -213,8 +192,8 @@ let value: GetChatResponse = {
                       nativeAppUrl: "slack://foo/bar",
                       snippets: [
                         {
-                          snippet: "snippet",
                           mimeType: "mimeType",
+                          snippet: "snippet",
                         },
                       ],
                       mustIncludeSuggestions: {},
@@ -227,8 +206,7 @@ let value: GetChatResponse = {
                   },
                   collection: {
                     name: "<value>",
-                    description:
-                      "derby once absent stump pish seldom loaf depute far",
+                    description: "during ick flustered incidentally",
                     audienceFilters: [
                       {
                         fieldName: "type",
@@ -244,30 +222,13 @@ let value: GetChatResponse = {
                         ],
                       },
                     ],
-                    id: 475860,
+                    id: 263742,
+                    creator: {
+                      name: "George Clooney",
+                      obfuscatedId: "abc123",
+                    },
                     items: [],
                     children: [],
-                  },
-                  answerBoard: {
-                    name: "<value>",
-                    description:
-                      "what expert poppy conservative yahoo syringe unrealistic",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 751898,
                   },
                   code: {
                     repoName: "scio",
@@ -286,10 +247,16 @@ let value: GetChatResponse = {
                       },
                     ],
                   },
-                  relatedDocuments: [],
-                  relatedQuestion: {
-                    ranges: [],
+                  chat: {
+                    icon: {
+                      color: "#343CED",
+                      key: "person_icon",
+                      iconType: "GLYPH",
+                      name: "user",
+                    },
                   },
+                  relatedDocuments: [],
+                  relatedQuestion: {},
                 },
               ],
               querySuggestion: {
@@ -304,15 +271,37 @@ let value: GetChatResponse = {
               },
               action: {
                 metadata: {
-                  type: "RETRIEVAL",
+                  type: "ACTION",
                   name: "<value>",
-                  displayName: "Pierce58",
+                  displayName: "Kane_Mann",
                   displayDescription: "<value>",
                   objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
                 },
               },
+              citation: {
+                sourceFile: {
+                  id: "FILE_1234",
+                  url: "www.google.com",
+                  name: "sample.pdf",
+                },
+                referenceRanges: [
+                  {
+                    snippets: [
+                      {
+                        mimeType: "mimeType",
+                        snippet: "snippet",
+                      },
+                    ],
+                  },
+                ],
+              },
             },
           ],
+        },
+      ],
+      roles: [
+        {
+          role: "VIEWER",
         },
       ],
     },

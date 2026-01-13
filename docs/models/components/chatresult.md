@@ -66,8 +66,8 @@ let value: ChatResult = {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -179,31 +179,10 @@ let value: ChatResult = {
                       ],
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description: "pretty immense whoa mechanically",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 209767,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   collections: [],
+                },
+                generatedQna: {
+                  ranges: [],
                 },
                 extractedQnA: {
                   questionResult: {
@@ -212,8 +191,8 @@ let value: ChatResult = {
                     nativeAppUrl: "slack://foo/bar",
                     snippets: [
                       {
-                        snippet: "snippet",
                         mimeType: "mimeType",
+                        snippet: "snippet",
                       },
                     ],
                     mustIncludeSuggestions: {},
@@ -226,7 +205,7 @@ let value: ChatResult = {
                 },
                 collection: {
                   name: "<value>",
-                  description: "rudely gah cumbersome wherever salty unbalance",
+                  description: "pretty immense whoa mechanically",
                   audienceFilters: [
                     {
                       fieldName: "type",
@@ -242,29 +221,13 @@ let value: ChatResult = {
                       ],
                     },
                   ],
-                  id: 196194,
+                  id: 209767,
+                  creator: {
+                    name: "George Clooney",
+                    obfuscatedId: "abc123",
+                  },
                   items: [],
                   children: [],
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description: "inasmuch via saloon but scholarship",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 787759,
                 },
                 code: {
                   repoName: "scio",
@@ -283,10 +246,16 @@ let value: ChatResult = {
                     },
                   ],
                 },
-                relatedDocuments: [],
-                relatedQuestion: {
-                  ranges: [],
+                chat: {
+                  icon: {
+                    color: "#343CED",
+                    key: "person_icon",
+                    iconType: "GLYPH",
+                    name: "user",
+                  },
                 },
+                relatedDocuments: [],
+                relatedQuestion: {},
               },
             ],
             querySuggestion: {
@@ -301,15 +270,37 @@ let value: ChatResult = {
             },
             action: {
               metadata: {
-                type: "ACTION",
+                type: "RETRIEVAL",
                 name: "<value>",
-                displayName: "Antonio.White64",
+                displayName: "Zander_Bauch",
                 displayDescription: "<value>",
                 objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
               },
             },
+            citation: {
+              sourceFile: {
+                id: "FILE_1234",
+                url: "www.google.com",
+                name: "sample.pdf",
+              },
+              referenceRanges: [
+                {
+                  snippets: [
+                    {
+                      mimeType: "mimeType",
+                      snippet: "snippet",
+                    },
+                  ],
+                },
+              ],
+            },
           },
         ],
+      },
+    ],
+    roles: [
+      {
+        role: "EDITOR",
       },
     ],
   },

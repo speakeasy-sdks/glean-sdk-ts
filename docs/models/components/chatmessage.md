@@ -55,8 +55,8 @@ let value: ChatMessage = {
           },
           snippets: [
             {
-              snippet: "snippet",
               mimeType: "mimeType",
+              snippet: "snippet",
             },
           ],
         },
@@ -168,31 +168,10 @@ let value: ChatMessage = {
                 ],
               },
             },
-            board: {
-              name: "<value>",
-              description: "uh-huh yet loudly round colorfully young",
-              audienceFilters: [
-                {
-                  fieldName: "type",
-                  values: [
-                    {
-                      value: "Spreadsheet",
-                      relationType: "EQUALS",
-                    },
-                    {
-                      value: "Presentation",
-                      relationType: "EQUALS",
-                    },
-                  ],
-                },
-              ],
-              id: 655731,
-              creator: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-            },
             collections: [],
+          },
+          generatedQna: {
+            ranges: [],
           },
           extractedQnA: {
             questionResult: {
@@ -201,8 +180,8 @@ let value: ChatMessage = {
               nativeAppUrl: "slack://foo/bar",
               snippets: [
                 {
-                  snippet: "snippet",
                   mimeType: "mimeType",
+                  snippet: "snippet",
                 },
               ],
               mustIncludeSuggestions: {},
@@ -215,7 +194,7 @@ let value: ChatMessage = {
           },
           collection: {
             name: "<value>",
-            description: "procurement ew cook lest plus phew incidentally",
+            description: "uh-huh yet loudly round colorfully young",
             audienceFilters: [
               {
                 fieldName: "type",
@@ -231,29 +210,13 @@ let value: ChatMessage = {
                 ],
               },
             ],
-            id: 589123,
+            id: 655731,
+            creator: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+            },
             items: [],
             children: [],
-          },
-          answerBoard: {
-            name: "<value>",
-            description: "creaking absent uh-huh horst",
-            audienceFilters: [
-              {
-                fieldName: "type",
-                values: [
-                  {
-                    value: "Spreadsheet",
-                    relationType: "EQUALS",
-                  },
-                  {
-                    value: "Presentation",
-                    relationType: "EQUALS",
-                  },
-                ],
-              },
-            ],
-            id: 460630,
           },
           code: {
             repoName: "scio",
@@ -276,10 +239,16 @@ let value: ChatMessage = {
               },
             ],
           },
-          relatedDocuments: [],
-          relatedQuestion: {
-            ranges: [],
+          chat: {
+            icon: {
+              color: "#343CED",
+              key: "person_icon",
+              iconType: "GLYPH",
+              name: "user",
+            },
           },
+          relatedDocuments: [],
+          relatedQuestion: {},
         },
       ],
       querySuggestion: {
@@ -294,12 +263,29 @@ let value: ChatMessage = {
       },
       action: {
         metadata: {
-          type: "RETRIEVAL",
+          type: "ACTION",
           name: "<value>",
-          displayName: "Pearl_Grady-Tillman38",
+          displayName: "Brown94",
           displayDescription: "<value>",
           objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
         },
+      },
+      citation: {
+        sourceFile: {
+          id: "FILE_1234",
+          url: "www.google.com",
+          name: "sample.pdf",
+        },
+        referenceRanges: [
+          {
+            snippets: [
+              {
+                mimeType: "mimeType",
+                snippet: "snippet",
+              },
+            ],
+          },
+        ],
       },
     },
   ],
