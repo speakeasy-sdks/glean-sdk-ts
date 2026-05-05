@@ -23,6 +23,7 @@ const (
 	ManualFeedbackInfoSourceGeneratedQAndA     ManualFeedbackInfoSource = "GENERATED_Q_AND_A"
 	ManualFeedbackInfoSourceInlineMenu         ManualFeedbackInfoSource = "INLINE_MENU"
 	ManualFeedbackInfoSourceNativeResult       ManualFeedbackInfoSource = "NATIVE_RESULT"
+	ManualFeedbackInfoSourcePrism              ManualFeedbackInfoSource = "PRISM"
 	ManualFeedbackInfoSourceQAndA              ManualFeedbackInfoSource = "Q_AND_A"
 	ManualFeedbackInfoSourceRelatedQuestions   ManualFeedbackInfoSource = "RELATED_QUESTIONS"
 	ManualFeedbackInfoSourceReportIssue        ManualFeedbackInfoSource = "REPORT_ISSUE"
@@ -30,6 +31,8 @@ const (
 	ManualFeedbackInfoSourceSearch             ManualFeedbackInfoSource = "SEARCH"
 	ManualFeedbackInfoSourceSidebar            ManualFeedbackInfoSource = "SIDEBAR"
 	ManualFeedbackInfoSourceSummary            ManualFeedbackInfoSource = "SUMMARY"
+	ManualFeedbackInfoSourceTasks              ManualFeedbackInfoSource = "TASKS"
+	ManualFeedbackInfoSourceTaskExecution      ManualFeedbackInfoSource = "TASK_EXECUTION"
 )
 
 func (e ManualFeedbackInfoSource) ToPointer() *ManualFeedbackInfoSource {
@@ -65,6 +68,8 @@ func (e *ManualFeedbackInfoSource) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "NATIVE_RESULT":
 		fallthrough
+	case "PRISM":
+		fallthrough
 	case "Q_AND_A":
 		fallthrough
 	case "RELATED_QUESTIONS":
@@ -78,6 +83,10 @@ func (e *ManualFeedbackInfoSource) UnmarshalJSON(data []byte) error {
 	case "SIDEBAR":
 		fallthrough
 	case "SUMMARY":
+		fallthrough
+	case "TASKS":
+		fallthrough
+	case "TASK_EXECUTION":
 		*e = ManualFeedbackInfoSource(v)
 		return nil
 	default:
@@ -88,17 +97,21 @@ func (e *ManualFeedbackInfoSource) UnmarshalJSON(data []byte) error {
 type Issue string
 
 const (
-	IssueInaccurateResponse    Issue = "INACCURATE_RESPONSE"
-	IssueIncompleteOrNoAnswer  Issue = "INCOMPLETE_OR_NO_ANSWER"
-	IssueIncorrectCitation     Issue = "INCORRECT_CITATION"
-	IssueMissingCitation       Issue = "MISSING_CITATION"
-	IssueOther                 Issue = "OTHER"
-	IssueOutdatedResponse      Issue = "OUTDATED_RESPONSE"
-	IssueResultMissing         Issue = "RESULT_MISSING"
-	IssueResultShouldNotAppear Issue = "RESULT_SHOULD_NOT_APPEAR"
-	IssueResultsHelpful        Issue = "RESULTS_HELPFUL"
-	IssueResultsPoorOrder      Issue = "RESULTS_POOR_ORDER"
-	IssueTooMuchOneKind        Issue = "TOO_MUCH_ONE_KIND"
+	IssueAgentCanvasFailed            Issue = "AGENT_CANVAS_FAILED"
+	IssueAgentClarifyingQuestions     Issue = "AGENT_CLARIFYING_QUESTIONS"
+	IssueAgentIntermediateStepsFailed Issue = "AGENT_INTERMEDIATE_STEPS_FAILED"
+	IssueAgentToolCallFailed          Issue = "AGENT_TOOL_CALL_FAILED"
+	IssueInaccurateResponse           Issue = "INACCURATE_RESPONSE"
+	IssueIncompleteOrNoAnswer         Issue = "INCOMPLETE_OR_NO_ANSWER"
+	IssueIncorrectCitation            Issue = "INCORRECT_CITATION"
+	IssueMissingCitation              Issue = "MISSING_CITATION"
+	IssueOther                        Issue = "OTHER"
+	IssueOutdatedResponse             Issue = "OUTDATED_RESPONSE"
+	IssueResultMissing                Issue = "RESULT_MISSING"
+	IssueResultShouldNotAppear        Issue = "RESULT_SHOULD_NOT_APPEAR"
+	IssueResultsHelpful               Issue = "RESULTS_HELPFUL"
+	IssueResultsPoorOrder             Issue = "RESULTS_POOR_ORDER"
+	IssueTooMuchOneKind               Issue = "TOO_MUCH_ONE_KIND"
 )
 
 func (e Issue) ToPointer() *Issue {
@@ -110,6 +123,14 @@ func (e *Issue) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "AGENT_CANVAS_FAILED":
+		fallthrough
+	case "AGENT_CLARIFYING_QUESTIONS":
+		fallthrough
+	case "AGENT_INTERMEDIATE_STEPS_FAILED":
+		fallthrough
+	case "AGENT_TOOL_CALL_FAILED":
+		fallthrough
 	case "INACCURATE_RESPONSE":
 		fallthrough
 	case "INCOMPLETE_OR_NO_ANSWER":
@@ -138,18 +159,18 @@ func (e *Issue) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// Vote - The vote associated with the Feedback.event.MANUAL_FEEDBACK event.
-type Vote string
+// ManualFeedbackInfoVote - The vote associated with the Feedback.event.MANUAL_FEEDBACK event.
+type ManualFeedbackInfoVote string
 
 const (
-	VoteUpvote   Vote = "UPVOTE"
-	VoteDownvote Vote = "DOWNVOTE"
+	ManualFeedbackInfoVoteUpvote   ManualFeedbackInfoVote = "UPVOTE"
+	ManualFeedbackInfoVoteDownvote ManualFeedbackInfoVote = "DOWNVOTE"
 )
 
-func (e Vote) ToPointer() *Vote {
+func (e ManualFeedbackInfoVote) ToPointer() *ManualFeedbackInfoVote {
 	return &e
 }
-func (e *Vote) UnmarshalJSON(data []byte) error {
+func (e *ManualFeedbackInfoVote) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -158,15 +179,17 @@ func (e *Vote) UnmarshalJSON(data []byte) error {
 	case "UPVOTE":
 		fallthrough
 	case "DOWNVOTE":
-		*e = Vote(v)
+		*e = ManualFeedbackInfoVote(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Vote: %v", v)
+		return fmt.Errorf("invalid value for ManualFeedbackInfoVote: %v", v)
 	}
 }
 
 type ManualFeedbackInfo struct {
 	// The email address of the user who submitted the Feedback.event.MANUAL_FEEDBACK event.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	Email *string `json:"email,omitempty"`
 	// The source associated with the Feedback.event.MANUAL_FEEDBACK event.
 	Source *ManualFeedbackInfoSource `json:"source,omitempty"`
@@ -195,7 +218,7 @@ type ManualFeedbackInfo struct {
 	// How many times this query has been run in the past.
 	NumQueriesFromFirstRun *int64 `json:"numQueriesFromFirstRun,omitempty"`
 	// The vote associated with the Feedback.event.MANUAL_FEEDBACK event.
-	Vote *Vote `json:"vote,omitempty"`
+	Vote *ManualFeedbackInfoVote `json:"vote,omitempty"`
 	// A rating associated with the user feedback. The value will be between one and the maximum given by ratingScale, inclusive.
 	Rating *int64 `json:"rating,omitempty"`
 	// A description of the rating that contextualizes how it appeared to the user, e.g. "satisfied".
@@ -295,7 +318,7 @@ func (o *ManualFeedbackInfo) GetNumQueriesFromFirstRun() *int64 {
 	return o.NumQueriesFromFirstRun
 }
 
-func (o *ManualFeedbackInfo) GetVote() *Vote {
+func (o *ManualFeedbackInfo) GetVote() *ManualFeedbackInfoVote {
 	if o == nil {
 		return nil
 	}

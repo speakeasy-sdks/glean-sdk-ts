@@ -9,65 +9,38 @@ let value: ChatRequest = {
   chatRequest: {
     messages: [
       {
-        citations: [
-          {
-            sourceDocument: {
-              containerDocument: {
-                parentDocument: {
-                  metadata: {
-                    datasource: "datasource",
-                    objectType: "Feature Request",
-                    container: "container",
-                    parentId: "JIRA_EN-1337",
-                    mimeType: "mimeType",
-                    documentId: "documentId",
-                    createTime: new Date("2000-01-23T04:56:07.000Z"),
-                    updateTime: new Date("2000-01-23T04:56:07.000Z"),
-                    author: {
-                      name: "name",
-                      obfuscatedId: "<id>",
-                    },
-                    components: [
-                      "Backend",
-                      "Networking",
-                    ],
-                    status: "[\"Done\"]",
-                    customData: {
-                      "someCustomField": {},
-                    },
-                  },
-                },
-              },
-            },
-            sourceFile: {
-              id: "FILE_1234",
-              url: "www.google.com",
-              name: "sample.pdf",
-            },
-            sourcePerson: {
-              name: "George Clooney",
-              obfuscatedId: "abc123",
-            },
-            referenceRanges: [
-              {
-                textRange: {
-                  startIndex: 483991,
-                  document: {},
-                },
-                snippets: [
-                  {
-                    snippet: "snippet",
-                    mimeType: "mimeType",
-                  },
-                ],
-              },
-            ],
-          },
-        ],
         fragments: [
           {
             structuredResults: [
               {
+                document: {
+                  containerDocument: {
+                    parentDocument: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        author: {
+                          name: "name",
+                          obfuscatedId: "<id>",
+                        },
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                },
                 person: {
                   name: "George Clooney",
                   obfuscatedId: "abc123",
@@ -136,14 +109,14 @@ let value: ChatRequest = {
                   likes: {
                     likedBy: [],
                     likedByUser: false,
-                    numLikes: 333200,
+                    numLikes: 483991,
                   },
                   updatedBy: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
                   },
                   verification: {
-                    state: "VERIFIED",
+                    state: "UNVERIFIED",
                     metadata: {
                       lastVerifier: {
                         name: "George Clooney",
@@ -159,7 +132,7 @@ let value: ChatRequest = {
                           name: "George Clooney",
                           obfuscatedId: "abc123",
                         },
-                        remindAt: 939918,
+                        remindAt: 515340,
                       },
                       candidateVerifiers: [
                         {
@@ -169,31 +142,11 @@ let value: ChatRequest = {
                       ],
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description: "decongestant beyond yuck till obvious",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 148141,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   collections: [],
+                  sourceDocument: {},
+                },
+                generatedQna: {
+                  ranges: [],
                 },
                 extractedQnA: {
                   questionResult: {
@@ -202,8 +155,8 @@ let value: ChatRequest = {
                     nativeAppUrl: "slack://foo/bar",
                     snippets: [
                       {
-                        snippet: "snippet",
                         mimeType: "mimeType",
+                        snippet: "snippet",
                       },
                     ],
                     mustIncludeSuggestions: {},
@@ -216,7 +169,8 @@ let value: ChatRequest = {
                 },
                 collection: {
                   name: "<value>",
-                  description: "beneath meatloaf sticky creature",
+                  description:
+                    "yarmulke spork solder rigidly sugary baseboard jubilant lean alarmed schlep",
                   audienceFilters: [
                     {
                       fieldName: "type",
@@ -232,29 +186,13 @@ let value: ChatRequest = {
                       ],
                     },
                   ],
-                  id: 224949,
+                  id: 169055,
+                  creator: {
+                    name: "George Clooney",
+                    obfuscatedId: "abc123",
+                  },
                   items: [],
                   children: [],
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description: "besides yearly unfortunately institute",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 882696,
                 },
                 code: {
                   repoName: "scio",
@@ -277,10 +215,16 @@ let value: ChatRequest = {
                     },
                   ],
                 },
-                relatedDocuments: [],
-                relatedQuestion: {
-                  ranges: [],
+                chat: {
+                  icon: {
+                    color: "#343CED",
+                    key: "person_icon",
+                    iconType: "GLYPH",
+                    name: "user",
+                  },
                 },
+                relatedDocuments: [],
+                relatedQuestion: {},
               },
             ],
             querySuggestion: {
@@ -295,12 +239,37 @@ let value: ChatRequest = {
             },
             action: {
               metadata: {
-                type: "ACTION",
+                type: "RETRIEVAL",
                 name: "<value>",
-                displayName: "Garret_Pagac-Armstrong28",
+                displayName: "Gunner85",
                 displayDescription: "<value>",
                 objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
               },
+            },
+            citation: {
+              sourceFile: {
+                id: "FILE_1234",
+                url: "www.google.com",
+                name: "sample.pdf",
+              },
+              sourcePerson: {
+                name: "George Clooney",
+                obfuscatedId: "abc123",
+              },
+              sourceCustomEntity: {},
+              referenceRanges: [
+                {
+                  textRange: {
+                    startIndex: 923427,
+                  },
+                  snippets: [
+                    {
+                      mimeType: "mimeType",
+                      snippet: "snippet",
+                    },
+                  ],
+                },
+              ],
             },
           },
         ],
@@ -313,7 +282,8 @@ let value: ChatRequest = {
 
 ## Fields
 
-| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `timezoneOffset`                                                                                           | *number*                                                                                                   | :heavy_minus_sign:                                                                                         | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC. |
-| `chatRequest`                                                                                              | [components.ChatRequest](../../models/components/chatrequest.md)                                           | :heavy_check_mark:                                                                                         | Includes chat history for Glean AI to respond to.                                                          |
+| Field                                                                                                                                                                                               | Type                                                                                                                                                                                                | Required                                                                                                                                                                                            | Description                                                                                                                                                                                         |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `locale`                                                                                                                                                                                            | *string*                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                  | The client's preferred locale in rfc5646 format (e.g. `en`, `ja`, `pt-BR`). If omitted, the `Accept-Language` will be used. If not present or not supported, defaults to the closest match or `en`. |
+| `timezoneOffset`                                                                                                                                                                                    | *number*                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                  | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                                          |
+| `chatRequest`                                                                                                                                                                                       | [components.ChatRequest](../../models/components/chatrequest.md)                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                                  | Includes chat history for Glean AI to respond to.                                                                                                                                                   |

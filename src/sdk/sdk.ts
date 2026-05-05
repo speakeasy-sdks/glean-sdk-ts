@@ -3,7 +3,10 @@
  */
 
 import { ClientSDK } from "../lib/sdks.js";
+import { Authentication } from "./authentication.js";
 import { Client } from "./client.js";
+import { Datasources } from "./datasources.js";
+import { Governance } from "./governance.js";
 import { Indexing } from "./indexing.js";
 
 export class Glean extends ClientSDK {
@@ -12,8 +15,23 @@ export class Glean extends ClientSDK {
     return (this._client ??= new Client(this._options));
   }
 
+  private _authentication?: Authentication;
+  get authentication(): Authentication {
+    return (this._authentication ??= new Authentication(this._options));
+  }
+
   private _indexing?: Indexing;
   get indexing(): Indexing {
     return (this._indexing ??= new Indexing(this._options));
+  }
+
+  private _governance?: Governance;
+  get governance(): Governance {
+    return (this._governance ??= new Governance(this._options));
+  }
+
+  private _datasources?: Datasources;
+  get datasources(): Datasources {
+    return (this._datasources ??= new Datasources(this._options));
   }
 }

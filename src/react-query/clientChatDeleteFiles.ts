@@ -18,6 +18,7 @@ import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatDeleteFilesMutationVariables = {
   deleteChatFilesRequest: components.DeleteChatFilesRequest;
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
@@ -25,7 +26,7 @@ export type ClientChatDeleteFilesMutationVariables = {
 export type ClientChatDeleteFilesMutationData = void;
 
 /**
- * Delete files uploaded by a user for chat.
+ * Delete files uploaded by a user for chat
  *
  * @remarks
  * Delete files uploaded by a user for Chat.
@@ -65,6 +66,7 @@ export function buildClientChatDeleteFilesMutation(
     mutationKey: mutationKeyClientChatDeleteFiles(),
     mutationFn: function clientChatDeleteFilesMutationFn({
       deleteChatFilesRequest,
+      locale,
       timezoneOffset,
       options,
     }): Promise<ClientChatDeleteFilesMutationData> {
@@ -83,6 +85,7 @@ export function buildClientChatDeleteFilesMutation(
       return unwrapAsync(clientChatDeleteFiles(
         client$,
         deleteChatFilesRequest,
+        locale,
         timezoneOffset,
         mergedOptions,
       ));

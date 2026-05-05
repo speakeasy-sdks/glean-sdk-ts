@@ -19,65 +19,38 @@ let value: ChatResult = {
     },
     messages: [
       {
-        citations: [
-          {
-            sourceDocument: {
-              containerDocument: {
-                parentDocument: {
-                  metadata: {
-                    datasource: "datasource",
-                    objectType: "Feature Request",
-                    container: "container",
-                    parentId: "JIRA_EN-1337",
-                    mimeType: "mimeType",
-                    documentId: "documentId",
-                    createTime: new Date("2000-01-23T04:56:07.000Z"),
-                    updateTime: new Date("2000-01-23T04:56:07.000Z"),
-                    author: {
-                      name: "name",
-                      obfuscatedId: "<id>",
-                    },
-                    components: [
-                      "Backend",
-                      "Networking",
-                    ],
-                    status: "[\"Done\"]",
-                    customData: {
-                      "someCustomField": {},
-                    },
-                  },
-                },
-              },
-            },
-            sourceFile: {
-              id: "FILE_1234",
-              url: "www.google.com",
-              name: "sample.pdf",
-            },
-            sourcePerson: {
-              name: "George Clooney",
-              obfuscatedId: "abc123",
-            },
-            referenceRanges: [
-              {
-                textRange: {
-                  startIndex: 486484,
-                  document: {},
-                },
-                snippets: [
-                  {
-                    snippet: "snippet",
-                    mimeType: "mimeType",
-                  },
-                ],
-              },
-            ],
-          },
-        ],
         fragments: [
           {
             structuredResults: [
               {
+                document: {
+                  containerDocument: {
+                    parentDocument: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        author: {
+                          name: "name",
+                          obfuscatedId: "<id>",
+                        },
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                },
                 person: {
                   name: "George Clooney",
                   obfuscatedId: "abc123",
@@ -146,7 +119,7 @@ let value: ChatResult = {
                   likes: {
                     likedBy: [],
                     likedByUser: false,
-                    numLikes: 732013,
+                    numLikes: 486484,
                   },
                   updatedBy: {
                     name: "George Clooney",
@@ -169,7 +142,7 @@ let value: ChatResult = {
                           name: "George Clooney",
                           obfuscatedId: "abc123",
                         },
-                        remindAt: 616939,
+                        remindAt: 777624,
                       },
                       candidateVerifiers: [
                         {
@@ -179,31 +152,11 @@ let value: ChatResult = {
                       ],
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description: "pretty immense whoa mechanically",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 209767,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   collections: [],
+                  sourceDocument: {},
+                },
+                generatedQna: {
+                  ranges: [],
                 },
                 extractedQnA: {
                   questionResult: {
@@ -212,8 +165,8 @@ let value: ChatResult = {
                     nativeAppUrl: "slack://foo/bar",
                     snippets: [
                       {
-                        snippet: "snippet",
                         mimeType: "mimeType",
+                        snippet: "snippet",
                       },
                     ],
                     mustIncludeSuggestions: {},
@@ -226,7 +179,7 @@ let value: ChatResult = {
                 },
                 collection: {
                   name: "<value>",
-                  description: "rudely gah cumbersome wherever salty unbalance",
+                  description: "whenever tankful um if without large gape",
                   audienceFilters: [
                     {
                       fieldName: "type",
@@ -242,29 +195,13 @@ let value: ChatResult = {
                       ],
                     },
                   ],
-                  id: 196194,
+                  id: 660366,
+                  creator: {
+                    name: "George Clooney",
+                    obfuscatedId: "abc123",
+                  },
                   items: [],
                   children: [],
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description: "inasmuch via saloon but scholarship",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 787759,
                 },
                 code: {
                   repoName: "scio",
@@ -283,10 +220,16 @@ let value: ChatResult = {
                     },
                   ],
                 },
-                relatedDocuments: [],
-                relatedQuestion: {
-                  ranges: [],
+                chat: {
+                  icon: {
+                    color: "#343CED",
+                    key: "person_icon",
+                    iconType: "GLYPH",
+                    name: "user",
+                  },
                 },
+                relatedDocuments: [],
+                relatedQuestion: {},
               },
             ],
             querySuggestion: {
@@ -303,13 +246,43 @@ let value: ChatResult = {
               metadata: {
                 type: "ACTION",
                 name: "<value>",
-                displayName: "Antonio.White64",
+                displayName: "Carmelo_Rosenbaum96",
                 displayDescription: "<value>",
                 objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
               },
             },
+            citation: {
+              sourceFile: {
+                id: "FILE_1234",
+                url: "www.google.com",
+                name: "sample.pdf",
+              },
+              sourcePerson: {
+                name: "George Clooney",
+                obfuscatedId: "abc123",
+              },
+              sourceCustomEntity: {},
+              referenceRanges: [
+                {
+                  textRange: {
+                    startIndex: 879799,
+                  },
+                  snippets: [
+                    {
+                      mimeType: "mimeType",
+                      snippet: "snippet",
+                    },
+                  ],
+                },
+              ],
+            },
           },
         ],
+      },
+    ],
+    roles: [
+      {
+        role: "VERIFIER",
       },
     ],
   },

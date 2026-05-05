@@ -32,6 +32,7 @@ import { Result } from "../types/fp.js";
  */
 export function clientChatList(
   client: GleanCore,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): APIPromise<
@@ -48,6 +49,7 @@ export function clientChatList(
 > {
   return new APIPromise($do(
     client,
+    locale,
     timezoneOffset,
     options,
   ));
@@ -55,6 +57,7 @@ export function clientChatList(
 
 async function $do(
   client: GleanCore,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -73,6 +76,7 @@ async function $do(
   ]
 > {
   const input: operations.ListchatsRequest = {
+    locale: locale,
     timezoneOffset: timezoneOffset,
   };
 
@@ -90,6 +94,7 @@ async function $do(
   const path = pathToFunc("/rest/api/v1/listchats")();
 
   const query = encodeFormQuery({
+    "locale": payload.locale,
     "timezoneOffset": payload.timezoneOffset,
   });
 

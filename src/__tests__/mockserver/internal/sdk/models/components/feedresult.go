@@ -32,7 +32,24 @@ const (
 	FeedResultCategoryZeroStateWorkflowCreatedByMe FeedResultCategory = "ZERO_STATE_WORKFLOW_CREATED_BY_ME"
 	FeedResultCategoryZeroStateWorkflowFavorites   FeedResultCategory = "ZERO_STATE_WORKFLOW_FAVORITES"
 	FeedResultCategoryZeroStateWorkflowPopular     FeedResultCategory = "ZERO_STATE_WORKFLOW_POPULAR"
+	FeedResultCategoryZeroStateWorkflowRecent      FeedResultCategory = "ZERO_STATE_WORKFLOW_RECENT"
 	FeedResultCategoryZeroStateWorkflowSuggestion  FeedResultCategory = "ZERO_STATE_WORKFLOW_SUGGESTION"
+	FeedResultCategoryPersonalizedChatSuggestion   FeedResultCategory = "PERSONALIZED_CHAT_SUGGESTION"
+	FeedResultCategoryDailyDigest                  FeedResultCategory = "DAILY_DIGEST"
+	FeedResultCategoryTask                         FeedResultCategory = "TASK"
+	FeedResultCategoryPlanMyDay                    FeedResultCategory = "PLAN_MY_DAY"
+	FeedResultCategoryEndMyDay                     FeedResultCategory = "END_MY_DAY"
+	FeedResultCategoryStarterKit                   FeedResultCategory = "STARTER_KIT"
+	FeedResultCategoryMidDayCatchUp                FeedResultCategory = "MID_DAY_CATCH_UP"
+	FeedResultCategoryQuerySuggestion              FeedResultCategory = "QUERY_SUGGESTION"
+	FeedResultCategoryWeeklyMeetings               FeedResultCategory = "WEEKLY_MEETINGS"
+	FeedResultCategoryFollowUp                     FeedResultCategory = "FOLLOW_UP"
+	FeedResultCategoryMilestoneTimelineCheck       FeedResultCategory = "MILESTONE_TIMELINE_CHECK"
+	FeedResultCategoryProjectDiscussionDigest      FeedResultCategory = "PROJECT_DISCUSSION_DIGEST"
+	FeedResultCategoryProjectFocusBlock            FeedResultCategory = "PROJECT_FOCUS_BLOCK"
+	FeedResultCategoryProjectNextStep              FeedResultCategory = "PROJECT_NEXT_STEP"
+	FeedResultCategoryDemoCard                     FeedResultCategory = "DEMO_CARD"
+	FeedResultCategoryOooPlanner                   FeedResultCategory = "OOO_PLANNER"
 )
 
 func (e FeedResultCategory) ToPointer() *FeedResultCategory {
@@ -86,7 +103,41 @@ func (e *FeedResultCategory) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "ZERO_STATE_WORKFLOW_POPULAR":
 		fallthrough
+	case "ZERO_STATE_WORKFLOW_RECENT":
+		fallthrough
 	case "ZERO_STATE_WORKFLOW_SUGGESTION":
+		fallthrough
+	case "PERSONALIZED_CHAT_SUGGESTION":
+		fallthrough
+	case "DAILY_DIGEST":
+		fallthrough
+	case "TASK":
+		fallthrough
+	case "PLAN_MY_DAY":
+		fallthrough
+	case "END_MY_DAY":
+		fallthrough
+	case "STARTER_KIT":
+		fallthrough
+	case "MID_DAY_CATCH_UP":
+		fallthrough
+	case "QUERY_SUGGESTION":
+		fallthrough
+	case "WEEKLY_MEETINGS":
+		fallthrough
+	case "FOLLOW_UP":
+		fallthrough
+	case "MILESTONE_TIMELINE_CHECK":
+		fallthrough
+	case "PROJECT_DISCUSSION_DIGEST":
+		fallthrough
+	case "PROJECT_FOCUS_BLOCK":
+		fallthrough
+	case "PROJECT_NEXT_STEP":
+		fallthrough
+	case "DEMO_CARD":
+		fallthrough
+	case "OOO_PLANNER":
 		*e = FeedResultCategory(v)
 		return nil
 	default:

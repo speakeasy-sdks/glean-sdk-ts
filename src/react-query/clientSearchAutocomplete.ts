@@ -17,7 +17,8 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientSearchAutocompleteMutationVariables = {
-  request: components.AutocompleteRequest;
+  autocompleteRequest: components.AutocompleteRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +65,8 @@ export function buildClientSearchAutocompleteMutation(
   return {
     mutationKey: mutationKeyClientSearchAutocomplete(),
     mutationFn: function clientSearchAutocompleteMutationFn({
-      request,
+      autocompleteRequest,
+      locale,
       options,
     }): Promise<ClientSearchAutocompleteMutationData> {
       const mergedOptions = {
@@ -81,7 +83,8 @@ export function buildClientSearchAutocompleteMutation(
       };
       return unwrapAsync(clientSearchAutocomplete(
         client$,
-        request,
+        autocompleteRequest,
+        locale,
         mergedOptions,
       ));
     },

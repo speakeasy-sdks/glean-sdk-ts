@@ -4,12 +4,20 @@ package components
 
 // SensitiveContentOptions - Options for defining sensitive content within scanned documents.
 type SensitiveContentOptions struct {
-	// Predefined categories of terms to consider as sensitive content. See https://cloud.google.com/dlp/docs/infotypes-reference for available types.
+	// DEPRECATED - use 'customSensitiveExpressions' instead.
+	//
+	// Deprecated: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use customSensitiveExpressions instead.
 	SensitiveInfoTypes []SensitiveInfoType `json:"sensitiveInfoTypes,omitempty"`
-	// list of words and phrases to consider as sensitive content
+	// DEPRECATED - use 'customSensitiveExpressions' instead.
+	//
+	// Deprecated: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use customSensitiveExpressions instead.
 	SensitiveTerms []SensitiveExpression `json:"sensitiveTerms,omitempty"`
-	// list of regular expressions to consider as sensitive content
+	// DEPRECATED - use 'customSensitiveExpressions' instead.
+	//
+	// Deprecated: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use customSensitiveExpressions instead.
 	SensitiveRegexes []SensitiveExpression `json:"sensitiveRegexes,omitempty"`
+	// list of custom sensitive expressions to consider as sensitive content
+	CustomSensitiveExpressions []CustomSensitiveExpression `json:"customSensitiveExpressions,omitempty"`
 }
 
 func (o *SensitiveContentOptions) GetSensitiveInfoTypes() []SensitiveInfoType {
@@ -31,4 +39,11 @@ func (o *SensitiveContentOptions) GetSensitiveRegexes() []SensitiveExpression {
 		return nil
 	}
 	return o.SensitiveRegexes
+}
+
+func (o *SensitiveContentOptions) GetCustomSensitiveExpressions() []CustomSensitiveExpression {
+	if o == nil {
+		return nil
+	}
+	return o.CustomSensitiveExpressions
 }

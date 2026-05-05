@@ -190373,3 +190373,142 @@ workflows:
               {}
             type: simple
     x-speakeasy-test-group: policies
+  - workflowId: checkdatasourceauth
+    steps:
+      - stepId: test
+        operationId: checkdatasourceauth
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"unauthorizedDatasourceInstances":[{"datasourceInstance":"slack_0","displayName":"Slack"}]}
+            type: simple
+    x-speakeasy-test-group: Authentication
+    x-speakeasy-test-rebuild: true
+  - workflowId: listfindingsexports
+    steps:
+      - stepId: test
+        operationId: listfindingsexports
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: Governance
+    x-speakeasy-test-rebuild: true
+  - workflowId: downloadfindingsexport
+    steps:
+      - stepId: test
+        operationId: downloadfindingsexport
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == text/csv; charset=UTF-8
+          - context: $response.body
+            condition: |
+              "<value>"
+            type: simple
+    x-speakeasy-test-group: Governance
+    x-speakeasy-test-rebuild: true
+  - workflowId: getDatasourceInstanceConfiguration
+    steps:
+      - stepId: test
+        operationId: getDatasourceInstanceConfiguration
+        parameters:
+          - name: datasourceId
+            in: path
+            value: o365sharepoint
+          - name: instanceId
+            in: path
+            value: o365sharepoint_abc123
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"configuration":{"values":{"key":{}}}}
+            type: simple
+    x-speakeasy-test-group: Datasources
+    x-speakeasy-test-rebuild: true
+  - workflowId: updateDatasourceInstanceConfiguration
+    steps:
+      - stepId: test
+        operationId: updateDatasourceInstanceConfiguration
+        parameters:
+          - name: datasourceId
+            in: path
+            value: o365sharepoint
+          - name: instanceId
+            in: path
+            value: o365sharepoint_abc123
+        requestBody:
+          contentType: application/json
+          payload:
+            configuration:
+              values: {}
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"configuration":{"values":{}}}
+            type: simple
+    x-speakeasy-test-group: Datasources
+    x-speakeasy-test-rebuild: true
+  - workflowId: getDatasourceCredentialStatus
+    steps:
+      - stepId: test
+        operationId: getDatasourceCredentialStatus
+        parameters:
+          - name: datasourceInstanceId
+            in: path
+            value: o365sharepoint_abc123
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"status":"VALID"}
+            type: simple
+    x-speakeasy-test-group: Datasources
+    x-speakeasy-test-rebuild: true
+  - workflowId: rotateDatasourceCredentials
+    steps:
+      - stepId: test
+        operationId: rotateDatasourceCredentials
+        parameters:
+          - name: datasourceInstanceId
+            in: path
+            value: o365sharepoint_abc123
+        requestBody:
+          contentType: application/json
+          payload:
+            credentials:
+              values:
+                key: {}
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"status":"MISSING"}
+            type: simple
+    x-speakeasy-test-group: Datasources
+    x-speakeasy-test-rebuild: true
+  - workflowId: deletefindingsexport
+    steps:
+      - stepId: test
+        operationId: deletefindingsexport
+        parameters:
+          - name: id
+            in: path
+            value: 741945
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Governance

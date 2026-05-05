@@ -17,7 +17,8 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientCollectionsDeleteMutationVariables = {
-  request: components.DeleteCollectionRequest;
+  deleteCollectionRequest: components.DeleteCollectionRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -63,7 +64,8 @@ export function buildClientCollectionsDeleteMutation(
   return {
     mutationKey: mutationKeyClientCollectionsDelete(),
     mutationFn: function clientCollectionsDeleteMutationFn({
-      request,
+      deleteCollectionRequest,
+      locale,
       options,
     }): Promise<ClientCollectionsDeleteMutationData> {
       const mergedOptions = {
@@ -80,7 +82,8 @@ export function buildClientCollectionsDeleteMutation(
       };
       return unwrapAsync(clientCollectionsDelete(
         client$,
-        request,
+        deleteCollectionRequest,
+        locale,
         mergedOptions,
       ));
     },

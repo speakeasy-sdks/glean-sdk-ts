@@ -33,6 +33,7 @@ import { Result } from "../types/fp.js";
 export function clientChatRetrieveApplication(
   client: GleanCore,
   getChatApplicationRequest: components.GetChatApplicationRequest,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): APIPromise<
@@ -50,6 +51,7 @@ export function clientChatRetrieveApplication(
   return new APIPromise($do(
     client,
     getChatApplicationRequest,
+    locale,
     timezoneOffset,
     options,
   ));
@@ -58,6 +60,7 @@ export function clientChatRetrieveApplication(
 async function $do(
   client: GleanCore,
   getChatApplicationRequest: components.GetChatApplicationRequest,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -77,6 +80,7 @@ async function $do(
 > {
   const input: operations.GetchatapplicationRequest = {
     getChatApplicationRequest: getChatApplicationRequest,
+    locale: locale,
     timezoneOffset: timezoneOffset,
   };
 
@@ -96,6 +100,7 @@ async function $do(
   const path = pathToFunc("/rest/api/v1/getchatapplication")();
 
   const query = encodeFormQuery({
+    "locale": payload.locale,
     "timezoneOffset": payload.timezoneOffset,
   });
 

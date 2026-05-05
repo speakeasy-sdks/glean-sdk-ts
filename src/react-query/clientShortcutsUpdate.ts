@@ -17,7 +17,8 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientShortcutsUpdateMutationVariables = {
-  request: components.UpdateShortcutRequest;
+  updateShortcutRequest: components.UpdateShortcutRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +65,8 @@ export function buildClientShortcutsUpdateMutation(
   return {
     mutationKey: mutationKeyClientShortcutsUpdate(),
     mutationFn: function clientShortcutsUpdateMutationFn({
-      request,
+      updateShortcutRequest,
+      locale,
       options,
     }): Promise<ClientShortcutsUpdateMutationData> {
       const mergedOptions = {
@@ -81,7 +83,8 @@ export function buildClientShortcutsUpdateMutation(
       };
       return unwrapAsync(clientShortcutsUpdate(
         client$,
-        request,
+        updateShortcutRequest,
+        locale,
         mergedOptions,
       ));
     },

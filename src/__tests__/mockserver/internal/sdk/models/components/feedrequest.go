@@ -25,12 +25,30 @@ const (
 	FeedRequestCategoryDisplayableList              FeedRequestCategory = "DISPLAYABLE_LIST"
 	FeedRequestCategorySocialLink                   FeedRequestCategory = "SOCIAL_LINK"
 	FeedRequestCategoryExternalTasks                FeedRequestCategory = "EXTERNAL_TASKS"
+	FeedRequestCategoryWorkflowCollections          FeedRequestCategory = "WORKFLOW_COLLECTIONS"
 	FeedRequestCategoryZeroStateChatSuggestion      FeedRequestCategory = "ZERO_STATE_CHAT_SUGGESTION"
 	FeedRequestCategoryZeroStateChatToolSuggestion  FeedRequestCategory = "ZERO_STATE_CHAT_TOOL_SUGGESTION"
 	FeedRequestCategoryZeroStateWorkflowCreatedByMe FeedRequestCategory = "ZERO_STATE_WORKFLOW_CREATED_BY_ME"
 	FeedRequestCategoryZeroStateWorkflowFavorites   FeedRequestCategory = "ZERO_STATE_WORKFLOW_FAVORITES"
 	FeedRequestCategoryZeroStateWorkflowPopular     FeedRequestCategory = "ZERO_STATE_WORKFLOW_POPULAR"
+	FeedRequestCategoryZeroStateWorkflowRecent      FeedRequestCategory = "ZERO_STATE_WORKFLOW_RECENT"
 	FeedRequestCategoryZeroStateWorkflowSuggestion  FeedRequestCategory = "ZERO_STATE_WORKFLOW_SUGGESTION"
+	FeedRequestCategoryPersonalizedChatSuggestion   FeedRequestCategory = "PERSONALIZED_CHAT_SUGGESTION"
+	FeedRequestCategoryDailyDigest                  FeedRequestCategory = "DAILY_DIGEST"
+	FeedRequestCategoryTask                         FeedRequestCategory = "TASK"
+	FeedRequestCategoryPlanMyDay                    FeedRequestCategory = "PLAN_MY_DAY"
+	FeedRequestCategoryEndMyDay                     FeedRequestCategory = "END_MY_DAY"
+	FeedRequestCategoryStarterKit                   FeedRequestCategory = "STARTER_KIT"
+	FeedRequestCategoryMidDayCatchUp                FeedRequestCategory = "MID_DAY_CATCH_UP"
+	FeedRequestCategoryQuerySuggestion              FeedRequestCategory = "QUERY_SUGGESTION"
+	FeedRequestCategoryWeeklyMeetings               FeedRequestCategory = "WEEKLY_MEETINGS"
+	FeedRequestCategoryFollowUp                     FeedRequestCategory = "FOLLOW_UP"
+	FeedRequestCategoryMilestoneTimelineCheck       FeedRequestCategory = "MILESTONE_TIMELINE_CHECK"
+	FeedRequestCategoryProjectDiscussionDigest      FeedRequestCategory = "PROJECT_DISCUSSION_DIGEST"
+	FeedRequestCategoryProjectFocusBlock            FeedRequestCategory = "PROJECT_FOCUS_BLOCK"
+	FeedRequestCategoryProjectNextStep              FeedRequestCategory = "PROJECT_NEXT_STEP"
+	FeedRequestCategoryDemoCard                     FeedRequestCategory = "DEMO_CARD"
+	FeedRequestCategoryOooPlanner                   FeedRequestCategory = "OOO_PLANNER"
 )
 
 func (e FeedRequestCategory) ToPointer() *FeedRequestCategory {
@@ -72,6 +90,8 @@ func (e *FeedRequestCategory) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "EXTERNAL_TASKS":
 		fallthrough
+	case "WORKFLOW_COLLECTIONS":
+		fallthrough
 	case "ZERO_STATE_CHAT_SUGGESTION":
 		fallthrough
 	case "ZERO_STATE_CHAT_TOOL_SUGGESTION":
@@ -82,7 +102,41 @@ func (e *FeedRequestCategory) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "ZERO_STATE_WORKFLOW_POPULAR":
 		fallthrough
+	case "ZERO_STATE_WORKFLOW_RECENT":
+		fallthrough
 	case "ZERO_STATE_WORKFLOW_SUGGESTION":
+		fallthrough
+	case "PERSONALIZED_CHAT_SUGGESTION":
+		fallthrough
+	case "DAILY_DIGEST":
+		fallthrough
+	case "TASK":
+		fallthrough
+	case "PLAN_MY_DAY":
+		fallthrough
+	case "END_MY_DAY":
+		fallthrough
+	case "STARTER_KIT":
+		fallthrough
+	case "MID_DAY_CATCH_UP":
+		fallthrough
+	case "QUERY_SUGGESTION":
+		fallthrough
+	case "WEEKLY_MEETINGS":
+		fallthrough
+	case "FOLLOW_UP":
+		fallthrough
+	case "MILESTONE_TIMELINE_CHECK":
+		fallthrough
+	case "PROJECT_DISCUSSION_DIGEST":
+		fallthrough
+	case "PROJECT_FOCUS_BLOCK":
+		fallthrough
+	case "PROJECT_NEXT_STEP":
+		fallthrough
+	case "DEMO_CARD":
+		fallthrough
+	case "OOO_PLANNER":
 		*e = FeedRequestCategory(v)
 		return nil
 	default:

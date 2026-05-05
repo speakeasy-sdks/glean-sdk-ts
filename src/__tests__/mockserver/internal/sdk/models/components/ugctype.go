@@ -10,12 +10,25 @@ import (
 type UgcType string
 
 const (
+	UgcTypeAgentType           UgcType = "AGENT_TYPE"
 	UgcTypeAnnouncementsType   UgcType = "ANNOUNCEMENTS_TYPE"
 	UgcTypeAnswersType         UgcType = "ANSWERS_TYPE"
+	UgcTypeChatsType           UgcType = "CHATS_TYPE"
 	UgcTypeCollectionsType     UgcType = "COLLECTIONS_TYPE"
-	UgcTypeShortcutsType       UgcType = "SHORTCUTS_TYPE"
-	UgcTypeWorkflowsType       UgcType = "WORKFLOWS_TYPE"
+	UgcTypeEmailType           UgcType = "EMAIL_TYPE"
+	UgcTypeHTMLCodeType        UgcType = "HTML_CODE_TYPE"
+	UgcTypeImageType           UgcType = "IMAGE_TYPE"
+	UgcTypeMessageType         UgcType = "MESSAGE_TYPE"
+	UgcTypePaperType           UgcType = "PAPER_TYPE"
+	UgcTypePrismViewsType      UgcType = "PRISM_VIEWS_TYPE"
 	UgcTypePromptTemplatesType UgcType = "PROMPT_TEMPLATES_TYPE"
+	UgcTypePinsType            UgcType = "PINS_TYPE"
+	UgcTypeScribesType         UgcType = "SCRIBES_TYPE"
+	UgcTypeShortcutsType       UgcType = "SHORTCUTS_TYPE"
+	UgcTypeSlideType           UgcType = "SLIDE_TYPE"
+	UgcTypeSpreadsheetType     UgcType = "SPREADSHEET_TYPE"
+	UgcTypeInlineHTMLType      UgcType = "INLINE_HTML_TYPE"
+	UgcTypeWorkflowsType       UgcType = "WORKFLOWS_TYPE"
 )
 
 func (e UgcType) ToPointer() *UgcType {
@@ -27,17 +40,43 @@ func (e *UgcType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "AGENT_TYPE":
+		fallthrough
 	case "ANNOUNCEMENTS_TYPE":
 		fallthrough
 	case "ANSWERS_TYPE":
 		fallthrough
+	case "CHATS_TYPE":
+		fallthrough
 	case "COLLECTIONS_TYPE":
+		fallthrough
+	case "EMAIL_TYPE":
+		fallthrough
+	case "HTML_CODE_TYPE":
+		fallthrough
+	case "IMAGE_TYPE":
+		fallthrough
+	case "MESSAGE_TYPE":
+		fallthrough
+	case "PAPER_TYPE":
+		fallthrough
+	case "PRISM_VIEWS_TYPE":
+		fallthrough
+	case "PROMPT_TEMPLATES_TYPE":
+		fallthrough
+	case "PINS_TYPE":
+		fallthrough
+	case "SCRIBES_TYPE":
 		fallthrough
 	case "SHORTCUTS_TYPE":
 		fallthrough
-	case "WORKFLOWS_TYPE":
+	case "SLIDE_TYPE":
 		fallthrough
-	case "PROMPT_TEMPLATES_TYPE":
+	case "SPREADSHEET_TYPE":
+		fallthrough
+	case "INLINE_HTML_TYPE":
+		fallthrough
+	case "WORKFLOWS_TYPE":
 		*e = UgcType(v)
 		return nil
 	default:

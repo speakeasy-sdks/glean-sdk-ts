@@ -13,7 +13,7 @@ export type TimePoint = {
    */
   epochSeconds?: number | undefined;
   /**
-   * The number of days from now. Specification relative to current time. Can be negative.
+   * Number of days in the past, relative to the current date.
    */
   daysFromNow?: number | undefined;
 };

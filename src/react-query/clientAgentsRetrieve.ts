@@ -28,13 +28,14 @@ import {
 export type ClientAgentsRetrieveQueryData = components.Agent;
 
 /**
- * Get Agent
+ * Retrieve an agent
  *
  * @remarks
- * Get an agent by ID. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/GET/agents/{agent_id}). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+ * Returns details of an [agent](https://developers.glean.com/agents/agents-api) created in the Agent Builder.
  */
 export function useClientAgentsRetrieve(
   agentId: string,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: QueryHookOptions<ClientAgentsRetrieveQueryData>,
 ): UseQueryResult<ClientAgentsRetrieveQueryData, Error> {
@@ -43,6 +44,7 @@ export function useClientAgentsRetrieve(
     ...buildClientAgentsRetrieveQuery(
       client,
       agentId,
+      locale,
       timezoneOffset,
       options,
     ),
@@ -51,13 +53,14 @@ export function useClientAgentsRetrieve(
 }
 
 /**
- * Get Agent
+ * Retrieve an agent
  *
  * @remarks
- * Get an agent by ID. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/GET/agents/{agent_id}). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+ * Returns details of an [agent](https://developers.glean.com/agents/agents-api) created in the Agent Builder.
  */
 export function useClientAgentsRetrieveSuspense(
   agentId: string,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: SuspenseQueryHookOptions<ClientAgentsRetrieveQueryData>,
 ): UseSuspenseQueryResult<ClientAgentsRetrieveQueryData, Error> {
@@ -66,6 +69,7 @@ export function useClientAgentsRetrieveSuspense(
     ...buildClientAgentsRetrieveQuery(
       client,
       agentId,
+      locale,
       timezoneOffset,
       options,
     ),
@@ -77,12 +81,14 @@ export function prefetchClientAgentsRetrieve(
   queryClient: QueryClient,
   client$: GleanCore,
   agentId: string,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
 ): Promise<void> {
   return queryClient.prefetchQuery({
     ...buildClientAgentsRetrieveQuery(
       client$,
       agentId,
+      locale,
       timezoneOffset,
     ),
   });
@@ -92,7 +98,10 @@ export function setClientAgentsRetrieveData(
   client: QueryClient,
   queryKeyBase: [
     agentId: string,
-    parameters: { timezoneOffset?: number | undefined },
+    parameters: {
+      locale?: string | undefined;
+      timezoneOffset?: number | undefined;
+    },
   ],
   data: ClientAgentsRetrieveQueryData,
 ): ClientAgentsRetrieveQueryData | undefined {
@@ -104,7 +113,13 @@ export function setClientAgentsRetrieveData(
 export function invalidateClientAgentsRetrieve(
   client: QueryClient,
   queryKeyBase: TupleToPrefixes<
-    [agentId: string, parameters: { timezoneOffset?: number | undefined }]
+    [
+      agentId: string,
+      parameters: {
+        locale?: string | undefined;
+        timezoneOffset?: number | undefined;
+      },
+    ]
   >,
   filters?: Omit<InvalidateQueryFilters, "queryKey" | "predicate" | "exact">,
 ): Promise<void> {
@@ -127,6 +142,7 @@ export function invalidateAllClientAgentsRetrieve(
 export function buildClientAgentsRetrieveQuery(
   client$: GleanCore,
   agentId: string,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): {
@@ -136,7 +152,7 @@ export function buildClientAgentsRetrieveQuery(
   ) => Promise<ClientAgentsRetrieveQueryData>;
 } {
   return {
-    queryKey: queryKeyClientAgentsRetrieve(agentId, { timezoneOffset }),
+    queryKey: queryKeyClientAgentsRetrieve(agentId, { locale, timezoneOffset }),
     queryFn: async function clientAgentsRetrieveQueryFn(
       ctx,
     ): Promise<ClientAgentsRetrieveQueryData> {
@@ -149,6 +165,7 @@ export function buildClientAgentsRetrieveQuery(
       return unwrapAsync(clientAgentsRetrieve(
         client$,
         agentId,
+        locale,
         timezoneOffset,
         mergedOptions,
       ));
@@ -158,7 +175,10 @@ export function buildClientAgentsRetrieveQuery(
 
 export function queryKeyClientAgentsRetrieve(
   agentId: string,
-  parameters: { timezoneOffset?: number | undefined },
+  parameters: {
+    locale?: string | undefined;
+    timezoneOffset?: number | undefined;
+  },
 ): QueryKey {
   return ["@gleanwork/api-client", "agents", "retrieve", agentId, parameters];
 }

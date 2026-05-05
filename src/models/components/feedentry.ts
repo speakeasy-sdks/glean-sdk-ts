@@ -26,6 +26,12 @@ import {
   CalendarEvent$outboundSchema,
 } from "./calendarevent.js";
 import {
+  ChatSuggestion,
+  ChatSuggestion$inboundSchema,
+  ChatSuggestion$Outbound,
+  ChatSuggestion$outboundSchema,
+} from "./chatsuggestion.js";
+import {
   Collection,
   Collection$inboundSchema,
   Collection$Outbound,
@@ -43,6 +49,12 @@ import {
   CountInfo$Outbound,
   CountInfo$outboundSchema,
 } from "./countinfo.js";
+import {
+  Digest,
+  Digest$inboundSchema,
+  Digest$Outbound,
+  Digest$outboundSchema,
+} from "./digest.js";
 import {
   DisplayableListItemUIConfig,
   DisplayableListItemUIConfig$inboundSchema,
@@ -144,6 +156,26 @@ export const JustificationType = {
   ZeroStatePromptTemplateSuggestion: "ZERO_STATE_PROMPT_TEMPLATE_SUGGESTION",
   ZeroStateStaticWorkflowSuggestion: "ZERO_STATE_STATIC_WORKFLOW_SUGGESTION",
   ZeroStateAgentSuggestion: "ZERO_STATE_AGENT_SUGGESTION",
+  PersonalizedChatSuggestion: "PERSONALIZED_CHAT_SUGGESTION",
+  DailyDigest: "DAILY_DIGEST",
+  Task: "TASK",
+  PlanMyDay: "PLAN_MY_DAY",
+  EndMyDay: "END_MY_DAY",
+  StarterKitExtension: "STARTER_KIT_EXTENSION",
+  StarterKitOrgChart: "STARTER_KIT_ORG_CHART",
+  StarterKitAddDoc: "STARTER_KIT_ADD_DOC",
+  MeetingRecap: "MEETING_RECAP",
+  ActiveDiscussion: "ACTIVE_DISCUSSION",
+  MidDayCatchUp: "MID_DAY_CATCH_UP",
+  QuerySuggestion: "QUERY_SUGGESTION",
+  WeeklyMeetings: "WEEKLY_MEETINGS",
+  FollowUp: "FOLLOW_UP",
+  MilestoneTimelineCheck: "MILESTONE_TIMELINE_CHECK",
+  ProjectDiscussionDigest: "PROJECT_DISCUSSION_DIGEST",
+  ProjectFocusBlock: "PROJECT_FOCUS_BLOCK",
+  ProjectNextStep: "PROJECT_NEXT_STEP",
+  DemoCard: "DEMO_CARD",
+  OooPlanner: "OOO_PLANNER",
 } as const;
 /**
  * Type of the justification.
@@ -181,10 +213,12 @@ export type FeedEntry = {
   document?: Document | undefined;
   event?: CalendarEvent | undefined;
   announcement?: Announcement | undefined;
+  digest?: Digest | undefined;
   collection?: Collection | undefined;
   collectionItem?: CollectionItem | undefined;
   person?: Person | undefined;
   app?: AppResult | undefined;
+  chatSuggestion?: ChatSuggestion | undefined;
   promptTemplate?: PromptTemplateResult | undefined;
   workflow?: WorkflowResult | undefined;
   /**
@@ -305,10 +339,12 @@ export const FeedEntry$inboundSchema: z.ZodType<
   document: Document$inboundSchema.optional(),
   event: CalendarEvent$inboundSchema.optional(),
   announcement: Announcement$inboundSchema.optional(),
+  digest: Digest$inboundSchema.optional(),
   collection: Collection$inboundSchema.optional(),
   collectionItem: CollectionItem$inboundSchema.optional(),
   person: Person$inboundSchema.optional(),
   app: AppResult$inboundSchema.optional(),
+  chatSuggestion: ChatSuggestion$inboundSchema.optional(),
   promptTemplate: PromptTemplateResult$inboundSchema.optional(),
   workflow: WorkflowResult$inboundSchema.optional(),
   activities: z.array(UserActivity$inboundSchema).optional(),
@@ -329,10 +365,12 @@ export type FeedEntry$Outbound = {
   document?: Document$Outbound | undefined;
   event?: CalendarEvent$Outbound | undefined;
   announcement?: Announcement$Outbound | undefined;
+  digest?: Digest$Outbound | undefined;
   collection?: Collection$Outbound | undefined;
   collectionItem?: CollectionItem$Outbound | undefined;
   person?: Person$Outbound | undefined;
   app?: AppResult$Outbound | undefined;
+  chatSuggestion?: ChatSuggestion$Outbound | undefined;
   promptTemplate?: PromptTemplateResult$Outbound | undefined;
   workflow?: WorkflowResult$Outbound | undefined;
   activities?: Array<UserActivity$Outbound> | undefined;
@@ -357,10 +395,12 @@ export const FeedEntry$outboundSchema: z.ZodType<
   document: Document$outboundSchema.optional(),
   event: CalendarEvent$outboundSchema.optional(),
   announcement: Announcement$outboundSchema.optional(),
+  digest: Digest$outboundSchema.optional(),
   collection: Collection$outboundSchema.optional(),
   collectionItem: CollectionItem$outboundSchema.optional(),
   person: Person$outboundSchema.optional(),
   app: AppResult$outboundSchema.optional(),
+  chatSuggestion: ChatSuggestion$outboundSchema.optional(),
   promptTemplate: PromptTemplateResult$outboundSchema.optional(),
   workflow: WorkflowResult$outboundSchema.optional(),
   activities: z.array(UserActivity$outboundSchema).optional(),

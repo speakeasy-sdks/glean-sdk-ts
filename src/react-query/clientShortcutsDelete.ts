@@ -17,7 +17,8 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientShortcutsDeleteMutationVariables = {
-  request: components.DeleteShortcutRequest;
+  deleteShortcutRequest: components.DeleteShortcutRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -63,7 +64,8 @@ export function buildClientShortcutsDeleteMutation(
   return {
     mutationKey: mutationKeyClientShortcutsDelete(),
     mutationFn: function clientShortcutsDeleteMutationFn({
-      request,
+      deleteShortcutRequest,
+      locale,
       options,
     }): Promise<ClientShortcutsDeleteMutationData> {
       const mergedOptions = {
@@ -80,7 +82,8 @@ export function buildClientShortcutsDeleteMutation(
       };
       return unwrapAsync(clientShortcutsDelete(
         client$,
-        request,
+        deleteShortcutRequest,
+        locale,
         mergedOptions,
       ));
     },

@@ -25,12 +25,14 @@ export class Chat extends ClientSDK {
    */
   async create(
     chatRequest: components.ChatRequest,
+    locale?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.ChatResponse> {
     return unwrapAsync(clientChatCreate(
       this,
       chatRequest,
+      locale,
       timezoneOffset,
       options,
     ));
@@ -43,11 +45,13 @@ export class Chat extends ClientSDK {
    * Deletes all saved Chats a user has had and all their contained conversational content.
    */
   async deleteAll(
+    locale?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(clientChatDeleteAll(
       this,
+      locale,
       timezoneOffset,
       options,
     ));
@@ -61,12 +65,14 @@ export class Chat extends ClientSDK {
    */
   async delete(
     deleteChatsRequest: components.DeleteChatsRequest,
+    locale?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(clientChatDelete(
       this,
       deleteChatsRequest,
+      locale,
       timezoneOffset,
       options,
     ));
@@ -80,12 +86,14 @@ export class Chat extends ClientSDK {
    */
   async retrieve(
     getChatRequest: components.GetChatRequest,
+    locale?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.GetChatResponse> {
     return unwrapAsync(clientChatRetrieve(
       this,
       getChatRequest,
+      locale,
       timezoneOffset,
       options,
     ));
@@ -98,11 +106,13 @@ export class Chat extends ClientSDK {
    * Retrieves all the saved Chats between Glean Assistant and the user. The returned Chats contain only metadata and no conversational content.
    */
   async list(
+    locale?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.ListChatsResponse> {
     return unwrapAsync(clientChatList(
       this,
+      locale,
       timezoneOffset,
       options,
     ));
@@ -116,69 +126,77 @@ export class Chat extends ClientSDK {
    */
   async retrieveApplication(
     getChatApplicationRequest: components.GetChatApplicationRequest,
+    locale?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.GetChatApplicationResponse> {
     return unwrapAsync(clientChatRetrieveApplication(
       this,
       getChatApplicationRequest,
+      locale,
       timezoneOffset,
       options,
     ));
   }
 
   /**
-   * Upload files for Chat.
+   * Upload files for Chat
    *
    * @remarks
    * Upload files for Chat.
    */
   async uploadFiles(
     uploadChatFilesRequest: components.UploadChatFilesRequest,
+    locale?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.UploadChatFilesResponse> {
     return unwrapAsync(clientChatUploadFiles(
       this,
       uploadChatFilesRequest,
+      locale,
       timezoneOffset,
       options,
     ));
   }
 
   /**
-   * Get files uploaded by a user for Chat.
+   * Get files uploaded by a user for Chat
    *
    * @remarks
    * Get files uploaded by a user for Chat.
    */
   async retrieveFiles(
     getChatFilesRequest: components.GetChatFilesRequest,
+    locale?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.GetChatFilesResponse> {
     return unwrapAsync(clientChatRetrieveFiles(
       this,
       getChatFilesRequest,
+      locale,
       timezoneOffset,
       options,
     ));
   }
 
   /**
-   * Delete files uploaded by a user for chat.
+   * Delete files uploaded by a user for chat
    *
    * @remarks
    * Delete files uploaded by a user for Chat.
    */
   async deleteFiles(
     deleteChatFilesRequest: components.DeleteChatFilesRequest,
+    locale?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(clientChatDeleteFiles(
       this,
       deleteChatFilesRequest,
+      locale,
       timezoneOffset,
       options,
     ));

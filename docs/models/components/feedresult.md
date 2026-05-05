@@ -6,7 +6,7 @@
 import { FeedResult } from "@gleanwork/api-client/models/components";
 
 let value: FeedResult = {
-  category: "ZERO_STATE_CHAT_SUGGESTION",
+  category: "QUERY_SUGGESTION",
   primaryEntry: {
     title: "<value>",
     createdBy: {
@@ -95,6 +95,9 @@ let value: FeedResult = {
     announcement: {
       draftId: 342,
     },
+    digest: {
+      digestDate: "2025-09-03",
+    },
     collection: {
       name: "<value>",
       description: "yellow past whether",
@@ -161,7 +164,12 @@ let value: FeedResult = {
       },
     },
     workflow: {
-      workflow: {},
+      workflow: {
+        lastDraftSavedBy: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+      },
     },
     activities: [
       {
@@ -203,6 +211,9 @@ let value: FeedResult = {
       },
       announcement: {
         draftId: 342,
+      },
+      digest: {
+        digestDate: "2025-09-03",
       },
       promptTemplate: {
         promptTemplate: {

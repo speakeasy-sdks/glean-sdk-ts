@@ -11,6 +11,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeletechatsRequest = {
   /**
+   * The client's preferred locale in rfc5646 format (e.g. `en`, `ja`, `pt-BR`). If omitted, the `Accept-Language` will be used. If not present or not supported, defaults to the closest match or `en`.
+   */
+  locale?: string | undefined;
+  /**
    * The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
    */
   timezoneOffset?: number | undefined;
@@ -23,6 +27,7 @@ export const DeletechatsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  locale: z.string().optional(),
   timezoneOffset: z.number().int().optional(),
   DeleteChatsRequest: components.DeleteChatsRequest$inboundSchema,
 }).transform((v) => {
@@ -33,6 +38,7 @@ export const DeletechatsRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type DeletechatsRequest$Outbound = {
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   DeleteChatsRequest: components.DeleteChatsRequest$Outbound;
 };
@@ -43,6 +49,7 @@ export const DeletechatsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DeletechatsRequest
 > = z.object({
+  locale: z.string().optional(),
   timezoneOffset: z.number().int().optional(),
   deleteChatsRequest: components.DeleteChatsRequest$outboundSchema,
 }).transform((v) => {

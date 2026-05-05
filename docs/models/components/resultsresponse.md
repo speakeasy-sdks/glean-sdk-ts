@@ -13,8 +13,8 @@ let value: ResultsResponse = {
       nativeAppUrl: "slack://foo/bar",
       snippets: [
         {
-          snippet: "snippet",
           mimeType: "mimeType",
+          snippet: "snippet",
         },
       ],
       mustIncludeSuggestions: {},
@@ -151,32 +151,11 @@ let value: ResultsResponse = {
             ],
           },
         },
-        board: {
-          name: "<value>",
-          description: "among diligently mid",
-          audienceFilters: [
-            {
-              fieldName: "type",
-              values: [
-                {
-                  value: "Spreadsheet",
-                  relationType: "EQUALS",
-                },
-                {
-                  value: "Presentation",
-                  relationType: "EQUALS",
-                },
-              ],
-            },
-          ],
-          id: 35122,
-          creator: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-        },
         collections: [],
         sourceDocument: {},
+      },
+      generatedQna: {
+        ranges: [],
       },
       extractedQnA: {
         questionResult: {
@@ -185,8 +164,8 @@ let value: ResultsResponse = {
           nativeAppUrl: "slack://foo/bar",
           snippets: [
             {
-              snippet: "snippet",
               mimeType: "mimeType",
+              snippet: "snippet",
             },
           ],
           mustIncludeSuggestions: {},
@@ -199,7 +178,7 @@ let value: ResultsResponse = {
       },
       collection: {
         name: "<value>",
-        description: "why before boo destock",
+        description: "among diligently mid",
         audienceFilters: [
           {
             fieldName: "type",
@@ -215,29 +194,13 @@ let value: ResultsResponse = {
             ],
           },
         ],
-        id: 116252,
+        id: 35122,
+        creator: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
         items: [],
         children: [],
-      },
-      answerBoard: {
-        name: "<value>",
-        description: "safe slimy except whoever huzzah cruel",
-        audienceFilters: [
-          {
-            fieldName: "type",
-            values: [
-              {
-                value: "Spreadsheet",
-                relationType: "EQUALS",
-              },
-              {
-                value: "Presentation",
-                relationType: "EQUALS",
-              },
-            ],
-          },
-        ],
-        id: 369574,
       },
       code: {
         repoName: "scio",
@@ -260,19 +223,19 @@ let value: ResultsResponse = {
           },
         ],
       },
-      relatedDocuments: [],
-      relatedQuestion: {
-        ranges: [],
+      chat: {
+        icon: {
+          color: "#343CED",
+          key: "person_icon",
+          iconType: "GLYPH",
+          name: "user",
+        },
       },
+      relatedDocuments: [],
+      relatedQuestion: {},
     },
   ],
-  generatedQnaResult: {
-    ranges: [
-      {
-        startIndex: 559226,
-      },
-    ],
-  },
+  generatedQnaResult: {},
   backendTimeMillis: 1100,
 };
 ```

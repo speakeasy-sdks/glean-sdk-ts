@@ -17,7 +17,8 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientSearchQueryMutationVariables = {
-  request: components.SearchRequest;
+  searchRequest: components.SearchRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -63,7 +64,8 @@ export function buildClientSearchQueryMutation(
   return {
     mutationKey: mutationKeyClientSearchQuery(),
     mutationFn: function clientSearchQueryMutationFn({
-      request,
+      searchRequest,
+      locale,
       options,
     }): Promise<ClientSearchQueryMutationData> {
       const mergedOptions = {
@@ -80,7 +82,8 @@ export function buildClientSearchQueryMutation(
       };
       return unwrapAsync(clientSearchQuery(
         client$,
-        request,
+        searchRequest,
+        locale,
         mergedOptions,
       ));
     },

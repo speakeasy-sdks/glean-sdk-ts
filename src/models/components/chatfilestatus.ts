@@ -11,6 +11,7 @@ import { ClosedEnum } from "../../types/enums.js";
 export const ChatFileStatus = {
   Processing: "PROCESSING",
   Processed: "PROCESSED",
+  PartiallyProcessed: "PARTIALLY_PROCESSED",
   Failed: "FAILED",
   Deleted: "DELETED",
 } as const;

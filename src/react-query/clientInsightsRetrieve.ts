@@ -17,17 +17,18 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientInsightsRetrieveMutationVariables = {
-  request: components.InsightsRequest;
+  insightsRequest: components.InsightsRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientInsightsRetrieveMutationData = components.InsightsResponse;
 
 /**
- * Read insights
+ * Get insights
  *
  * @remarks
- * Reads the aggregate information for each user, query, and content.
+ * Gets the aggregate usage insights data displayed in the Insights Dashboards.
  */
 export function useClientInsightsRetrieveMutation(
   options?: MutationHookOptions<
@@ -63,7 +64,8 @@ export function buildClientInsightsRetrieveMutation(
   return {
     mutationKey: mutationKeyClientInsightsRetrieve(),
     mutationFn: function clientInsightsRetrieveMutationFn({
-      request,
+      insightsRequest,
+      locale,
       options,
     }): Promise<ClientInsightsRetrieveMutationData> {
       const mergedOptions = {
@@ -80,7 +82,8 @@ export function buildClientInsightsRetrieveMutation(
       };
       return unwrapAsync(clientInsightsRetrieve(
         client$,
-        request,
+        insightsRequest,
+        locale,
         mergedOptions,
       ));
     },

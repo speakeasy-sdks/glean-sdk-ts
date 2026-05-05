@@ -15,21 +15,25 @@ import {
 } from "./message.js";
 
 /**
- * Payload for creating a run.
+ * Payload for creating a run. **Important**: If the agent uses an input form trigger, the `input` field is required and must include all fields defined in the form schema. Even fields marked as optional in the UI must be included in the request—use an empty string (`""`) for optional fields without values. Omitting required form fields will result in a 500 error.
  */
 export type AgentRunCreate = {
   /**
    * The ID of the agent to run.
    */
-  agentId?: string | undefined;
+  agentId: string;
   /**
-   * The input to the agent.
+   * The input to the agent. Required when the agent uses an input form trigger.
    */
   input?: { [k: string]: any } | undefined;
   /**
    * The messages to pass an input to the agent.
    */
   messages?: Array<Message> | undefined;
+  /**
+   * The metadata to pass to the agent.
+   */
+  metadata?: { [k: string]: any } | undefined;
 };
 
 /** @internal */
@@ -38,9 +42,10 @@ export const AgentRunCreate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  agent_id: z.string().optional(),
+  agent_id: z.string(),
   input: z.record(z.any()).optional(),
   messages: z.array(Message$inboundSchema).optional(),
+  metadata: z.record(z.any()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "agent_id": "agentId",
@@ -49,9 +54,10 @@ export const AgentRunCreate$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AgentRunCreate$Outbound = {
-  agent_id?: string | undefined;
+  agent_id: string;
   input?: { [k: string]: any } | undefined;
   messages?: Array<Message$Outbound> | undefined;
+  metadata?: { [k: string]: any } | undefined;
 };
 
 /** @internal */
@@ -60,9 +66,10 @@ export const AgentRunCreate$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AgentRunCreate
 > = z.object({
-  agentId: z.string().optional(),
+  agentId: z.string(),
   input: z.record(z.any()).optional(),
   messages: z.array(Message$outboundSchema).optional(),
+  metadata: z.record(z.any()).optional(),
 }).transform((v) => {
   return remap$(v, {
     agentId: "agent_id",

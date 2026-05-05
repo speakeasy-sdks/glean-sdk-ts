@@ -9,65 +9,38 @@ let value: ChatStreamRequest = {
   chatRequest: {
     messages: [
       {
-        citations: [
-          {
-            sourceDocument: {
-              containerDocument: {
-                parentDocument: {
-                  metadata: {
-                    datasource: "datasource",
-                    objectType: "Feature Request",
-                    container: "container",
-                    parentId: "JIRA_EN-1337",
-                    mimeType: "mimeType",
-                    documentId: "documentId",
-                    createTime: new Date("2000-01-23T04:56:07.000Z"),
-                    updateTime: new Date("2000-01-23T04:56:07.000Z"),
-                    author: {
-                      name: "name",
-                      obfuscatedId: "<id>",
-                    },
-                    components: [
-                      "Backend",
-                      "Networking",
-                    ],
-                    status: "[\"Done\"]",
-                    customData: {
-                      "someCustomField": {},
-                    },
-                  },
-                },
-              },
-            },
-            sourceFile: {
-              id: "FILE_1234",
-              url: "www.google.com",
-              name: "sample.pdf",
-            },
-            sourcePerson: {
-              name: "George Clooney",
-              obfuscatedId: "abc123",
-            },
-            referenceRanges: [
-              {
-                textRange: {
-                  startIndex: 951547,
-                  document: {},
-                },
-                snippets: [
-                  {
-                    snippet: "snippet",
-                    mimeType: "mimeType",
-                  },
-                ],
-              },
-            ],
-          },
-        ],
         fragments: [
           {
             structuredResults: [
               {
+                document: {
+                  containerDocument: {
+                    parentDocument: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        author: {
+                          name: "name",
+                          obfuscatedId: "<id>",
+                        },
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                },
                 person: {
                   name: "George Clooney",
                   obfuscatedId: "abc123",
@@ -136,14 +109,14 @@ let value: ChatStreamRequest = {
                   likes: {
                     likedBy: [],
                     likedByUser: false,
-                    numLikes: 344151,
+                    numLikes: 951547,
                   },
                   updatedBy: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
                   },
                   verification: {
-                    state: "DEPRECATED",
+                    state: "VERIFIED",
                     metadata: {
                       lastVerifier: {
                         name: "George Clooney",
@@ -159,7 +132,7 @@ let value: ChatStreamRequest = {
                           name: "George Clooney",
                           obfuscatedId: "abc123",
                         },
-                        remindAt: 715899,
+                        remindAt: 897358,
                       },
                       candidateVerifiers: [
                         {
@@ -169,32 +142,11 @@ let value: ChatStreamRequest = {
                       ],
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description:
-                      "account thoughtfully redound unpleasant scornful yum instead",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 208769,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   collections: [],
+                  sourceDocument: {},
+                },
+                generatedQna: {
+                  ranges: [],
                 },
                 extractedQnA: {
                   questionResult: {
@@ -203,8 +155,8 @@ let value: ChatStreamRequest = {
                     nativeAppUrl: "slack://foo/bar",
                     snippets: [
                       {
-                        snippet: "snippet",
                         mimeType: "mimeType",
+                        snippet: "snippet",
                       },
                     ],
                     mustIncludeSuggestions: {},
@@ -218,7 +170,7 @@ let value: ChatStreamRequest = {
                 collection: {
                   name: "<value>",
                   description:
-                    "zowie faithfully calculating amidst lowball minus",
+                    "during absentmindedly phew productive present than aside advancement",
                   audienceFilters: [
                     {
                       fieldName: "type",
@@ -234,30 +186,13 @@ let value: ChatStreamRequest = {
                       ],
                     },
                   ],
-                  id: 669860,
+                  id: 506209,
+                  creator: {
+                    name: "George Clooney",
+                    obfuscatedId: "abc123",
+                  },
                   items: [],
                   children: [],
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description:
-                    "longingly thyme weight volleyball alongside christen",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 217369,
                 },
                 code: {
                   repoName: "scio",
@@ -280,10 +215,16 @@ let value: ChatStreamRequest = {
                     },
                   ],
                 },
-                relatedDocuments: [],
-                relatedQuestion: {
-                  ranges: [],
+                chat: {
+                  icon: {
+                    color: "#343CED",
+                    key: "person_icon",
+                    iconType: "GLYPH",
+                    name: "user",
+                  },
                 },
+                relatedDocuments: [],
+                relatedQuestion: {},
               },
             ],
             querySuggestion: {
@@ -298,12 +239,37 @@ let value: ChatStreamRequest = {
             },
             action: {
               metadata: {
-                type: "RETRIEVAL",
+                type: "ACTION",
                 name: "<value>",
-                displayName: "Sandrine78",
+                displayName: "Sylvan15",
                 displayDescription: "<value>",
                 objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
               },
+            },
+            citation: {
+              sourceFile: {
+                id: "FILE_1234",
+                url: "www.google.com",
+                name: "sample.pdf",
+              },
+              sourcePerson: {
+                name: "George Clooney",
+                obfuscatedId: "abc123",
+              },
+              sourceCustomEntity: {},
+              referenceRanges: [
+                {
+                  textRange: {
+                    startIndex: 281266,
+                  },
+                  snippets: [
+                    {
+                      mimeType: "mimeType",
+                      snippet: "snippet",
+                    },
+                  ],
+                },
+              ],
             },
           },
         ],

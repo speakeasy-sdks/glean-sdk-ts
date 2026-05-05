@@ -7,20 +7,23 @@ import (
 	"fmt"
 )
 
-// LikelihoodThreshold
+// SensitiveInfoTypeLikelihoodThreshold
 //
-// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-type LikelihoodThreshold string
+// Deprecated: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
+type SensitiveInfoTypeLikelihoodThreshold string
 
 const (
-	LikelihoodThresholdLikely     LikelihoodThreshold = "LIKELY"
-	LikelihoodThresholdVeryLikely LikelihoodThreshold = "VERY_LIKELY"
+	SensitiveInfoTypeLikelihoodThresholdLikely       SensitiveInfoTypeLikelihoodThreshold = "LIKELY"
+	SensitiveInfoTypeLikelihoodThresholdVeryLikely   SensitiveInfoTypeLikelihoodThreshold = "VERY_LIKELY"
+	SensitiveInfoTypeLikelihoodThresholdPossible     SensitiveInfoTypeLikelihoodThreshold = "POSSIBLE"
+	SensitiveInfoTypeLikelihoodThresholdUnlikely     SensitiveInfoTypeLikelihoodThreshold = "UNLIKELY"
+	SensitiveInfoTypeLikelihoodThresholdVeryUnlikely SensitiveInfoTypeLikelihoodThreshold = "VERY_UNLIKELY"
 )
 
-func (e LikelihoodThreshold) ToPointer() *LikelihoodThreshold {
+func (e SensitiveInfoTypeLikelihoodThreshold) ToPointer() *SensitiveInfoTypeLikelihoodThreshold {
 	return &e
 }
-func (e *LikelihoodThreshold) UnmarshalJSON(data []byte) error {
+func (e *SensitiveInfoTypeLikelihoodThreshold) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -29,21 +32,27 @@ func (e *LikelihoodThreshold) UnmarshalJSON(data []byte) error {
 	case "LIKELY":
 		fallthrough
 	case "VERY_LIKELY":
-		*e = LikelihoodThreshold(v)
+		fallthrough
+	case "POSSIBLE":
+		fallthrough
+	case "UNLIKELY":
+		fallthrough
+	case "VERY_UNLIKELY":
+		*e = SensitiveInfoTypeLikelihoodThreshold(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for LikelihoodThreshold: %v", v)
+		return fmt.Errorf("invalid value for SensitiveInfoTypeLikelihoodThreshold: %v", v)
 	}
 }
 
 type SensitiveInfoType struct {
-	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	LikelihoodThreshold *LikelihoodThreshold `json:"likelihoodThreshold,omitempty"`
+	// Deprecated: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
+	LikelihoodThreshold *SensitiveInfoTypeLikelihoodThreshold `json:"likelihoodThreshold,omitempty"`
 	// Text representation of an info-type to scan for.
 	InfoType *string `json:"infoType,omitempty"`
 }
 
-func (o *SensitiveInfoType) GetLikelihoodThreshold() *LikelihoodThreshold {
+func (o *SensitiveInfoType) GetLikelihoodThreshold() *SensitiveInfoTypeLikelihoodThreshold {
 	if o == nil {
 		return nil
 	}

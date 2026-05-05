@@ -157,6 +157,10 @@ export type PersonMetadata = {
    */
   timezoneOffset?: number | undefined;
   /**
+   * The IANA timezone identifier, e.g. "America/Los_Angeles".
+   */
+  timezoneIANA?: string | undefined;
+  /**
    * The URL of the person's avatar. Public, glean-authenticated and Base64 encoded data URLs are all valid (but not third-party-authenticated URLs).
    */
   photoUrl?: string | undefined;
@@ -304,6 +308,7 @@ export const PersonMetadata$inboundSchema: z.ZodType<
   phone: z.string().optional(),
   timezone: z.string().optional(),
   timezoneOffset: z.number().int().optional(),
+  timezoneIANA: z.string().optional(),
   photoUrl: z.string().optional(),
   uneditedPhotoUrl: z.string().optional(),
   bannerUrl: z.string().optional(),
@@ -354,6 +359,7 @@ export type PersonMetadata$Outbound = {
   phone?: string | undefined;
   timezone?: string | undefined;
   timezoneOffset?: number | undefined;
+  timezoneIANA?: string | undefined;
   photoUrl?: string | undefined;
   uneditedPhotoUrl?: string | undefined;
   bannerUrl?: string | undefined;
@@ -406,6 +412,7 @@ export const PersonMetadata$outboundSchema: z.ZodType<
   phone: z.string().optional(),
   timezone: z.string().optional(),
   timezoneOffset: z.number().int().optional(),
+  timezoneIANA: z.string().optional(),
   photoUrl: z.string().optional(),
   uneditedPhotoUrl: z.string().optional(),
   bannerUrl: z.string().optional(),

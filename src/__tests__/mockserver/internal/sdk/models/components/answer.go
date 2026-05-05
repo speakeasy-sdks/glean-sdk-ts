@@ -45,7 +45,9 @@ type Answer struct {
 	QuestionVariations []string `json:"questionVariations,omitempty"`
 	// The plain text answer to the question.
 	BodyText *string `json:"bodyText,omitempty"`
-	// The parent board ID of this Answer, or 0 if it's a floating Answer.
+	// The parent board ID of this Answer, or 0 if it's a floating Answer. Adding Answers to Answer Boards is no longer permitted.
+	//
+	// Deprecated: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Answer Boards no longer supported.
 	BoardID *int64 `json:"boardId,omitempty"`
 	// Filters which restrict who should see the answer. Values are taken from the corresponding filters in people search.
 	AudienceFilters []FacetFilter `json:"audienceFilters,omitempty"`
@@ -67,7 +69,6 @@ type Answer struct {
 	UpdateTime   *time.Time    `json:"updateTime,omitempty"`
 	UpdatedBy    *Person       `json:"updatedBy,omitempty"`
 	Verification *Verification `json:"verification,omitempty"`
-	Board        *AnswerBoard  `json:"board,omitempty"`
 	// The collections to which the answer belongs.
 	Collections []Collection `json:"collections,omitempty"`
 	// The document's document_category(.proto).
@@ -224,13 +225,6 @@ func (o *Answer) GetVerification() *Verification {
 		return nil
 	}
 	return o.Verification
-}
-
-func (o *Answer) GetBoard() *AnswerBoard {
-	if o == nil {
-		return nil
-	}
-	return o.Board
 }
 
 func (o *Answer) GetCollections() []Collection {

@@ -4,69 +4,38 @@
 
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  InsightsAgentsRequestOptions,
-  InsightsAgentsRequestOptions$inboundSchema,
-  InsightsAgentsRequestOptions$Outbound,
-  InsightsAgentsRequestOptions$outboundSchema,
-} from "./insightsagentsrequestoptions.js";
+  AgentsInsightsV2Request,
+  AgentsInsightsV2Request$inboundSchema,
+  AgentsInsightsV2Request$Outbound,
+  AgentsInsightsV2Request$outboundSchema,
+} from "./agentsinsightsv2request.js";
 import {
-  InsightsAiAppRequestOptions,
-  InsightsAiAppRequestOptions$inboundSchema,
-  InsightsAiAppRequestOptions$Outbound,
-  InsightsAiAppRequestOptions$outboundSchema,
-} from "./insightsaiapprequestoptions.js";
+  InsightsAssistantRequest,
+  InsightsAssistantRequest$inboundSchema,
+  InsightsAssistantRequest$Outbound,
+  InsightsAssistantRequest$outboundSchema,
+} from "./insightsassistantrequest.js";
 import {
-  Period,
-  Period$inboundSchema,
-  Period$Outbound,
-  Period$outboundSchema,
-} from "./period.js";
-
-export const InsightsRequestCategory = {
-  Agents: "AGENTS",
-  Ai: "AI",
-  AiApps: "AI_APPS",
-  Announcements: "ANNOUNCEMENTS",
-  Answers: "ANSWERS",
-  Collections: "COLLECTIONS",
-  Content: "CONTENT",
-  GleanAssist: "GLEAN_ASSIST",
-  Queries: "QUERIES",
-  Shortcuts: "SHORTCUTS",
-  Users: "USERS",
-} as const;
-export type InsightsRequestCategory = ClosedEnum<
-  typeof InsightsRequestCategory
->;
-
-export const AssistantActivityType = {
-  GleanChat: "GLEAN_CHAT",
-  AiSummary: "AI_SUMMARY",
-  AiAnswer: "AI_ANSWER",
-  GleanbotResponse: "GLEANBOT_RESPONSE",
-} as const;
-export type AssistantActivityType = ClosedEnum<typeof AssistantActivityType>;
+  InsightsOverviewRequest,
+  InsightsOverviewRequest$inboundSchema,
+  InsightsOverviewRequest$Outbound,
+  InsightsOverviewRequest$outboundSchema,
+} from "./insightsoverviewrequest.js";
+import {
+  McpBreakdownInsightsRequest,
+  McpBreakdownInsightsRequest$inboundSchema,
+  McpBreakdownInsightsRequest$Outbound,
+  McpBreakdownInsightsRequest$outboundSchema,
+} from "./mcpbreakdowninsightsrequest.js";
 
 export type InsightsRequest = {
-  /**
-   * Categories of data requested. Request can include single or multiple types.
-   */
-  categories: Array<InsightsRequestCategory>;
-  /**
-   * Departments that the data is requested for. If this is empty, corresponds to whole company.
-   */
-  departments?: Array<string> | undefined;
-  dayRange?: Period | undefined;
-  aiAppRequestOptions?: InsightsAiAppRequestOptions | undefined;
-  agentsRequestOptions?: InsightsAgentsRequestOptions | undefined;
-  /**
-   * Types of activity that should count in the definition of an Assistant Active User. Affects only insights for AI category.
-   */
-  assistantActivityTypes?: Array<AssistantActivityType> | undefined;
+  overviewRequest?: InsightsOverviewRequest | undefined;
+  assistantRequest?: InsightsAssistantRequest | undefined;
+  agentsRequest?: AgentsInsightsV2Request | undefined;
+  mcpBreakdownRequest?: McpBreakdownInsightsRequest | undefined;
   /**
    * If true, suppresses the generation of per-user Insights in the response. Default is false.
    */
@@ -74,71 +43,24 @@ export type InsightsRequest = {
 };
 
 /** @internal */
-export const InsightsRequestCategory$inboundSchema: z.ZodNativeEnum<
-  typeof InsightsRequestCategory
-> = z.nativeEnum(InsightsRequestCategory);
-
-/** @internal */
-export const InsightsRequestCategory$outboundSchema: z.ZodNativeEnum<
-  typeof InsightsRequestCategory
-> = InsightsRequestCategory$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsRequestCategory$ {
-  /** @deprecated use `InsightsRequestCategory$inboundSchema` instead. */
-  export const inboundSchema = InsightsRequestCategory$inboundSchema;
-  /** @deprecated use `InsightsRequestCategory$outboundSchema` instead. */
-  export const outboundSchema = InsightsRequestCategory$outboundSchema;
-}
-
-/** @internal */
-export const AssistantActivityType$inboundSchema: z.ZodNativeEnum<
-  typeof AssistantActivityType
-> = z.nativeEnum(AssistantActivityType);
-
-/** @internal */
-export const AssistantActivityType$outboundSchema: z.ZodNativeEnum<
-  typeof AssistantActivityType
-> = AssistantActivityType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssistantActivityType$ {
-  /** @deprecated use `AssistantActivityType$inboundSchema` instead. */
-  export const inboundSchema = AssistantActivityType$inboundSchema;
-  /** @deprecated use `AssistantActivityType$outboundSchema` instead. */
-  export const outboundSchema = AssistantActivityType$outboundSchema;
-}
-
-/** @internal */
 export const InsightsRequest$inboundSchema: z.ZodType<
   InsightsRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  categories: z.array(InsightsRequestCategory$inboundSchema),
-  departments: z.array(z.string()).optional(),
-  dayRange: Period$inboundSchema.optional(),
-  aiAppRequestOptions: InsightsAiAppRequestOptions$inboundSchema.optional(),
-  agentsRequestOptions: InsightsAgentsRequestOptions$inboundSchema.optional(),
-  assistantActivityTypes: z.array(AssistantActivityType$inboundSchema)
-    .optional(),
+  overviewRequest: InsightsOverviewRequest$inboundSchema.optional(),
+  assistantRequest: InsightsAssistantRequest$inboundSchema.optional(),
+  agentsRequest: AgentsInsightsV2Request$inboundSchema.optional(),
+  mcpBreakdownRequest: McpBreakdownInsightsRequest$inboundSchema.optional(),
   disablePerUserInsights: z.boolean().optional(),
 });
 
 /** @internal */
 export type InsightsRequest$Outbound = {
-  categories: Array<string>;
-  departments?: Array<string> | undefined;
-  dayRange?: Period$Outbound | undefined;
-  aiAppRequestOptions?: InsightsAiAppRequestOptions$Outbound | undefined;
-  agentsRequestOptions?: InsightsAgentsRequestOptions$Outbound | undefined;
-  assistantActivityTypes?: Array<string> | undefined;
+  overviewRequest?: InsightsOverviewRequest$Outbound | undefined;
+  assistantRequest?: InsightsAssistantRequest$Outbound | undefined;
+  agentsRequest?: AgentsInsightsV2Request$Outbound | undefined;
+  mcpBreakdownRequest?: McpBreakdownInsightsRequest$Outbound | undefined;
   disablePerUserInsights?: boolean | undefined;
 };
 
@@ -148,13 +70,10 @@ export const InsightsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InsightsRequest
 > = z.object({
-  categories: z.array(InsightsRequestCategory$outboundSchema),
-  departments: z.array(z.string()).optional(),
-  dayRange: Period$outboundSchema.optional(),
-  aiAppRequestOptions: InsightsAiAppRequestOptions$outboundSchema.optional(),
-  agentsRequestOptions: InsightsAgentsRequestOptions$outboundSchema.optional(),
-  assistantActivityTypes: z.array(AssistantActivityType$outboundSchema)
-    .optional(),
+  overviewRequest: InsightsOverviewRequest$outboundSchema.optional(),
+  assistantRequest: InsightsAssistantRequest$outboundSchema.optional(),
+  agentsRequest: AgentsInsightsV2Request$outboundSchema.optional(),
+  mcpBreakdownRequest: McpBreakdownInsightsRequest$outboundSchema.optional(),
   disablePerUserInsights: z.boolean().optional(),
 });
 

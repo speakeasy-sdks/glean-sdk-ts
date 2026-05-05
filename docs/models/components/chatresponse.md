@@ -10,65 +10,38 @@ import { ChatResponse } from "@gleanwork/api-client/models/components";
 let value: ChatResponse = {
   messages: [
     {
-      citations: [
-        {
-          sourceDocument: {
-            containerDocument: {
-              parentDocument: {
-                metadata: {
-                  datasource: "datasource",
-                  objectType: "Feature Request",
-                  container: "container",
-                  parentId: "JIRA_EN-1337",
-                  mimeType: "mimeType",
-                  documentId: "documentId",
-                  createTime: new Date("2000-01-23T04:56:07.000Z"),
-                  updateTime: new Date("2000-01-23T04:56:07.000Z"),
-                  author: {
-                    name: "name",
-                    obfuscatedId: "<id>",
-                  },
-                  components: [
-                    "Backend",
-                    "Networking",
-                  ],
-                  status: "[\"Done\"]",
-                  customData: {
-                    "someCustomField": {},
-                  },
-                },
-              },
-            },
-          },
-          sourceFile: {
-            id: "FILE_1234",
-            url: "www.google.com",
-            name: "sample.pdf",
-          },
-          sourcePerson: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          referenceRanges: [
-            {
-              textRange: {
-                startIndex: 441442,
-                document: {},
-              },
-              snippets: [
-                {
-                  snippet: "snippet",
-                  mimeType: "mimeType",
-                },
-              ],
-            },
-          ],
-        },
-      ],
       fragments: [
         {
           structuredResults: [
             {
+              document: {
+                containerDocument: {
+                  parentDocument: {
+                    metadata: {
+                      datasource: "datasource",
+                      objectType: "Feature Request",
+                      container: "container",
+                      parentId: "JIRA_EN-1337",
+                      mimeType: "mimeType",
+                      documentId: "documentId",
+                      createTime: new Date("2000-01-23T04:56:07.000Z"),
+                      updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                      author: {
+                        name: "name",
+                        obfuscatedId: "<id>",
+                      },
+                      components: [
+                        "Backend",
+                        "Networking",
+                      ],
+                      status: "[\"Done\"]",
+                      customData: {
+                        "someCustomField": {},
+                      },
+                    },
+                  },
+                },
+              },
               person: {
                 name: "George Clooney",
                 obfuscatedId: "abc123",
@@ -137,14 +110,14 @@ let value: ChatResponse = {
                 likes: {
                   likedBy: [],
                   likedByUser: false,
-                  numLikes: 973316,
+                  numLikes: 441442,
                 },
                 updatedBy: {
                   name: "George Clooney",
                   obfuscatedId: "abc123",
                 },
                 verification: {
-                  state: "VERIFIED",
+                  state: "DEPRECATED",
                   metadata: {
                     lastVerifier: {
                       name: "George Clooney",
@@ -160,7 +133,7 @@ let value: ChatResponse = {
                         name: "George Clooney",
                         obfuscatedId: "abc123",
                       },
-                      remindAt: 399728,
+                      remindAt: 578275,
                     },
                     candidateVerifiers: [
                       {
@@ -170,32 +143,11 @@ let value: ChatResponse = {
                     ],
                   },
                 },
-                board: {
-                  name: "<value>",
-                  description:
-                    "phew terribly burly nutritious mysteriously who",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 135035,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
                 collections: [],
+                sourceDocument: {},
+              },
+              generatedQna: {
+                ranges: [],
               },
               extractedQnA: {
                 questionResult: {
@@ -204,8 +156,8 @@ let value: ChatResponse = {
                   nativeAppUrl: "slack://foo/bar",
                   snippets: [
                     {
-                      snippet: "snippet",
                       mimeType: "mimeType",
+                      snippet: "snippet",
                     },
                   ],
                   mustIncludeSuggestions: {},
@@ -218,7 +170,7 @@ let value: ChatResponse = {
               },
               collection: {
                 name: "<value>",
-                description: "tightly at submissive successfully annually um",
+                description: "so mockingly well-groomed range grandiose the",
                 audienceFilters: [
                   {
                     fieldName: "type",
@@ -234,29 +186,13 @@ let value: ChatResponse = {
                     ],
                   },
                 ],
-                id: 19074,
+                id: 902497,
+                creator: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                },
                 items: [],
                 children: [],
-              },
-              answerBoard: {
-                name: "<value>",
-                description: "or around hence potentially till",
-                audienceFilters: [
-                  {
-                    fieldName: "type",
-                    values: [
-                      {
-                        value: "Spreadsheet",
-                        relationType: "EQUALS",
-                      },
-                      {
-                        value: "Presentation",
-                        relationType: "EQUALS",
-                      },
-                    ],
-                  },
-                ],
-                id: 27404,
               },
               code: {
                 repoName: "scio",
@@ -279,10 +215,16 @@ let value: ChatResponse = {
                   },
                 ],
               },
-              relatedDocuments: [],
-              relatedQuestion: {
-                ranges: [],
+              chat: {
+                icon: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
               },
+              relatedDocuments: [],
+              relatedQuestion: {},
             },
           ],
           querySuggestion: {
@@ -299,10 +241,35 @@ let value: ChatResponse = {
             metadata: {
               type: "RETRIEVAL",
               name: "<value>",
-              displayName: "Henderson76",
+              displayName: "Hollis.Collier-Yost71",
               displayDescription: "<value>",
               objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
             },
+          },
+          citation: {
+            sourceFile: {
+              id: "FILE_1234",
+              url: "www.google.com",
+              name: "sample.pdf",
+            },
+            sourcePerson: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+            },
+            sourceCustomEntity: {},
+            referenceRanges: [
+              {
+                textRange: {
+                  startIndex: 821078,
+                },
+                snippets: [
+                  {
+                    mimeType: "mimeType",
+                    snippet: "snippet",
+                  },
+                ],
+              },
+            ],
           },
         },
       ],
@@ -314,10 +281,11 @@ let value: ChatResponse = {
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          | Example                                                              |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `messages`                                                           | [components.ChatMessage](../../models/components/chatmessage.md)[]   | :heavy_minus_sign:                                                   | N/A                                                                  |                                                                      |
-| `chatId`                                                             | *string*                                                             | :heavy_minus_sign:                                                   | The id of the associated Chat the messages belong to, if one exists. |                                                                      |
-| `followUpPrompts`                                                    | *string*[]                                                           | :heavy_minus_sign:                                                   | Follow-up prompts for the user to potentially use                    |                                                                      |
-| `backendTimeMillis`                                                  | *number*                                                             | :heavy_minus_sign:                                                   | Time in milliseconds the backend took to respond to the request.     | 1100                                                                 |
-| `chatSessionTrackingToken`                                           | *string*                                                             | :heavy_minus_sign:                                                   | A token that is used to track the session.                           |                                                                      |
+| Field                                                                                               | Type                                                                                                | Required                                                                                            | Description                                                                                         | Example                                                                                             |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `messages`                                                                                          | [components.ChatMessage](../../models/components/chatmessage.md)[]                                  | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |                                                                                                     |
+| `chatId`                                                                                            | *string*                                                                                            | :heavy_minus_sign:                                                                                  | The id of the associated Chat the messages belong to, if one exists.                                |                                                                                                     |
+| `chat`                                                                                              | [components.ChatMetadata](../../models/components/chatmetadata.md)                                  | :heavy_minus_sign:                                                                                  | Metadata of a Chat a user had with Glean Assistant. This contains no actual conversational content. |                                                                                                     |
+| `followUpPrompts`                                                                                   | *string*[]                                                                                          | :heavy_minus_sign:                                                                                  | Follow-up prompts for the user to potentially use                                                   |                                                                                                     |
+| `backendTimeMillis`                                                                                 | *number*                                                                                            | :heavy_minus_sign:                                                                                  | Time in milliseconds the backend took to respond to the request.                                    | 1100                                                                                                |
+| `chatSessionTrackingToken`                                                                          | *string*                                                                                            | :heavy_minus_sign:                                                                                  | A token that is used to track the session.                                                          |                                                                                                     |

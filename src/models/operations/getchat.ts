@@ -11,6 +11,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetchatRequest = {
   /**
+   * The client's preferred locale in rfc5646 format (e.g. `en`, `ja`, `pt-BR`). If omitted, the `Accept-Language` will be used. If not present or not supported, defaults to the closest match or `en`.
+   */
+  locale?: string | undefined;
+  /**
    * The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
    */
   timezoneOffset?: number | undefined;
@@ -23,6 +27,7 @@ export const GetchatRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  locale: z.string().optional(),
   timezoneOffset: z.number().int().optional(),
   GetChatRequest: components.GetChatRequest$inboundSchema,
 }).transform((v) => {
@@ -33,6 +38,7 @@ export const GetchatRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type GetchatRequest$Outbound = {
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   GetChatRequest: components.GetChatRequest$Outbound;
 };
@@ -43,6 +49,7 @@ export const GetchatRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetchatRequest
 > = z.object({
+  locale: z.string().optional(),
   timezoneOffset: z.number().int().optional(),
   getChatRequest: components.GetChatRequest$outboundSchema,
 }).transform((v) => {

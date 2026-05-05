@@ -104,30 +104,6 @@ let value: GetAnswerResponse = {
           ],
         },
       },
-      board: {
-        name: "<value>",
-        description: "drat via over miserably militate teriyaki squid yahoo",
-        audienceFilters: [
-          {
-            fieldName: "type",
-            values: [
-              {
-                value: "Spreadsheet",
-                relationType: "EQUALS",
-              },
-              {
-                value: "Presentation",
-                relationType: "EQUALS",
-              },
-            ],
-          },
-        ],
-        id: 322521,
-        creator: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-      },
       collections: [],
       sourceDocument: {},
     },

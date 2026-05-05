@@ -5,15 +5,15 @@
 
 ### Available Operations
 
-* [retrieve](#retrieve) - Get Agent
-* [retrieveSchemas](#retrieveschemas) - Get Agent Schemas
-* [list](#list) - Search Agents
-* [runStream](#runstream) - Create Run, Stream Output
-* [run](#run) - Create Run, Wait for Output
+* [retrieve](#retrieve) - Retrieve an agent
+* [retrieveSchemas](#retrieveschemas) - List an agent's schemas
+* [list](#list) - Search agents
+* [runStream](#runstream) - Create an agent run and stream the response
+* [run](#run) - Create an agent run and wait for the response
 
 ## retrieve
 
-Get an agent by ID. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/GET/agents/{agent_id}). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+Returns details of an [agent](https://developers.glean.com/agents/agents-api) created in the Agent Builder.
 
 ### Example Usage
 
@@ -94,13 +94,14 @@ import {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `agentId`                                                                                                                                                                      | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the agent.                                                                                                                                                           |
-| `timezoneOffset`                                                                                                                                                               | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| Parameter                                                                                                                                                                                           | Type                                                                                                                                                                                                | Required                                                                                                                                                                                            | Description                                                                                                                                                                                         |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `agentId`                                                                                                                                                                                           | *string*                                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                                  | The ID of the agent.                                                                                                                                                                                |
+| `locale`                                                                                                                                                                                            | *string*                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                  | The client's preferred locale in rfc5646 format (e.g. `en`, `ja`, `pt-BR`). If omitted, the `Accept-Language` will be used. If not present or not supported, defaults to the closest match or `en`. |
+| `timezoneOffset`                                                                                                                                                                                    | *number*                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                  | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                                          |
+| `options`                                                                                                                                                                                           | RequestOptions                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                  | Used to set various options for making HTTP requests.                                                                                                                                               |
+| `options.fetchOptions`                                                                                                                                                                              | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                  | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                      |
+| `options.retries`                                                                                                                                                                                   | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                  | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                    |
 
 ### Response
 
@@ -108,13 +109,14 @@ import {
 
 ### Errors
 
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| errors.ErrorResponse | 404                  | application/json     |
+| errors.GleanError    | 4XX, 5XX             | \*/\*                |
 
 ## retrieveSchemas
 
-Get an agent's schemas by ID. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/GET/agents/{agent_id}/schemas). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+Return [agent](https://developers.glean.com/agents/agents-api)'s input and output schemas. You can use these schemas to detect changes to an agent's input or output structure.
 
 ### Example Usage
 
@@ -195,13 +197,14 @@ import {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `agentId`                                                                                                                                                                      | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the agent.                                                                                                                                                           |
-| `timezoneOffset`                                                                                                                                                               | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| Parameter                                                                                                                                                                                           | Type                                                                                                                                                                                                | Required                                                                                                                                                                                            | Description                                                                                                                                                                                         |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `agentId`                                                                                                                                                                                           | *string*                                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                                  | The ID of the agent.                                                                                                                                                                                |
+| `locale`                                                                                                                                                                                            | *string*                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                  | The client's preferred locale in rfc5646 format (e.g. `en`, `ja`, `pt-BR`). If omitted, the `Accept-Language` will be used. If not present or not supported, defaults to the closest match or `en`. |
+| `timezoneOffset`                                                                                                                                                                                    | *number*                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                  | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                                          |
+| `options`                                                                                                                                                                                           | RequestOptions                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                  | Used to set various options for making HTTP requests.                                                                                                                                               |
+| `options.fetchOptions`                                                                                                                                                                              | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                  | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                      |
+| `options.retries`                                                                                                                                                                                   | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                  | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                    |
 
 ### Response
 
@@ -209,13 +212,14 @@ import {
 
 ### Errors
 
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| errors.ErrorResponse | 404, 422             | application/json     |
+| errors.GleanError    | 4XX, 5XX             | \*/\*                |
 
 ## list
 
-List Agents available in this service. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/POST/agents/search). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+Search for [agents](https://developers.glean.com/agents/agents-api) by agent name.
 
 ### Example Usage
 
@@ -227,7 +231,9 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.agents.list({});
+  const result = await glean.client.agents.list({
+    name: "HR Policy Agent",
+  });
 
   // Handle the result
   console.log(result);
@@ -251,7 +257,9 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientAgentsList(glean, {});
+  const res = await clientAgentsList(glean, {
+    name: "HR Policy Agent",
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -298,13 +306,14 @@ import {
 
 ### Errors
 
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| errors.ErrorResponse | 404, 422             | application/json     |
+| errors.GleanError    | 4XX, 5XX             | \*/\*                |
 
 ## runStream
 
-Creates and triggers a run of an agent. Streams the output in SSE format. This endpoint implements the LangChain Agent Protocol, specifically part of the Runs stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/runs/POST/runs/stream). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol. Note that running agents that reference third party platform write actions is unsupported as it requires user confirmation.
+Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the result as a stream of server-sent events (SSE). **Note**: If the agent uses an input form trigger, all form fields (including optional fields) must be included in the `input` object.
 
 ### Example Usage
 
@@ -316,7 +325,14 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.agents.runStream({});
+  const result = await glean.client.agents.runStream({
+    agentId: "<id>",
+    messages: [
+      {
+        role: "USER",
+      },
+    ],
+  });
 
   // Handle the result
   console.log(result);
@@ -340,7 +356,14 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientAgentsRunStream(glean, {});
+  const res = await clientAgentsRunStream(glean, {
+    agentId: "<id>",
+    messages: [
+      {
+        role: "USER",
+      },
+    ],
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -387,13 +410,14 @@ import {
 
 ### Errors
 
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| errors.ErrorResponse | 404, 409, 422        | application/json     |
+| errors.GleanError    | 4XX, 5XX             | \*/\*                |
 
 ## run
 
-Creates and triggers a run of an agent. Waits for final output and then returns it. This endpoint implements the LangChain Agent Protocol, specifically part of the Runs stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/runs/POST/runs/wait). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol. Note that running agents that reference third party platform write actions is unsupported as it requires user confirmation.
+Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the final response. **Note**: If the agent uses an input form trigger, all form fields (including optional fields) must be included in the `input` object.
 
 ### Example Usage
 
@@ -405,7 +429,14 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.agents.run({});
+  const result = await glean.client.agents.run({
+    agentId: "<id>",
+    messages: [
+      {
+        role: "USER",
+      },
+    ],
+  });
 
   // Handle the result
   console.log(result);
@@ -429,7 +460,14 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientAgentsRun(glean, {});
+  const res = await clientAgentsRun(glean, {
+    agentId: "<id>",
+    messages: [
+      {
+        role: "USER",
+      },
+    ],
+  });
 
   if (!res.ok) {
     throw res.error;

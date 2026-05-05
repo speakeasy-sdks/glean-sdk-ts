@@ -18,6 +18,7 @@ import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatRetrieveApplicationMutationVariables = {
   getChatApplicationRequest: components.GetChatApplicationRequest;
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
@@ -66,6 +67,7 @@ export function buildClientChatRetrieveApplicationMutation(
     mutationKey: mutationKeyClientChatRetrieveApplication(),
     mutationFn: function clientChatRetrieveApplicationMutationFn({
       getChatApplicationRequest,
+      locale,
       timezoneOffset,
       options,
     }): Promise<ClientChatRetrieveApplicationMutationData> {
@@ -84,6 +86,7 @@ export function buildClientChatRetrieveApplicationMutation(
       return unwrapAsync(clientChatRetrieveApplication(
         client$,
         getChatApplicationRequest,
+        locale,
         timezoneOffset,
         mergedOptions,
       ));

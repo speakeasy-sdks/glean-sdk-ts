@@ -7,6 +7,7 @@ generation:
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: true
@@ -15,6 +16,8 @@ generation:
     requestResponseComponentNamesFeb2024: true
     securityFeb2025: true
     sharedErrorComponentsApr2025: true
+    nameOverrideFeb2026: false
+    sharedNestedComponentsJan2026: false
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
@@ -23,23 +26,40 @@ generation:
   tests:
     generateNewTests: true
     skipResponseBodyAssertions: true
+  persistentEdits: {}
+  requestBodyFieldName: ""
+  schemas:
+    allOfMergeStrategy: shallowMerge
+  versioningStrategy: automatic
 typescript:
-  version: 0.4.4
+  version: 0.4.5
+  acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
   additionalPackageJSON: {}
+  additionalScripts: {}
+  alwaysIncludeInboundAndOutbound: false
   author: Speakeasy
+  baseErrorName: ""
   clientServerStatusCodesAsErrors: true
+  constFieldsAlwaysOptional: false
   defaultErrorName: GleanError
   enableCustomCodeRegions: false
   enableMCPServer: false
   enableReactQuery: true
   enumFormat: union
   envVarPrefix: GLEAN
+  exportZodModelNamespace: false
+  fixEnumNameSanitization: false
+  flatAdditionalProperties: false
   flattenGlobalSecurity: true
   flatteningOrder: body-first
+  formStringArrayEncodeMode: encoded-string
+  forwardCompatibleEnumsByDefault: false
+  forwardCompatibleUnionsByDefault: "false"
+  generateExamples: true
   imports:
     option: openapi
     paths:
@@ -48,13 +68,26 @@ typescript:
       operations: models/operations
       shared: models/components
       webhooks: models/webhooks
+  inferUnionDiscriminators: true
   inputModelSuffix: input
   jsonpath: rfc9535
+  laxMode: strict
+  legacyFileNaming: true
   maxMethodParams: 5
   methodArguments: require-security-and-request
+  modelPropertyCasing: camel
   moduleFormat: dual
+  multipartArrayFormat: legacy
   outputModelSuffix: output
   packageName: '@gleanwork/api-client'
+  preApplyUnionDiscriminators: true
+  preserveModelFieldNames: false
   responseFormat: flat
+  sseFlatResponse: false
   templateVersion: v2
+  unionStrategy: left-to-right
+  usageSDKInitImports: []
   useIndexModules: true
+  useOxlint: false
+  useTsgo: false
+  zodVersion: v3

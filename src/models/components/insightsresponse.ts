@@ -7,23 +7,17 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  AiAppsInsightsResponse,
-  AiAppsInsightsResponse$inboundSchema,
-  AiAppsInsightsResponse$Outbound,
-  AiAppsInsightsResponse$outboundSchema,
-} from "./aiappsinsightsresponse.js";
+  AgentsInsightsV2Response,
+  AgentsInsightsV2Response$inboundSchema,
+  AgentsInsightsV2Response$Outbound,
+  AgentsInsightsV2Response$outboundSchema,
+} from "./agentsinsightsv2response.js";
 import {
-  AiInsightsResponse,
-  AiInsightsResponse$inboundSchema,
-  AiInsightsResponse$Outbound,
-  AiInsightsResponse$outboundSchema,
-} from "./aiinsightsresponse.js";
-import {
-  ContentInsightsResponse,
-  ContentInsightsResponse$inboundSchema,
-  ContentInsightsResponse$Outbound,
-  ContentInsightsResponse$outboundSchema,
-} from "./contentinsightsresponse.js";
+  AssistantInsightsResponse,
+  AssistantInsightsResponse$inboundSchema,
+  AssistantInsightsResponse$Outbound,
+  AssistantInsightsResponse$outboundSchema,
+} from "./assistantinsightsresponse.js";
 import {
   GleanAssistInsightsResponse,
   GleanAssistInsightsResponse$inboundSchema,
@@ -31,50 +25,17 @@ import {
   GleanAssistInsightsResponse$outboundSchema,
 } from "./gleanassistinsightsresponse.js";
 import {
-  LabeledCountInfo,
-  LabeledCountInfo$inboundSchema,
-  LabeledCountInfo$Outbound,
-  LabeledCountInfo$outboundSchema,
-} from "./labeledcountinfo.js";
-import {
-  QueryInsightsResponse,
-  QueryInsightsResponse$inboundSchema,
-  QueryInsightsResponse$Outbound,
-  QueryInsightsResponse$outboundSchema,
-} from "./queryinsightsresponse.js";
-import {
-  ShortcutInsightsResponse,
-  ShortcutInsightsResponse$inboundSchema,
-  ShortcutInsightsResponse$Outbound,
-  ShortcutInsightsResponse$outboundSchema,
-} from "./shortcutinsightsresponse.js";
-import {
-  UserInsightsResponse,
-  UserInsightsResponse$inboundSchema,
-  UserInsightsResponse$Outbound,
-  UserInsightsResponse$outboundSchema,
-} from "./userinsightsresponse.js";
+  InsightsOverviewResponse,
+  InsightsOverviewResponse$inboundSchema,
+  InsightsOverviewResponse$Outbound,
+  InsightsOverviewResponse$outboundSchema,
+} from "./insightsoverviewresponse.js";
 
 export type InsightsResponse = {
-  /**
-   * List of timeseries to make charts (if applicable).
-   */
-  timeseries?: Array<LabeledCountInfo> | undefined;
-  users?: UserInsightsResponse | undefined;
-  content?: ContentInsightsResponse | undefined;
-  queries?: QueryInsightsResponse | undefined;
-  collections?: ContentInsightsResponse | undefined;
-  collectionsV2?: ContentInsightsResponse | undefined;
-  shortcuts?: ShortcutInsightsResponse | undefined;
-  announcements?: ContentInsightsResponse | undefined;
-  answers?: ContentInsightsResponse | undefined;
-  ai?: AiInsightsResponse | undefined;
-  aiApps?: AiAppsInsightsResponse | undefined;
   gleanAssist?: GleanAssistInsightsResponse | undefined;
-  /**
-   * list of all departments.
-   */
-  departments?: Array<string> | undefined;
+  overviewResponse?: InsightsOverviewResponse | undefined;
+  assistantResponse?: AssistantInsightsResponse | undefined;
+  agentsResponse?: AgentsInsightsV2Response | undefined;
 };
 
 /** @internal */
@@ -83,36 +44,18 @@ export const InsightsResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  timeseries: z.array(LabeledCountInfo$inboundSchema).optional(),
-  users: UserInsightsResponse$inboundSchema.optional(),
-  content: ContentInsightsResponse$inboundSchema.optional(),
-  queries: QueryInsightsResponse$inboundSchema.optional(),
-  collections: ContentInsightsResponse$inboundSchema.optional(),
-  collectionsV2: ContentInsightsResponse$inboundSchema.optional(),
-  shortcuts: ShortcutInsightsResponse$inboundSchema.optional(),
-  announcements: ContentInsightsResponse$inboundSchema.optional(),
-  answers: ContentInsightsResponse$inboundSchema.optional(),
-  ai: AiInsightsResponse$inboundSchema.optional(),
-  aiApps: AiAppsInsightsResponse$inboundSchema.optional(),
   gleanAssist: GleanAssistInsightsResponse$inboundSchema.optional(),
-  departments: z.array(z.string()).optional(),
+  overviewResponse: InsightsOverviewResponse$inboundSchema.optional(),
+  assistantResponse: AssistantInsightsResponse$inboundSchema.optional(),
+  agentsResponse: AgentsInsightsV2Response$inboundSchema.optional(),
 });
 
 /** @internal */
 export type InsightsResponse$Outbound = {
-  timeseries?: Array<LabeledCountInfo$Outbound> | undefined;
-  users?: UserInsightsResponse$Outbound | undefined;
-  content?: ContentInsightsResponse$Outbound | undefined;
-  queries?: QueryInsightsResponse$Outbound | undefined;
-  collections?: ContentInsightsResponse$Outbound | undefined;
-  collectionsV2?: ContentInsightsResponse$Outbound | undefined;
-  shortcuts?: ShortcutInsightsResponse$Outbound | undefined;
-  announcements?: ContentInsightsResponse$Outbound | undefined;
-  answers?: ContentInsightsResponse$Outbound | undefined;
-  ai?: AiInsightsResponse$Outbound | undefined;
-  aiApps?: AiAppsInsightsResponse$Outbound | undefined;
   gleanAssist?: GleanAssistInsightsResponse$Outbound | undefined;
-  departments?: Array<string> | undefined;
+  overviewResponse?: InsightsOverviewResponse$Outbound | undefined;
+  assistantResponse?: AssistantInsightsResponse$Outbound | undefined;
+  agentsResponse?: AgentsInsightsV2Response$Outbound | undefined;
 };
 
 /** @internal */
@@ -121,19 +64,10 @@ export const InsightsResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InsightsResponse
 > = z.object({
-  timeseries: z.array(LabeledCountInfo$outboundSchema).optional(),
-  users: UserInsightsResponse$outboundSchema.optional(),
-  content: ContentInsightsResponse$outboundSchema.optional(),
-  queries: QueryInsightsResponse$outboundSchema.optional(),
-  collections: ContentInsightsResponse$outboundSchema.optional(),
-  collectionsV2: ContentInsightsResponse$outboundSchema.optional(),
-  shortcuts: ShortcutInsightsResponse$outboundSchema.optional(),
-  announcements: ContentInsightsResponse$outboundSchema.optional(),
-  answers: ContentInsightsResponse$outboundSchema.optional(),
-  ai: AiInsightsResponse$outboundSchema.optional(),
-  aiApps: AiAppsInsightsResponse$outboundSchema.optional(),
   gleanAssist: GleanAssistInsightsResponse$outboundSchema.optional(),
-  departments: z.array(z.string()).optional(),
+  overviewResponse: InsightsOverviewResponse$outboundSchema.optional(),
+  assistantResponse: AssistantInsightsResponse$outboundSchema.optional(),
+  agentsResponse: AgentsInsightsV2Response$outboundSchema.optional(),
 });
 
 /**

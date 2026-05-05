@@ -17,7 +17,8 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientPinsUpdateMutationVariables = {
-  request: components.EditPinRequest;
+  editPinRequest: components.EditPinRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -63,7 +64,8 @@ export function buildClientPinsUpdateMutation(
   return {
     mutationKey: mutationKeyClientPinsUpdate(),
     mutationFn: function clientPinsUpdateMutationFn({
-      request,
+      editPinRequest,
+      locale,
       options,
     }): Promise<ClientPinsUpdateMutationData> {
       const mergedOptions = {
@@ -80,7 +82,8 @@ export function buildClientPinsUpdateMutation(
       };
       return unwrapAsync(clientPinsUpdate(
         client$,
-        request,
+        editPinRequest,
+        locale,
         mergedOptions,
       ));
     },

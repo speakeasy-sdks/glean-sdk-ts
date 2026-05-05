@@ -18,6 +18,7 @@ import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatDeleteMutationVariables = {
   deleteChatsRequest: components.DeleteChatsRequest;
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
@@ -65,6 +66,7 @@ export function buildClientChatDeleteMutation(
     mutationKey: mutationKeyClientChatDelete(),
     mutationFn: function clientChatDeleteMutationFn({
       deleteChatsRequest,
+      locale,
       timezoneOffset,
       options,
     }): Promise<ClientChatDeleteMutationData> {
@@ -83,6 +85,7 @@ export function buildClientChatDeleteMutation(
       return unwrapAsync(clientChatDelete(
         client$,
         deleteChatsRequest,
+        locale,
         timezoneOffset,
         mergedOptions,
       ));

@@ -6,8 +6,8 @@
 import { CreateAnnouncementRequest } from "@gleanwork/api-client/models/components";
 
 let value: CreateAnnouncementRequest = {
-  startTime: new Date("2024-02-09T21:15:25.217Z"),
-  endTime: new Date("2024-09-24T12:23:18.681Z"),
+  startTime: new Date("2025-02-08T21:15:25.217Z"),
+  endTime: new Date("2025-09-24T12:23:18.681Z"),
   title: "<value>",
   body: {
     text:

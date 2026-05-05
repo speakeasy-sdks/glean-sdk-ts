@@ -3,7 +3,7 @@
  */
 
 import { GleanCore } from "../core.js";
-import { encodeJSON } from "../lib/encodings.js";
+import { encodeFormQuery, encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -20,18 +20,20 @@ import {
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Read insights
+ * Get insights
  *
  * @remarks
- * Reads the aggregate information for each user, query, and content.
+ * Gets the aggregate usage insights data displayed in the Insights Dashboards.
  */
 export function clientInsightsRetrieve(
   client: GleanCore,
-  request: components.InsightsRequest,
+  insightsRequest: components.InsightsRequest,
+  locale?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -47,14 +49,16 @@ export function clientInsightsRetrieve(
 > {
   return new APIPromise($do(
     client,
-    request,
+    insightsRequest,
+    locale,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: components.InsightsRequest,
+  insightsRequest: components.InsightsRequest,
+  locale?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -71,18 +75,27 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.InsightsRequest = {
+    insightsRequest: insightsRequest,
+    locale: locale,
+  };
+
   const parsed = safeParse(
-    request,
-    (value) => components.InsightsRequest$outboundSchema.parse(value),
+    input,
+    (value) => operations.InsightsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload.InsightsRequest, { explode: true });
 
   const path = pathToFunc("/rest/api/v1/insights")();
+
+  const query = encodeFormQuery({
+    "locale": payload.locale,
+  });
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -113,6 +126,7 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);

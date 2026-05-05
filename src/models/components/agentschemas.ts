@@ -7,6 +7,12 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  ActionSummary,
+  ActionSummary$inboundSchema,
+  ActionSummary$Outbound,
+  ActionSummary$outboundSchema,
+} from "./actionsummary.js";
 
 /**
  * The schema for the agent input. In JSON Schema format.
@@ -27,6 +33,10 @@ export type AgentSchemas = {
    */
   agentId: string;
   /**
+   * The name of the agent.
+   */
+  name?: string | undefined;
+  /**
    * The schema for the agent input. In JSON Schema format.
    */
   inputSchema: InputSchema;
@@ -34,6 +44,10 @@ export type AgentSchemas = {
    * The schema for the agent output. In JSON Schema format.
    */
   outputSchema: OutputSchema;
+  /**
+   * List of tools that the agent can invoke. Only included when include_tools query parameter is set to true.
+   */
+  tools?: Array<ActionSummary> | undefined;
 };
 
 /** @internal */
@@ -131,8 +145,10 @@ export const AgentSchemas$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   agent_id: z.string(),
+  name: z.string().optional(),
   input_schema: z.lazy(() => InputSchema$inboundSchema),
   output_schema: z.lazy(() => OutputSchema$inboundSchema),
+  tools: z.array(ActionSummary$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "agent_id": "agentId",
@@ -144,8 +160,10 @@ export const AgentSchemas$inboundSchema: z.ZodType<
 /** @internal */
 export type AgentSchemas$Outbound = {
   agent_id: string;
+  name?: string | undefined;
   input_schema: InputSchema$Outbound;
   output_schema: OutputSchema$Outbound;
+  tools?: Array<ActionSummary$Outbound> | undefined;
 };
 
 /** @internal */
@@ -155,8 +173,10 @@ export const AgentSchemas$outboundSchema: z.ZodType<
   AgentSchemas
 > = z.object({
   agentId: z.string(),
+  name: z.string().optional(),
   inputSchema: z.lazy(() => InputSchema$outboundSchema),
   outputSchema: z.lazy(() => OutputSchema$outboundSchema),
+  tools: z.array(ActionSummary$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     agentId: "agent_id",

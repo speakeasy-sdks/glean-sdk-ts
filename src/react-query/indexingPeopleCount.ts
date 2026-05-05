@@ -29,9 +29,9 @@ export type IndexingPeopleCountMutationData = components.GetUserCountResponse;
  * @remarks
  * Fetches user count for the specified custom datasource.
  *
- * Tip: Use [/debug/{datasource}/status](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/#debug-datasource-status) for richer information.
+ * Tip: Use [/debug/{datasource}/status](https://developers.glean.com/indexing/debugging/datasource-status) for richer information.
  *
- * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+ * @deprecated method: Deprecated on 2026-02-03, removal scheduled for 2026-10-15: Endpoint is deprecated.
  */
 export function useIndexingPeopleCountMutation(
   options?: MutationHookOptions<

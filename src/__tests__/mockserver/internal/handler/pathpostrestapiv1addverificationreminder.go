@@ -297,8 +297,8 @@ func testAddverificationreminderAddverificationreminder0(w http.ResponseWriter, 
 								NativeAppURL: types.String("slack://foo/bar"),
 								Snippets: []components.SearchResultSnippet{
 									components.SearchResultSnippet{
-										Snippet:  "snippet",
 										MimeType: types.String("mimeType"),
+										Snippet:  types.String("snippet"),
 									},
 								},
 							},

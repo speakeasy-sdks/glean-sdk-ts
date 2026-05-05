@@ -139,33 +139,11 @@ let value: StructuredTextItem = {
           ],
         },
       },
-      board: {
-        name: "<value>",
-        description:
-          "insidious weird cantaloupe until who whitewash vainly fixed deceivingly fiercely",
-        audienceFilters: [
-          {
-            fieldName: "type",
-            values: [
-              {
-                value: "Spreadsheet",
-                relationType: "EQUALS",
-              },
-              {
-                value: "Presentation",
-                relationType: "EQUALS",
-              },
-            ],
-          },
-        ],
-        id: 243713,
-        creator: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
-      },
       collections: [],
       sourceDocument: {},
+    },
+    generatedQna: {
+      ranges: [],
     },
     extractedQnA: {
       questionResult: {
@@ -174,8 +152,8 @@ let value: StructuredTextItem = {
         nativeAppUrl: "slack://foo/bar",
         snippets: [
           {
-            snippet: "snippet",
             mimeType: "mimeType",
+            snippet: "snippet",
           },
         ],
         mustIncludeSuggestions: {},
@@ -189,7 +167,7 @@ let value: StructuredTextItem = {
     collection: {
       name: "<value>",
       description:
-        "woot abaft across brr boohoo neglect gummy democratize round mockingly",
+        "insidious weird cantaloupe until who whitewash vainly fixed deceivingly fiercely",
       audienceFilters: [
         {
           fieldName: "type",
@@ -205,29 +183,13 @@ let value: StructuredTextItem = {
           ],
         },
       ],
-      id: 890490,
+      id: 243713,
+      creator: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
       items: [],
       children: [],
-    },
-    answerBoard: {
-      name: "<value>",
-      description: "dual fond lined if and ack easy",
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-      id: 787359,
     },
     code: {
       repoName: "scio",
@@ -250,10 +212,16 @@ let value: StructuredTextItem = {
         },
       ],
     },
-    relatedDocuments: [],
-    relatedQuestion: {
-      ranges: [],
+    chat: {
+      icon: {
+        color: "#343CED",
+        key: "person_icon",
+        iconType: "GLYPH",
+        name: "user",
+      },
     },
+    relatedDocuments: [],
+    relatedQuestion: {},
   },
 };
 ```

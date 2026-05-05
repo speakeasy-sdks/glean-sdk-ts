@@ -88,6 +88,26 @@ const (
 	JustificationTypeZeroStatePromptTemplateSuggestion JustificationType = "ZERO_STATE_PROMPT_TEMPLATE_SUGGESTION"
 	JustificationTypeZeroStateStaticWorkflowSuggestion JustificationType = "ZERO_STATE_STATIC_WORKFLOW_SUGGESTION"
 	JustificationTypeZeroStateAgentSuggestion          JustificationType = "ZERO_STATE_AGENT_SUGGESTION"
+	JustificationTypePersonalizedChatSuggestion        JustificationType = "PERSONALIZED_CHAT_SUGGESTION"
+	JustificationTypeDailyDigest                       JustificationType = "DAILY_DIGEST"
+	JustificationTypeTask                              JustificationType = "TASK"
+	JustificationTypePlanMyDay                         JustificationType = "PLAN_MY_DAY"
+	JustificationTypeEndMyDay                          JustificationType = "END_MY_DAY"
+	JustificationTypeStarterKitExtension               JustificationType = "STARTER_KIT_EXTENSION"
+	JustificationTypeStarterKitOrgChart                JustificationType = "STARTER_KIT_ORG_CHART"
+	JustificationTypeStarterKitAddDoc                  JustificationType = "STARTER_KIT_ADD_DOC"
+	JustificationTypeMeetingRecap                      JustificationType = "MEETING_RECAP"
+	JustificationTypeActiveDiscussion                  JustificationType = "ACTIVE_DISCUSSION"
+	JustificationTypeMidDayCatchUp                     JustificationType = "MID_DAY_CATCH_UP"
+	JustificationTypeQuerySuggestion                   JustificationType = "QUERY_SUGGESTION"
+	JustificationTypeWeeklyMeetings                    JustificationType = "WEEKLY_MEETINGS"
+	JustificationTypeFollowUp                          JustificationType = "FOLLOW_UP"
+	JustificationTypeMilestoneTimelineCheck            JustificationType = "MILESTONE_TIMELINE_CHECK"
+	JustificationTypeProjectDiscussionDigest           JustificationType = "PROJECT_DISCUSSION_DIGEST"
+	JustificationTypeProjectFocusBlock                 JustificationType = "PROJECT_FOCUS_BLOCK"
+	JustificationTypeProjectNextStep                   JustificationType = "PROJECT_NEXT_STEP"
+	JustificationTypeDemoCard                          JustificationType = "DEMO_CARD"
+	JustificationTypeOooPlanner                        JustificationType = "OOO_PLANNER"
 )
 
 func (e JustificationType) ToPointer() *JustificationType {
@@ -162,6 +182,46 @@ func (e *JustificationType) UnmarshalJSON(data []byte) error {
 	case "ZERO_STATE_STATIC_WORKFLOW_SUGGESTION":
 		fallthrough
 	case "ZERO_STATE_AGENT_SUGGESTION":
+		fallthrough
+	case "PERSONALIZED_CHAT_SUGGESTION":
+		fallthrough
+	case "DAILY_DIGEST":
+		fallthrough
+	case "TASK":
+		fallthrough
+	case "PLAN_MY_DAY":
+		fallthrough
+	case "END_MY_DAY":
+		fallthrough
+	case "STARTER_KIT_EXTENSION":
+		fallthrough
+	case "STARTER_KIT_ORG_CHART":
+		fallthrough
+	case "STARTER_KIT_ADD_DOC":
+		fallthrough
+	case "MEETING_RECAP":
+		fallthrough
+	case "ACTIVE_DISCUSSION":
+		fallthrough
+	case "MID_DAY_CATCH_UP":
+		fallthrough
+	case "QUERY_SUGGESTION":
+		fallthrough
+	case "WEEKLY_MEETINGS":
+		fallthrough
+	case "FOLLOW_UP":
+		fallthrough
+	case "MILESTONE_TIMELINE_CHECK":
+		fallthrough
+	case "PROJECT_DISCUSSION_DIGEST":
+		fallthrough
+	case "PROJECT_FOCUS_BLOCK":
+		fallthrough
+	case "PROJECT_NEXT_STEP":
+		fallthrough
+	case "DEMO_CARD":
+		fallthrough
+	case "OOO_PLANNER":
 		*e = JustificationType(v)
 		return nil
 	default:
@@ -188,10 +248,12 @@ type FeedEntry struct {
 	Document       *Document             `json:"document,omitempty"`
 	Event          *CalendarEvent        `json:"event,omitempty"`
 	Announcement   *Announcement         `json:"announcement,omitempty"`
+	Digest         *Digest               `json:"digest,omitempty"`
 	Collection     *Collection           `json:"collection,omitempty"`
 	CollectionItem *CollectionItem       `json:"collectionItem,omitempty"`
 	Person         *Person               `json:"person,omitempty"`
 	App            *AppResult            `json:"app,omitempty"`
+	ChatSuggestion *ChatSuggestion       `json:"chatSuggestion,omitempty"`
 	PromptTemplate *PromptTemplateResult `json:"promptTemplate,omitempty"`
 	Workflow       *WorkflowResult       `json:"workflow,omitempty"`
 	// List of activity where each activity has user, action, timestamp.
@@ -283,6 +345,13 @@ func (o *FeedEntry) GetAnnouncement() *Announcement {
 	return o.Announcement
 }
 
+func (o *FeedEntry) GetDigest() *Digest {
+	if o == nil {
+		return nil
+	}
+	return o.Digest
+}
+
 func (o *FeedEntry) GetCollection() *Collection {
 	if o == nil {
 		return nil
@@ -309,6 +378,13 @@ func (o *FeedEntry) GetApp() *AppResult {
 		return nil
 	}
 	return o.App
+}
+
+func (o *FeedEntry) GetChatSuggestion() *ChatSuggestion {
+	if o == nil {
+		return nil
+	}
+	return o.ChatSuggestion
 }
 
 func (o *FeedEntry) GetPromptTemplate() *PromptTemplateResult {

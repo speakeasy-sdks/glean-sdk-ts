@@ -5,11 +5,11 @@
 ```typescript
 import { CollectionErrorErrorCode } from "@gleanwork/api-client/models/components";
 
-let value: CollectionErrorErrorCode = "WIDTH_VIOLATION";
+let value: CollectionErrorErrorCode = "NO_PERMISSIONS";
 ```
 
 ## Values
 
 ```typescript
-"NAME_EXISTS" | "NOT_FOUND" | "COLLECTION_PINNED" | "CONCURRENT_HIERARCHY_EDIT" | "HEIGHT_VIOLATION" | "WIDTH_VIOLATION" | "NO_PERMISSIONS"
+"NAME_EXISTS" | "NOT_FOUND" | "COLLECTION_PINNED" | "CONCURRENT_HIERARCHY_EDIT" | "HEIGHT_VIOLATION" | "WIDTH_VIOLATION" | "NO_PERMISSIONS" | "CORRUPT_ITEM"
 ```

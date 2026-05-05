@@ -12,6 +12,12 @@ import {
   ChatMessage$Outbound,
   ChatMessage$outboundSchema,
 } from "./chatmessage.js";
+import {
+  ChatMetadata,
+  ChatMetadata$inboundSchema,
+  ChatMetadata$Outbound,
+  ChatMetadata$outboundSchema,
+} from "./chatmetadata.js";
 
 /**
  * A single response from the /chat backend.
@@ -22,6 +28,10 @@ export type ChatResponse = {
    * The id of the associated Chat the messages belong to, if one exists.
    */
   chatId?: string | undefined;
+  /**
+   * Metadata of a Chat a user had with Glean Assistant. This contains no actual conversational content.
+   */
+  chat?: ChatMetadata | undefined;
   /**
    * Follow-up prompts for the user to potentially use
    */
@@ -44,6 +54,7 @@ export const ChatResponse$inboundSchema: z.ZodType<
 > = z.object({
   messages: z.array(ChatMessage$inboundSchema).optional(),
   chatId: z.string().optional(),
+  chat: ChatMetadata$inboundSchema.optional(),
   followUpPrompts: z.array(z.string()).optional(),
   backendTimeMillis: z.number().int().optional(),
   chatSessionTrackingToken: z.string().optional(),
@@ -53,6 +64,7 @@ export const ChatResponse$inboundSchema: z.ZodType<
 export type ChatResponse$Outbound = {
   messages?: Array<ChatMessage$Outbound> | undefined;
   chatId?: string | undefined;
+  chat?: ChatMetadata$Outbound | undefined;
   followUpPrompts?: Array<string> | undefined;
   backendTimeMillis?: number | undefined;
   chatSessionTrackingToken?: string | undefined;
@@ -66,6 +78,7 @@ export const ChatResponse$outboundSchema: z.ZodType<
 > = z.object({
   messages: z.array(ChatMessage$outboundSchema).optional(),
   chatId: z.string().optional(),
+  chat: ChatMetadata$outboundSchema.optional(),
   followUpPrompts: z.array(z.string()).optional(),
   backendTimeMillis: z.number().int().optional(),
   chatSessionTrackingToken: z.string().optional(),

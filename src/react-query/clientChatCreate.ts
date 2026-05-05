@@ -18,6 +18,7 @@ import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatCreateMutationVariables = {
   chatRequest: components.ChatRequest;
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
@@ -65,6 +66,7 @@ export function buildClientChatCreateMutation(
     mutationKey: mutationKeyClientChatCreate(),
     mutationFn: function clientChatCreateMutationFn({
       chatRequest,
+      locale,
       timezoneOffset,
       options,
     }): Promise<ClientChatCreateMutationData> {
@@ -83,6 +85,7 @@ export function buildClientChatCreateMutation(
       return unwrapAsync(clientChatCreate(
         client$,
         chatRequest,
+        locale,
         timezoneOffset,
         mergedOptions,
       ));

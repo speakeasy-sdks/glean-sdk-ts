@@ -5,11 +5,11 @@
 
 ### Available Operations
 
-* [retrieve](#retrieve) - Read insights
+* [retrieve](#retrieve) - Get insights
 
 ## retrieve
 
-Reads the aggregate information for each user, query, and content.
+Gets the aggregate usage insights data displayed in the Insights Dashboards.
 
 ### Example Usage
 
@@ -21,13 +21,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.insights.retrieve({
-    categories: [
-      "COLLECTIONS",
-      "SHORTCUTS",
-      "ANNOUNCEMENTS",
-    ],
-  });
+  const result = await glean.client.insights.retrieve({});
 
   // Handle the result
   console.log(result);
@@ -51,13 +45,7 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientInsightsRetrieve(glean, {
-    categories: [
-      "COLLECTIONS",
-      "SHORTCUTS",
-      "ANNOUNCEMENTS",
-    ],
-  });
+  const res = await clientInsightsRetrieve(glean, {});
 
   if (!res.ok) {
     throw res.error;
@@ -91,12 +79,13 @@ import {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.InsightsRequest](../../models/components/insightsrequest.md)                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| Parameter                                                                                                                                                                                           | Type                                                                                                                                                                                                | Required                                                                                                                                                                                            | Description                                                                                                                                                                                         |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `insightsRequest`                                                                                                                                                                                   | [components.InsightsRequest](../../models/components/insightsrequest.md)                                                                                                                            | :heavy_check_mark:                                                                                                                                                                                  | Includes request parameters for insights requests.                                                                                                                                                  |
+| `locale`                                                                                                                                                                                            | *string*                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                  | The client's preferred locale in rfc5646 format (e.g. `en`, `ja`, `pt-BR`). If omitted, the `Accept-Language` will be used. If not present or not supported, defaults to the closest match or `en`. |
+| `options`                                                                                                                                                                                           | RequestOptions                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                  | Used to set various options for making HTTP requests.                                                                                                                                               |
+| `options.fetchOptions`                                                                                                                                                                              | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                  | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                      |
+| `options.retries`                                                                                                                                                                                   | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                  | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                    |
 
 ### Response
 

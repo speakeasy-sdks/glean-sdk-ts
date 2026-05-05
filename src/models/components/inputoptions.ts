@@ -29,16 +29,19 @@ export type DatasourcesType = ClosedEnum<typeof DatasourcesType>;
 /**
  * Type of time period for which to run the report/policy. PAST_DAY is deprecated.
  */
-export const TimePeriodType = {
+export const InputOptionsTimePeriodType = {
   AllTime: "ALL_TIME",
   PastYear: "PAST_YEAR",
   PastDay: "PAST_DAY",
   Custom: "CUSTOM",
+  LastNDays: "LAST_N_DAYS",
 } as const;
 /**
  * Type of time period for which to run the report/policy. PAST_DAY is deprecated.
  */
-export type TimePeriodType = ClosedEnum<typeof TimePeriodType>;
+export type InputOptionsTimePeriodType = ClosedEnum<
+  typeof InputOptionsTimePeriodType
+>;
 
 /**
  * Controls which data-sources and what time-range to include in scans.
@@ -47,7 +50,7 @@ export type InputOptions = {
   /**
    * list of url regex matching documents excluded from report
    *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
    */
   urlGreenlist?: Array<string> | undefined;
   /**
@@ -57,7 +60,7 @@ export type InputOptions = {
   /**
    * List of datasources to consider for report. DEPRECATED - use datasourceInstances instead.
    *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use datasourceInstances instead.
    */
   datasources?: Array<string> | undefined;
   /**
@@ -67,8 +70,12 @@ export type InputOptions = {
   /**
    * Type of time period for which to run the report/policy. PAST_DAY is deprecated.
    */
-  timePeriodType?: TimePeriodType | undefined;
+  timePeriodType?: InputOptionsTimePeriodType | undefined;
   customTimeRange?: TimeRange | undefined;
+  /**
+   * Subset of document IDs to scan. If empty, all documents matching other scope criteria will be scanned.
+   */
+  subsetDocIdsToScan?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -93,24 +100,24 @@ export namespace DatasourcesType$ {
 }
 
 /** @internal */
-export const TimePeriodType$inboundSchema: z.ZodNativeEnum<
-  typeof TimePeriodType
-> = z.nativeEnum(TimePeriodType);
+export const InputOptionsTimePeriodType$inboundSchema: z.ZodNativeEnum<
+  typeof InputOptionsTimePeriodType
+> = z.nativeEnum(InputOptionsTimePeriodType);
 
 /** @internal */
-export const TimePeriodType$outboundSchema: z.ZodNativeEnum<
-  typeof TimePeriodType
-> = TimePeriodType$inboundSchema;
+export const InputOptionsTimePeriodType$outboundSchema: z.ZodNativeEnum<
+  typeof InputOptionsTimePeriodType
+> = InputOptionsTimePeriodType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TimePeriodType$ {
-  /** @deprecated use `TimePeriodType$inboundSchema` instead. */
-  export const inboundSchema = TimePeriodType$inboundSchema;
-  /** @deprecated use `TimePeriodType$outboundSchema` instead. */
-  export const outboundSchema = TimePeriodType$outboundSchema;
+export namespace InputOptionsTimePeriodType$ {
+  /** @deprecated use `InputOptionsTimePeriodType$inboundSchema` instead. */
+  export const inboundSchema = InputOptionsTimePeriodType$inboundSchema;
+  /** @deprecated use `InputOptionsTimePeriodType$outboundSchema` instead. */
+  export const outboundSchema = InputOptionsTimePeriodType$outboundSchema;
 }
 
 /** @internal */
@@ -123,8 +130,9 @@ export const InputOptions$inboundSchema: z.ZodType<
   datasourcesType: DatasourcesType$inboundSchema.optional(),
   datasources: z.array(z.string()).optional(),
   datasourceInstances: z.array(z.string()).optional(),
-  timePeriodType: TimePeriodType$inboundSchema.optional(),
+  timePeriodType: InputOptionsTimePeriodType$inboundSchema.optional(),
   customTimeRange: TimeRange$inboundSchema.optional(),
+  subsetDocIdsToScan: z.array(z.string()).optional(),
 });
 
 /** @internal */
@@ -135,6 +143,7 @@ export type InputOptions$Outbound = {
   datasourceInstances?: Array<string> | undefined;
   timePeriodType?: string | undefined;
   customTimeRange?: TimeRange$Outbound | undefined;
+  subsetDocIdsToScan?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -147,8 +156,9 @@ export const InputOptions$outboundSchema: z.ZodType<
   datasourcesType: DatasourcesType$outboundSchema.optional(),
   datasources: z.array(z.string()).optional(),
   datasourceInstances: z.array(z.string()).optional(),
-  timePeriodType: TimePeriodType$outboundSchema.optional(),
+  timePeriodType: InputOptionsTimePeriodType$outboundSchema.optional(),
   customTimeRange: TimeRange$outboundSchema.optional(),
+  subsetDocIdsToScan: z.array(z.string()).optional(),
 });
 
 /**

@@ -39,11 +39,18 @@ export const MessageType = {
   Update: "UPDATE",
   Content: "CONTENT",
   Context: "CONTEXT",
+  Control: "CONTROL",
+  ControlStart: "CONTROL_START",
+  ControlFinish: "CONTROL_FINISH",
+  ControlCancel: "CONTROL_CANCEL",
+  ControlRetry: "CONTROL_RETRY",
+  ControlUnknown: "CONTROL_UNKNOWN",
   Debug: "DEBUG",
   DebugExternal: "DEBUG_EXTERNAL",
   Error: "ERROR",
   Heading: "HEADING",
   Warning: "WARNING",
+  ServerTool: "SERVER_TOOL",
 } as const;
 /**
  * Semantically groups content of a certain type. It can be used for purposes such as differential UI treatment. USER authored messages should be of type CONTENT and do not need `messageType` specified.
@@ -60,7 +67,9 @@ export type ChatMessage = {
   agentConfig?: AgentConfig | undefined;
   author?: Author | undefined;
   /**
-   * A list of Citations that were used to generate the response.
+   * Deprecated: Use inline citations via ChatMessageFragment.citation instead. For detailed reference information, use ChatMessageCitation.referenceRanges. This field is still populated for backward compatibility.
+   *
+   * @deprecated field: Deprecated on 2026-02-06, removal scheduled for 2026-10-15: Use inline citations via ChatMessageFragment.citation and ChatMessageCitation.referenceRanges instead. This field is still populated for backward compatibility..
    */
   citations?: Array<ChatMessageCitation> | undefined;
   /**

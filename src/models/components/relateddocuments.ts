@@ -33,12 +33,14 @@ export const Relation = {
   Attachment: "ATTACHMENT",
   Canonical: "CANONICAL",
   Case: "CASE",
-  Contact: "CONTACT",
+  ContactLower: "contact",
+  ContactUpper: "CONTACT",
   ConversationMessages: "CONVERSATION_MESSAGES",
   Expert: "EXPERT",
   From: "FROM",
   Highlight: "HIGHLIGHT",
-  Opportunity: "OPPORTUNITY",
+  OpportunityLower: "opportunity",
+  OpportunityUpper: "OPPORTUNITY",
   Recent: "RECENT",
   Source: "SOURCE",
   Ticket: "TICKET",
@@ -63,7 +65,7 @@ export type RelatedDocuments = {
   /**
    * A truncated list of documents with this relation. TO BE DEPRECATED.
    *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
    */
   documents?: Array<Document> | undefined;
   /**

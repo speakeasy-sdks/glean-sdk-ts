@@ -19,6 +19,10 @@ export type GleanDataErrorData = {
    */
   invalidOperators?: Array<components.InvalidOperatorValueError> | undefined;
   errorMessages?: Array<components.ErrorMessage> | undefined;
+  /**
+   * Indicates the federated search results could not be fetched due to rate limiting.
+   */
+  federatedSearchRateLimitError?: boolean | undefined;
 };
 
 export class GleanDataError extends Error {
@@ -35,6 +39,10 @@ export class GleanDataError extends Error {
    */
   invalidOperators?: Array<components.InvalidOperatorValueError> | undefined;
   errorMessages?: Array<components.ErrorMessage> | undefined;
+  /**
+   * Indicates the federated search results could not be fetched due to rate limiting.
+   */
+  federatedSearchRateLimitError?: boolean | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: GleanDataErrorData;
@@ -52,6 +60,9 @@ export class GleanDataError extends Error {
       this.invalidOperators = err.invalidOperators;
     }
     if (err.errorMessages != null) this.errorMessages = err.errorMessages;
+    if (err.federatedSearchRateLimitError != null) {
+      this.federatedSearchRateLimitError = err.federatedSearchRateLimitError;
+    }
 
     this.name = "GleanDataError";
   }
@@ -68,6 +79,7 @@ export const GleanDataError$inboundSchema: z.ZodType<
   invalidOperators: z.array(components.InvalidOperatorValueError$inboundSchema)
     .optional(),
   errorMessages: z.array(components.ErrorMessage$inboundSchema).optional(),
+  federatedSearchRateLimitError: z.boolean().optional(),
 })
   .transform((v) => {
     return new GleanDataError(v);
@@ -81,6 +93,7 @@ export type GleanDataError$Outbound = {
     | Array<components.InvalidOperatorValueError$Outbound>
     | undefined;
   errorMessages?: Array<components.ErrorMessage$Outbound> | undefined;
+  federatedSearchRateLimitError?: boolean | undefined;
 };
 
 /** @internal */
@@ -97,6 +110,7 @@ export const GleanDataError$outboundSchema: z.ZodType<
       components.InvalidOperatorValueError$outboundSchema,
     ).optional(),
     errorMessages: z.array(components.ErrorMessage$outboundSchema).optional(),
+    federatedSearchRateLimitError: z.boolean().optional(),
   }));
 
 /**

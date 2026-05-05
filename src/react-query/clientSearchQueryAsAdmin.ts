@@ -17,7 +17,8 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientSearchQueryAsAdminMutationVariables = {
-  request: components.SearchRequest;
+  searchRequest: components.SearchRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -63,7 +64,8 @@ export function buildClientSearchQueryAsAdminMutation(
   return {
     mutationKey: mutationKeyClientSearchQueryAsAdmin(),
     mutationFn: function clientSearchQueryAsAdminMutationFn({
-      request,
+      searchRequest,
+      locale,
       options,
     }): Promise<ClientSearchQueryAsAdminMutationData> {
       const mergedOptions = {
@@ -80,7 +82,8 @@ export function buildClientSearchQueryAsAdminMutation(
       };
       return unwrapAsync(clientSearchQueryAsAdmin(
         client$,
-        request,
+        searchRequest,
+        locale,
         mergedOptions,
       ));
     },

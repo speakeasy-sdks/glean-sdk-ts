@@ -10,6 +10,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const AddCollectionItemsErrorErrorType = {
   ExistingItem: "EXISTING_ITEM",
+  CorruptItem: "CORRUPT_ITEM",
 } as const;
 export type AddCollectionItemsErrorErrorType = ClosedEnum<
   typeof AddCollectionItemsErrorErrorType

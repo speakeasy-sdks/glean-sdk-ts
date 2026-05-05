@@ -38,14 +38,21 @@ func (e *Author) UnmarshalJSON(data []byte) error {
 type MessageType string
 
 const (
-	MessageTypeUpdate        MessageType = "UPDATE"
-	MessageTypeContent       MessageType = "CONTENT"
-	MessageTypeContext       MessageType = "CONTEXT"
-	MessageTypeDebug         MessageType = "DEBUG"
-	MessageTypeDebugExternal MessageType = "DEBUG_EXTERNAL"
-	MessageTypeError         MessageType = "ERROR"
-	MessageTypeHeading       MessageType = "HEADING"
-	MessageTypeWarning       MessageType = "WARNING"
+	MessageTypeUpdate         MessageType = "UPDATE"
+	MessageTypeContent        MessageType = "CONTENT"
+	MessageTypeContext        MessageType = "CONTEXT"
+	MessageTypeControl        MessageType = "CONTROL"
+	MessageTypeControlStart   MessageType = "CONTROL_START"
+	MessageTypeControlFinish  MessageType = "CONTROL_FINISH"
+	MessageTypeControlCancel  MessageType = "CONTROL_CANCEL"
+	MessageTypeControlRetry   MessageType = "CONTROL_RETRY"
+	MessageTypeControlUnknown MessageType = "CONTROL_UNKNOWN"
+	MessageTypeDebug          MessageType = "DEBUG"
+	MessageTypeDebugExternal  MessageType = "DEBUG_EXTERNAL"
+	MessageTypeError          MessageType = "ERROR"
+	MessageTypeHeading        MessageType = "HEADING"
+	MessageTypeWarning        MessageType = "WARNING"
+	MessageTypeServerTool     MessageType = "SERVER_TOOL"
 )
 
 func (e MessageType) ToPointer() *MessageType {
@@ -63,6 +70,18 @@ func (e *MessageType) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "CONTEXT":
 		fallthrough
+	case "CONTROL":
+		fallthrough
+	case "CONTROL_START":
+		fallthrough
+	case "CONTROL_FINISH":
+		fallthrough
+	case "CONTROL_CANCEL":
+		fallthrough
+	case "CONTROL_RETRY":
+		fallthrough
+	case "CONTROL_UNKNOWN":
+		fallthrough
 	case "DEBUG":
 		fallthrough
 	case "DEBUG_EXTERNAL":
@@ -72,6 +91,8 @@ func (e *MessageType) UnmarshalJSON(data []byte) error {
 	case "HEADING":
 		fallthrough
 	case "WARNING":
+		fallthrough
+	case "SERVER_TOOL":
 		*e = MessageType(v)
 		return nil
 	default:
@@ -84,7 +105,9 @@ type ChatMessage struct {
 	// Describes the agent that executes the request.
 	AgentConfig *AgentConfig `json:"agentConfig,omitempty"`
 	Author      *Author      `default:"USER" json:"author"`
-	// A list of Citations that were used to generate the response.
+	// Deprecated: Use inline citations via ChatMessageFragment.citation instead. For detailed reference information, use ChatMessageCitation.referenceRanges. This field is still populated for backward compatibility.
+	//
+	// Deprecated: Deprecated on 2026-02-06, removal scheduled for 2026-10-15: Use inline citations via ChatMessageFragment.citation and ChatMessageCitation.referenceRanges instead. This field is still populated for backward compatibility..
 	Citations []ChatMessageCitation `json:"citations,omitempty"`
 	// IDs of files uploaded in the message that are referenced to generate the answer.
 	UploadedFileIds []string `json:"uploadedFileIds,omitempty"`

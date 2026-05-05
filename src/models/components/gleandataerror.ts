@@ -33,6 +33,10 @@ export type GleanDataError = {
    */
   invalidOperators?: Array<InvalidOperatorValueError> | undefined;
   errorMessages?: Array<ErrorMessage> | undefined;
+  /**
+   * Indicates the federated search results could not be fetched due to rate limiting.
+   */
+  federatedSearchRateLimitError?: boolean | undefined;
 };
 
 /** @internal */
@@ -45,6 +49,7 @@ export const GleanDataError$inboundSchema: z.ZodType<
   badOutlookToken: z.boolean().optional(),
   invalidOperators: z.array(InvalidOperatorValueError$inboundSchema).optional(),
   errorMessages: z.array(ErrorMessage$inboundSchema).optional(),
+  federatedSearchRateLimitError: z.boolean().optional(),
 });
 
 /** @internal */
@@ -53,6 +58,7 @@ export type GleanDataError$Outbound = {
   badOutlookToken?: boolean | undefined;
   invalidOperators?: Array<InvalidOperatorValueError$Outbound> | undefined;
   errorMessages?: Array<ErrorMessage$Outbound> | undefined;
+  federatedSearchRateLimitError?: boolean | undefined;
 };
 
 /** @internal */
@@ -66,6 +72,7 @@ export const GleanDataError$outboundSchema: z.ZodType<
   invalidOperators: z.array(InvalidOperatorValueError$outboundSchema)
     .optional(),
   errorMessages: z.array(ErrorMessage$outboundSchema).optional(),
+  federatedSearchRateLimitError: z.boolean().optional(),
 });
 
 /**

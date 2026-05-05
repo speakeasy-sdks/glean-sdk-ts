@@ -7,11 +7,11 @@ Current status of the file.
 ```typescript
 import { ChatFileStatus } from "@gleanwork/api-client/models/components";
 
-let value: ChatFileStatus = "FAILED";
+let value: ChatFileStatus = "PARTIALLY_PROCESSED";
 ```
 
 ## Values
 
 ```typescript
-"PROCESSING" | "PROCESSED" | "FAILED" | "DELETED"
+"PROCESSING" | "PROCESSED" | "PARTIALLY_PROCESSED" | "FAILED" | "DELETED"
 ```

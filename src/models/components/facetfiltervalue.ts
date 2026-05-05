@@ -13,6 +13,7 @@ export const RelationType = {
   IdEquals: "ID_EQUALS",
   Lt: "LT",
   Gt: "GT",
+  NotEquals: "NOT_EQUALS",
 } as const;
 export type RelationType = ClosedEnum<typeof RelationType>;
 
@@ -22,7 +23,7 @@ export type FacetFilterValue = {
   /**
    * DEPRECATED - please use relationType instead
    *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use relationType instead.
    */
   isNegated?: boolean | undefined;
 };

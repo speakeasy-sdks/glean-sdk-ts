@@ -3,7 +3,7 @@
  */
 
 import { GleanCore } from "../core.js";
-import { encodeJSON } from "../lib/encodings.js";
+import { encodeFormQuery, encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -21,6 +21,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -32,11 +33,12 @@ import { Result } from "../types/fp.js";
  */
 export function clientCollectionsCreate(
   client: GleanCore,
-  request: components.CreateCollectionRequest,
+  createCollectionRequest: components.CreateCollectionRequest,
+  locale?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    components.CreateCollectionResponse,
+    operations.CreatecollectionResponse,
     | errors.CollectionError
     | GleanError
     | SDKValidationError
@@ -49,19 +51,21 @@ export function clientCollectionsCreate(
 > {
   return new APIPromise($do(
     client,
-    request,
+    createCollectionRequest,
+    locale,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: components.CreateCollectionRequest,
+  createCollectionRequest: components.CreateCollectionRequest,
+  locale?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      components.CreateCollectionResponse,
+      operations.CreatecollectionResponse,
       | errors.CollectionError
       | GleanError
       | SDKValidationError
@@ -74,18 +78,29 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.CreatecollectionRequest = {
+    createCollectionRequest: createCollectionRequest,
+    locale: locale,
+  };
+
   const parsed = safeParse(
-    request,
-    (value) => components.CreateCollectionRequest$outboundSchema.parse(value),
+    input,
+    (value) => operations.CreatecollectionRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload.CreateCollectionRequest, {
+    explode: true,
+  });
 
   const path = pathToFunc("/rest/api/v1/createcollection")();
+
+  const query = encodeFormQuery({
+    "locale": payload.locale,
+  });
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -116,6 +131,7 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
@@ -140,7 +156,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    components.CreateCollectionResponse,
+    operations.CreatecollectionResponse,
     | errors.CollectionError
     | GleanError
     | SDKValidationError
@@ -150,7 +166,7 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.CreateCollectionResponse$inboundSchema),
+    M.json(200, operations.CreatecollectionResponse$inboundSchema),
     M.jsonErr(422, errors.CollectionError$inboundSchema),
     M.fail([400, 401, 429, "4XX"]),
     M.fail("5XX"),

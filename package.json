@@ -1,6 +1,6 @@
 {
   "name": "@gleanwork/api-client",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "author": "Speakeasy",
   "type": "module",
   "tshy": {
@@ -22,7 +22,7 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/gleanwork/api-client-typescript.git"
+    "url": "https://github.com/speakeasy-sdks/glean-sdk-ts.git"
   },
   "scripts": {
     "test": "vitest run src --reporter=junit --outputFile=.speakeasy/reports/tests.xml --reporter=default",

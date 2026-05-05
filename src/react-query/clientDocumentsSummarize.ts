@@ -17,7 +17,8 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientDocumentsSummarizeMutationVariables = {
-  request: components.SummarizeRequest;
+  summarizeRequest: components.SummarizeRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -63,7 +64,8 @@ export function buildClientDocumentsSummarizeMutation(
   return {
     mutationKey: mutationKeyClientDocumentsSummarize(),
     mutationFn: function clientDocumentsSummarizeMutationFn({
-      request,
+      summarizeRequest,
+      locale,
       options,
     }): Promise<ClientDocumentsSummarizeMutationData> {
       const mergedOptions = {
@@ -80,7 +82,8 @@ export function buildClientDocumentsSummarizeMutation(
       };
       return unwrapAsync(clientDocumentsSummarize(
         client$,
-        request,
+        summarizeRequest,
+        locale,
         mergedOptions,
       ));
     },

@@ -20,65 +20,38 @@ let value: Chat = {
   },
   messages: [
     {
-      citations: [
-        {
-          sourceDocument: {
-            containerDocument: {
-              parentDocument: {
-                metadata: {
-                  datasource: "datasource",
-                  objectType: "Feature Request",
-                  container: "container",
-                  parentId: "JIRA_EN-1337",
-                  mimeType: "mimeType",
-                  documentId: "documentId",
-                  createTime: new Date("2000-01-23T04:56:07.000Z"),
-                  updateTime: new Date("2000-01-23T04:56:07.000Z"),
-                  author: {
-                    name: "name",
-                    obfuscatedId: "<id>",
-                  },
-                  components: [
-                    "Backend",
-                    "Networking",
-                  ],
-                  status: "[\"Done\"]",
-                  customData: {
-                    "someCustomField": {},
-                  },
-                },
-              },
-            },
-          },
-          sourceFile: {
-            id: "FILE_1234",
-            url: "www.google.com",
-            name: "sample.pdf",
-          },
-          sourcePerson: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          referenceRanges: [
-            {
-              textRange: {
-                startIndex: 212740,
-                document: {},
-              },
-              snippets: [
-                {
-                  snippet: "snippet",
-                  mimeType: "mimeType",
-                },
-              ],
-            },
-          ],
-        },
-      ],
       fragments: [
         {
           structuredResults: [
             {
+              document: {
+                containerDocument: {
+                  parentDocument: {
+                    metadata: {
+                      datasource: "datasource",
+                      objectType: "Feature Request",
+                      container: "container",
+                      parentId: "JIRA_EN-1337",
+                      mimeType: "mimeType",
+                      documentId: "documentId",
+                      createTime: new Date("2000-01-23T04:56:07.000Z"),
+                      updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                      author: {
+                        name: "name",
+                        obfuscatedId: "<id>",
+                      },
+                      components: [
+                        "Backend",
+                        "Networking",
+                      ],
+                      status: "[\"Done\"]",
+                      customData: {
+                        "someCustomField": {},
+                      },
+                    },
+                  },
+                },
+              },
               person: {
                 name: "George Clooney",
                 obfuscatedId: "abc123",
@@ -147,14 +120,14 @@ let value: Chat = {
                 likes: {
                   likedBy: [],
                   likedByUser: false,
-                  numLikes: 814527,
+                  numLikes: 212740,
                 },
                 updatedBy: {
                   name: "George Clooney",
                   obfuscatedId: "abc123",
                 },
                 verification: {
-                  state: "VERIFIED",
+                  state: "DEPRECATED",
                   metadata: {
                     lastVerifier: {
                       name: "George Clooney",
@@ -170,7 +143,7 @@ let value: Chat = {
                         name: "George Clooney",
                         obfuscatedId: "abc123",
                       },
-                      remindAt: 374358,
+                      remindAt: 353288,
                     },
                     candidateVerifiers: [
                       {
@@ -180,31 +153,11 @@ let value: Chat = {
                     ],
                   },
                 },
-                board: {
-                  name: "<value>",
-                  description: "unfinished although fog vice stock",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 213107,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
                 collections: [],
+                sourceDocument: {},
+              },
+              generatedQna: {
+                ranges: [],
               },
               extractedQnA: {
                 questionResult: {
@@ -213,8 +166,8 @@ let value: Chat = {
                   nativeAppUrl: "slack://foo/bar",
                   snippets: [
                     {
-                      snippet: "snippet",
                       mimeType: "mimeType",
+                      snippet: "snippet",
                     },
                   ],
                   mustIncludeSuggestions: {},
@@ -227,7 +180,7 @@ let value: Chat = {
               },
               collection: {
                 name: "<value>",
-                description: "round blah amid progress usefully chase once",
+                description: "winged drat ha intelligent hmph",
                 audienceFilters: [
                   {
                     fieldName: "type",
@@ -243,29 +196,13 @@ let value: Chat = {
                     ],
                   },
                 ],
-                id: 154816,
+                id: 855913,
+                creator: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                },
                 items: [],
                 children: [],
-              },
-              answerBoard: {
-                name: "<value>",
-                description: "for specific although attribute",
-                audienceFilters: [
-                  {
-                    fieldName: "type",
-                    values: [
-                      {
-                        value: "Spreadsheet",
-                        relationType: "EQUALS",
-                      },
-                      {
-                        value: "Presentation",
-                        relationType: "EQUALS",
-                      },
-                    ],
-                  },
-                ],
-                id: 31640,
               },
               code: {
                 repoName: "scio",
@@ -284,10 +221,16 @@ let value: Chat = {
                   },
                 ],
               },
-              relatedDocuments: [],
-              relatedQuestion: {
-                ranges: [],
+              chat: {
+                icon: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
               },
+              relatedDocuments: [],
+              relatedQuestion: {},
             },
           ],
           querySuggestion: {
@@ -304,13 +247,43 @@ let value: Chat = {
             metadata: {
               type: "RETRIEVAL",
               name: "<value>",
-              displayName: "Jerald15",
+              displayName: "Leland.Reilly99",
               displayDescription: "<value>",
               objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
             },
           },
+          citation: {
+            sourceFile: {
+              id: "FILE_1234",
+              url: "www.google.com",
+              name: "sample.pdf",
+            },
+            sourcePerson: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+            },
+            sourceCustomEntity: {},
+            referenceRanges: [
+              {
+                textRange: {
+                  startIndex: 191909,
+                },
+                snippets: [
+                  {
+                    mimeType: "mimeType",
+                    snippet: "snippet",
+                  },
+                ],
+              },
+            ],
+          },
         },
       ],
+    },
+  ],
+  roles: [
+    {
+      role: "EDITOR",
     },
   ],
 };
@@ -318,14 +291,16 @@ let value: Chat = {
 
 ## Fields
 
-| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `id`                                                                              | *string*                                                                          | :heavy_minus_sign:                                                                | The opaque id of the Chat.                                                        |                                                                                   |
-| `createTime`                                                                      | *number*                                                                          | :heavy_minus_sign:                                                                | Server Unix timestamp of the creation time (in seconds since epoch UTC).          |                                                                                   |
-| `createdBy`                                                                       | [components.Person](../../models/components/person.md)                            | :heavy_minus_sign:                                                                | N/A                                                                               | {<br/>"name": "George Clooney",<br/>"obfuscatedId": "abc123"<br/>}                |
-| `updateTime`                                                                      | *number*                                                                          | :heavy_minus_sign:                                                                | Server Unix timestamp of the update time (in seconds since epoch UTC).            |                                                                                   |
-| `name`                                                                            | *string*                                                                          | :heavy_minus_sign:                                                                | The name of the Chat.                                                             |                                                                                   |
-| `applicationId`                                                                   | *string*                                                                          | :heavy_minus_sign:                                                                | The ID of the AI App that this Chat is associated to.                             |                                                                                   |
-| `applicationName`                                                                 | *string*                                                                          | :heavy_minus_sign:                                                                | The display name of the AI App that this Chat is associated to.                   |                                                                                   |
-| `icon`                                                                            | [components.IconConfig](../../models/components/iconconfig.md)                    | :heavy_minus_sign:                                                                | Defines how to render an icon                                                     | {<br/>"color": "#343CED",<br/>"key": "person_icon",<br/>"iconType": "GLYPH",<br/>"name": "user"<br/>} |
-| `messages`                                                                        | [components.ChatMessage](../../models/components/chatmessage.md)[]                | :heavy_minus_sign:                                                                | The chat messages within a Chat.                                                  |                                                                                   |
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `id`                                                                                   | *string*                                                                               | :heavy_minus_sign:                                                                     | The opaque id of the Chat.                                                             |                                                                                        |
+| `createTime`                                                                           | *number*                                                                               | :heavy_minus_sign:                                                                     | Server Unix timestamp of the creation time (in seconds since epoch UTC).               |                                                                                        |
+| `createdBy`                                                                            | [components.Person](../../models/components/person.md)                                 | :heavy_minus_sign:                                                                     | N/A                                                                                    | {<br/>"name": "George Clooney",<br/>"obfuscatedId": "abc123"<br/>}                     |
+| `updateTime`                                                                           | *number*                                                                               | :heavy_minus_sign:                                                                     | Server Unix timestamp of the update time (in seconds since epoch UTC).                 |                                                                                        |
+| `name`                                                                                 | *string*                                                                               | :heavy_minus_sign:                                                                     | The name of the Chat.                                                                  |                                                                                        |
+| `applicationId`                                                                        | *string*                                                                               | :heavy_minus_sign:                                                                     | The ID of the AI App that this Chat is associated to.                                  |                                                                                        |
+| `applicationName`                                                                      | *string*                                                                               | :heavy_minus_sign:                                                                     | The display name of the AI App that this Chat is associated to.                        |                                                                                        |
+| `icon`                                                                                 | [components.IconConfig](../../models/components/iconconfig.md)                         | :heavy_minus_sign:                                                                     | Defines how to render an icon                                                          | {<br/>"color": "#343CED",<br/>"key": "person_icon",<br/>"iconType": "GLYPH",<br/>"name": "user"<br/>} |
+| `permissions`                                                                          | [components.ObjectPermissions](../../models/components/objectpermissions.md)           | :heavy_minus_sign:                                                                     | N/A                                                                                    |                                                                                        |
+| `messages`                                                                             | [components.ChatMessage](../../models/components/chatmessage.md)[]                     | :heavy_minus_sign:                                                                     | The chat messages within a Chat.                                                       |                                                                                        |
+| `roles`                                                                                | [components.UserRoleSpecification](../../models/components/userrolespecification.md)[] | :heavy_minus_sign:                                                                     | A list of roles for this Chat.                                                         |                                                                                        |

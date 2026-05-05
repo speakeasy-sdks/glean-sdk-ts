@@ -3,17 +3,27 @@
 package components
 
 type Workflow struct {
+	// The name of the workflow.
+	Name   *string `json:"name,omitempty"`
 	Author *Person `json:"author,omitempty"`
 	// Server Unix timestamp of the creation time.
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty"`
 	// Server Unix timestamp of the last update time.
-	LastUpdateTimestamp *int64             `json:"lastUpdateTimestamp,omitempty"`
-	LastUpdatedBy       *Person            `json:"lastUpdatedBy,omitempty"`
-	Permissions         *ObjectPermissions `json:"permissions,omitempty"`
-	// The name of the workflow.
-	Name *string `json:"name,omitempty"`
+	LastUpdateTimestamp *int64 `json:"lastUpdateTimestamp,omitempty"`
+	// Server Unix timestamp of the last time the draft was saved.
+	LastDraftSavedAt *int64             `json:"lastDraftSavedAt,omitempty"`
+	LastDraftSavedBy *Person            `json:"lastDraftSavedBy,omitempty"`
+	LastUpdatedBy    *Person            `json:"lastUpdatedBy,omitempty"`
+	Permissions      *ObjectPermissions `json:"permissions,omitempty"`
 	// The ID of the workflow.
 	ID *string `json:"id,omitempty"`
+}
+
+func (o *Workflow) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
 }
 
 func (o *Workflow) GetAuthor() *Person {
@@ -37,6 +47,20 @@ func (o *Workflow) GetLastUpdateTimestamp() *int64 {
 	return o.LastUpdateTimestamp
 }
 
+func (o *Workflow) GetLastDraftSavedAt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastDraftSavedAt
+}
+
+func (o *Workflow) GetLastDraftSavedBy() *Person {
+	if o == nil {
+		return nil
+	}
+	return o.LastDraftSavedBy
+}
+
 func (o *Workflow) GetLastUpdatedBy() *Person {
 	if o == nil {
 		return nil
@@ -49,13 +73,6 @@ func (o *Workflow) GetPermissions() *ObjectPermissions {
 		return nil
 	}
 	return o.Permissions
-}
-
-func (o *Workflow) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
 }
 
 func (o *Workflow) GetID() *string {

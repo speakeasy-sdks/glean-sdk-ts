@@ -2,19 +2,21 @@
 
 package components
 
-// AgentRunCreate - Payload for creating a run.
+// AgentRunCreate - Payload for creating a run. **Important**: If the agent uses an input form trigger, the `input` field is required and must include all fields defined in the form schema. Even fields marked as optional in the UI must be included in the request—use an empty string (`""`) for optional fields without values. Omitting required form fields will result in a 500 error.
 type AgentRunCreate struct {
 	// The ID of the agent to run.
-	AgentID *string `json:"agent_id,omitempty"`
-	// The input to the agent.
+	AgentID string `json:"agent_id"`
+	// The input to the agent. Required when the agent uses an input form trigger.
 	Input map[string]any `json:"input,omitempty"`
 	// The messages to pass an input to the agent.
 	Messages []Message `json:"messages,omitempty"`
+	// The metadata to pass to the agent.
+	Metadata map[string]any `json:"metadata,omitempty"`
 }
 
-func (o *AgentRunCreate) GetAgentID() *string {
+func (o *AgentRunCreate) GetAgentID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.AgentID
 }
@@ -31,4 +33,11 @@ func (o *AgentRunCreate) GetMessages() []Message {
 		return nil
 	}
 	return o.Messages
+}
+
+func (o *AgentRunCreate) GetMetadata() map[string]any {
+	if o == nil {
+		return nil
+	}
+	return o.Metadata
 }

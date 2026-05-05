@@ -18,6 +18,7 @@ import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatRetrieveFilesMutationVariables = {
   getChatFilesRequest: components.GetChatFilesRequest;
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
@@ -26,7 +27,7 @@ export type ClientChatRetrieveFilesMutationData =
   components.GetChatFilesResponse;
 
 /**
- * Get files uploaded by a user for Chat.
+ * Get files uploaded by a user for Chat
  *
  * @remarks
  * Get files uploaded by a user for Chat.
@@ -66,6 +67,7 @@ export function buildClientChatRetrieveFilesMutation(
     mutationKey: mutationKeyClientChatRetrieveFiles(),
     mutationFn: function clientChatRetrieveFilesMutationFn({
       getChatFilesRequest,
+      locale,
       timezoneOffset,
       options,
     }): Promise<ClientChatRetrieveFilesMutationData> {
@@ -84,6 +86,7 @@ export function buildClientChatRetrieveFilesMutation(
       return unwrapAsync(clientChatRetrieveFiles(
         client$,
         getChatFilesRequest,
+        locale,
         timezoneOffset,
         mergedOptions,
       ));

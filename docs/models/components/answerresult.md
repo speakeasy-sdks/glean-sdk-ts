@@ -103,30 +103,6 @@ let value: AnswerResult = {
         ],
       },
     },
-    board: {
-      name: "<value>",
-      description: "careless who yellowish lest finding revere gosh apropos",
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-      id: 306223,
-      creator: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-    },
     collections: [],
     sourceDocument: {},
   },

@@ -19,15 +19,16 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Search Agents
+ * Search agents
  *
  * @remarks
- * List Agents available in this service. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/POST/agents/search). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+ * Search for [agents](https://developers.glean.com/agents/agents-api) by agent name.
  */
 export function clientAgentsList(
   client: GleanCore,
@@ -36,6 +37,7 @@ export function clientAgentsList(
 ): APIPromise<
   Result<
     components.SearchAgentsResponse,
+    | errors.ErrorResponse
     | GleanError
     | SDKValidationError
     | UnexpectedClientError
@@ -60,6 +62,7 @@ async function $do(
   [
     Result<
       components.SearchAgentsResponse,
+      | errors.ErrorResponse
       | GleanError
       | SDKValidationError
       | UnexpectedClientError
@@ -132,8 +135,13 @@ async function $do(
   }
   const response = doResult.value;
 
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
+  };
+
   const [result] = await M.match<
     components.SearchAgentsResponse,
+    | errors.ErrorResponse
     | GleanError
     | SDKValidationError
     | UnexpectedClientError
@@ -143,9 +151,10 @@ async function $do(
     | ConnectionError
   >(
     M.json(200, components.SearchAgentsResponse$inboundSchema),
-    M.fail([400, 403, 404, 422, "4XX"]),
+    M.jsonErr([404, 422], errors.ErrorResponse$inboundSchema),
+    M.fail([400, 403, "4XX"]),
     M.fail([500, "5XX"]),
-  )(response);
+  )(response, { extraFields: responseFields });
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
   }

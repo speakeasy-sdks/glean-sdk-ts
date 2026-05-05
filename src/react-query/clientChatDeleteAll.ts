@@ -16,6 +16,7 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatDeleteAllMutationVariables = {
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
@@ -62,6 +63,7 @@ export function buildClientChatDeleteAllMutation(
   return {
     mutationKey: mutationKeyClientChatDeleteAll(),
     mutationFn: function clientChatDeleteAllMutationFn({
+      locale,
       timezoneOffset,
       options,
     }): Promise<ClientChatDeleteAllMutationData> {
@@ -79,6 +81,7 @@ export function buildClientChatDeleteAllMutation(
       };
       return unwrapAsync(clientChatDeleteAll(
         client$,
+        locale,
         timezoneOffset,
         mergedOptions,
       ));

@@ -5,6 +5,7 @@
 export { GleanProvider, useGleanContext } from "./_context.js";
 export * from "./_types.js";
 
+export * from "./authenticationCheckdatasourceauth.js";
 export * from "./clientActivityFeedback.js";
 export * from "./clientActivityReport.js";
 export * from "./clientAgentsList.js";
@@ -77,6 +78,14 @@ export * from "./clientToolsRun.js";
 export * from "./clientVerificationAddReminder.js";
 export * from "./clientVerificationList.js";
 export * from "./clientVerificationVerify.js";
+export * from "./datasourcesGetDatasourceCredentialStatus.js";
+export * from "./datasourcesGetDatasourceInstanceConfiguration.js";
+export * from "./datasourcesRotateDatasourceCredentials.js";
+export * from "./datasourcesUpdateDatasourceInstanceConfiguration.js";
+export * from "./governanceCreatefindingsexport.js";
+export * from "./governanceDeletefindingsexport.js";
+export * from "./governanceDownloadfindingsexport.js";
+export * from "./governanceListfindingsexports.js";
 export * from "./indexingAuthenticationRotateToken.js";
 export * from "./indexingDatasourcesAdd.js";
 export * from "./indexingDatasourcesRetrieveConfig.js";

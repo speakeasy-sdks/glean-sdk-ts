@@ -25,7 +25,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Upload files for Chat.
+ * Upload files for Chat
  *
  * @remarks
  * Upload files for Chat.
@@ -33,6 +33,7 @@ import { Result } from "../types/fp.js";
 export function clientChatUploadFiles(
   client: GleanCore,
   uploadChatFilesRequest: components.UploadChatFilesRequest,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): APIPromise<
@@ -50,6 +51,7 @@ export function clientChatUploadFiles(
   return new APIPromise($do(
     client,
     uploadChatFilesRequest,
+    locale,
     timezoneOffset,
     options,
   ));
@@ -58,6 +60,7 @@ export function clientChatUploadFiles(
 async function $do(
   client: GleanCore,
   uploadChatFilesRequest: components.UploadChatFilesRequest,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -77,6 +80,7 @@ async function $do(
 > {
   const input: operations.UploadchatfilesRequest = {
     uploadChatFilesRequest: uploadChatFilesRequest,
+    locale: locale,
     timezoneOffset: timezoneOffset,
   };
 
@@ -96,6 +100,7 @@ async function $do(
   const path = pathToFunc("/rest/api/v1/uploadchatfiles")();
 
   const query = encodeFormQuery({
+    "locale": payload.locale,
     "timezoneOffset": payload.timezoneOffset,
   });
 

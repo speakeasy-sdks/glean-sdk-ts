@@ -17,7 +17,8 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientVerificationAddReminderMutationVariables = {
-  request: components.ReminderRequest;
+  reminderRequest: components.ReminderRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -63,7 +64,8 @@ export function buildClientVerificationAddReminderMutation(
   return {
     mutationKey: mutationKeyClientVerificationAddReminder(),
     mutationFn: function clientVerificationAddReminderMutationFn({
-      request,
+      reminderRequest,
+      locale,
       options,
     }): Promise<ClientVerificationAddReminderMutationData> {
       const mergedOptions = {
@@ -80,7 +82,8 @@ export function buildClientVerificationAddReminderMutation(
       };
       return unwrapAsync(clientVerificationAddReminder(
         client$,
-        request,
+        reminderRequest,
+        locale,
         mergedOptions,
       ));
     },

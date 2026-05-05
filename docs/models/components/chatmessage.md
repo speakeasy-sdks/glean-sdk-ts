@@ -8,65 +8,38 @@ A message that is rendered as one coherent unit with one given sender.
 import { ChatMessage } from "@gleanwork/api-client/models/components";
 
 let value: ChatMessage = {
-  citations: [
-    {
-      sourceDocument: {
-        containerDocument: {
-          parentDocument: {
-            metadata: {
-              datasource: "datasource",
-              objectType: "Feature Request",
-              container: "container",
-              parentId: "JIRA_EN-1337",
-              mimeType: "mimeType",
-              documentId: "documentId",
-              createTime: new Date("2000-01-23T04:56:07.000Z"),
-              updateTime: new Date("2000-01-23T04:56:07.000Z"),
-              author: {
-                name: "name",
-                obfuscatedId: "<id>",
-              },
-              components: [
-                "Backend",
-                "Networking",
-              ],
-              status: "[\"Done\"]",
-              customData: {
-                "someCustomField": {},
-              },
-            },
-          },
-        },
-      },
-      sourceFile: {
-        id: "FILE_1234",
-        url: "www.google.com",
-        name: "sample.pdf",
-      },
-      sourcePerson: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-      referenceRanges: [
-        {
-          textRange: {
-            startIndex: 463522,
-            document: {},
-          },
-          snippets: [
-            {
-              snippet: "snippet",
-              mimeType: "mimeType",
-            },
-          ],
-        },
-      ],
-    },
-  ],
   fragments: [
     {
       structuredResults: [
         {
+          document: {
+            containerDocument: {
+              parentDocument: {
+                metadata: {
+                  datasource: "datasource",
+                  objectType: "Feature Request",
+                  container: "container",
+                  parentId: "JIRA_EN-1337",
+                  mimeType: "mimeType",
+                  documentId: "documentId",
+                  createTime: new Date("2000-01-23T04:56:07.000Z"),
+                  updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                  author: {
+                    name: "name",
+                    obfuscatedId: "<id>",
+                  },
+                  components: [
+                    "Backend",
+                    "Networking",
+                  ],
+                  status: "[\"Done\"]",
+                  customData: {
+                    "someCustomField": {},
+                  },
+                },
+              },
+            },
+          },
           person: {
             name: "George Clooney",
             obfuscatedId: "abc123",
@@ -135,14 +108,14 @@ let value: ChatMessage = {
             likes: {
               likedBy: [],
               likedByUser: false,
-              numLikes: 499504,
+              numLikes: 463522,
             },
             updatedBy: {
               name: "George Clooney",
               obfuscatedId: "abc123",
             },
             verification: {
-              state: "DEPRECATED",
+              state: "VERIFIED",
               metadata: {
                 lastVerifier: {
                   name: "George Clooney",
@@ -158,7 +131,7 @@ let value: ChatMessage = {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
                   },
-                  remindAt: 46781,
+                  remindAt: 756443,
                 },
                 candidateVerifiers: [
                   {
@@ -168,31 +141,11 @@ let value: ChatMessage = {
                 ],
               },
             },
-            board: {
-              name: "<value>",
-              description: "uh-huh yet loudly round colorfully young",
-              audienceFilters: [
-                {
-                  fieldName: "type",
-                  values: [
-                    {
-                      value: "Spreadsheet",
-                      relationType: "EQUALS",
-                    },
-                    {
-                      value: "Presentation",
-                      relationType: "EQUALS",
-                    },
-                  ],
-                },
-              ],
-              id: 655731,
-              creator: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-            },
             collections: [],
+            sourceDocument: {},
+          },
+          generatedQna: {
+            ranges: [],
           },
           extractedQnA: {
             questionResult: {
@@ -201,8 +154,8 @@ let value: ChatMessage = {
               nativeAppUrl: "slack://foo/bar",
               snippets: [
                 {
-                  snippet: "snippet",
                   mimeType: "mimeType",
+                  snippet: "snippet",
                 },
               ],
               mustIncludeSuggestions: {},
@@ -215,7 +168,7 @@ let value: ChatMessage = {
           },
           collection: {
             name: "<value>",
-            description: "procurement ew cook lest plus phew incidentally",
+            description: "weep likewise alligator",
             audienceFilters: [
               {
                 fieldName: "type",
@@ -231,29 +184,13 @@ let value: ChatMessage = {
                 ],
               },
             ],
-            id: 589123,
+            id: 459260,
+            creator: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+            },
             items: [],
             children: [],
-          },
-          answerBoard: {
-            name: "<value>",
-            description: "creaking absent uh-huh horst",
-            audienceFilters: [
-              {
-                fieldName: "type",
-                values: [
-                  {
-                    value: "Spreadsheet",
-                    relationType: "EQUALS",
-                  },
-                  {
-                    value: "Presentation",
-                    relationType: "EQUALS",
-                  },
-                ],
-              },
-            ],
-            id: 460630,
           },
           code: {
             repoName: "scio",
@@ -276,10 +213,16 @@ let value: ChatMessage = {
               },
             ],
           },
-          relatedDocuments: [],
-          relatedQuestion: {
-            ranges: [],
+          chat: {
+            icon: {
+              color: "#343CED",
+              key: "person_icon",
+              iconType: "GLYPH",
+              name: "user",
+            },
           },
+          relatedDocuments: [],
+          relatedQuestion: {},
         },
       ],
       querySuggestion: {
@@ -294,12 +237,37 @@ let value: ChatMessage = {
       },
       action: {
         metadata: {
-          type: "RETRIEVAL",
+          type: "ACTION",
           name: "<value>",
-          displayName: "Pearl_Grady-Tillman38",
+          displayName: "Deangelo_Pacocha-Kunde69",
           displayDescription: "<value>",
           objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
         },
+      },
+      citation: {
+        sourceFile: {
+          id: "FILE_1234",
+          url: "www.google.com",
+          name: "sample.pdf",
+        },
+        sourcePerson: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        sourceCustomEntity: {},
+        referenceRanges: [
+          {
+            textRange: {
+              startIndex: 658912,
+            },
+            snippets: [
+              {
+                mimeType: "mimeType",
+                snippet: "snippet",
+              },
+            ],
+          },
+        ],
       },
     },
   ],
@@ -308,15 +276,15 @@ let value: ChatMessage = {
 
 ## Fields
 
-| Field                                                                                                                                                                                                   | Type                                                                                                                                                                                                    | Required                                                                                                                                                                                                | Description                                                                                                                                                                                             |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `agentConfig`                                                                                                                                                                                           | [components.AgentConfig](../../models/components/agentconfig.md)                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                                      | Describes the agent that executes the request.                                                                                                                                                          |
-| `author`                                                                                                                                                                                                | [components.Author](../../models/components/author.md)                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                                                      | N/A                                                                                                                                                                                                     |
-| `citations`                                                                                                                                                                                             | [components.ChatMessageCitation](../../models/components/chatmessagecitation.md)[]                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                      | A list of Citations that were used to generate the response.                                                                                                                                            |
-| `uploadedFileIds`                                                                                                                                                                                       | *string*[]                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                      | IDs of files uploaded in the message that are referenced to generate the answer.                                                                                                                        |
-| `fragments`                                                                                                                                                                                             | [components.ChatMessageFragment](../../models/components/chatmessagefragment.md)[]                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                      | A list of rich data used to represent the response or formulate a request. These are linearly stitched together to support richer data formats beyond simple text.                                      |
-| `ts`                                                                                                                                                                                                    | *string*                                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                                      | Response timestamp of the message.                                                                                                                                                                      |
-| `messageId`                                                                                                                                                                                             | *string*                                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                                      | A unique server-side generated ID used to identify a message, automatically populated for any USER authored messages.                                                                                   |
-| `messageTrackingToken`                                                                                                                                                                                  | *string*                                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                                      | Opaque tracking token generated server-side.                                                                                                                                                            |
-| `messageType`                                                                                                                                                                                           | [components.MessageType](../../models/components/messagetype.md)                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                                      | Semantically groups content of a certain type. It can be used for purposes such as differential UI treatment. USER authored messages should be of type CONTENT and do not need `messageType` specified. |
-| ~~`hasMoreFragments`~~                                                                                                                                                                                  | *boolean*                                                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                                                      | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>Signals there are additional response fragments incoming.              |
+| Field                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Required                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `agentConfig`                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | [components.AgentConfig](../../models/components/agentconfig.md)                                                                                                                                                                                                                                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Describes the agent that executes the request.                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `author`                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | [components.Author](../../models/components/author.md)                                                                                                                                                                                                                                                                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                                                                                                            | N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ~~`citations`~~                                                                                                                                                                                                                                                                                                                                                                                                                                                               | [components.ChatMessageCitation](../../models/components/chatmessagecitation.md)[]                                                                                                                                                                                                                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                                                                                                            | : warning: ** DEPRECATED **: Deprecated on 2026-02-06, removal scheduled for 2026-10-15: Use inline citations via ChatMessageFragment.citation and ChatMessageCitation.referenceRanges instead. This field is still populated for backward compatibility..<br/><br/>Deprecated: Use inline citations via ChatMessageFragment.citation instead. For detailed reference information, use ChatMessageCitation.referenceRanges. This field is still populated for backward compatibility. |
+| `uploadedFileIds`                                                                                                                                                                                                                                                                                                                                                                                                                                                             | *string*[]                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                                                                                                            | IDs of files uploaded in the message that are referenced to generate the answer.                                                                                                                                                                                                                                                                                                                                                                                              |
+| `fragments`                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | [components.ChatMessageFragment](../../models/components/chatmessagefragment.md)[]                                                                                                                                                                                                                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                                                                                                            | A list of rich data used to represent the response or formulate a request. These are linearly stitched together to support richer data formats beyond simple text.                                                                                                                                                                                                                                                                                                            |
+| `ts`                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | *string*                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Response timestamp of the message.                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `messageId`                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | *string*                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                                                                                                            | A unique server-side generated ID used to identify a message, automatically populated for any USER authored messages.                                                                                                                                                                                                                                                                                                                                                         |
+| `messageTrackingToken`                                                                                                                                                                                                                                                                                                                                                                                                                                                        | *string*                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Opaque tracking token generated server-side.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `messageType`                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | [components.MessageType](../../models/components/messagetype.md)                                                                                                                                                                                                                                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Semantically groups content of a certain type. It can be used for purposes such as differential UI treatment. USER authored messages should be of type CONTENT and do not need `messageType` specified.                                                                                                                                                                                                                                                                       |
+| ~~`hasMoreFragments`~~                                                                                                                                                                                                                                                                                                                                                                                                                                                        | *boolean*                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                                                                                                            | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>Signals there are additional response fragments incoming.                                                                                                                                                                                                                                                                                    |

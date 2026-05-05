@@ -17,7 +17,8 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientDocumentsRetrieveMutationVariables = {
-  request?: components.GetDocumentsRequest | undefined;
+  getDocumentsRequest?: components.GetDocumentsRequest | undefined;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +65,8 @@ export function buildClientDocumentsRetrieveMutation(
   return {
     mutationKey: mutationKeyClientDocumentsRetrieve(),
     mutationFn: function clientDocumentsRetrieveMutationFn({
-      request,
+      getDocumentsRequest,
+      locale,
       options,
     }): Promise<ClientDocumentsRetrieveMutationData> {
       const mergedOptions = {
@@ -81,7 +83,8 @@ export function buildClientDocumentsRetrieveMutation(
       };
       return unwrapAsync(clientDocumentsRetrieve(
         client$,
-        request,
+        getDocumentsRequest,
+        locale,
         mergedOptions,
       ));
     },

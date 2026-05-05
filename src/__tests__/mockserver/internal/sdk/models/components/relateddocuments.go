@@ -14,12 +14,14 @@ const (
 	RelationAttachment           Relation = "ATTACHMENT"
 	RelationCanonical            Relation = "CANONICAL"
 	RelationCase                 Relation = "CASE"
-	RelationContact              Relation = "CONTACT"
+	RelationContactLower         Relation = "contact"
+	RelationContactUpper         Relation = "CONTACT"
 	RelationConversationMessages Relation = "CONVERSATION_MESSAGES"
 	RelationExpert               Relation = "EXPERT"
 	RelationFrom                 Relation = "FROM"
 	RelationHighlight            Relation = "HIGHLIGHT"
-	RelationOpportunity          Relation = "OPPORTUNITY"
+	RelationOpportunityLower     Relation = "opportunity"
+	RelationOpportunityUpper     Relation = "OPPORTUNITY"
 	RelationRecent               Relation = "RECENT"
 	RelationSource               Relation = "SOURCE"
 	RelationTicket               Relation = "TICKET"
@@ -42,6 +44,8 @@ func (e *Relation) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "CASE":
 		fallthrough
+	case "contact":
+		fallthrough
 	case "CONTACT":
 		fallthrough
 	case "CONVERSATION_MESSAGES":
@@ -51,6 +55,8 @@ func (e *Relation) UnmarshalJSON(data []byte) error {
 	case "FROM":
 		fallthrough
 	case "HIGHLIGHT":
+		fallthrough
+	case "opportunity":
 		fallthrough
 	case "OPPORTUNITY":
 		fallthrough
@@ -78,7 +84,7 @@ type RelatedDocuments struct {
 	QuerySuggestion    *QuerySuggestion `json:"querySuggestion,omitempty"`
 	// A truncated list of documents with this relation. TO BE DEPRECATED.
 	//
-	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
+	// Deprecated: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
 	Documents []Document `json:"documents,omitempty"`
 	// A truncated list of documents associated with this relation. To be used in favor of `documents` because it contains a trackingToken.
 	Results []SearchResult `json:"results,omitempty"`

@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  ToolSets,
+  ToolSets$inboundSchema,
+  ToolSets$Outbound,
+  ToolSets$outboundSchema,
+} from "./toolsets.js";
 
 /**
  * Name of the agent.
@@ -14,6 +20,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export const AgentEnum = {
   Default: "DEFAULT",
   Gpt: "GPT",
+  Universal: "UNIVERSAL",
+  Fast: "FAST",
+  Advanced: "ADVANCED",
+  Auto: "AUTO",
 } as const;
 /**
  * Name of the agent.
@@ -41,9 +51,17 @@ export type AgentConfig = {
    */
   agent?: AgentEnum | undefined;
   /**
+   * The types of tools that the agent is allowed to use. Only works with FAST and ADVANCED `agent` values
+   */
+  toolSets?: ToolSets | undefined;
+  /**
    * Top level modes to run GleanChat in.
    */
   mode?: Mode | undefined;
+  /**
+   * Whether the agent should create an image.
+   */
+  useImageGeneration?: boolean | undefined;
 };
 
 /** @internal */
@@ -92,13 +110,17 @@ export const AgentConfig$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   agent: AgentEnum$inboundSchema.optional(),
+  toolSets: ToolSets$inboundSchema.optional(),
   mode: Mode$inboundSchema.optional(),
+  useImageGeneration: z.boolean().optional(),
 });
 
 /** @internal */
 export type AgentConfig$Outbound = {
   agent?: string | undefined;
+  toolSets?: ToolSets$Outbound | undefined;
   mode?: string | undefined;
+  useImageGeneration?: boolean | undefined;
 };
 
 /** @internal */
@@ -108,7 +130,9 @@ export const AgentConfig$outboundSchema: z.ZodType<
   AgentConfig
 > = z.object({
   agent: AgentEnum$outboundSchema.optional(),
+  toolSets: ToolSets$outboundSchema.optional(),
   mode: Mode$outboundSchema.optional(),
+  useImageGeneration: z.boolean().optional(),
 });
 
 /**

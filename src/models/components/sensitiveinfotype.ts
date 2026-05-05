@@ -9,22 +9,27 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
+ * @deprecated enum: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
  */
-export const LikelihoodThreshold = {
+export const SensitiveInfoTypeLikelihoodThreshold = {
   Likely: "LIKELY",
   VeryLikely: "VERY_LIKELY",
+  Possible: "POSSIBLE",
+  Unlikely: "UNLIKELY",
+  VeryUnlikely: "VERY_UNLIKELY",
 } as const;
 /**
- * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
+ * @deprecated enum: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
  */
-export type LikelihoodThreshold = ClosedEnum<typeof LikelihoodThreshold>;
+export type SensitiveInfoTypeLikelihoodThreshold = ClosedEnum<
+  typeof SensitiveInfoTypeLikelihoodThreshold
+>;
 
 export type SensitiveInfoType = {
   /**
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
    */
-  likelihoodThreshold?: LikelihoodThreshold | undefined;
+  likelihoodThreshold?: SensitiveInfoTypeLikelihoodThreshold | undefined;
   /**
    * Text representation of an info-type to scan for.
    */
@@ -32,24 +37,27 @@ export type SensitiveInfoType = {
 };
 
 /** @internal */
-export const LikelihoodThreshold$inboundSchema: z.ZodNativeEnum<
-  typeof LikelihoodThreshold
-> = z.nativeEnum(LikelihoodThreshold);
+export const SensitiveInfoTypeLikelihoodThreshold$inboundSchema:
+  z.ZodNativeEnum<typeof SensitiveInfoTypeLikelihoodThreshold> = z.nativeEnum(
+    SensitiveInfoTypeLikelihoodThreshold,
+  );
 
 /** @internal */
-export const LikelihoodThreshold$outboundSchema: z.ZodNativeEnum<
-  typeof LikelihoodThreshold
-> = LikelihoodThreshold$inboundSchema;
+export const SensitiveInfoTypeLikelihoodThreshold$outboundSchema:
+  z.ZodNativeEnum<typeof SensitiveInfoTypeLikelihoodThreshold> =
+    SensitiveInfoTypeLikelihoodThreshold$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LikelihoodThreshold$ {
-  /** @deprecated use `LikelihoodThreshold$inboundSchema` instead. */
-  export const inboundSchema = LikelihoodThreshold$inboundSchema;
-  /** @deprecated use `LikelihoodThreshold$outboundSchema` instead. */
-  export const outboundSchema = LikelihoodThreshold$outboundSchema;
+export namespace SensitiveInfoTypeLikelihoodThreshold$ {
+  /** @deprecated use `SensitiveInfoTypeLikelihoodThreshold$inboundSchema` instead. */
+  export const inboundSchema =
+    SensitiveInfoTypeLikelihoodThreshold$inboundSchema;
+  /** @deprecated use `SensitiveInfoTypeLikelihoodThreshold$outboundSchema` instead. */
+  export const outboundSchema =
+    SensitiveInfoTypeLikelihoodThreshold$outboundSchema;
 }
 
 /** @internal */
@@ -58,7 +66,8 @@ export const SensitiveInfoType$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  likelihoodThreshold: LikelihoodThreshold$inboundSchema.optional(),
+  likelihoodThreshold: SensitiveInfoTypeLikelihoodThreshold$inboundSchema
+    .optional(),
   infoType: z.string().optional(),
 });
 
@@ -74,7 +83,8 @@ export const SensitiveInfoType$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SensitiveInfoType
 > = z.object({
-  likelihoodThreshold: LikelihoodThreshold$outboundSchema.optional(),
+  likelihoodThreshold: SensitiveInfoTypeLikelihoodThreshold$outboundSchema
+    .optional(),
   infoType: z.string().optional(),
 });
 

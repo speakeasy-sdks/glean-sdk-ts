@@ -5,11 +5,11 @@
 ```typescript
 import { AddCollectionItemsErrorErrorType } from "@gleanwork/api-client/models/components";
 
-let value: AddCollectionItemsErrorErrorType = "EXISTING_ITEM";
+let value: AddCollectionItemsErrorErrorType = "CORRUPT_ITEM";
 ```
 
 ## Values
 
 ```typescript
-"EXISTING_ITEM"
+"EXISTING_ITEM" | "CORRUPT_ITEM"
 ```

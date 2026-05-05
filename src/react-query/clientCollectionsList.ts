@@ -17,7 +17,8 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientCollectionsListMutationVariables = {
-  request: components.ListCollectionsRequest;
+  listCollectionsRequest: components.ListCollectionsRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -64,7 +65,8 @@ export function buildClientCollectionsListMutation(
   return {
     mutationKey: mutationKeyClientCollectionsList(),
     mutationFn: function clientCollectionsListMutationFn({
-      request,
+      listCollectionsRequest,
+      locale,
       options,
     }): Promise<ClientCollectionsListMutationData> {
       const mergedOptions = {
@@ -81,7 +83,8 @@ export function buildClientCollectionsListMutation(
       };
       return unwrapAsync(clientCollectionsList(
         client$,
-        request,
+        listCollectionsRequest,
+        locale,
         mergedOptions,
       ));
     },

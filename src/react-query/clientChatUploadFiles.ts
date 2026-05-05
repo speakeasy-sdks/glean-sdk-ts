@@ -18,6 +18,7 @@ import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatUploadFilesMutationVariables = {
   uploadChatFilesRequest: components.UploadChatFilesRequest;
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
@@ -26,7 +27,7 @@ export type ClientChatUploadFilesMutationData =
   components.UploadChatFilesResponse;
 
 /**
- * Upload files for Chat.
+ * Upload files for Chat
  *
  * @remarks
  * Upload files for Chat.
@@ -66,6 +67,7 @@ export function buildClientChatUploadFilesMutation(
     mutationKey: mutationKeyClientChatUploadFiles(),
     mutationFn: function clientChatUploadFilesMutationFn({
       uploadChatFilesRequest,
+      locale,
       timezoneOffset,
       options,
     }): Promise<ClientChatUploadFilesMutationData> {
@@ -84,6 +86,7 @@ export function buildClientChatUploadFilesMutation(
       return unwrapAsync(clientChatUploadFiles(
         client$,
         uploadChatFilesRequest,
+        locale,
         timezoneOffset,
         mergedOptions,
       ));

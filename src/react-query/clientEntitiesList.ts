@@ -17,7 +17,8 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientEntitiesListMutationVariables = {
-  request: components.ListEntitiesRequest;
+  listEntitiesRequest: components.ListEntitiesRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -27,7 +28,7 @@ export type ClientEntitiesListMutationData = components.ListEntitiesResponse;
  * List entities
  *
  * @remarks
- * List some set of details for all entities that fit the given criteria and return in the requested order. Does not support negation in filters, assumes relation type EQUALS. There is a limit of 10000 entities that can be retrieved via this endpoint.
+ * List some set of details for all entities that fit the given criteria and return in the requested order. Does not support negation in filters, assumes relation type EQUALS. There is a limit of 10000 entities that can be retrieved via this endpoint, except when using FULL_DIRECTORY request type for people entities.
  */
 export function useClientEntitiesListMutation(
   options?: MutationHookOptions<
@@ -63,7 +64,8 @@ export function buildClientEntitiesListMutation(
   return {
     mutationKey: mutationKeyClientEntitiesList(),
     mutationFn: function clientEntitiesListMutationFn({
-      request,
+      listEntitiesRequest,
+      locale,
       options,
     }): Promise<ClientEntitiesListMutationData> {
       const mergedOptions = {
@@ -80,7 +82,8 @@ export function buildClientEntitiesListMutation(
       };
       return unwrapAsync(clientEntitiesList(
         client$,
-        request,
+        listEntitiesRequest,
+        locale,
         mergedOptions,
       ));
     },

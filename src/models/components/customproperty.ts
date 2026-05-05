@@ -13,7 +13,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type CustomProperty = {
   name?: string | undefined;
   /**
-   * Must either be a string or an array of strings. An integer, boolean, etc. is not valid. When OpenAPI Generator supports `oneOf`, we can semantically enforce this.
+   * Must be a string, a number (for INT properties), or an array of strings. A boolean is not valid. When OpenAPI Generator supports `oneOf`, we can semantically enforce this.
    */
   value?: any | undefined;
 };

@@ -18,6 +18,7 @@ import { MutationHookOptions } from "./_types.js";
 
 export type ClientVerificationListMutationVariables = {
   count?: number | undefined;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -64,6 +65,7 @@ export function buildClientVerificationListMutation(
     mutationKey: mutationKeyClientVerificationList(),
     mutationFn: function clientVerificationListMutationFn({
       count,
+      locale,
       options,
     }): Promise<ClientVerificationListMutationData> {
       const mergedOptions = {
@@ -81,6 +83,7 @@ export function buildClientVerificationListMutation(
       return unwrapAsync(clientVerificationList(
         client$,
         count,
+        locale,
         mergedOptions,
       ));
     },

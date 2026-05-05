@@ -6,6 +6,27 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+type CreateshortcutRequest struct {
+	// The client's preferred locale in rfc5646 format (e.g. `en`, `ja`, `pt-BR`). If omitted, the `Accept-Language` will be used. If not present or not supported, defaults to the closest match or `en`.
+	Locale *string `queryParam:"style=form,explode=true,name=locale"`
+	// CreateShortcut request
+	CreateShortcutRequest components.CreateShortcutRequest `request:"mediaType=application/json"`
+}
+
+func (o *CreateshortcutRequest) GetLocale() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Locale
+}
+
+func (o *CreateshortcutRequest) GetCreateShortcutRequest() components.CreateShortcutRequest {
+	if o == nil {
+		return components.CreateShortcutRequest{}
+	}
+	return o.CreateShortcutRequest
+}
+
 type CreateshortcutResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// OK

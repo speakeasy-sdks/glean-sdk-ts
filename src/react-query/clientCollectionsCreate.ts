@@ -12,17 +12,19 @@ import { clientCollectionsCreate } from "../funcs/clientCollectionsCreate.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientCollectionsCreateMutationVariables = {
-  request: components.CreateCollectionRequest;
+  createCollectionRequest: components.CreateCollectionRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientCollectionsCreateMutationData =
-  components.CreateCollectionResponse;
+  operations.CreatecollectionResponse;
 
 /**
  * Create Collection
@@ -64,7 +66,8 @@ export function buildClientCollectionsCreateMutation(
   return {
     mutationKey: mutationKeyClientCollectionsCreate(),
     mutationFn: function clientCollectionsCreateMutationFn({
-      request,
+      createCollectionRequest,
+      locale,
       options,
     }): Promise<ClientCollectionsCreateMutationData> {
       const mergedOptions = {
@@ -81,7 +84,8 @@ export function buildClientCollectionsCreateMutation(
       };
       return unwrapAsync(clientCollectionsCreate(
         client$,
-        request,
+        createCollectionRequest,
+        locale,
         mergedOptions,
       ));
     },

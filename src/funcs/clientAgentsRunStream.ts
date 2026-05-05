@@ -20,15 +20,16 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create Run, Stream Output
+ * Create an agent run and stream the response
  *
  * @remarks
- * Creates and triggers a run of an agent. Streams the output in SSE format. This endpoint implements the LangChain Agent Protocol, specifically part of the Runs stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/runs/POST/runs/stream). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol. Note that running agents that reference third party platform write actions is unsupported as it requires user confirmation.
+ * Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the result as a stream of server-sent events (SSE). **Note**: If the agent uses an input form trigger, all form fields (including optional fields) must be included in the `input` object.
  */
 export function clientAgentsRunStream(
   client: GleanCore,
@@ -37,6 +38,7 @@ export function clientAgentsRunStream(
 ): APIPromise<
   Result<
     string,
+    | errors.ErrorResponse
     | GleanError
     | SDKValidationError
     | UnexpectedClientError
@@ -61,6 +63,7 @@ async function $do(
   [
     Result<
       string,
+      | errors.ErrorResponse
       | GleanError
       | SDKValidationError
       | UnexpectedClientError
@@ -133,8 +136,13 @@ async function $do(
   }
   const response = doResult.value;
 
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
+  };
+
   const [result] = await M.match<
     string,
+    | errors.ErrorResponse
     | GleanError
     | SDKValidationError
     | UnexpectedClientError
@@ -144,9 +152,10 @@ async function $do(
     | ConnectionError
   >(
     M.text(200, z.string(), { ctype: "text/event-stream" }),
-    M.fail([400, 403, 404, 409, 422, "4XX"]),
+    M.jsonErr([404, 409, 422], errors.ErrorResponse$inboundSchema),
+    M.fail([400, 403, "4XX"]),
     M.fail([500, "5XX"]),
-  )(response);
+  )(response, { extraFields: responseFields });
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
   }

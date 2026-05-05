@@ -19,25 +19,28 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get Agent
+ * Retrieve an agent
  *
  * @remarks
- * Get an agent by ID. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/GET/agents/{agent_id}). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+ * Returns details of an [agent](https://developers.glean.com/agents/agents-api) created in the Agent Builder.
  */
 export function clientAgentsRetrieve(
   client: GleanCore,
   agentId: string,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
     components.Agent,
+    | errors.ErrorResponse
     | GleanError
     | SDKValidationError
     | UnexpectedClientError
@@ -50,6 +53,7 @@ export function clientAgentsRetrieve(
   return new APIPromise($do(
     client,
     agentId,
+    locale,
     timezoneOffset,
     options,
   ));
@@ -58,12 +62,14 @@ export function clientAgentsRetrieve(
 async function $do(
   client: GleanCore,
   agentId: string,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
       components.Agent,
+      | errors.ErrorResponse
       | GleanError
       | SDKValidationError
       | UnexpectedClientError
@@ -77,6 +83,7 @@ async function $do(
 > {
   const input: operations.GetAgentRequest = {
     agentId: agentId,
+    locale: locale,
     timezoneOffset: timezoneOffset,
   };
 
@@ -101,6 +108,7 @@ async function $do(
   const path = pathToFunc("/rest/api/v1/agents/{agent_id}")(pathParams);
 
   const query = encodeFormQuery({
+    "locale": payload.locale,
     "timezoneOffset": payload.timezoneOffset,
   });
 
@@ -152,8 +160,13 @@ async function $do(
   }
   const response = doResult.value;
 
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
+  };
+
   const [result] = await M.match<
     components.Agent,
+    | errors.ErrorResponse
     | GleanError
     | SDKValidationError
     | UnexpectedClientError
@@ -163,9 +176,10 @@ async function $do(
     | ConnectionError
   >(
     M.json(200, components.Agent$inboundSchema),
-    M.fail([400, 403, 404, "4XX"]),
+    M.jsonErr(404, errors.ErrorResponse$inboundSchema),
+    M.fail([400, 403, "4XX"]),
     M.fail([500, "5XX"]),
-  )(response);
+  )(response, { extraFields: responseFields });
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
   }

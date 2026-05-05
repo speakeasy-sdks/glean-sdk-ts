@@ -27,7 +27,7 @@ export type IndexingPeopleIndexMutationData = void;
  * Index employee
  *
  * @remarks
- * Adds an employee or updates information about an employee
+ * Adds an employee or replaces the existing information about an employee.
  */
 export function useIndexingPeopleIndexMutation(
   options?: MutationHookOptions<

@@ -17,7 +17,8 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientVerificationVerifyMutationVariables = {
-  request: components.VerifyRequest;
+  verifyRequest: components.VerifyRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
@@ -63,7 +64,8 @@ export function buildClientVerificationVerifyMutation(
   return {
     mutationKey: mutationKeyClientVerificationVerify(),
     mutationFn: function clientVerificationVerifyMutationFn({
-      request,
+      verifyRequest,
+      locale,
       options,
     }): Promise<ClientVerificationVerifyMutationData> {
       const mergedOptions = {
@@ -80,7 +82,8 @@ export function buildClientVerificationVerifyMutation(
       };
       return unwrapAsync(clientVerificationVerify(
         client$,
-        request,
+        verifyRequest,
+        locale,
         mergedOptions,
       ));
     },

@@ -93,7 +93,9 @@ test("Client Documents Summarize", async () => {
 
   const result = await glean.client.documents.summarize({
     documentSpecs: [
-      {},
+      {
+        url: "https://infinite-pillow.org",
+      },
     ],
   });
   expect(result).toBeDefined();
